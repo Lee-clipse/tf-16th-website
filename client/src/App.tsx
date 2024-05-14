@@ -1,8 +1,18 @@
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ROUTE_PATH } from "./common/const";
+
+const MainPage = lazy(() => import("./pages/Main/index"));
+
 function App() {
   return (
-    <>
-      <h1>Ready for TF</h1>
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<div>Waiting...</div>}>
+        <Routes>
+          <Route path={ROUTE_PATH.MAIN} element={<MainPage />}></Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
