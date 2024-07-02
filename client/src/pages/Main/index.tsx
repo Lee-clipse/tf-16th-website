@@ -1,4 +1,4 @@
-import posterImage from "../../assets/images/poster.png";
+import posterImage from "../../assets/images/poster.webp";
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
 import { PosterImage } from "./style";
