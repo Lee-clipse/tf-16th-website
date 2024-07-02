@@ -10,61 +10,7 @@ import FuturaCyrillicLight from "../assets/fonts/FuturaCyrillicLight.ttf";
 import FuturaCyrillicMedium from "../assets/fonts/FuturaCyrillicMedium.ttf";
 import HakgyoansimJiugaeR from "../assets/fonts/HakgyoansimJiugaeR.ttf";
 
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    width: 100vw;
-    height: 100vh;
-    font-size: 80%;
-  }
-
-  body, #root {
-    width: 100%;
-    height: 100%;
-  }
-
-  body {
-  }
-
-  #root {
-    display: flex;
-    flex-direction: column;
-    font-family: ${theme.font.NORMAL}, "Pretendard";
-    background-color: ${theme.color.BACKGROUND};
-  }
-
-  button {
-    cursor: pointer;
-    background: none;
-    border: none;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .scroll::-webkit-scrollbar {
-    display: none;
-  }
-
-  .scroll {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  input {
-    outline: none;
-    border: none;
-  }
-
-  // 폰트
+const FontStyle = `
   @font-face {
     font-family: 'FuturaCyrillicBold';
     src: local('FuturaCyrillicBold'), local('FuturaCyrillicBold');
@@ -119,6 +65,86 @@ const GlobalStyle = createGlobalStyle`
     src: local('HakgyoansimJiugaeR'), local('HakgyoansimJiugaeR');
     font-style: normal;
     src: url(${HakgyoansimJiugaeR}) format('truetype');
+  }
+`;
+
+const CustomClass = `
+  .f-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .f-col {
+    display: flex;
+    flex-direction: col;
+  }
+
+  .h-center {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .v-center {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+  ${FontStyle}
+  ${CustomClass}
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    width: 100vw;
+    height: 100vh;
+    font-size: 80%;
+  }
+
+  body, #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    // font-family: ${theme.font.NORMAL}, "Pretendard";
+    background-color: ${theme.color.BACKGROUND};
+  }
+
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  input {
+    outline: none;
+    border: none;
   }
 
 
