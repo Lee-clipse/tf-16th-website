@@ -1,11 +1,12 @@
 const color = {
-  // MAIN_BLUE: "#2347C6",
-  // TEXT_BLACK: "#2C343F",
+  MAIN_BLUE: "#1F4C9D",
+  MAIN_ORAGNE: "#ED7A4D",
+  TEXT_BLACK: "#262626",
   // TEXT_LIGHT_BLACK: "#656C77",
   // TEXT_WHITE: "#FBFBFB",
   // SOFT_BLUE: "#DCECFF",
   // BACKGROUND_BLUE: "#E4EFFF",
-  // BACKGROUND: "#FFFFFF",
+  BACKGROUND: "#FEFFFF",
   // PURPLE: "#8A3BDA",
   // SOFT_PURPLE: "#F3E8FF",
   // PINK: "#E026C2",
@@ -17,9 +18,14 @@ const color = {
 };
 
 const font = {
-  // LIGHT: "NanumSquareRoundL",
-  // NORMAL: "NanumSquareRoundB",
-  // BOLD: "NanumSquareRoundEB",
+  LIGHT: "FuturaCyrillicLight",
+  NORMAL: "FuturaCyrillicMedium",
+  BOLD: "FuturaCyrillicBold",
+  EXTRA_BOLD: "FuturaCyrillicExtraBold",
+  BOOK: "FuturaCyrillicBook",
+  DEMI: "FuturaCyrillicDemi",
+  HEAVY: "FuturaCyrillicHeavy",
+  OTHER: "HakgyoansimJiugaeR",
   size: {
     // XS: "0.6rem",
     // S: "1rem",
