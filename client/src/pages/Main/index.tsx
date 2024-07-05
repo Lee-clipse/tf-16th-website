@@ -1,7 +1,10 @@
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
-import { HistorySection, MainSection, ValueSection, Wrapper } from "./style";
+import { BannerSection, HistorySection, MainSection, ValueSection, Wrapper } from "./style";
 import MainLogo from "../../assets/images/main_logo.webp";
+import InstaLogo from "../../assets/images/insta_logo.webp";
+import YoutubeLogo from "../../assets/images/youtube_logo.webp";
+import BlogLogo from "../../assets/images/blog_logo.webp";
 
 const MainPage = () => {
   const 스텝_지원_폼_링크 =
@@ -203,7 +206,18 @@ const MainPage = () => {
         </ValueSection>
 
         {/* 배너 섹션 */}
-        <div></div>
+        <BannerSection>
+          <div className="title f-col">
+            <p className="logo">청건부산</p>
+            <p>청년이 건강해야 부산이 산다.</p>
+          </div>
+
+          <div className="icons f-row h-center">
+            <img id="insta-icon" className="icon" src={InstaLogo} />
+            <img id="youtube-icon" className="icon" src={YoutubeLogo} />
+            <img id="blog-icon" className="icon" src={BlogLogo} />
+          </div>
+        </BannerSection>
       </Wrapper>
 
       {/* 스텝 지원 버튼 */}

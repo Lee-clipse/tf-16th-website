@@ -42,8 +42,8 @@ export const MainSection = styled.div`
 export const HistorySection = styled.div`
   background-color: ${theme.color.MAIN_BLUE};
   color: ${theme.color.MAIN_BLUE};
-  margin: 0 0 6rem 0;
-  padding: 6rem 3rem 6rem 3rem;
+  margin: 0 0 4rem 0;
+  padding: 6rem 3rem 2rem 3rem;
 
   .title {
     font-family: ${theme.font.NOTO[8]};
@@ -172,6 +172,34 @@ export const ValueSection = styled.div`
     font-size: ${theme.font.SIZE.L};
     align-items: end;
     margin-top: 3rem;
+  }
+`;
+
+export const BannerSection = styled.div`
+  background-color: ${theme.color.MAIN_BLUE};
+  padding: 4rem 0 8rem 0;
+  text-align: center;
+
+  .title {
+    color: ${theme.color.GRAY_BLUE};
+    font-family: ${theme.font.NOTO[3]};
+    font-size: ${theme.font.SIZE.S};
+    gap: 0.4rem;
+
+    .logo {
+      font-family: ${theme.font.HAK[5]};
+      font-size: ${theme.font.SIZE.XL};
+    }
+  }
+
+  .icons {
+    margin-top: 1.8rem;
+    gap: 1.4rem;
+
+    .icon {
+      width: 10vw;
+      heigth: 10vw;
+    }
   }
 `;
 
