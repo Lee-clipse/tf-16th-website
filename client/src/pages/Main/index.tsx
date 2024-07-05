@@ -9,6 +9,10 @@ import BlogLogo from "../../assets/images/blog_logo.webp";
 const MainPage = () => {
   const 스텝_지원_폼_링크 =
     "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
+  const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
+  const 청건부산_유튜브_링크 = "https://www.youtube.com/@cheonggeonbusan";
+  const 청건부산_블로그_링크 =
+    "https://m.blog.naver.com/PostList.naver?blogId=together_festival&permalink=permalink&tab=1";
 
   return (
     <>
@@ -213,9 +217,24 @@ const MainPage = () => {
           </div>
 
           <div className="icons f-row h-center">
-            <img id="insta-icon" className="icon" src={InstaLogo} />
-            <img id="youtube-icon" className="icon" src={YoutubeLogo} />
-            <img id="blog-icon" className="icon" src={BlogLogo} />
+            <img
+              id="insta-icon"
+              className="icon"
+              src={InstaLogo}
+              onClick={() => window.open(청건부산_인스타_링크, "_blank", "noopener, noreferrer")}
+            />
+            <img
+              id="youtube-icon"
+              className="icon"
+              src={YoutubeLogo}
+              onClick={() => window.open(청건부산_유튜브_링크, "_blank", "noopener, noreferrer")}
+            />
+            <img
+              id="blog-icon"
+              className="icon"
+              src={BlogLogo}
+              onClick={() => window.open(청건부산_블로그_링크, "_blank", "noopener, noreferrer")}
+            />
           </div>
         </BannerSection>
       </Wrapper>

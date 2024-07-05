@@ -23,19 +23,17 @@ const WideButton: React.FC<WideButtonProps> = ({ text, backgroundColor, textColo
 };
 
 const Wrapper = styled.div<{ backgroundColor: string; textColor: string; custom: string }>`
-  border-radius: 1rem;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.textColor};
-  // font-family: ${theme.font.EXTRA_BOLD}, "Pretendard"; // error
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding: 1.2rem;
+  padding: 1.6rem 1.2rem;
+  border-radius: 1rem;
   width: 90vw;
-  // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   position: fixed;
   bottom: 4%;
-  ${(props) => props.custom && props.custom}
+  font-family: ${theme.font.NOTO[6]};
+  font-size: ${theme.font.SIZE.M};
+  ${(props) => props.custom && props.custom};
 `;
 
 export default WideButton;
