@@ -7,7 +7,7 @@ const MainPage = lazy(() => import("./pages/Main/index"));
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Waiting...</div>}>
+      <Suspense fallback={<div></div>}>
         <Routes>
           <Route path={ROUTE_PATH.MAIN} element={<MainPage />}></Route>
         </Routes>

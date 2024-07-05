@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
+import isMobile from "is-mobile";
 
 interface WideButtonProps {
   text: string;
@@ -27,9 +28,10 @@ const Wrapper = styled.div<{ backgroundColor: string; textColor: string; custom:
   color: ${(props) => props.textColor};
   padding: 1.6rem 1.2rem;
   border-radius: 1rem;
-  width: 90vw;
+  width: ${isMobile() ? "90vw" : "340px"};
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   position: fixed;
+  cursor: pointer;
   bottom: 4%;
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.M};

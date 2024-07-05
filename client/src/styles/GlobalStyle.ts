@@ -287,12 +287,15 @@ const GlobalStyle = createGlobalStyle`
     html {
       width: 375px;
       margin: 0 auto;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
 
     }
 
     body, #root {
       width: 100%;
+    }
+
+    #root {
+      // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
     }
   }
 `;

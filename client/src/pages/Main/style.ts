@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 
 export const MainSection = styled.div`
   color: ${theme.color.MAIN_BLUE};
-  margin: 4rem 0 12rem 0;
+  margin: 3rem 0 12rem 0;
   padding: 0 2rem;
 
   .header {
@@ -197,8 +197,9 @@ export const BannerSection = styled.div`
     gap: 1.4rem;
 
     .icon {
-      width: 10vw;
-      heigth: 10vw;
+      width: 10%;
+      heigth: 10%;
+      cursor: pointer;
     }
   }
 `;
