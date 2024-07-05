@@ -108,8 +108,70 @@ export const HistorySection = styled.div`
     color: ${theme.color.TEXT_WHITE};
     font-size: ${theme.font.SIZE.XL};
     margin: 4rem 1rem;
-    padding-left: 12rem;
-    gap: 0.8rem;
+    align-items: end;
+  }
+`;
+
+export const ValueSection = styled.div`
+  margin: 3rem 0 4rem 0;
+  padding: 0 2rem 0 2.4rem;
+
+  .title {
+    color: ${theme.color.MAIN_BLUE};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XXXL};
+    gap: 0.4rem;
+    margin-bottom: 3.4rem;
+
+    .logo {
+      font-family: ${theme.font.HAK[5]};
+      font-size: ${theme.font.SIZE.XXXXXL};
+    }
+  }
+
+  .slogun {
+    gap: 3rem;
+    color: ${theme.color.MAIN_BLUE};
+    font-family: ${theme.font.NOTO[5]};
+    font-size: ${theme.font.SIZE.S};
+
+    .box {
+      gap: 1.4rem;
+
+      .label {
+        border-top: 2px solid ${theme.color.MAIN_BLUE};
+        padding-top: 1rem;
+        padding-left: 0.2rem;
+        font-family: ${theme.font.NOTO[8]};
+        font-size: ${theme.font.SIZE.SM};
+        flex: 2;
+      }
+
+      .content {
+        border-top: 1px solid ${theme.color.MAIN_BLUE};
+        padding-top: 1rem;
+        padding-left: 0.2rem;
+        flex: 8;
+        gap: 0.6rem;
+
+        .cell {
+          gap: 0.6rem;
+        }
+
+        .accent {
+          font-family: ${theme.font.OSW[5]};
+          font-size: ${theme.font.SIZE.L};
+        }
+      }
+    }
+  }
+
+  .footer {
+    color: ${theme.color.MAIN_BLUE};
+    font-family: ${theme.font.NOTO[8]};
+    font-size: ${theme.font.SIZE.L};
+    align-items: end;
+    margin-top: 3rem;
   }
 `;
 

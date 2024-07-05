@@ -1,6 +1,6 @@
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
-import { HistorySection, MainSection, Wrapper } from "./style";
+import { HistorySection, MainSection, ValueSection, Wrapper } from "./style";
 import MainLogo from "../../assets/images/main_logo.webp";
 
 const MainPage = () => {
@@ -107,13 +107,100 @@ const MainPage = () => {
           </div>
 
           <div className="footer-text f-col">
-            <p>나에서 너</p>
-            <p>이제, 우리로</p>
+            <div className="f-col" style={{ gap: "0.8rem" }}>
+              <p>나에서 너</p>
+              <p>이제, 우리로</p>
+            </div>
           </div>
         </HistorySection>
 
         {/* 가치 섹션 */}
-        <div></div>
+        <ValueSection>
+          <div className="title f-col">
+            <p className="logo">청건부산,</p>
+            <p>청년이 건강해야</p>
+            <p>부산이 산다!</p>
+          </div>
+
+          <div className="slogun f-col">
+            <div className="box f-row">
+              <div className="label">
+                <p>비전</p>
+              </div>
+
+              <div className="content f-col">
+                <p>건강한 가치관을 가진 깨어있는 청년들을</p>
+                <p>양성합니다.</p>
+                <p>부산이 당면한 문제들을 풀어가기 위해 함께</p>
+                <p>고민하고 소통하며 포기하지 않고 도전합니다.</p>
+                <p>부산을 살리고 변화시키는 출발점이</p>
+                <p>부산 청년이 될 것입니다.</p>
+              </div>
+            </div>
+
+            <div className="box f-row">
+              <div className="label">
+                <p>미션</p>
+              </div>
+
+              <div className="content f-row" style={{ gap: "1rem" }}>
+                <div className="cell f-col">
+                  <div className="f-row">
+                    <p className="accent">300</p>
+                    <p>명의</p>
+                  </div>
+                  <p>깨어있는 부산 청년들을</p>
+                  <p>만듭니다.</p>
+                </div>
+
+                <div className="cell f-col">
+                  <div className="f-row">
+                    <p className="accent">5000</p>
+                    <p>명에게</p>
+                  </div>
+                  <p>우리의 비전을 전파</p>
+                  <p>하는 것을</p>
+                  <p>목표로 합니다.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="box f-row">
+              <div className="label">
+                <p>핵심 가치</p>
+              </div>
+
+              <div className="content f-col">
+                <div className="f-row" style={{ gap: "1.6rem" }}>
+                  <div className="cell f-col">
+                    <p className="accent">Don't give up</p>
+                    <p>우리는 포기하지 않는</p>
+                    <p>청년입니다.</p>
+                  </div>
+
+                  <div className="cell f-col">
+                    <p className="accent">Just do it</p>
+                    <p>우리는 행동하는</p>
+                    <p>청년입니다.</p>
+                  </div>
+                </div>
+
+                <div className="cell f-col" style={{ marginTop: "1.4rem" }}>
+                  <p className="accent">No limit</p>
+                  <p>우리는 한계를 거부하는</p>
+                  <p>청년입니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer f-col">
+            <div className="f-col" style={{ gap: "0.6rem" }}>
+              <p>TOGETHER</p>
+              <p>FESTIVAL</p>
+            </div>
+          </div>
+        </ValueSection>
 
         {/* 배너 섹션 */}
         <div></div>
