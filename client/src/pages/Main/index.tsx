@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import posterImage from "../../assets/images/poster.webp";
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
@@ -14,6 +15,13 @@ const MainPage = () => {
         <PosterImage src={posterImage} />
       </div>
 
+      <div>
+        <MainLogoText>청건부산 로고: 학교 안심 지우개</MainLogoText>
+        <HangeulText>모든 한글: Noto Sans KR</HangeulText>
+        <EnglishText>Every English: Futura PT</EnglishText>
+        <AccentText>0123456789 ACCENT ENGLISH: Oswald</AccentText>
+      </div>
+
       {/* 스텝 지원 버튼 */}
       <div
         className="h-center v-center"
@@ -28,5 +36,29 @@ const MainPage = () => {
     </div>
   );
 };
+
+const MainLogoText = styled.p`
+  font-family: ${theme.font.HAK[5]};
+  font-size: ${theme.font.SIZE.L};
+  color: ${theme.color.MAIN_BLUE};
+`;
+
+const HangeulText = styled.p`
+  font-family: ${theme.font.NOTO[5]};
+  font-size: ${theme.font.SIZE.M};
+  color: ${theme.color.TEXT_BLACK};
+`;
+
+const EnglishText = styled.p`
+  font-family: ${theme.font.FUT[5]};
+  font-size: ${theme.font.SIZE.M};
+  color: ${theme.color.TEXT_BLACK};
+`;
+
+const AccentText = styled.p`
+  font-family: ${theme.font.OSW[5]};
+  font-size: ${theme.font.SIZE.M};
+  color: ${theme.color.TEXT_BLACK};
+`;
 
 export default MainPage;

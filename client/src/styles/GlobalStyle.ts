@@ -9,8 +9,131 @@ import FuturaCyrillicHeavy from "../assets/fonts/FuturaCyrillicHeavy.ttf";
 import FuturaCyrillicLight from "../assets/fonts/FuturaCyrillicLight.ttf";
 import FuturaCyrillicMedium from "../assets/fonts/FuturaCyrillicMedium.ttf";
 import HakgyoansimJiugaeR from "../assets/fonts/HakgyoansimJiugaeR.ttf";
+import NotoSansKRLight from "../assets/fonts/NotoSansKR-Light.ttf";
+import NotoSansKRBlack from "../assets/fonts/NotoSansKR-Black.ttf";
+import NotoSansKRBold from "../assets/fonts/NotoSansKR-Bold.ttf";
+import NotoSansKRExtraBold from "../assets/fonts/NotoSansKR-ExtraBold.ttf";
+import NotoSansKRExtraLight from "../assets/fonts/NotoSansKR-ExtraLight.ttf";
+import NotoSansKRMedium from "../assets/fonts/NotoSansKR-Medium.ttf";
+import NotoSansKRRegular from "../assets/fonts/NotoSansKR-Regular.ttf";
+import NotoSansKRSemiBold from "../assets/fonts/NotoSansKR-SemiBold.ttf";
+import NotoSansKRThin from "../assets/fonts/NotoSansKR-Thin.ttf";
+import OswaldBold from "../assets/fonts/Oswald-Bold.ttf";
+import OswaldExtraLight from "../assets/fonts/Oswald-ExtraLight.ttf";
+import OswaldLight from "../assets/fonts/Oswald-Light.ttf";
+import OswaldMedium from "../assets/fonts/Oswald-Medium.ttf";
+import OswaldRegular from "../assets/fonts/Oswald-Regular.ttf";
+import OswaldSemiBold from "../assets/fonts/Oswald-SemiBold.ttf";
 
 const FontStyle = `
+  // 모든 영문
+  @font-face {
+    font-family: 'OswaldBold';
+    src: local('OswaldBold'), local('OswaldBold');
+    font-style: normal;
+    src: url(${OswaldBold}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'OswaldExtraLight';
+    src: local('OswaldExtraLight'), local('OswaldExtraLight');
+    font-style: normal;
+    src: url(${OswaldExtraLight}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'OswaldLight';
+    src: local('OswaldLight'), local('OswaldLight');
+    font-style: normal;
+    src: url(${OswaldLight}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'OswaldMedium';
+    src: local('OswaldMedium'), local('OswaldMedium');
+    font-style: normal;
+    src: url(${OswaldMedium}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'OswaldRegular';
+    src: local('OswaldRegular'), local('OswaldRegular');
+    font-style: normal;
+    src: url(${OswaldRegular}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'OswaldSemiBold';
+    src: local('OswaldSemiBold'), local('OswaldSemiBold');
+    font-style: normal;
+    src: url(${OswaldSemiBold}) format('truetype');
+  }
+
+  // 모든 한글
+  @font-face {
+    font-family: 'NotoSansKRLight';
+    src: local('NotoSansKRLight'), local('NotoSansKRLight');
+    font-style: normal;
+    src: url(${NotoSansKRLight}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'NotoSansKRBlack';
+    src: local('NotoSansKRBlack'), local('NotoSansKRBlack');
+    font-style: normal;
+    src: url(${NotoSansKRBlack}) format('truetype');
+  }
+
+   @font-face {
+    font-family: 'NotoSansKRBold';
+    src: local('NotoSansKRBold'), local('NotoSansKRBold');
+    font-style: normal;
+    src: url(${NotoSansKRBold}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'NotoSansKRExtraBold';
+    src: local('NotoSansKRExtraBold'), local('NotoSansKRExtraBold');
+    font-style: normal;
+    src: url(${NotoSansKRExtraBold}) format('truetype');
+  }
+
+   @font-face {
+    font-family: 'NotoSansKRExtraLight';
+    src: local('NotoSansKRExtraLight'), local('NotoSansKRExtraLight');
+    font-style: normal;
+    src: url(${NotoSansKRExtraLight}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'NotoSansKRMedium';
+    src: local('NotoSansKRMedium'), local('NotoSansKRMedium');
+    font-style: normal;
+    src: url(${NotoSansKRMedium}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'NotoSansKRRegular';
+    src: local('NotoSansKRRegular'), local('NotoSansKRRegular');
+    font-style: normal;
+    src: url(${NotoSansKRRegular}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'NotoSansKRSemiBold';
+    src: local('NotoSansKRSemiBold'), local('NotoSansKRSemiBold');
+    font-style: normal;
+    src: url(${NotoSansKRSemiBold}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'NotoSansKRThin';
+    src: local('NotoSansKRThin'), local('NotoSansKRThin');
+    font-style: normal;
+    src: url(${NotoSansKRThin}) format('truetype');
+  }
+
+  // 모든 영문
   @font-face {
     font-family: 'FuturaCyrillicBold';
     src: local('FuturaCyrillicBold'), local('FuturaCyrillicBold');
@@ -60,6 +183,7 @@ const FontStyle = `
     src: url(${FuturaCyrillicMedium}) format('truetype');
   }
 
+  // 메인 로고
   @font-face {
     font-family: 'HakgyoansimJiugaeR';
     src: local('HakgyoansimJiugaeR'), local('HakgyoansimJiugaeR');
@@ -119,7 +243,6 @@ const GlobalStyle = createGlobalStyle`
   #root {
     display: flex;
     flex-direction: column;
-    // font-family: ${theme.font.NORMAL}, "Pretendard";
     background-color: ${theme.color.BACKGROUND};
   }
 
