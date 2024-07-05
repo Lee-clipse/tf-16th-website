@@ -1,7 +1,7 @@
 const color = {
   MAIN_BLUE: "#034EA1",
-  GREEN_BLUE: "00B3CC",
-  LIGHT_BLUE: "44C7F4",
+  GREEN_BLUE: "#50B0C8",
+  LIGHT_BLUE: "#6CC4EF",
   MAIN_ORAGNE: "#ED7A4D",
   TEXT_BLACK: "#262626",
   // TEXT_LIGHT_BLACK: "#656C77",
@@ -59,9 +59,12 @@ const font = {
     M: "1.4rem",
     ML: "1.6rem",
     L: "1.8rem",
-    XL: "2.2rem",
-    XXL: "2.8rem",
-    XXXL: "3.2rem",
+    XL: "2rem",
+    XXL: "2.2rem",
+    XXXL: "2.4rem",
+    XXXXL: "2.6rem",
+    XXXXXL: "2.8rem",
+    XXXXXXL: "3rem",
   },
 };
 
