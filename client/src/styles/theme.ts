@@ -59,9 +59,9 @@ const font = {
     M: "1.4rem",
     ML: "1.6rem",
     L: "1.8rem",
-    XL: "2rem",
-    XXL: "2.3rem",
-    XXXL: "3.6rem",
+    XL: "2.2rem",
+    XXL: "2.8rem",
+    XXXL: "3.2rem",
   },
 };
 

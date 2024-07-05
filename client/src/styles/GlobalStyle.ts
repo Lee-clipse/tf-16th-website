@@ -200,7 +200,7 @@ const CustomClass = `
   
   .f-col {
     display: flex;
-    flex-direction: col;
+    flex-direction: column;
   }
 
   .h-center {
