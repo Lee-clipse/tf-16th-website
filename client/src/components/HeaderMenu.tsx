@@ -5,13 +5,14 @@ import theme from "../styles/theme";
 import { FiMenu } from "react-icons/fi";
 import { GoArrowRight, GoBold } from "react-icons/go";
 import Button from "./Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../common/const";
 
 const HeaderMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLoginUser, setIsLoginUser] = useState<boolean>(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -75,27 +76,39 @@ const HeaderMenu = () => {
             <div className="tab profile-tab">
               {isLoginUser ? <ProfileTabWelcomeBox /> : <ProfileTabJoinBox />}
             </div>
-            <PlainLink to={ROUTE_PATH.MAIN} onClick={closeMenu} className="tab f-spb v-center">
+            <PlainLink
+              to={ROUTE_PATH.MAIN}
+              onClick={closeMenu}
+              className={`tab f-spb v-center ${
+                location.pathname === ROUTE_PATH.MAIN ? "active" : ""
+              }`}
+            >
               홈 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_ACTIVITY}
               onClick={closeMenu}
-              className="tab f-spb v-center"
+              className={`tab f-spb v-center ${
+                location.pathname === ROUTE_PATH.MAIN_ACTIVITY ? "active" : ""
+              }`}
             >
               활동 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_EVENT}
               onClick={closeMenu}
-              className="tab f-spb v-center"
+              className={`tab f-spb v-center ${
+                location.pathname === ROUTE_PATH.MAIN_EVENT ? "active" : ""
+              }`}
             >
               행사 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_ZEROGAME}
               onClick={closeMenu}
-              className="tab f-spb v-center"
+              className={`tab f-spb v-center ${
+                location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
+              }`}
             >
               제로게임 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
@@ -149,6 +162,10 @@ const SideBar = styled.div`
 const PlainLink = styled(Link)`
   text-decoration: none;
   color: inherit;
+
+  &.active {
+    background-color: lightgray;
+  }
 `;
 
 export default HeaderMenu;
