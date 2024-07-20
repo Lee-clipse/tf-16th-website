@@ -203,6 +203,11 @@ const CustomClass = `
     flex-direction: column;
   }
 
+  .f-spb {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .h-center {
     display: flex;
     text-align: center;

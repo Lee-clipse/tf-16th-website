@@ -5,6 +5,7 @@ import MainLogo from "../../assets/images/main_logo.webp";
 import InstaLogo from "../../assets/images/insta_logo.webp";
 import YoutubeLogo from "../../assets/images/youtube_logo.webp";
 import BlogLogo from "../../assets/images/blog_logo.webp";
+import HeaderMenu from "../../components/HeaderMenu";
 
 const MainPage = () => {
   const 스텝_지원_폼_링크 =
@@ -16,6 +17,9 @@ const MainPage = () => {
 
   return (
     <>
+      {/* 헤더 메뉴 */}
+      <HeaderMenu />
+
       <Wrapper className="f-col">
         {/* 메인 섹션 */}
         <MainSection>
