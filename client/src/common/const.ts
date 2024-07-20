@@ -1,4 +1,5 @@
 export const ROUTE_PATH = {
+  TEST: "/test",
   MAIN: "/",
   JOIN: "/join",
   MAIN_ACTIVITY: "/activity",

@@ -5,6 +5,7 @@ import JoinPage from "./pages/Join";
 import ActivityPage from "./pages/MainActivity";
 import EventPage from "./pages/MainEvent";
 import ZerogamePage from "./pages/MainZerogame";
+import TestPage from "./pages/Test";
 
 const MainPage = lazy(() => import("./pages/Main/index"));
 
@@ -13,6 +14,9 @@ function App() {
     <BrowserRouter>
       <Suspense fallback={<div></div>}>
         <Routes>
+          {/* 테스트 페이지 */}
+          <Route path={ROUTE_PATH.TEST} element={<TestPage />}></Route>
+
           <Route path={ROUTE_PATH.MAIN} element={<MainPage />}></Route>
           <Route path={ROUTE_PATH.JOIN} element={<JoinPage />}></Route>
           <Route path={ROUTE_PATH.MAIN_ACTIVITY} element={<ActivityPage />}></Route>
