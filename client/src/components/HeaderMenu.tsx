@@ -1,18 +1,40 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { FiMenu } from "react-icons/fi";
 import { GoArrowRight, GoBold } from "react-icons/go";
 import Button from "./Button";
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTE_PATH } from "../common/const";
 
 const HeaderMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLoginUser, setIsLoginUser] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleBackButton = () => {
+      if (isMenuOpen) {
+        closeMenu();
+        return true;
+      }
+      return false;
+    };
+
+    window.addEventListener("popstate", handleBackButton);
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [isMenuOpen]);
 
   const ProfileTabWelcomeBox = () => {
     return (
@@ -25,13 +47,18 @@ const HeaderMenu = () => {
 
   const ProfileTabJoinBox = () => {
     return (
-      <>
+      <div
+        onClick={() => {
+          navigate(ROUTE_PATH.JOIN);
+          closeMenu();
+        }}
+      >
         <Button
           text="참가하기"
           backgroundColor={theme.color.MAIN_BLUE}
           textColor={theme.color.TEXT_WHITE}
         />
-      </>
+      </div>
     );
   };
 
@@ -48,15 +75,30 @@ const HeaderMenu = () => {
             <div className="tab profile-tab">
               {isLoginUser ? <ProfileTabWelcomeBox /> : <ProfileTabJoinBox />}
             </div>
-            <div className="tab f-spb v-center">
+            <PlainLink to={ROUTE_PATH.MAIN} onClick={closeMenu} className="tab f-spb v-center">
+              홈 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+            </PlainLink>
+            <PlainLink
+              to={ROUTE_PATH.MAIN_ACTIVITY}
+              onClick={closeMenu}
+              className="tab f-spb v-center"
+            >
               활동 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
-            </div>
-            <div className="tab f-spb v-center">
+            </PlainLink>
+            <PlainLink
+              to={ROUTE_PATH.MAIN_EVENT}
+              onClick={closeMenu}
+              className="tab f-spb v-center"
+            >
               행사 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
-            </div>
-            <div className="tab f-spb v-center">
+            </PlainLink>
+            <PlainLink
+              to={ROUTE_PATH.MAIN_ZEROGAME}
+              onClick={closeMenu}
+              className="tab f-spb v-center"
+            >
               제로게임 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
-            </div>
+            </PlainLink>
           </SideBar>
         </SideBarWrapper>
       </Overlay>
@@ -102,6 +144,11 @@ const SideBar = styled.div`
     font-size: ${theme.font.SIZE.M};
     border-bottom: 1px solid lightgray;
   }
+`;
+
+const PlainLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;
 
 export default HeaderMenu;
