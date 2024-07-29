@@ -92,7 +92,7 @@ const HeaderMenu = () => {
                 location.pathname === ROUTE_PATH.MAIN_ACTIVITY ? "active" : ""
               }`}
             >
-              활동 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+              정보 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_EVENT}
@@ -101,7 +101,17 @@ const HeaderMenu = () => {
                 location.pathname === ROUTE_PATH.MAIN_EVENT ? "active" : ""
               }`}
             >
-              행사 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+              청년 커뮤니티{" "}
+              <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+            </PlainLink>
+            <PlainLink
+              to={ROUTE_PATH.MAIN_ZEROGAME}
+              onClick={closeMenu}
+              className={`tab f-spb v-center ${
+                location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
+              }`}
+            >
+              연혁 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_ZEROGAME}

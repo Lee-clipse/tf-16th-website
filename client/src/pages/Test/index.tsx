@@ -6,8 +6,8 @@ import theme from "../../styles/theme";
 import BlogLogo from "../../assets/images/blog_logo.webp";
 import InstaLogo from "../../assets/images/insta_logo.webp";
 import YoutubeLogo from "../../assets/images/youtube_logo.webp";
-import Slider from "react-slick";
 import { useSwipeable } from "react-swipeable";
+import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 
 const TestPage = () => {
   const CountUpComponent = () => {
@@ -59,11 +59,11 @@ const TestPage = () => {
         </ImageContainer>
 
         <ArrowButton onClick={handlePrev} direction="left">
-          {"<"}
+          <MdOutlineArrowBackIos />
         </ArrowButton>
 
         <ArrowButton onClick={handleNext} direction="right">
-          {">"}
+          <MdOutlineArrowForwardIos />
         </ArrowButton>
 
         <IndicatorContainer className="h-center">
@@ -138,12 +138,12 @@ const CarouselContainer = styled.div`
 const ImageContainer = styled.div<{ currentIndex: number }>`
   display: flex;
   transition: transform 0.5s ease-in-out;
-  transform: translateX(${(props) => -props.currentIndex * 100}%);
+  transform: translateX(${(props) => -props.currentIndex * 95}%);
 `;
 
 const CarouselImage = styled.img`
   width: 100%;
-  height: 400px; // 이미지 크기랑 맞춰야 함
+  height: 300px; // 이미지 크기랑 맞춰야 함
   object-fit: cover;
 `;
 
@@ -151,13 +151,11 @@ const ArrowButton = styled.button<{ direction: string }>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  ${(props) => (props.direction === "left" ? "left: 10px;" : "right: 10px;")}
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  ${(props) => (props.direction === "left" ? "left: 6px;" : "right: 6px;")}
+  color: ${theme.color.TEXT_BLACK};
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 4rem;
   border: none;
-  padding: 1rem;
   cursor: pointer;
   border-radius: 50%;
   z-index: 10;
@@ -167,14 +165,15 @@ const IndicatorContainer = styled.div`
   position: absolute;
   bottom: 10px;
   display: flex;
-  gap: 5px;
+  gap: 8px;
   width: 100%;
 `;
 
 const Dot = styled.div<{ isActive: boolean }>`
-  width: 10px;
-  height: 10px;
-  background-color: ${(props) => (props.isActive ? "black" : "gray")};
+  width: 12px;
+  height: 12px;
+  background-color: ${(props) =>
+    props.isActive ? theme.color.TEXT_BLACK : theme.color.TEXT_WHITE};
   border-radius: 50%;
 `;
 
