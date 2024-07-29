@@ -39,6 +39,54 @@ export const MainSection = styled.div`
   }
 `;
 
+export const Section1 = styled.div`
+  background-color: ${theme.color.MAIN_BLUE};
+  padding: 6rem 2rem 2rem 2rem;
+  color: ${theme.color.TEXT_WHITE};
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    height: 52px;
+    margin-bottom: 8rem;
+  }
+
+  .visible {
+    opacity: 1;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .left-block {
+    text-align: left;
+  }
+
+  .right-block {
+    text-align: right;
+  }
+
+  .title {
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XXXL};
+    margin-bottom: 1rem;
+  }
+
+  .mini-title {
+    font-family: ${theme.font.NOTO[4]};
+    font-size: ${theme.font.SIZE.S};
+  }
+
+  .question {
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin: 5rem 0 3rem 0;
+  }
+`;
+
 export const HistorySection = styled.div`
   background-color: ${theme.color.MAIN_BLUE};
   color: ${theme.color.MAIN_BLUE};
@@ -112,9 +160,13 @@ export const HistorySection = styled.div`
   }
 `;
 
-export const ValueSection = styled.div`
+export const Section2 = styled.div`
   margin: 3rem 0 4rem 0;
   padding: 0 2rem 0 2.4rem;
+
+  .button {
+    margin: 3rem 0 0 0;
+  }
 
   .title {
     color: ${theme.color.MAIN_BLUE};
@@ -172,6 +224,59 @@ export const ValueSection = styled.div`
     font-size: ${theme.font.SIZE.L};
     align-items: end;
     margin-top: 3rem;
+  }
+`;
+
+export const Section3 = styled.div`
+  color: ${theme.color.TEXT_BLACK};
+  font-family: ${theme.font.NOTO[6]};
+  font-size: ${theme.font.SIZE.L};
+  padding: 6rem 0;
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .poster {
+    width: 90vw;
+    margin-bottom: 4rem;
+  }
+`;
+
+export const Section4 = styled.div`
+  color: ${theme.color.TEXT_BLACK};
+  font-family: ${theme.font.NOTO[7]};
+  font-size: ${theme.font.SIZE.XXXXL};
+  padding: 0rem 2rem 6rem 2rem;
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .number {
+    font-family: ${theme.font.OSW[5]};
+  }
+`;
+
+export const Section5 = styled.div`
+  color: ${theme.color.TEXT_BLACK};
+  font-family: ${theme.font.NOTO[6]};
+  font-size: ${theme.font.SIZE.L};
+  padding: 2rem 2rem;
+
+  .button {
+    margin: 2rem 0;
+  }
+`;
+
+export const Section6 = styled.div`
+  color: ${theme.color.TEXT_BLACK};
+  font-family: ${theme.font.NOTO[6]};
+  font-size: ${theme.font.SIZE.L};
+  padding: 2rem 2rem;
+
+  .carousel {
+    margin: 2rem 0;
   }
 `;
 

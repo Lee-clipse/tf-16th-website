@@ -32,6 +32,7 @@ const Wrapper = styled.div<{ backgroundColor: string; textColor: string; custom:
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.M};
   ${(props) => props.custom && props.custom};
+  text-align: center;
 `;
 
 export default Button;

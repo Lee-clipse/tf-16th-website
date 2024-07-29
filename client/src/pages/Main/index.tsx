@@ -1,14 +1,37 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
-import { BannerSection, HistorySection, MainSection, ValueSection, Wrapper } from "./style";
+import {
+  BannerSection,
+  HistorySection,
+  MainSection,
+  Section1,
+  Section2,
+  Section3,
+  Section4,
+  Section5,
+  Section6,
+  Wrapper,
+} from "./style";
 import MainLogo from "../../assets/images/main_logo.webp";
 import InstaLogo from "../../assets/images/insta_logo.webp";
 import YoutubeLogo from "../../assets/images/youtube_logo.webp";
 import BlogLogo from "../../assets/images/blog_logo.webp";
+import ContentPoster1 from "../../assets/images/content_poster1.jpeg";
+import ContentPoster2 from "../../assets/images/content_poster2.jpg";
+import ContentPoster3 from "../../assets/images/content_poster3.jpg";
+import ClassPoster1 from "../../assets/images/class_poster1.webp";
+import ClassPoster2 from "../../assets/images/class_poster2.webp";
+import ClassPoster3 from "../../assets/images/class_poster3.webp";
 import HeaderMenu from "../../components/HeaderMenu";
+import VisibilitySensor from "react-visibility-sensor";
+import Button from "../../components/Button";
+import CountUp from "react-countup";
+import { CarouselComponent } from "../Test";
+import YouTube from "react-youtube";
 
 const MainPage = () => {
-  const 스텝_지원_폼_링크 =
+  const 스탭_지원_폼_링크 =
     "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
   const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
   const 청건부산_유튜브_링크 = "https://www.youtube.com/@cheonggeonbusan";
@@ -37,13 +60,86 @@ const MainPage = () => {
           </div>
 
           <div className="info f-col">
-            <p className="h-center">2024. 09. 07(토) 오후 4시 - 7시 30분</p>
+            <p className="h-center">2024. 09. 07(토) 오후 5시 - 7시 30분</p>
             <p className="h-center">부산시민공원 하야리아 잔디광장</p>
           </div>
         </MainSection>
 
+        {/* 청건부산 빌드업 */}
+        <Section1>
+          <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block left-block ${isVisible ? "visible" : ""}`}>
+                {isVisible ? (
+                  <>
+                    <div className="title">청년 유출</div>
+                    <div className="mini-title">부산 떠나는 청년들 인구소멸 가속화</div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <p className="invisible">l</p>
+              </div>
+            )}
+          </VisibilitySensor>
+
+          <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block right-block ${isVisible ? "visible" : ""}`}>
+                {isVisible ? (
+                  <>
+                    <div className="title">다문화 현상</div>
+                    <div className="mini-title">부산 떠나는 청년들 인구소멸 가속화</div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <p className="invisible">l</p>
+              </div>
+            )}
+          </VisibilitySensor>
+
+          <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block left-block ${isVisible ? "visible" : ""}`}>
+                {isVisible ? (
+                  <>
+                    <div className="title">기후 위기</div>
+                    <div className="mini-title">
+                      기후변화로 도심 침수·댐 월류 증가…부산 마린시티 침수 확대
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <p className="invisible">l</p>
+              </div>
+            )}
+          </VisibilitySensor>
+
+          <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block right-block ${isVisible ? "visible" : ""}`}>
+                {isVisible ? (
+                  <>
+                    <div className="title">도시 소멸</div>
+                    <div className="mini-title">
+                      전국 광역시 최초 소멸위험지역 진입 2050년이면 부산 시민 절반이 노인
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <p className="invisible">l</p>
+              </div>
+            )}
+          </VisibilitySensor>
+
+          <div className="question h-center">"그래서 우리가 뭘 할 수 있지?"</div>
+        </Section1>
+
         {/* 역사 섹션 */}
-        <HistorySection>
+        {/* <HistorySection>
           <p className="title f-col">
             <p>16년 동안 이어져온</p>
             <p>Together Festival의</p>
@@ -123,10 +219,10 @@ const MainPage = () => {
               <p>이제, 우리로</p>
             </div>
           </div>
-        </HistorySection>
+        </HistorySection> */}
 
-        {/* 가치 섹션 */}
-        <ValueSection>
+        {/* 청건부산 가치 섹션 */}
+        <Section2>
           <div className="title f-col">
             <p className="logo">청건부산,</p>
             <p>청년이 건강해야</p>
@@ -148,70 +244,94 @@ const MainPage = () => {
                 <p>부산 청년이 될 것입니다.</p>
               </div>
             </div>
+          </div>
 
-            <div className="box f-row">
-              <div className="label">
-                <p>미션</p>
-              </div>
-
-              <div className="content f-row" style={{ gap: "1rem" }}>
-                <div className="cell f-col">
-                  <div className="f-row">
-                    <p className="accent">300</p>
-                    <p>명의</p>
-                  </div>
-                  <p>깨어있는 부산 청년들을</p>
-                  <p>만듭니다.</p>
-                </div>
-
-                <div className="cell f-col">
-                  <div className="f-row">
-                    <p className="accent">5000</p>
-                    <p>명에게</p>
-                  </div>
-                  <p>우리의 비전을 전파</p>
-                  <p>하는 것을</p>
-                  <p>목표로 합니다.</p>
-                </div>
-              </div>
+          <div className="h-center">
+            <div className="button">
+              <Button
+                text="청건부산 자세히 보기"
+                backgroundColor={theme.color.MAIN_BLUE}
+                textColor={theme.color.TEXT_WHITE}
+              ></Button>
             </div>
+          </div>
+        </Section2>
 
-            <div className="box f-row">
-              <div className="label">
-                <p>핵심 가치</p>
-              </div>
-
-              <div className="content f-col">
-                <div className="f-row" style={{ gap: "1.6rem" }}>
-                  <div className="cell f-col">
-                    <p className="accent">Don't give up</p>
-                    <p>우리는 포기하지 않는</p>
-                    <p>청년입니다.</p>
-                  </div>
-
-                  <div className="cell f-col">
-                    <p className="accent">Just do it</p>
-                    <p>우리는 행동하는</p>
-                    <p>청년입니다.</p>
-                  </div>
-                </div>
-
-                <div className="cell f-col" style={{ marginTop: "1.4rem" }}>
-                  <p className="accent">No limit</p>
-                  <p>우리는 한계를 거부하는</p>
-                  <p>청년입니다.</p>
-                </div>
-              </div>
+        {/* 행사 컨텐츠 개요 */}
+        <Section3>
+          <div className="h-center f-col">
+            <div className="title">전한길 토크콘서트</div>
+            <div>
+              <img className="poster" src={ContentPoster1} alt="전한길_포스터" />
             </div>
           </div>
 
-          <div className="footer f-col">
-            <div className="f-col" style={{ gap: "0.6rem" }}>
-              <p>TOGETHER</p>
-              <p>FESTIVAL</p>
+          <div className="h-center f-col">
+            <div className="title">퓨전 국악 공연</div>
+            <div>
+              <img className="poster" src={ContentPoster2} alt="퓨전_국악_포스터" />
             </div>
           </div>
-        </ValueSection>
+
+          <div className="h-center f-col">
+            <div className="title">탄소중립 제로게임</div>
+            <div>
+              <img className="poster" src={ContentPoster3} alt="탄소중립_포스터" />
+            </div>
+          </div>
+        </Section3>
+
+        {/* 숫자 카운팅 */}
+        <Section4>
+          <div className="f-row title">
+            <CountUp className="number" start={0} end={50} duration={1} />
+            <p>개의 제로게임 부스</p>
+          </div>
+
+          <div className="f-row title">
+            <CountUp className="number" start={0} end={300} duration={1} />
+            <p>명의 스탭</p>
+          </div>
+
+          <div className="f-row title">
+            <CountUp className="number" start={0} end={5000} duration={1} />
+            <p>명의 참가자</p>
+          </div>
+        </Section4>
+
+        {/* 청년 커뮤니티 개요 */}
+        <Section5>
+          <div>청년 커뮤니티</div>
+          <div className="button">
+            <Button
+              text="청년 커뮤니티 자세히 보기"
+              backgroundColor={theme.color.MAIN_BLUE}
+              textColor={theme.color.TEXT_WHITE}
+            />
+          </div>
+        </Section5>
+
+        {/* Youtube 임베드 */}
+        <Section6>
+          <div>청건부산 Youtube</div>
+          <div className="carousel">
+            <YouTube
+              videoId="zOgL-9ZLsC8"
+              opts={{
+                width: "100%",
+                height: "200px",
+                playerVars: {
+                  autoplay: 0,
+                  modestbranding: 1,
+                  loop: 0,
+                },
+              }}
+              onReady={(e: { target: { mute: () => void } }) => {
+                e.target.mute();
+              }}
+            />
+          </div>
+        </Section6>
 
         {/* 배너 섹션 */}
         <BannerSection>
@@ -243,13 +363,13 @@ const MainPage = () => {
         </BannerSection>
       </Wrapper>
 
-      {/* 스텝 지원 버튼 */}
+      {/* 스탭 지원 버튼 */}
       <div
         className="h-center v-center"
-        onClick={() => window.open(스텝_지원_폼_링크, "_blank", "noopener, noreferrer")}
+        onClick={() => window.open(스탭_지원_폼_링크, "_blank", "noopener, noreferrer")}
       >
         <WideButton
-          text="스텝 신청하러 가기 ✨"
+          text="스탭 신청하러 가기 ✨"
           backgroundColor={theme.color.PURPLE}
           textColor={theme.color.TEXT_WHITE}
         />

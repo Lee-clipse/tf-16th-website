@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
@@ -9,12 +10,58 @@ import YoutubeLogo from "../../assets/images/youtube_logo.webp";
 import { useSwipeable } from "react-swipeable";
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 
+interface CarouselProps {
+  imageList: string[];
+}
+
+export const CarouselComponent: React.FC<CarouselProps> = ({ imageList }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % imageList.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + imageList.length) % imageList.length);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    trackMouse: true,
+  });
+
+  return (
+    <CarouselContainer>
+      <ImageContainer {...handlers} currentIndex={currentIndex}>
+        {imageList.map((image, index) => (
+          <CarouselImage key={index} src={image} alt={`Slide ${index}`} />
+        ))}
+      </ImageContainer>
+
+      <ArrowButton onClick={handlePrev} direction="left">
+        <MdOutlineArrowBackIos />
+      </ArrowButton>
+
+      <ArrowButton onClick={handleNext} direction="right">
+        <MdOutlineArrowForwardIos />
+      </ArrowButton>
+
+      <IndicatorContainer className="h-center">
+        {imageList.map((_, index) => (
+          <Dot key={index} isActive={index === currentIndex} />
+        ))}
+      </IndicatorContainer>
+    </CarouselContainer>
+  );
+};
+
 const TestPage = () => {
   const CountUpComponent = () => {
     return (
       <CountUpItem className="f-row">
         <CountUp start={0} end={300} duration={1} />
-        <p>명의 스텝</p>
+        <p>명의 스탭</p>
       </CountUpItem>
     );
   };
@@ -29,49 +76,6 @@ const TestPage = () => {
           </FadeInItem>
         )}
       </VisibilitySensor>
-    );
-  };
-
-  const CarouselComponent = () => {
-    const imageList = [InstaLogo, BlogLogo, YoutubeLogo];
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const handleNext = () => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % imageList.length);
-    };
-
-    const handlePrev = () => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + imageList.length) % imageList.length);
-    };
-
-    const handlers = useSwipeable({
-      onSwipedLeft: handleNext,
-      onSwipedRight: handlePrev,
-      trackMouse: true,
-    });
-
-    return (
-      <CarouselContainer>
-        <ImageContainer {...handlers} currentIndex={currentIndex}>
-          {imageList.map((image, index) => (
-            <CarouselImage key={index} src={image} alt={`Slide ${index}`} />
-          ))}
-        </ImageContainer>
-
-        <ArrowButton onClick={handlePrev} direction="left">
-          <MdOutlineArrowBackIos />
-        </ArrowButton>
-
-        <ArrowButton onClick={handleNext} direction="right">
-          <MdOutlineArrowForwardIos />
-        </ArrowButton>
-
-        <IndicatorContainer className="h-center">
-          {imageList.map((_, index) => (
-            <Dot key={index} isActive={index === currentIndex} />
-          ))}
-        </IndicatorContainer>
-      </CarouselContainer>
     );
   };
 
@@ -129,8 +133,7 @@ const ScrollToTopButton = styled.button`
 
 const CarouselContainer = styled.div`
   position: relative;
-  width: 80%;
-  max-width: 80%;
+  width: 212px;
   margin: 0 auto;
   overflow: hidden;
 `;
