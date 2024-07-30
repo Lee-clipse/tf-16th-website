@@ -25,8 +25,8 @@ const Button: React.FC<ButtonProps> = ({ text, backgroundColor, textColor, custo
 const Wrapper = styled.div<{ backgroundColor: string; textColor: string; custom: string }>`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.textColor};
-  padding: 1.6rem 1.2rem;
-  border-radius: 1rem;
+  padding: 1.2rem 1.2rem;
+  border-radius: 0.8rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   cursor: pointer;
   font-family: ${theme.font.NOTO[6]};

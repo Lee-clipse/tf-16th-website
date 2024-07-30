@@ -6,6 +6,7 @@ import ActivityPage from "./pages/MainActivity";
 import EventPage from "./pages/MainEvent";
 import ZerogamePage from "./pages/MainZerogame";
 import TestPage from "./pages/Test";
+import RegisterPage from "./pages/Register";
 
 const MainPage = lazy(() => import("./pages/Main/index"));
 
@@ -19,6 +20,7 @@ function App() {
 
           <Route path={ROUTE_PATH.MAIN} element={<MainPage />}></Route>
           <Route path={ROUTE_PATH.JOIN} element={<JoinPage />}></Route>
+          <Route path={ROUTE_PATH.REGISTER} element={<RegisterPage />}></Route>
           <Route path={ROUTE_PATH.MAIN_ACTIVITY} element={<ActivityPage />}></Route>
           <Route path={ROUTE_PATH.MAIN_EVENT} element={<EventPage />}></Route>
           <Route path={ROUTE_PATH.MAIN_ZEROGAME} element={<ZerogamePage />}></Route>
