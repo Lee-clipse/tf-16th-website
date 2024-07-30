@@ -9,6 +9,7 @@ import { AGREE, ROUTE_PATH, SEX } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
+import { ReqUserRegister } from "../../api/user";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -58,22 +59,18 @@ const RegisterPage = () => {
       // TODO: 개인정보 동의 여부 선택 알림
       return false;
     }
-    if (
-      userInfo.name.trim() === "" ||
-      userInfo.age === 0 ||
-      userInfo.age === "" ||
-      userInfo.phoneNumber === "" ||
-      userInfo.recommandPerson.trim() === ""
-    ) {
+    if (userInfo.name.trim() === "" || userInfo.age === 0 || userInfo.phoneNumber === "") {
       // TODO: 개인정보 동의 여부 선택 알림
       return false;
     }
     return true;
   };
 
-  const doRegister = () => {
+  const doRegister = async () => {
     if (validateRegisterInput()) {
       console.log(userInfo);
+      const res = await ReqUserRegister(userInfo);
+      console.log(res.data);
     } else {
       alert("유효하지 않은 입력");
     }

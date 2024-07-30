@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 import theme from "../../styles/theme";
 import { ROUTE_PATH } from "../../common/const";
 import { useNavigate } from "react-router-dom";
-import { test } from "../../api/user";
+import { ReqUserLogin } from "../../api/user";
 
 const JoinPage = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const JoinPage = () => {
   };
 
   const doLogin = async () => {
-    const res = await test();
+    const res = await ReqUserLogin(name, phoneNumber);
     console.log(res.data);
   };
 

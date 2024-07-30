@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  server:
+    build: ./server
+    image: server
+    container_name: server
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    volumes:
+      - ./server:/usr/src/app
+
+  mysql-was:
+    image: mysql:8.0
+    container_name: db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_DATABASE: tf
+      TZ: Asia/Seoul
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
