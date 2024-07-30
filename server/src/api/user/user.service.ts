@@ -11,12 +11,27 @@ export class UserService {
     private userRepository: Repository<UserEntity>,
   ) {}
 
-  async login(name: string, phoneNumber: string): Promise<string> {
-    return name + phoneNumber.slice(-4);
+  async login(name: string, phoneNumber: string) {
+    const isUserExist = await this.isUserExist(name, phoneNumber);
+    if (isUserExist) {
+      return { code: 200 };
+    }
+    return { code: 404 };
   }
 
-  async register(dto: UserRegisterDto): Promise<any> {
+  async register(dto: UserRegisterDto) {
+    const isUserExist = await this.isUserExist(dto.name, dto.phoneNumber);
+    if (isUserExist) {
+      return { code: 400 };
+    }
     await this.userRepository.save(dto);
     return { code: 200 };
+  }
+
+  async isUserExist(name: string, phoneNumber: string) {
+    const userExist = await this.userRepository.findOne({
+      where: { name, phoneNumber },
+    });
+    return userExist !== null;
   }
 }

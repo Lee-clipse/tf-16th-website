@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
+import DownArrow from "../assets/images/down-arrow.png";
 
 export const Input = styled.input`
   color: ${theme.color.TEXT_BLACK};
@@ -21,6 +22,8 @@ export const Select = styled.select`
   border: 2px solid gray;
   width: 100%;
   cursor: pointer;
+  appearance: none;
+  background: url(${DownArrow}) no-repeat center right 12px;
 
   // option {
   //   color: ${theme.color.TEXT_BLACK};

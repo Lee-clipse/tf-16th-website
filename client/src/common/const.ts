@@ -8,6 +8,12 @@ export const ROUTE_PATH = {
   MAIN_ZEROGAME: "/zerogame",
 };
 
+export const API_CODE = {
+  SUCCESS: 200,
+  INVALID: 400,
+  NOT_FOUND: 404,
+};
+
 export const SEX = {
   MALE: 1,
   FEMALE: 2,

@@ -5,11 +5,13 @@ import HeaderMenu from "../../components/HeaderMenu";
 import { Input, Radio, Select } from "../../components/Input";
 import Button from "../../components/Button";
 import theme from "../../styles/theme";
-import { AGREE, ROUTE_PATH, SEX } from "../../common/const";
+import { AGREE, API_CODE, ROUTE_PATH, SEX } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
 import { ReqUserRegister } from "../../api/user";
+import { Alert } from "../../common/common";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -55,12 +57,13 @@ const RegisterPage = () => {
 
   // 등록 전 값 유무 검증
   const validateRegisterInput = () => {
-    if (userInfo.agree === AGREE.NOT_SELECTED) {
-      // TODO: 개인정보 동의 여부 선택 알림
-      return false;
-    }
-    if (userInfo.name.trim() === "" || userInfo.age === 0 || userInfo.phoneNumber === "") {
-      // TODO: 개인정보 동의 여부 선택 알림
+    if (
+      userInfo.name.trim() === "" ||
+      userInfo.age === 0 ||
+      userInfo.phoneNumber === "" ||
+      userInfo.agree === AGREE.NOT_SELECTED
+    ) {
+      Alert("모든 항목을 입력해주세요.", "warning");
       return false;
     }
     return true;
@@ -68,11 +71,14 @@ const RegisterPage = () => {
 
   const doRegister = async () => {
     if (validateRegisterInput()) {
-      console.log(userInfo);
       const res = await ReqUserRegister(userInfo);
-      console.log(res.data);
-    } else {
-      alert("유효하지 않은 입력");
+      const isRegisterSuccess = Number(res.data.code) === API_CODE.SUCCESS;
+      if (isRegisterSuccess) {
+        Alert("가입에 성공했습니다!", "success");
+        navigate(ROUTE_PATH.MAIN);
+      } else {
+        Alert("이미 가입된 회원입니다.", "warning");
+      }
     }
   };
 

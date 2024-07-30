@@ -7,3 +7,8 @@ export type UserRegisterInfo = {
   agree: number;
   recommandPerson: string;
 };
+
+export type UserLoginInfo = {
+  name: string;
+  phoneNumber: string;
+};
