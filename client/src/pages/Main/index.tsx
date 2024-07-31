@@ -184,14 +184,12 @@ const MainPage = () => {
             </div>
           </div>
 
-          <div className="h-center">
-            <div className="button">
-              <Button
-                text="청건부산 자세히 보기"
-                backgroundColor={theme.color.MAIN_BLUE}
-                textColor={theme.color.TEXT_WHITE}
-              ></Button>
-            </div>
+          <div className="button" onClick={() => guardAlert()}>
+            <Button
+              text="청건부산 자세히 보기"
+              backgroundColor={theme.color.MAIN_BLUE}
+              textColor={theme.color.TEXT_WHITE}
+            ></Button>
           </div>
         </Section2>
 
@@ -276,7 +274,7 @@ const MainPage = () => {
             </div>
           </div>
 
-          <div className="button">
+          <div className="button" onClick={() => guardAlert()}>
             <Button
               text="청년 커뮤니티 자세히 보기"
               backgroundColor={theme.color.MAIN_BLUE}

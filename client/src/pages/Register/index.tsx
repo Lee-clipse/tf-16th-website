@@ -5,7 +5,7 @@ import HeaderMenu from "../../components/HeaderMenu";
 import { Input, Radio, Select } from "../../components/Input";
 import Button from "../../components/Button";
 import theme from "../../styles/theme";
-import { AGREE, API_CODE, ROUTE_PATH, SEX } from "../../common/const";
+import { AGREE, API_CODE, LOCATION, ROUTE_PATH, SEX } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
@@ -132,9 +132,9 @@ const RegisterPage = () => {
             value={userInfo.location}
             onChange={(e) => handleUserInfo("location", e.target.value)}
           >
-            <option value="서울">서울</option>
-            <option value="경기">경기</option>
-            <option value="부산">부산</option>
+            {LOCATION.map((location: string) => {
+              return <option value={location}>{location}</option>;
+            })}
           </Select>
         </div>
 

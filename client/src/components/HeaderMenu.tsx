@@ -57,14 +57,6 @@ const HeaderMenu = () => {
     };
   }, [isMenuOpen]);
 
-  const ProfileTabWelcomeBox = () => {
-    return (
-      <>
-        <p>환영합니다! {userData?.name} 님</p>
-      </>
-    );
-  };
-
   return (
     <>
       <HeadWrapper className="f-row f-spb v-center">
@@ -78,7 +70,9 @@ const HeaderMenu = () => {
       <Overlay isOpen={isMenuOpen} onClick={toggleMenu}>
         <SideBarWrapper isOpen={isMenuOpen} onClick={(e) => e.stopPropagation()}>
           <SideBar>
-            <div className="profile-tab">{isLogin && <ProfileTabWelcomeBox />}</div>
+            <div className="profile-tab">
+              {isLogin && <div id="welcome-text">환영합니다! {userData?.name} 님</div>}
+            </div>
             <PlainLink
               to={"/"}
               // to={ROUTE_PATH.MAIN}
@@ -188,10 +182,16 @@ const SideBarWrapper = styled.div<{ isOpen: boolean }>`
 `;
 
 const SideBar = styled.div`
+  font-family: ${theme.font.NOTO[5]};
+  font-size: ${theme.font.SIZE.M};
+
   .tab {
+    padding: 1.2rem 0;
+  }
+
+  #welcome-text {
+    text-align: center;
     padding: 1.4rem 0;
-    font-family: ${theme.font.NOTO[5]};
-    font-size: ${theme.font.SIZE.M};
   }
 `;
 

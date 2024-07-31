@@ -42,3 +42,23 @@ export const 청건부산_인스타_링크 = "https://www.instagram.com/together
 export const 청건부산_유튜브_링크 = "https://www.youtube.com/@cheonggeonbusan";
 export const 청건부산_블로그_링크 =
   "https://m.blog.naver.com/PostList.naver?blogId=together_festival&permalink=permalink&tab=1";
+
+export const LOCATION = [
+  "강서구",
+  "금정구",
+  "기장군",
+  "남구",
+  "동구",
+  "동래구",
+  "부산진구",
+  "북구",
+  "사상구",
+  "사하구",
+  "서구",
+  "수영구",
+  "연제구",
+  "영도구",
+  "중구",
+  "해운대구",
+  "기타",
+];
