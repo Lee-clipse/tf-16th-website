@@ -4,6 +4,7 @@ import theme from "../../styles/theme";
 import {
   BannerSection,
   BottomFloatButton,
+  CountDownSection,
   MainSection,
   Section1,
   Section2,
@@ -42,6 +43,8 @@ import {
 import ScrollTop from "../../components/ScrollTop";
 import { GoDotFill } from "react-icons/go";
 import { CarouselComponent } from "../../components/Carousel";
+import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
+import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -119,6 +122,10 @@ const MainPage = () => {
             <p className="h-center">부산시민공원 하야리아 잔디광장</p>
           </div>
         </MainSection>
+
+        <CountDownSection>
+          <FlipClockCountdown className="flip-clock" to={1725667200000} />
+        </CountDownSection>
 
         {/* 청건부산 빌드업 */}
         <Section1>

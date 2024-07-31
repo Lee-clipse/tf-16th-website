@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@leenguyen/react-flip-clock-countdown": "^1.6.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "is-mobile": "^4.0.0",

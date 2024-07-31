@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 
 export const MainSection = styled.div`
   color: ${theme.color.MAIN_BLUE};
-  margin: 7rem 0 12rem 0;
+  margin: 7rem 0 10rem 0;
   padding: 0 2rem;
 
   .header {
@@ -37,6 +37,25 @@ export const MainSection = styled.div`
     color: ${theme.color.TEXT_BLACK};
     margin-top: 3.6rem;
     gap: 0.8rem;
+  }
+`;
+
+export const CountDownSection = styled.div`
+  width: 100%;
+  padding: 0 0 10rem 0;
+  display: flex;
+  justify-content: center;
+
+  .flip-clock {
+    font-family: ${theme.font.FUT[5]};
+    --fcc-flip-duration: 0.5s; /* transition duration when flip card */
+    --fcc-digit-block-width: 2.6rem; /* digit card's width */
+    --fcc-digit-block-height: 5rem; /* digit card's height */
+    --fcc-digit-font-size: 40px; /* font size of digit */
+    --fcc-digit-color: white; /* color of digit */
+    --fcc-background: ${theme.color.MAIN_BLUE}; /* digit card's background */
+    --fcc-label-color: #black; /* time label's color */
+    --fcc-divider-color: #ffffff66; /* divider's color */
   }
 `;
 
