@@ -11,7 +11,7 @@ export const ROUTE_PATH = {
 
 export const HOST = {
   LOCAL: "http://localhost:8080/api",
-  DEPLOY: "http://server:8080/api",
+  DEPLOY: "https://busan-tf.n-e.kr/api",
 };
 
 export const TOKEN = {
