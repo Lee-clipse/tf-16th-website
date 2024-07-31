@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import HeaderMenu from "../../components/HeaderMenu";
 import { User } from "../../type/type";
-import { getUserPkByToken } from "../../common/common";
+import { deleteToken, getUserPkByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
 import { Wrapper } from "./style";
-import { SEX, 스탭_지원_폼_링크 } from "../../common/const";
+import { ROUTE_PATH, SEX, 스탭_지원_폼_링크 } from "../../common/const";
 import theme from "../../styles/theme";
 import Button from "../../components/Button";
 import CountUp from "react-countup";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState<User>();
 
   useEffect(() => {
@@ -71,17 +73,24 @@ const MyPage = () => {
             <div className="content">{userData?.recommandPerson}</div>
           </div>
 
-          <div
-            id="button-box"
-            className="h-center v-center f-col"
-            onClick={() => window.open(스탭_지원_폼_링크, "_blank", "noopener, noreferrer")}
-          >
-            <Button
-              text="스탭으로 지원하기 ✨"
-              backgroundColor={theme.color.PURPLE}
-              textColor={theme.color.TEXT_WHITE}
-            />
-            <div id="logout-button">로그아웃</div>
+          <div id="button-box" className="h-center v-center f-col">
+            <div onClick={() => window.open(스탭_지원_폼_링크, "_blank", "noopener, noreferrer")}>
+              <Button
+                text="스탭으로 지원하기 ✨"
+                backgroundColor={theme.color.PURPLE}
+                textColor={theme.color.TEXT_WHITE}
+              />
+            </div>
+
+            <div
+              id="logout-button"
+              onClick={() => {
+                deleteToken();
+                navigate(ROUTE_PATH.MAIN);
+              }}
+            >
+              로그아웃
+            </div>
           </div>
         </div>
       </Wrapper>

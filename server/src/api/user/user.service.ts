@@ -73,7 +73,7 @@ export class UserService {
     // pk 값
     const pk_node = userData.pk.toString();
 
-    // 스텝이라면 tf
+    // 스탭이라면 tf
     const step_node = userData.step ? 'tf' : 'al';
 
     // 현 시점 + 60일 만료
