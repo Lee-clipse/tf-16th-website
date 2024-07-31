@@ -338,7 +338,20 @@ const MainPage = () => {
           </div>
 
           <CarouselComponent
-            imageList={[YoutubeThumbnail1, YoutubeThumbnail2, YoutubeThumbnail3]}
+            imageObjectList={[
+              {
+                image: YoutubeThumbnail1,
+                link: "https://www.youtube.com/watch?v=zOgL-9ZLsC8&t=80s&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
+              },
+              {
+                image: YoutubeThumbnail2,
+                link: "https://www.youtube.com/watch?v=dtmxg56G-Fg&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
+              },
+              {
+                image: YoutubeThumbnail3,
+                link: "https://www.youtube.com/watch?v=DZrv1m9gsz0&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
+              },
+            ]}
           />
         </Section6>
 

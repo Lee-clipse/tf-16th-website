@@ -6,18 +6,21 @@ import styled from "styled-components";
 import theme from "../styles/theme";
 
 interface CarouselProps {
-  imageList: string[];
+  imageObjectList: { image: string; link: string }[];
 }
 
-export const CarouselComponent: React.FC<CarouselProps> = ({ imageList }) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const CarouselComponent: React.FC<CarouselProps> = ({ imageObjectList }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % imageList.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % imageObjectList.length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + imageList.length) % imageList.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + imageObjectList.length) % imageObjectList.length
+    );
   };
 
   const handlers = useSwipeable({
@@ -30,8 +33,13 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ imageList }) => {
     <div>
       <CarouselContainer>
         <ImageContainer {...handlers} currentIndex={currentIndex}>
-          {imageList.map((image, index) => (
-            <CarouselImage key={index} src={image} alt={`Slide ${index}`} />
+          {imageObjectList.map((imageObject, index) => (
+            <CarouselImage
+              onClick={() => window.open(imageObject.link, "_blank", "noopener, noreferrer")}
+              key={index}
+              src={imageObject.image}
+              alt={`Slide ${index}`}
+            />
           ))}
         </ImageContainer>
 
@@ -45,7 +53,7 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ imageList }) => {
       </CarouselContainer>
 
       <IndicatorContainer className="h-center">
-        {imageList.map((_, index) => (
+        {imageObjectList.map((_, index) => (
           <Dot key={index} isActive={index === currentIndex} />
         ))}
       </IndicatorContainer>
