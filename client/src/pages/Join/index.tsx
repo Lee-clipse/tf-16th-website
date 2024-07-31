@@ -9,7 +9,7 @@ import { API_CODE, ROUTE_PATH, 스탭_지원_폼_링크 } from "../../common/con
 import { useNavigate } from "react-router-dom";
 import { reqUserLogin } from "../../api/user";
 import { UserLoginInfo } from "../../type/type";
-import { Alert, setToken } from "../../common/common";
+import { alert, setToken } from "../../common/common";
 
 const JoinPage = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const JoinPage = () => {
       setToken(res.data.token);
       navigate(ROUTE_PATH.MAIN);
     } else {
-      Alert("다시 확인해주세요.", "warning");
+      alert("다시 확인해주세요.", "warning");
     }
   };
 

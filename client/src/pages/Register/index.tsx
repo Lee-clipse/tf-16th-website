@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
 import { reqUserRegister } from "../../api/user";
-import { Alert } from "../../common/common";
+import { alert } from "../../common/common";
 import Swal from "sweetalert2";
 
 const RegisterPage = () => {
@@ -63,7 +63,7 @@ const RegisterPage = () => {
       userInfo.phoneNumber === "" ||
       userInfo.agree === AGREE.NOT_SELECTED
     ) {
-      Alert("모든 항목을 입력해주세요.", "warning");
+      alert("모든 항목을 입력해주세요.", "warning");
       return false;
     }
     return true;
@@ -74,10 +74,10 @@ const RegisterPage = () => {
       const res = await reqUserRegister(userInfo);
       const isRegisterSuccess = Number(res.data.code) === API_CODE.SUCCESS;
       if (isRegisterSuccess) {
-        Alert("가입에 성공했습니다!", "success");
+        alert("가입에 성공했습니다!", "success");
         navigate(ROUTE_PATH.MAIN);
       } else {
-        Alert("이미 가입된 회원입니다.", "warning");
+        alert("이미 가입된 회원입니다.", "warning");
       }
     }
   };

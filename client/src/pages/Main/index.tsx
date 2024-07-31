@@ -27,7 +27,7 @@ import Button from "../../components/Button";
 import CountUp from "react-countup";
 import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
-import { Alert, deleteToken, isStepByToken, verifyByToken } from "../../common/common";
+import { alert, deleteToken, guardAlert, isStepByToken, verifyByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
 import {
   ROUTE_PATH,
@@ -64,10 +64,7 @@ const MainPage = () => {
     // 스탭이라면 -> 관리 버튼
     if (isStep) {
       return (
-        <div
-          className="h-center v-center"
-          onClick={() => Alert("추후 업데이트를 기다려주세요.", "warning")}
-        >
+        <div className="h-center v-center" onClick={() => guardAlert()}>
           <WideButton
             text="관리 페이지로 가기 🔧"
             backgroundColor={theme.color.PURPLE}
@@ -79,10 +76,7 @@ const MainPage = () => {
     // 스탭은 아니지만 로그인 유저라면 -> 제로게임 버튼
     else {
       return (
-        <div
-          className="h-center v-center"
-          onClick={() => Alert("추후 업데이트를 기다려주세요.", "warning")}
-        >
+        <div className="h-center v-center" onClick={() => guardAlert()}>
           <WideButton
             text="제로게임하러 가기 🎲"
             backgroundColor={theme.color.MAIN_ORAGNE}

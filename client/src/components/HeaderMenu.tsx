@@ -7,7 +7,7 @@ import { GoArrowRight, GoBold } from "react-icons/go";
 import Button from "./Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../common/const";
-import { deleteToken, getUserPkByToken, verifyByToken } from "../common/common";
+import { deleteToken, getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 
@@ -80,8 +80,11 @@ const HeaderMenu = () => {
           <SideBar>
             <div className="profile-tab">{isLogin && <ProfileTabWelcomeBox />}</div>
             <PlainLink
-              to={ROUTE_PATH.MAIN}
-              onClick={closeMenu}
+              to={"/"}
+              // to={ROUTE_PATH.MAIN}
+              onClick={() => {
+                closeMenu();
+              }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN ? "active" : ""
               }`}
@@ -89,8 +92,12 @@ const HeaderMenu = () => {
               홈
             </PlainLink>
             <PlainLink
-              to={ROUTE_PATH.MAIN_ACTIVITY}
-              onClick={closeMenu}
+              to={"/"}
+              // to={ROUTE_PATH.MAIN_ACTIVITY}
+              onClick={() => {
+                closeMenu();
+                guardAlert();
+              }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_ACTIVITY ? "active" : ""
               }`}
@@ -98,8 +105,12 @@ const HeaderMenu = () => {
               정보
             </PlainLink>
             <PlainLink
-              to={ROUTE_PATH.MAIN_EVENT}
-              onClick={closeMenu}
+              to={"/"}
+              // to={ROUTE_PATH.MAIN_EVENT}
+              onClick={() => {
+                closeMenu();
+                guardAlert();
+              }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_EVENT ? "active" : ""
               }`}
@@ -107,8 +118,12 @@ const HeaderMenu = () => {
               청년 커뮤니티{" "}
             </PlainLink>
             <PlainLink
-              to={ROUTE_PATH.MAIN_ZEROGAME}
-              onClick={closeMenu}
+              to={"/"}
+              // to={ROUTE_PATH.MAIN_ZEROGAME}
+              onClick={() => {
+                closeMenu();
+                guardAlert();
+              }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
               }`}
@@ -116,8 +131,12 @@ const HeaderMenu = () => {
               연혁
             </PlainLink>
             <PlainLink
-              to={ROUTE_PATH.MAIN_ZEROGAME}
-              onClick={closeMenu}
+              to={"/"}
+              // to={ROUTE_PATH.MAIN_ZEROGAME}
+              onClick={() => {
+                closeMenu();
+                guardAlert();
+              }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
               }`}

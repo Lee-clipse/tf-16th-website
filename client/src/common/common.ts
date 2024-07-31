@@ -13,10 +13,17 @@ const Toast = Swal.mixin({
   },
 });
 
-export const Alert = (title: string, icon: SweetAlertIcon | undefined) => {
+export const alert = (title: string, icon: SweetAlertIcon | undefined) => {
   Toast.fire({
     title,
     icon,
+  });
+};
+
+export const guardAlert = () => {
+  Toast.fire({
+    title: "추후 업데이트를 기다려주세요!",
+    icon: "info",
   });
 };
 
