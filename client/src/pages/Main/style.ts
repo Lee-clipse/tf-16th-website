@@ -313,7 +313,7 @@ export const Section6 = styled.div`
 `;
 
 export const BottomFloatButton = styled.div`
-  z-index: 1000;
+  z-index: 100;
 `;
 
 export const BannerSection = styled.div`

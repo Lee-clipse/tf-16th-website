@@ -79,10 +79,6 @@ const TestPage = () => {
     );
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
       <div style={{ backgroundColor: "palegreen", height: "500px" }}></div>
@@ -92,10 +88,8 @@ const TestPage = () => {
       <FadeInComponent />
 
       <div style={{ backgroundColor: "palegreen", height: "500px" }}></div>
-      <CarouselComponent />
 
       <div style={{ backgroundColor: "palegreen", height: "500px" }}></div>
-      <ScrollToTopButton onClick={scrollToTop}>Top</ScrollToTopButton>
     </>
   );
 };
@@ -110,23 +104,6 @@ const FadeInItem = styled.div`
   transition: opacity 1s ease-in-out;
   height: 81px;
   &.visible {
-    opacity: 1;
-  }
-`;
-
-const ScrollToTopButton = styled.button`
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background-color: ${theme.color.MAIN_BLUE};
-  color: ${theme.color.TEXT_WHITE};
-  border: none;
-  padding: 2rem;
-  border-radius: 10rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease-in-out;
-
-  &:hover {
     opacity: 1;
   }
 `;

@@ -35,6 +35,7 @@ import {
   청건부산_유튜브_링크,
   청건부산_인스타_링크,
 } from "../../common/const";
+import ScrollTop from "../../components/ScrollTop";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -340,10 +341,13 @@ const MainPage = () => {
             />
           </div>
         </BannerSection>
-      </Wrapper>
 
-      {/* 스탭 지원 버튼 */}
-      <BottomFloatButton>{setFloatButtonComponent()}</BottomFloatButton>
+        {/* 스탭 지원 버튼 */}
+        <BottomFloatButton>{setFloatButtonComponent()}</BottomFloatButton>
+
+        {/* 최상단 이동 버튼 */}
+        <ScrollTop />
+      </Wrapper>
     </>
   );
 };
