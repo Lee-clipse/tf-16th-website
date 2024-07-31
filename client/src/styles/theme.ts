@@ -2,7 +2,7 @@ const color = {
   MAIN_BLUE: "#0e5cb3",
   GRAY_BLUE: "#A0B7D7",
   GREEN_BLUE: "#50B0C8",
-  LIGHT_BLUE: "#00A2DD",
+  LIGHT_BLUE: "#0088d1",
   MAIN_ORAGNE: "#ED7A4D",
   TEXT_BLACK: "#424656",
   // TEXT_LIGHT_BLACK: "#656C77",

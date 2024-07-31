@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 import { useSwipeable } from "react-swipeable";
@@ -28,6 +28,16 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ imageObjectList }) 
     onSwipedRight: handlePrev,
     trackMouse: true,
   });
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      handleNext();
+    }, 2000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div>
