@@ -27,7 +27,7 @@ import Button from "../../components/Button";
 import CountUp from "react-countup";
 import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
-import { Alert, isStepByToken, verifyByToken } from "../../common/common";
+import { Alert, deleteToken, isStepByToken, verifyByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
 import {
   ROUTE_PATH,

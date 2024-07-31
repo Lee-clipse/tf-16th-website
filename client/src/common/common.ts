@@ -25,7 +25,13 @@ export const setToken = (token: string) => {
   localStorage.setItem("token", token);
 };
 
+// 로그아웃 || 만료
+export const deleteToken = () => {
+  localStorage.removeItem("token");
+};
+
 // 기한이 만료 || 존재하지 않으면 false
+// 만료되었다면 자동 제거
 export const verifyByToken = (): boolean => {
   const token = localStorage.getItem("token");
   if (token === null) {
@@ -33,6 +39,9 @@ export const verifyByToken = (): boolean => {
   }
   const expire: number = Number(token.split("-")[2]);
   const cur: number = new Date().getTime();
+  if (cur >= expire) {
+    deleteToken();
+  }
   return cur < expire;
 };
 

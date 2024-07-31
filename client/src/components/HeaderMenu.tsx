@@ -7,7 +7,7 @@ import { GoArrowRight, GoBold } from "react-icons/go";
 import Button from "./Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../common/const";
-import { getUserPkByToken, verifyByToken } from "../common/common";
+import { deleteToken, getUserPkByToken, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 
@@ -78,52 +78,51 @@ const HeaderMenu = () => {
       <Overlay isOpen={isMenuOpen} onClick={toggleMenu}>
         <SideBarWrapper isOpen={isMenuOpen} onClick={(e) => e.stopPropagation()}>
           <SideBar>
-            <div className="tab profile-tab">{isLogin && <ProfileTabWelcomeBox />}</div>
+            <div className="profile-tab">{isLogin && <ProfileTabWelcomeBox />}</div>
             <PlainLink
               to={ROUTE_PATH.MAIN}
               onClick={closeMenu}
-              className={`tab f-spb v-center ${
+              className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN ? "active" : ""
               }`}
             >
-              홈 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+              홈
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_ACTIVITY}
               onClick={closeMenu}
-              className={`tab f-spb v-center ${
+              className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_ACTIVITY ? "active" : ""
               }`}
             >
-              정보 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+              정보
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_EVENT}
               onClick={closeMenu}
-              className={`tab f-spb v-center ${
+              className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_EVENT ? "active" : ""
               }`}
             >
               청년 커뮤니티{" "}
-              <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_ZEROGAME}
               onClick={closeMenu}
-              className={`tab f-spb v-center ${
+              className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
               }`}
             >
-              연혁 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+              연혁
             </PlainLink>
             <PlainLink
               to={ROUTE_PATH.MAIN_ZEROGAME}
               onClick={closeMenu}
-              className={`tab f-spb v-center ${
+              className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
               }`}
             >
-              제로게임 <GoArrowRight color={theme.color.MAIN_BLUE} fontSize={theme.font.SIZE.M} />
+              제로게임
             </PlainLink>
           </SideBar>
         </SideBarWrapper>
@@ -135,22 +134,20 @@ const HeaderMenu = () => {
 const HeadWrapper = styled.div`
   position: fixed;
   width: 100%;
-  padding: 1rem 1.4rem;
-  background-color: ${theme.color.BACKGROUND};
-  border-bottom: 1px solid lightgray;
+  padding: 1.6rem 1.4rem;
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
   text-align: right;
 
   #title {
     font-family: ${theme.font.NOTO[8]};
     font-size: ${theme.font.SIZE.L};
-    color: ${theme.color.MAIN_BLUE};
+    color: ${theme.color.TEXT_BLACK};
   }
 `;
 
 const Overlay = styled.div<{ isOpen: boolean }>`
   z-index: ${(props) => (props.isOpen ? "2000" : "-100")};
-  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
   position: fixed;
@@ -161,22 +158,21 @@ const Overlay = styled.div<{ isOpen: boolean }>`
 
 const SideBarWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
-  background-color: ${theme.color.BACKGROUND};
-  top: 0;
-  left: ${(props) => (props.isOpen ? "0" : "-72%")};
-  width: 70%;
-  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: ${(props) => (props.isOpen ? "5.4rem" : "5rem")};
+  left: 0;
+  width: 100%;
+  padding-bottom: 1rem;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
   overflow: auto;
-  transition: left 0.3s;
+  transition: top 0.4s;
 `;
 
 const SideBar = styled.div`
   .tab {
-    padding: 2rem 2rem 2rem 1.6rem;
+    padding: 1.4rem 0;
     font-family: ${theme.font.NOTO[5]};
     font-size: ${theme.font.SIZE.M};
-    border-bottom: 1px solid lightgray;
   }
 `;
 
