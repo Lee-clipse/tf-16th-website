@@ -9,7 +9,7 @@ import { AGREE, API_CODE, ROUTE_PATH, SEX } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
-import { ReqUserRegister } from "../../api/user";
+import { reqUserRegister } from "../../api/user";
 import { Alert } from "../../common/common";
 import Swal from "sweetalert2";
 
@@ -71,7 +71,7 @@ const RegisterPage = () => {
 
   const doRegister = async () => {
     if (validateRegisterInput()) {
-      const res = await ReqUserRegister(userInfo);
+      const res = await reqUserRegister(userInfo);
       const isRegisterSuccess = Number(res.data.code) === API_CODE.SUCCESS;
       if (isRegisterSuccess) {
         Alert("가입에 성공했습니다!", "success");

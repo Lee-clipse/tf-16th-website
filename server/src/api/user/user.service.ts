@@ -12,6 +12,15 @@ export class UserService {
   ) {}
 
   // API
+  async getUser(pk: string) {
+    const user = await this.getUserDataByPk(pk);
+    if (user) {
+      return { code: 200, user };
+    }
+    return { code: 404 };
+  }
+
+  // API
   async login(name: string, phoneNumber: string) {
     const isUserExist = await this.isUserExist(name, phoneNumber);
     if (isUserExist) {
@@ -42,6 +51,13 @@ export class UserService {
   async getUserData(name: string, phoneNumber: string): Promise<UserEntity> {
     const user = await this.userRepository.findOne({
       where: { name, phoneNumber },
+    });
+    return user;
+  }
+
+  async getUserDataByPk(pk: string): Promise<UserEntity> {
+    const user = await this.userRepository.findOne({
+      where: { pk: Number(pk) },
     });
     return user;
   }

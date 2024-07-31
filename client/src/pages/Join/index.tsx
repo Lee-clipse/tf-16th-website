@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import theme from "../../styles/theme";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import { useNavigate } from "react-router-dom";
-import { ReqUserLogin } from "../../api/user";
+import { reqUserLogin } from "../../api/user";
 import { UserLoginInfo } from "../../type/type";
 import { Alert, setToken } from "../../common/common";
 
@@ -25,7 +25,7 @@ const JoinPage = () => {
   };
 
   const doLogin = async () => {
-    const res = await ReqUserLogin(userInfo.name, userInfo.phoneNumber);
+    const res = await reqUserLogin(userInfo.name, userInfo.phoneNumber);
     const isLoginSuccess = Number(res.data.code) === API_CODE.SUCCESS;
     if (isLoginSuccess) {
       setToken(res.data.token);

@@ -12,3 +12,17 @@ export type UserLoginInfo = {
   name: string;
   phoneNumber: string;
 };
+
+export type User = {
+  pk: number;
+  name: string;
+  sex: number;
+  age: number;
+  phoneNumber: string;
+  location: string;
+  agree: boolean;
+  createdAt: string;
+  recommandPerson: string;
+  step: boolean;
+  zgJoin: boolean;
+};

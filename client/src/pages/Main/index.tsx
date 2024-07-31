@@ -126,15 +126,8 @@ const MainPage = () => {
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block left-block ${isVisible ? "visible" : ""}`}>
-                {isVisible ? (
-                  <>
-                    <div className="title">청년 유출</div>
-                    <div className="mini-title">부산 떠나는 청년들 인구소멸 가속화</div>
-                  </>
-                ) : (
-                  <></>
-                )}
-                <p className="invisible">l</p>
+                <div className="title">청년 유출</div>
+                <div className="mini-title">부산 떠나는 청년들 인구소멸 가속화</div>
               </div>
             )}
           </VisibilitySensor>
@@ -142,17 +135,8 @@ const MainPage = () => {
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block right-block ${isVisible ? "visible" : ""}`}>
-                {isVisible ? (
-                  <>
-                    <div className="title">다문화 현상</div>
-                    <div className="mini-title">
-                      학령인구 감소하는 부산, 다문화 학생은 계속 증가
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
-                <p className="invisible">l</p>
+                <div className="title">다문화 현상</div>
+                <div className="mini-title">학령인구 감소하는 부산, 다문화 학생은 계속 증가</div>
               </div>
             )}
           </VisibilitySensor>
@@ -160,16 +144,10 @@ const MainPage = () => {
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block left-block ${isVisible ? "visible" : ""}`}>
-                {isVisible ? (
-                  <>
-                    <div className="title">기후 위기</div>
-                    <div className="mini-title">
-                      기후변화로 도심 침수·댐 월류 증가… 부산 마린시티 침수 확대
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
+                <div className="title">기후 위기</div>
+                <div className="mini-title">
+                  기후변화로 도심 침수·댐 월류 증가… 부산 마린시티 침수 확대
+                </div>
                 <p className="invisible">l</p>
               </div>
             )}
@@ -178,16 +156,9 @@ const MainPage = () => {
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block right-block ${isVisible ? "visible" : ""}`}>
-                {isVisible ? (
-                  <>
-                    <div className="title">도시 소멸</div>
-                    <div className="mini-title">전국 광역시 최초 소멸위험지역 진입</div>
-                    <div className="mini-title">2050년이면 부산 시민 절반이 노인</div>
-                  </>
-                ) : (
-                  <></>
-                )}
-                <p className="invisible">l</p>
+                <div className="title">도시 소멸</div>
+                <div className="mini-title">전국 광역시 최초 소멸위험지역 진입</div>
+                <div className="mini-title">2050년이면 부산 시민 절반이 노인</div>
               </div>
             )}
           </VisibilitySensor>

@@ -8,6 +8,14 @@ import { UserRegisterDto } from 'src/dto/user/register.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Get('/get')
+  @ApiOperation({
+    summary: '사용자 정보 반환',
+  })
+  async getUser(@Query('pk') pk: string) {
+    return await this.userService.getUser(pk);
+  }
+
   @Get('/login')
   @ApiOperation({
     summary: '사용자 로그인',

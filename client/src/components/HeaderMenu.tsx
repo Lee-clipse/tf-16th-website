@@ -7,10 +7,15 @@ import { GoArrowRight, GoBold } from "react-icons/go";
 import Button from "./Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../common/const";
+import { getUserPkByToken, verifyByToken } from "../common/common";
+import { reqUserData } from "../api/user";
+import { User } from "../type/type";
 
 const HeaderMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [isLoginUser, setIsLoginUser] = useState<boolean>(false);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [userData, setUserData] = useState<User>();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,6 +26,21 @@ const HeaderMenu = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const fetchUserData = async () => {
+    const userPk = getUserPkByToken().toString();
+    const res = await reqUserData(userPk);
+    setUserData(res.data.user);
+  };
+
+  useEffect(() => {
+    const isTokenAlive = verifyByToken();
+    setIsLogin(isTokenAlive);
+
+    if (isTokenAlive) {
+      fetchUserData();
+    }
+  }, []);
 
   useEffect(() => {
     const handleBackButton = () => {
@@ -40,26 +60,8 @@ const HeaderMenu = () => {
   const ProfileTabWelcomeBox = () => {
     return (
       <>
-        <p>환영합니다!</p>
-        <p>OOO 님</p>
+        <p>환영합니다! {userData?.name} 님</p>
       </>
-    );
-  };
-
-  const ProfileTabJoinBox = () => {
-    return (
-      <div
-        onClick={() => {
-          navigate(ROUTE_PATH.JOIN);
-          closeMenu();
-        }}
-      >
-        <Button
-          text="참가하기"
-          backgroundColor={theme.color.MAIN_BLUE}
-          textColor={theme.color.TEXT_WHITE}
-        />
-      </div>
     );
   };
 
@@ -73,9 +75,7 @@ const HeaderMenu = () => {
       <Overlay isOpen={isMenuOpen} onClick={toggleMenu}>
         <SideBarWrapper isOpen={isMenuOpen} onClick={(e) => e.stopPropagation()}>
           <SideBar>
-            <div className="tab profile-tab">
-              {isLoginUser ? <ProfileTabWelcomeBox /> : <ProfileTabJoinBox />}
-            </div>
+            <div className="tab profile-tab">{isLogin && <ProfileTabWelcomeBox />}</div>
             <PlainLink
               to={ROUTE_PATH.MAIN}
               onClick={closeMenu}
