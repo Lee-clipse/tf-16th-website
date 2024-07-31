@@ -6,6 +6,7 @@ export const ROUTE_PATH = {
   MAIN_ACTIVITY: "/activity",
   MAIN_EVENT: "/event",
   MAIN_ZEROGAME: "/zerogame",
+  MY_PAGE: "/my-page",
 };
 
 export const TOKEN = {

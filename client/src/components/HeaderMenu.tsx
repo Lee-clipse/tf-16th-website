@@ -137,6 +137,19 @@ const HeaderMenu = () => {
             >
               제로게임
             </PlainLink>
+            {isLogin && (
+              <PlainLink
+                to={ROUTE_PATH.MY_PAGE}
+                onClick={() => {
+                  closeMenu();
+                }}
+                className={`tab f-spb v-center h-center ${
+                  location.pathname === ROUTE_PATH.MY_PAGE ? "active" : ""
+                }`}
+              >
+                마이 페이지
+              </PlainLink>
+            )}
           </SideBar>
         </SideBarWrapper>
       </Overlay>
@@ -176,7 +189,6 @@ const SideBarWrapper = styled.div<{ isOpen: boolean }>`
   top: ${(props) => (props.isOpen ? "5.4rem" : "5rem")};
   left: 0;
   width: 100%;
-  padding-bottom: 1rem;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
   overflow: auto;
   transition: top 0.4s;
