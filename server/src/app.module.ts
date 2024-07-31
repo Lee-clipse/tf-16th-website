@@ -11,7 +11,7 @@ import { UserModule } from './api/user/user.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '1111',
+      password: '111111',
       database: 'tf',
       entities: [UserEntity],
       synchronize: true,

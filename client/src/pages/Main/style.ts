@@ -39,6 +39,7 @@ export const MainSection = styled.div`
   }
 `;
 
+// 문제 인식
 export const Section1 = styled.div`
   background-color: ${theme.color.MAIN_BLUE};
   padding: 6rem 2rem 2rem 2rem;
@@ -87,79 +88,7 @@ export const Section1 = styled.div`
   }
 `;
 
-export const HistorySection = styled.div`
-  background-color: ${theme.color.MAIN_BLUE};
-  color: ${theme.color.MAIN_BLUE};
-  margin: 0 0 4rem 0;
-  padding: 6rem 3rem 2rem 3rem;
-
-  .title {
-    font-family: ${theme.font.NOTO[8]};
-    font-size: ${theme.font.SIZE.XXL};
-    color: ${theme.color.TEXT_WHITE};
-    gap: 0.8rem;
-    letter-spacing: 1.2px;
-    margin: 0 0 3rem 0;
-
-    .mini-text {
-      font-size: ${theme.font.SIZE.S};
-      margin-left: 0.6rem;
-    }
-  }
-
-  .box {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    font-family: ${theme.font.NOTO[5]};
-    font-size: ${theme.font.SIZE.SM};
-    border-radius: 0.6rem;
-    margin: 2.4rem 0.6rem;
-
-    .header {
-      padding: 1.6rem 0;
-      gap: 0.6rem;
-      font-family: ${theme.font.NOTO[7]};
-
-      .accent {
-        font-family: ${theme.font.NOTO[8]};
-        font-size: ${theme.font.SIZE.XXL};
-      }
-    }
-
-    .body {
-      border: 0.1px solid ${theme.color.MAIN_BLUE};
-      padding: 2.4rem 0;
-      gap: 0.8rem;
-    }
-
-    .footer {
-      padding: 2.4rem 2rem;
-      font-family: ${theme.font.NOTO[8]};
-      font-size: ${theme.font.SIZE.ML};
-      gap: 0.6rem;
-    }
-  }
-
-  .box-1 {
-    background-color: ${theme.color.GREEN_BLUE};
-  }
-
-  .box-2 {
-    background-color: ${theme.color.LIGHT_BLUE};
-  }
-
-  .box-3 {
-    background-color: ${theme.color.TEXT_WHITE};
-  }
-
-  .footer-text {
-    font-family: ${theme.font.NOTO[7]};
-    color: ${theme.color.TEXT_WHITE};
-    font-size: ${theme.font.SIZE.XL};
-    margin: 4rem 1rem;
-    align-items: end;
-  }
-`;
-
+// 비전
 export const Section2 = styled.div`
   margin: 3rem 0 4rem 0;
   padding: 0 2rem 0 2.4rem;
@@ -227,26 +156,94 @@ export const Section2 = styled.div`
   }
 `;
 
+// 콘텐츠
 export const Section3 = styled.div`
   color: ${theme.color.TEXT_BLACK};
-  font-family: ${theme.font.NOTO[6]};
+  font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.L};
   padding: 6rem 0;
 
-  .title {
-    margin-bottom: 1rem;
+  .box {
+    margin: 2rem 2rem;
+    border-radius: 1rem;
+    position: relative;
+    height: 16rem;
+    cursor: pointer;
   }
 
-  .poster {
-    width: 90vw;
-    margin-bottom: 4rem;
+  #box-1 {
+    background: rgb(14, 92, 179);
+    background: linear-gradient(
+      45deg,
+      rgba(14, 92, 179, 0.6) 0%,
+      rgba(84, 112, 230, 0.6) 51%,
+      rgba(199, 129, 250, 0.6) 100%
+    );
+    color: ${theme.color.TEXT_WHITE};
+    font-size: ${theme.font.SIZE.L};
+
+    .title {
+      position: absolute;
+      top: 10%;
+      left: 6%;
+    }
+
+    .sub-title {
+      position: absolute;
+      bottom: 10%;
+      left: 6%;
+    }
+
+    .poster {
+      position: absolute;
+      width: 46vw;
+      bottom: 0;
+    }
+  }
+
+  #box-2 {
+    overflow: hidden;
+    color: ${theme.color.TEXT_WHITE};
+
+    .title {
+      position: absolute;
+      bottom: 10%;
+      right: 6%;
+      z-index: 2;
+    }
+
+    .poster {
+      width: 100%;
+      object-fit: inherit;
+      opacity: 0.8;
+    }
+  }
+
+  #box-3 {
+    overflow: hidden;
+    color: ${theme.color.TEXT_BLACK};
+    z-index: 100;
+
+    .title {
+      position: absolute;
+      bottom: 10%;
+      left: 6%;
+      z-index: 2;
+    }
+
+    .poster {
+      width: 100%;
+      object-fit: inherit;
+      opacity: 0.8;
+    }
   }
 `;
 
+// 카운팅
 export const Section4 = styled.div`
   color: ${theme.color.TEXT_BLACK};
   font-family: ${theme.font.NOTO[7]};
-  font-size: ${theme.font.SIZE.XXXXL};
+  font-size: ${theme.font.SIZE.XXL};
   padding: 0rem 2rem 6rem 2rem;
 
   .title {
@@ -254,21 +251,48 @@ export const Section4 = styled.div`
   }
 
   .number {
-    font-family: ${theme.font.OSW[5]};
+    font-family: ${theme.font.OSW[6]};
+    font-size: 5rem;
+    margin-right: 0.4rem;
+  }
+
+  .invisible {
+    visibility: hidden;
   }
 `;
 
+// 청년 커뮤니티
 export const Section5 = styled.div`
   color: ${theme.color.TEXT_BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.L};
   padding: 2rem 2rem;
 
+  .title {
+    font-size: ${theme.font.SIZE.XXL};
+    margin-bottom: 2rem;
+  }
+
+  .box {
+    margin: 1rem 0 2rem 0;
+  }
+
+  .label {
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[4]};
+    font-size: ${theme.font.SIZE.SM};
+  }
+
   .button {
     margin: 2rem 0;
   }
 `;
 
+// Youtube 임베드
 export const Section6 = styled.div`
   color: ${theme.color.TEXT_BLACK};
   font-family: ${theme.font.NOTO[6]};
@@ -278,6 +302,10 @@ export const Section6 = styled.div`
   .carousel {
     margin: 2rem 0;
   }
+`;
+
+export const BottomFloatButton = styled.div`
+  z-index: 1000;
 `;
 
 export const BannerSection = styled.div`

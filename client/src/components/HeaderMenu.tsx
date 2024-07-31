@@ -135,6 +135,7 @@ const HeadWrapper = styled.div`
   padding: 1rem 1.4rem;
   background-color: ${theme.color.BACKGROUND};
   border-bottom: 1px solid lightgray;
+  z-index: 1000;
 `;
 
 const Overlay = styled.div<{ isOpen: boolean }>`
