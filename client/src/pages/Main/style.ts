@@ -62,7 +62,7 @@ export const CountDownSection = styled.div`
 // 문제 인식
 export const Section1 = styled.div`
   background-color: ${theme.color.MAIN_BLUE};
-  padding: 8rem 2rem 6rem 2rem;
+  padding: 8rem 1.4rem 6rem 1.4rem;
   color: ${theme.color.TEXT_WHITE};
   position: relative;
 
@@ -94,12 +94,13 @@ export const Section1 = styled.div`
   .title {
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XXXL};
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
   }
 
   .mini-title {
     font-family: ${theme.font.NOTO[4]};
-    font-size: ${theme.font.SIZE.S};
+    font-size: ${theme.font.SIZE.M};
+    margin-bottom: 0.4rem;
   }
 
   .question {

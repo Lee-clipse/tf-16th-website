@@ -74,7 +74,7 @@ const RegisterPage = () => {
       const isRegisterSuccess = Number(res.data.code) === API_CODE.SUCCESS;
       if (isRegisterSuccess) {
         alert("가입에 성공했습니다!", "success");
-        navigate(ROUTE_PATH.MAIN);
+        navigate(ROUTE_PATH.JOIN);
       } else {
         alert("이미 가입된 회원입니다.", "warning");
       }

@@ -140,7 +140,8 @@ const MainPage = () => {
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block right-block ${isVisible ? "visible" : ""}`}>
                 <div className="title">다문화 현상</div>
-                <div className="mini-title">학령인구 감소하는 부산, 다문화 학생은 계속 증가</div>
+                <div className="mini-title">학령인구 감소하는 부산,</div>
+                <div className="mini-title">다문화 학생은 계속 증가</div>
               </div>
             )}
           </VisibilitySensor>
@@ -149,9 +150,8 @@ const MainPage = () => {
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block left-block ${isVisible ? "visible" : ""}`}>
                 <div className="title">기후 위기</div>
-                <div className="mini-title">
-                  기후변화로 도심 침수·댐 월류 증가… 부산 마린시티 침수 확대
-                </div>
+                <div className="mini-title">기후변화로 도심 침수·댐 월류 증가…</div>
+                <div className="mini-title">부산 마린시티 침수 확대</div>
                 <p className="invisible">l</p>
               </div>
             )}
