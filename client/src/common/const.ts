@@ -9,6 +9,11 @@ export const ROUTE_PATH = {
   MY_PAGE: "/my-page",
 };
 
+export const HOST = {
+  LOCAL: "http://localhost:8080/api",
+  DEPLOY: "http://server:8080/api",
+};
+
 export const TOKEN = {
   PK_NODE: 0,
   STEP_NODE: 1,

@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import BlogLogo from "../../assets/images/blog_logo.webp";
 import InstaLogo from "../../assets/images/insta_logo.webp";
-import YoutubeLogo from "../../assets/images/youtube_logo.webp";
-import { useSwipeable } from "react-swipeable";
-import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 
 const TestPage = () => {
   const CountUpComponent = () => {

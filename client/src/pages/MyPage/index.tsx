@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderMenu from "../../components/HeaderMenu";
 import { User } from "../../type/type";
 import { deleteToken, getUserPkByToken } from "../../common/common";

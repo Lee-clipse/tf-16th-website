@@ -4,20 +4,22 @@ services:
     build: ./server
     image: server
     container_name: server
+    network_mode: host
     ports:
       - 8080:8080
     depends_on:
-      - db
+      - tf-db
     volumes:
       - ./server:/usr/src/app
 
-  mysql-was:
+  tf-db:
     image: mysql:8.0
-    container_name: db
+    container_name: tf-db
+    network_mode: host
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: tf
       TZ: Asia/Seoul
     volumes:

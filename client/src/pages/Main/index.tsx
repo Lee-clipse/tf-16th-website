@@ -25,14 +25,12 @@ import ContentPoster3 from "../../assets/images/content_poster3.webp";
 import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
 import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
 import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
-import StartLine from "../../assets/images/start_line.png";
 import HeaderMenu from "../../components/HeaderMenu";
 import VisibilitySensor from "react-visibility-sensor";
 import Button from "../../components/Button";
 import CountUp from "react-countup";
-import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
-import { alert, deleteToken, guardAlert, isStepByToken, verifyByToken } from "../../common/common";
+import { guardAlert, isStepByToken, verifyByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
 import {
   ROUTE_PATH,

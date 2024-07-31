@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import React, { useState } from "react";
+import { useState } from "react";
 import HeaderMenu from "../../components/HeaderMenu";
 import { InputSection } from "./style";
 import { Input } from "../../components/Input";

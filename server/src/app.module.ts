@@ -8,7 +8,8 @@ import { UserModule } from './api/user/user.module';
     UserModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'localhost', // local
+      // host: 'tf-db', // docker
       port: 3306,
       username: 'root',
       password: '111111',

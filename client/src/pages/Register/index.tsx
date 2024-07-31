@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
 import HeaderMenu from "../../components/HeaderMenu";
 import { Input, Radio, Select } from "../../components/Input";
 import Button from "../../components/Button";
@@ -11,7 +11,6 @@ import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
 import { reqUserRegister } from "../../api/user";
 import { alert } from "../../common/common";
-import Swal from "sweetalert2";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -145,14 +144,14 @@ const RegisterPage = () => {
               type="radio"
               id="agreeYes"
               name="agree"
-              onChange={(e) => handleUserInfo("agree", AGREE.AGREE)}
+              onChange={() => handleUserInfo("agree", AGREE.AGREE)}
             />
             <label htmlFor="agreeYes">동의</label>
             <input
               type="radio"
               id="agreeNo"
               name="agree"
-              onChange={(e) => handleUserInfo("agree", AGREE.NOT_AGREE)}
+              onChange={() => handleUserInfo("agree", AGREE.NOT_AGREE)}
             />
             <label htmlFor="agreeNo">비동의</label>
           </Radio>

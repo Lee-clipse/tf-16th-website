@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { FiMenu } from "react-icons/fi";
-import { GoArrowRight, GoBold } from "react-icons/go";
-import Button from "./Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../common/const";
-import { deleteToken, getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
+import { getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 
