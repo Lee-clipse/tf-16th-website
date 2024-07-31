@@ -67,8 +67,11 @@ const HeaderMenu = () => {
 
   return (
     <>
-      <HeadWrapper>
-        <FiMenu fontSize={30} onClick={toggleMenu} />
+      <HeadWrapper className="f-row f-spb v-center">
+        <div id="title" onClick={() => navigate(ROUTE_PATH.MAIN)}>
+          청건부산
+        </div>
+        <FiMenu fontSize={30} onClick={toggleMenu} color={theme.color.GRAY} />
       </HeadWrapper>
 
       {/* 메뉴 바 */}
@@ -136,6 +139,13 @@ const HeadWrapper = styled.div`
   background-color: ${theme.color.BACKGROUND};
   border-bottom: 1px solid lightgray;
   z-index: 1000;
+  text-align: right;
+
+  #title {
+    font-family: ${theme.font.NOTO[8]};
+    font-size: ${theme.font.SIZE.L};
+    color: ${theme.color.MAIN_BLUE};
+  }
 `;
 
 const Overlay = styled.div<{ isOpen: boolean }>`

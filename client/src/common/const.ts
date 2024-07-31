@@ -35,3 +35,10 @@ export const AGREE = {
   AGREE: 1,
   NOT_AGREE: 2,
 };
+
+export const 스탭_지원_폼_링크 =
+  "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
+export const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
+export const 청건부산_유튜브_링크 = "https://www.youtube.com/@cheonggeonbusan";
+export const 청건부산_블로그_링크 =
+  "https://m.blog.naver.com/PostList.naver?blogId=together_festival&permalink=permalink&tab=1";

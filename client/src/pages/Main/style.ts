@@ -34,6 +34,7 @@ export const MainSection = styled.div`
   .info {
     font-family: ${theme.font.NOTO[8]};
     font-size: ${theme.font.SIZE.M};
+    color: ${theme.color.TEXT_BLACK};
     margin-top: 3.6rem;
     gap: 0.8rem;
   }

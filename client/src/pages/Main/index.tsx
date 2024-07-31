@@ -29,18 +29,16 @@ import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
 import { Alert, isStepByToken, verifyByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_PATH } from "../../common/const";
+import {
+  ROUTE_PATH,
+  청건부산_블로그_링크,
+  청건부산_유튜브_링크,
+  청건부산_인스타_링크,
+} from "../../common/const";
 
 const MainPage = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState<boolean>(false);
-
-  const 스탭_지원_폼_링크 =
-    "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
-  const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
-  const 청건부산_유튜브_링크 = "https://www.youtube.com/@cheonggeonbusan";
-  const 청건부산_블로그_링크 =
-    "https://m.blog.naver.com/PostList.naver?blogId=together_festival&permalink=permalink&tab=1";
 
   useEffect(() => {
     const isTokenAlive = verifyByToken();

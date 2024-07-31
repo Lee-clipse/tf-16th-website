@@ -22,4 +22,12 @@ export const InputSection = styled.div`
   .br {
     margin: 1rem 0;
   }
+
+  #staff-button {
+    color: ${theme.color.MAIN_BLUE};
+    font-size: ${theme.font.SIZE.SM};
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 2rem;
+  }
 `;

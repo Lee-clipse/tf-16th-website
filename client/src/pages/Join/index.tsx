@@ -5,7 +5,7 @@ import { InputSection } from "./style";
 import { Input } from "../../components/Input";
 import Button from "../../components/Button";
 import theme from "../../styles/theme";
-import { API_CODE, ROUTE_PATH } from "../../common/const";
+import { API_CODE, ROUTE_PATH, 스탭_지원_폼_링크 } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import { reqUserLogin } from "../../api/user";
 import { UserLoginInfo } from "../../type/type";
@@ -93,6 +93,13 @@ const JoinPage = () => {
               backgroundColor={theme.color.PURPLE}
               textColor={theme.color.TEXT_WHITE}
             />
+          </div>
+          <div className="br"></div>
+          <div
+            id="staff-button"
+            onClick={() => window.open(스탭_지원_폼_링크, "_blank", "noopener, noreferrer")}
+          >
+            스탭으로 등록하기
           </div>
         </div>
       </InputSection>
