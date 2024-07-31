@@ -153,9 +153,10 @@ const HeadWrapper = styled.div`
   text-align: right;
 
   #title {
-    font-family: ${theme.font.NOTO[8]};
-    font-size: ${theme.font.SIZE.L};
+    font-family: ${theme.font.HAK[5]};
+    font-size: ${theme.font.SIZE.XL};
     color: ${theme.color.TEXT_BLACK};
+    padding-top: 0.4rem;
   }
 `;
 

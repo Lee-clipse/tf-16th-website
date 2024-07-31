@@ -92,69 +92,41 @@ export const Section1 = styled.div`
 
 // 비전
 export const Section2 = styled.div`
-  margin: 6rem 0 4rem 0;
+  margin: 10rem 0 10rem 0;
   padding: 0 2rem 0 2.4rem;
+  text-align: center;
 
   .button {
     margin: 3rem 0 0 0;
   }
 
-  .title {
-    color: ${theme.color.MAIN_BLUE};
+  .sub-title {
+    color: ${theme.color.LIGHT_BLUE};
     font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.XXXL};
-    gap: 0.4rem;
-    margin-bottom: 3.4rem;
-
-    .logo {
-      font-family: ${theme.font.HAK[5]};
-      font-size: ${theme.font.SIZE.XXXXXL};
-    }
+    font-size: ${theme.font.SIZE.ML};
+    margin-bottom: 1rem;
   }
 
-  .slogun {
-    gap: 3rem;
+  .title {
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin-bottom: 3.6rem;
+    gap: 0.6rem;
+  }
+
+  .section {
+    text-align: left;
     color: ${theme.color.TEXT_BLACK};
     font-family: ${theme.font.NOTO[5]};
-    font-size: ${theme.font.SIZE.S};
+    font-size: ${theme.font.SIZE.M};
+    line-height: 2.4rem;
+    gap: 1.6rem;
 
-    .box {
-      gap: 1.4rem;
-
-      .label {
-        border-top: 2px solid ${theme.color.TEXT_BLACK};
-        padding-top: 1rem;
-        padding-left: 0.2rem;
-        font-family: ${theme.font.NOTO[8]};
-        font-size: ${theme.font.SIZE.SM};
-        flex: 2;
-      }
-
-      .content {
-        border-top: 1px solid ${theme.color.TEXT_BLACK};
-        padding-top: 1rem;
-        padding-left: 0.2rem;
-        flex: 8;
-        gap: 0.6rem;
-
-        .cell {
-          gap: 0.6rem;
-        }
-
-        .accent {
-          font-family: ${theme.font.OSW[5]};
-          font-size: ${theme.font.SIZE.L};
-        }
-      }
+    .dot {
+      color: ${theme.color.LIGHT_BLUE};
+      padding-top: 0.3rem;
     }
-  }
-
-  .footer {
-    color: ${theme.color.MAIN_BLUE};
-    font-family: ${theme.font.NOTO[8]};
-    font-size: ${theme.font.SIZE.L};
-    align-items: end;
-    margin-top: 3rem;
   }
 `;
 
@@ -165,8 +137,41 @@ export const Section3 = styled.div`
   font-size: ${theme.font.SIZE.L};
   padding: 6rem 0;
 
+  .sub-title {
+    color: ${theme.color.LIGHT_BLUE};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.ML};
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .title {
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin-bottom: 6rem;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .box-title {
+    margin: 0 0 0.6rem 2rem;
+    text-align: left;
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.L};
+  }
+
+  .box-sub-title {
+    margin: 0 0 0.6rem 2rem;
+    text-align: left;
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.M};
+  }
+
   .box {
-    margin: 2rem 2rem;
+    margin: 0.4rem 2rem 3rem 2rem;
     border-radius: 1rem;
     position: relative;
     height: 16rem;
@@ -174,13 +179,6 @@ export const Section3 = styled.div`
   }
 
   #box-1 {
-    background: rgb(14, 92, 179);
-    background: linear-gradient(
-      45deg,
-      rgba(14, 92, 179, 0.6) 0%,
-      rgba(84, 112, 230, 0.6) 51%,
-      rgba(199, 129, 250, 0.6) 100%
-    );
     color: ${theme.color.TEXT_WHITE};
     font-size: ${theme.font.SIZE.L};
 
@@ -188,18 +186,22 @@ export const Section3 = styled.div`
       position: absolute;
       top: 10%;
       left: 6%;
-    }
-
-    .sub-title {
-      position: absolute;
-      bottom: 10%;
-      left: 6%;
+      z-index: 5;
     }
 
     .poster {
       position: absolute;
       width: 46vw;
-      bottom: 0;
+      bottom: -2%;
+      right: 0;
+      z-index: 2;
+    }
+
+    .poster-bg {
+      width: 100%;
+      object-fit: inherit;
+      opacity: 0.8;
+      border-radius: 1rem;
     }
   }
 
@@ -246,10 +248,33 @@ export const Section4 = styled.div`
   color: ${theme.color.TEXT_BLACK};
   font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.XXL};
-  padding: 0rem 2rem 6rem 2rem;
+  padding: 8rem 0 10rem 0;
+
+  .sub-title {
+    color: ${theme.color.LIGHT_BLUE};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.ML};
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 
   .title {
-    margin-bottom: 1rem;
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin-bottom: 4rem;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .section4-box {
+    background-color: ${theme.color.LIGHT_BLUE};
+    padding: 5rem 2rem 0 3rem;
+    color: ${theme.color.TEXT_WHITE};
+  }
+
+  .number-title {
+    margin-bottom: 4rem;
   }
 
   .number {
@@ -274,10 +299,21 @@ export const Section5 = styled.div`
   font-size: ${theme.font.SIZE.XL};
   padding: 2rem 2rem;
 
-  .title {
+  .sub-title {
+    color: ${theme.color.LIGHT_BLUE};
     font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.XXXXL};
-    margin-bottom: 4rem;
+    font-size: ${theme.font.SIZE.ML};
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .title {
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin-bottom: 6rem;
+    gap: 0.6rem;
+    text-align: center;
   }
 
   .box {
@@ -286,6 +322,14 @@ export const Section5 = styled.div`
 
   .label {
     margin-bottom: 1.2rem;
+  }
+
+  .hashtag {
+    color: ${theme.color.LIGHT_BLUE};
+    font-family: ${theme.font.NOTO[8]};
+    font-size: ${theme.font.SIZE.SM};
+    margin-bottom: 0.8rem;
+    word-spacing: 0.6rem;
   }
 
   .text {

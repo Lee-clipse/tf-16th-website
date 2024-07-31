@@ -17,6 +17,7 @@ import MainLogo from "../../assets/images/main_logo.webp";
 import InstaLogo from "../../assets/images/insta_logo.webp";
 import YoutubeLogo from "../../assets/images/youtube_logo.webp";
 import BlogLogo from "../../assets/images/blog_logo.webp";
+import ContentPoster1BG from "../../assets/images/content_poster1_bg.png";
 import ContentPoster1 from "../../assets/images/content_poster1.png";
 import ContentPoster2 from "../../assets/images/content_poster2.webp";
 import ContentPoster3 from "../../assets/images/content_poster3.webp";
@@ -36,6 +37,7 @@ import {
   청건부산_인스타_링크,
 } from "../../common/const";
 import ScrollTop from "../../components/ScrollTop";
+import { GoDotFill } from "react-icons/go";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -79,7 +81,7 @@ const MainPage = () => {
         <div className="h-center v-center" onClick={() => guardAlert()}>
           <WideButton
             text="제로게임하러 가기 🎲"
-            backgroundColor={theme.color.MAIN_ORAGNE}
+            backgroundColor={theme.color.LIGHT_BLUE}
             textColor={theme.color.TEXT_WHITE}
           />
         </div>
@@ -156,30 +158,36 @@ const MainPage = () => {
             )}
           </VisibilitySensor>
 
-          <div className="question h-center">"그래서 우리가 뭘 할 수 있지?"</div>
+          <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block right-block ${isVisible ? "visible" : ""}`}>
+                <div className="question h-center">"그래서 우리가 뭘 할 수 있지?"</div>
+              </div>
+            )}
+          </VisibilitySensor>
         </Section1>
 
         {/* 청건부산 가치 섹션 */}
         <Section2>
-          <div className="title f-col">
-            <p className="logo">청건부산,</p>
-            <p>청년이 건강해야</p>
-            <p>부산이 산다!</p>
-          </div>
+          <div>
+            <div className="sub-title">올해로 벌써 16년째!</div>
+            <div className="title f-col">
+              <div>부산 청년들이 만드는 축제로</div>
+              <div>당신을 초대합니다.</div>
+            </div>
 
-          <div className="slogun f-col">
-            <div className="box f-row">
-              <div className="label">
-                <p>비전</p>
+            <div className="section f-col">
+              <div>
+                <GoDotFill className="dot" /> 건강한 가치관을 가진 깨어있는 청년들을 양성합니다.
               </div>
-
-              <div className="content f-col">
-                <p>건강한 가치관을 가진 깨어있는 청년들을</p>
-                <p>양성합니다.</p>
-                <p>부산이 당면한 문제들을 풀어가기 위해 함께</p>
-                <p>고민하고 소통하며 포기하지 않고 도전합니다.</p>
-                <p>부산을 살리고 변화시키는 출발점이</p>
-                <p>부산 청년이 될 것입니다.</p>
+              <div>
+                <GoDotFill className="dot" />
+                부산이 당면한 문제들을 풀어가기 위해 함께 고민하고 소통하며 포기하지 않고
+                도전합니다.
+              </div>
+              <div>
+                <GoDotFill className="dot" />
+                부산을 살리고 변화시키는 출발점이 부산 청년이 될 것입니다.
               </div>
             </div>
           </div>
@@ -195,20 +203,29 @@ const MainPage = () => {
 
         {/* 행사 컨텐츠 개요 */}
         <Section3>
+          <div className="sub-title">모두 모여!</div>
+          <div className="title f-col">
+            <div>이번 축제의 프로그램</div>
+          </div>
+
           <div className="h-center f-col">
+            <div className="box-title">토크 콘서트</div>
+            {/* <div className="box-sub-title">행복이란 무엇인가?</div> */}
             <div id="box-1" className="box">
-              <div className="title">전한길</div>
-              <div className="sub-title">토크콘서트</div>
+              {/* <div className="title">전한길</div> */}
               <img className="poster" src={ContentPoster1} alt="포스터1" />
+              <img className="poster-bg" src={ContentPoster1BG} alt="포스터1배경" />
             </div>
 
+            <div className="box-title">문화 공연</div>
             <div id="box-2" className="box">
-              <div className="title">문화 공연</div>
+              {/* <div className="title">문화 공연</div> */}
               <img className="poster" src={ContentPoster2} alt="포스터2" />
             </div>
 
+            <div className="box-title">제로게임</div>
             <div id="box-3" className="box">
-              <div className="title">제로게임</div>
+              {/* <div className="title">제로게임</div> */}
               <img className="poster" src={ContentPoster3} alt="포스터3" />
             </div>
           </div>
@@ -216,38 +233,60 @@ const MainPage = () => {
 
         {/* 숫자 카운팅 */}
         <Section4>
-          <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
-            {({ isVisible }: { isVisible: boolean }) => (
-              <div className={`block right-block ${isVisible ? "visible" : ""}`}>
-                {isVisible ? (
-                  <>
-                    <div className="f-row title">
-                      <CountUp className="number" start={0} end={50} duration={1} />
-                      <p>개의 부스</p>
-                    </div>
-                    <div className="f-row title">
-                      <CountUp className="number" start={0} end={300} duration={1} />
-                      <p>명의 스탭</p>
-                    </div>
-                    <div className="f-row title">
-                      <CountUp className="number" start={0} end={5000} duration={1} />
-                      <p>명의 참가자</p>
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
-                <p className="invisible">l</p>
-              </div>
-            )}
-          </VisibilitySensor>
+          <div className="sub-title">역대급 규모!</div>
+          <div className="title f-col">
+            <div>청년들이 도전하고 준비한</div>
+          </div>
+
+          <div className="section4-box">
+            <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
+              {({ isVisible }: { isVisible: boolean }) => (
+                <div className={`block right-block ${isVisible ? "visible" : ""}`}>
+                  {isVisible ? (
+                    <>
+                      <div className="f-row number-title">
+                        <CountUp className="number" start={0} end={50} duration={1} />
+                        <p>개의 부스</p>
+                      </div>
+                      <div className="f-row number-title">
+                        <CountUp className="number" start={0} end={300} duration={1} />
+                        <p>명의 스탭</p>
+                      </div>
+                      <div className="f-row number-title">
+                        <CountUp className="number" start={0} end={5000} duration={1} />
+                        <p>명의 참가자</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="f-row number-title">
+                        <p>0 개의 부스</p>
+                      </div>
+                      <div className="f-row number-title">
+                        <p>0 명의 스탭</p>
+                      </div>
+                      <div className="f-row number-title">
+                        <p>0 명의 참가자</p>
+                      </div>
+                    </>
+                  )}
+                  <p className="invisible">l</p>
+                </div>
+              )}
+            </VisibilitySensor>
+          </div>
         </Section4>
 
         {/* 청년 커뮤니티 개요 */}
         <Section5>
-          <div className="title">청년 커뮤니티</div>
+          <div className="sub-title">소개합니다!</div>
+          <div className="title f-col">
+            <div>청건부산만의 커뮤니티</div>
+          </div>
+
           <div className="box">
             <div className="label">토크콘서트</div>
+            <div className="hashtag">#티키타카 #전문가랑소통 #실생활</div>
             <div className="text">
               부산 청년들이 실생활에 당면한 문제에 대한 전문가의 강연을 통해 소통합니다.
             </div>
@@ -255,6 +294,7 @@ const MainPage = () => {
 
           <div className="box">
             <div className="label">싱스틸러</div>
+            <div className="hashtag">#나도밴드 #잼 #합주 #뮤직이스마이라이프</div>
             <div className="text">
               문화예술활동을 경험할 수 있는 장을 마련하여 무대 및 기회를 제공합니다.
             </div>
@@ -262,13 +302,16 @@ const MainPage = () => {
 
           <div className="box">
             <div className="label">청정수</div>
+            <div className="hashtag">#청년들과 #정책 #수다</div>
             <div className="text">
-              청년들의 정책 수다! 우리 모두에게 유익한 정책에 대한 생각들을 나눕니다.
+              '나에게 유익한 정책을 넘어 우리 모두에게 유익한 정책'이라는 슬로건을 내걸고 청년들과
+              생각들을 나눕니다.
             </div>
           </div>
 
           <div className="box">
             <div className="label">다문화</div>
+            <div className="hashtag">#포트럭 #유학생친구 #부산투어</div>
             <div className="text">
               부산에 거주하는 다국적 청년들과 함께 마음을 이어가는 행사입니다.
             </div>
@@ -285,7 +328,6 @@ const MainPage = () => {
 
         {/* Youtube 임베드 */}
         <Section6>
-          <div>청건부산 Youtube</div>
           <div className="carousel">
             <YouTube
               videoId="zOgL-9ZLsC8"
