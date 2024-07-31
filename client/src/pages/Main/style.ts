@@ -268,7 +268,7 @@ export const Section4 = styled.div`
   }
 
   .section4-box {
-    background-color: ${theme.color.LIGHT_BLUE};
+    background-color: ${theme.color.MAIN_BLUE};
     padding: 5rem 2rem 0 3rem;
     color: ${theme.color.TEXT_WHITE};
   }
@@ -350,6 +350,24 @@ export const Section6 = styled.div`
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.L};
   padding: 2rem 2rem;
+  margin: 8rem 0 8rem 0;
+
+  .sub-title {
+    color: ${theme.color.LIGHT_BLUE};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.ML};
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .title {
+    color: ${theme.color.TEXT_BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin-bottom: 4rem;
+    gap: 0.6rem;
+    text-align: center;
+  }
 
   .carousel {
     margin: 2rem 0;
@@ -362,7 +380,7 @@ export const BottomFloatButton = styled.div`
 
 export const BannerSection = styled.div`
   background-color: ${theme.color.MAIN_BLUE};
-  padding: 4rem 0 8rem 0;
+  padding: 4rem 0 12rem 0;
   text-align: center;
 
   .title {

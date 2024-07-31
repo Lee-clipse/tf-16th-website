@@ -21,6 +21,9 @@ import ContentPoster1BG from "../../assets/images/content_poster1_bg.png";
 import ContentPoster1 from "../../assets/images/content_poster1.png";
 import ContentPoster2 from "../../assets/images/content_poster2.webp";
 import ContentPoster3 from "../../assets/images/content_poster3.webp";
+import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
+import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
+import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
 import StartLine from "../../assets/images/start_line.png";
 import HeaderMenu from "../../components/HeaderMenu";
 import VisibilitySensor from "react-visibility-sensor";
@@ -38,6 +41,7 @@ import {
 } from "../../common/const";
 import ScrollTop from "../../components/ScrollTop";
 import { GoDotFill } from "react-icons/go";
+import { CarouselComponent } from "../../components/Carousel";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -328,23 +332,14 @@ const MainPage = () => {
 
         {/* Youtube 임베드 */}
         <Section6>
-          <div className="carousel">
-            <YouTube
-              videoId="zOgL-9ZLsC8"
-              opts={{
-                width: "100%",
-                height: "200px",
-                playerVars: {
-                  autoplay: 0,
-                  modestbranding: 1,
-                  loop: 0,
-                },
-              }}
-              onReady={(e: { target: { mute: () => void } }) => {
-                e.target.mute();
-              }}
-            />
+          <div className="sub-title">구독 좋아요!</div>
+          <div className="title f-col">
+            <div>청건부산의 Youtube</div>
           </div>
+
+          <CarouselComponent
+            imageList={[YoutubeThumbnail1, YoutubeThumbnail2, YoutubeThumbnail3]}
+          />
         </Section6>
 
         {/* 배너 섹션 */}
