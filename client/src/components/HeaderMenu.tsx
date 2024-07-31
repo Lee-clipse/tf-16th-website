@@ -139,7 +139,7 @@ const HeadWrapper = styled.div`
 `;
 
 const Overlay = styled.div<{ isOpen: boolean }>`
-  z-index: ${(props) => (props.isOpen ? "100" : "-100")};
+  z-index: ${(props) => (props.isOpen ? "2000" : "-100")};
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;

@@ -1,13 +1,8 @@
-import {
-  Entity,
-  Column,
-  CreateDateColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, Column, CreateDateColumn, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'user', schema: 'tf' })
 export class UserEntity {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'pk' })
+  @PrimaryColumn({ type: 'int', name: 'pk' })
   pk: number;
 
   @Column({ type: 'varchar', name: 'name' })
@@ -30,6 +25,12 @@ export class UserEntity {
 
   @Column({ type: 'varchar', name: 'recommand_person' })
   recommandPerson: string;
+
+  @Column({ type: 'boolean', name: 'step', default: false })
+  step: boolean;
+
+  @Column({ type: 'boolean', name: 'zg_join', default: false })
+  zgJoin: boolean;
 
   @CreateDateColumn({
     type: 'timestamp',

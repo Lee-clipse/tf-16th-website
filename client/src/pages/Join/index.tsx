@@ -9,7 +9,7 @@ import { API_CODE, ROUTE_PATH } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import { ReqUserLogin } from "../../api/user";
 import { UserLoginInfo } from "../../type/type";
-import { Alert } from "../../common/common";
+import { Alert, setToken } from "../../common/common";
 
 const JoinPage = () => {
   const navigate = useNavigate();
@@ -26,10 +26,9 @@ const JoinPage = () => {
 
   const doLogin = async () => {
     const res = await ReqUserLogin(userInfo.name, userInfo.phoneNumber);
-    console.log(userInfo);
-    console.log(res.data.code);
     const isLoginSuccess = Number(res.data.code) === API_CODE.SUCCESS;
     if (isLoginSuccess) {
+      setToken(res.data.token);
       navigate(ROUTE_PATH.MAIN);
     } else {
       Alert("다시 확인해주세요.", "warning");

@@ -42,8 +42,9 @@ export const MainSection = styled.div`
 // 문제 인식
 export const Section1 = styled.div`
   background-color: ${theme.color.MAIN_BLUE};
-  padding: 6rem 2rem 2rem 2rem;
+  padding: 8rem 2rem 6rem 2rem;
   color: ${theme.color.TEXT_WHITE};
+  position: relative;
 
   .block {
     display: flex;
@@ -90,7 +91,7 @@ export const Section1 = styled.div`
 
 // 비전
 export const Section2 = styled.div`
-  margin: 3rem 0 4rem 0;
+  margin: 6rem 0 4rem 0;
   padding: 0 2rem 0 2.4rem;
 
   .button {
@@ -112,7 +113,7 @@ export const Section2 = styled.div`
 
   .slogun {
     gap: 3rem;
-    color: ${theme.color.MAIN_BLUE};
+    color: ${theme.color.TEXT_BLACK};
     font-family: ${theme.font.NOTO[5]};
     font-size: ${theme.font.SIZE.S};
 
@@ -120,7 +121,7 @@ export const Section2 = styled.div`
       gap: 1.4rem;
 
       .label {
-        border-top: 2px solid ${theme.color.MAIN_BLUE};
+        border-top: 2px solid ${theme.color.TEXT_BLACK};
         padding-top: 1rem;
         padding-left: 0.2rem;
         font-family: ${theme.font.NOTO[8]};
@@ -129,7 +130,7 @@ export const Section2 = styled.div`
       }
 
       .content {
-        border-top: 1px solid ${theme.color.MAIN_BLUE};
+        border-top: 1px solid ${theme.color.TEXT_BLACK};
         padding-top: 1rem;
         padding-left: 0.2rem;
         flex: 8;
@@ -256,6 +257,10 @@ export const Section4 = styled.div`
     margin-right: 0.4rem;
   }
 
+  .visible {
+    opacity: 1;
+  }
+
   .invisible {
     visibility: hidden;
   }
@@ -265,26 +270,28 @@ export const Section4 = styled.div`
 export const Section5 = styled.div`
   color: ${theme.color.TEXT_BLACK};
   font-family: ${theme.font.NOTO[6]};
-  font-size: ${theme.font.SIZE.L};
+  font-size: ${theme.font.SIZE.XL};
   padding: 2rem 2rem;
 
   .title {
-    font-size: ${theme.font.SIZE.XXL};
-    margin-bottom: 2rem;
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XXXXL};
+    margin-bottom: 4rem;
   }
 
   .box {
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 3rem 0;
   }
 
   .label {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
   }
 
   .text {
     color: ${theme.color.TEXT_BLACK};
     font-family: ${theme.font.NOTO[4]};
-    font-size: ${theme.font.SIZE.SM};
+    font-size: ${theme.font.SIZE.M};
+    line-height: 1.5;
   }
 
   .button {

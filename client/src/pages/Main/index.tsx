@@ -20,23 +20,79 @@ import BlogLogo from "../../assets/images/blog_logo.webp";
 import ContentPoster1 from "../../assets/images/content_poster1.png";
 import ContentPoster2 from "../../assets/images/content_poster2.webp";
 import ContentPoster3 from "../../assets/images/content_poster3.webp";
-import ClassPoster1 from "../../assets/images/class_poster1.webp";
-import ClassPoster2 from "../../assets/images/class_poster2.webp";
-import ClassPoster3 from "../../assets/images/class_poster3.webp";
+import StartLine from "../../assets/images/start_line.png";
 import HeaderMenu from "../../components/HeaderMenu";
 import VisibilitySensor from "react-visibility-sensor";
 import Button from "../../components/Button";
 import CountUp from "react-countup";
-import { CarouselComponent } from "../Test";
 import YouTube from "react-youtube";
+import { useEffect, useState } from "react";
+import { Alert, isStepByToken, verifyByToken } from "../../common/common";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_PATH } from "../../common/const";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
   const 스탭_지원_폼_링크 =
     "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
   const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
   const 청건부산_유튜브_링크 = "https://www.youtube.com/@cheonggeonbusan";
   const 청건부산_블로그_링크 =
     "https://m.blog.naver.com/PostList.naver?blogId=together_festival&permalink=permalink&tab=1";
+
+  useEffect(() => {
+    const isTokenAlive = verifyByToken();
+    setIsLogin(isTokenAlive);
+  }, []);
+
+  const setFloatButtonComponent = () => {
+    const isStep = isStepByToken();
+
+    // 미로그인이라면 ->  참가 버튼
+    if (!isLogin) {
+      return (
+        <div className="h-center v-center" onClick={() => navigate(ROUTE_PATH.JOIN)}>
+          <WideButton
+            text="청건부산 참가하기 ✨"
+            backgroundColor={theme.color.PURPLE}
+            textColor={theme.color.TEXT_WHITE}
+          />
+        </div>
+      );
+    }
+    // 스탭이라면 -> 관리 버튼
+    if (isStep) {
+      return (
+        <div
+          className="h-center v-center"
+          onClick={() => Alert("추후 업데이트를 기다려주세요.", "warning")}
+        >
+          <WideButton
+            text="관리 페이지로 가기 🔧"
+            backgroundColor={theme.color.PURPLE}
+            textColor={theme.color.TEXT_WHITE}
+          />
+        </div>
+      );
+    }
+    // 스탭은 아니지만 로그인 유저라면 -> 제로게임 버튼
+    else {
+      return (
+        <div
+          className="h-center v-center"
+          onClick={() => Alert("추후 업데이트를 기다려주세요.", "warning")}
+        >
+          <WideButton
+            text="제로게임하러 가기 🎲"
+            backgroundColor={theme.color.MAIN_ORAGNE}
+            textColor={theme.color.TEXT_WHITE}
+          />
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -318,16 +374,7 @@ const MainPage = () => {
       </Wrapper>
 
       {/* 스탭 지원 버튼 */}
-      <BottomFloatButton
-        className="h-center v-center"
-        onClick={() => window.open(스탭_지원_폼_링크, "_blank", "noopener, noreferrer")}
-      >
-        <WideButton
-          text="스탭 신청하러 가기 ✨"
-          backgroundColor={theme.color.PURPLE}
-          textColor={theme.color.TEXT_WHITE}
-        />
-      </BottomFloatButton>
+      <BottomFloatButton>{setFloatButtonComponent()}</BottomFloatButton>
     </>
   );
 };
