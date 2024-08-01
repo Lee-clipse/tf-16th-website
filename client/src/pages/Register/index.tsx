@@ -101,6 +101,7 @@ const RegisterPage = () => {
           <Select
             value={userInfo.sex}
             onChange={(e) => handleUserInfo("sex", parseInt(e.target.value))}
+            style={{ backgroundColor: "white" }}
           >
             <option value={SEX.MALE}>남자</option>
             <option value={SEX.FEMALE}>여자</option>
@@ -130,6 +131,7 @@ const RegisterPage = () => {
           <Select
             value={userInfo.location}
             onChange={(e) => handleUserInfo("location", e.target.value)}
+            style={{ backgroundColor: "white" }}
           >
             {LOCATION.map((location: string) => {
               return <option value={location}>{location}</option>;

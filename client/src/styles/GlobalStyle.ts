@@ -24,6 +24,7 @@ import OswaldLight from "../assets/fonts/Oswald-Light.ttf";
 import OswaldMedium from "../assets/fonts/Oswald-Medium.ttf";
 import OswaldRegular from "../assets/fonts/Oswald-Regular.ttf";
 import OswaldSemiBold from "../assets/fonts/Oswald-SemiBold.ttf";
+import MainBackground from "../assets/images/main_background.jpg";
 
 const FontStyle = `
   // 모든 영문
@@ -284,6 +285,7 @@ const GlobalStyle = createGlobalStyle`
 
     body, #root {
       width: 100%;
+      background-image: url(${MainBackground});
     }
   }
 
@@ -292,7 +294,6 @@ const GlobalStyle = createGlobalStyle`
     html {
       width: 375px;
       margin: 0 auto;
-
     }
 
     body, #root {
@@ -300,7 +301,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #root {
-      // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
+      background-image: url(${MainBackground});
     }
   }
 `;

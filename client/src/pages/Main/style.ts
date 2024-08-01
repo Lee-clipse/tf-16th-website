@@ -212,9 +212,11 @@ export const Section3 = styled.div`
     .poster {
       position: absolute;
       width: 46vw;
+      max-width: 14rem;
       bottom: -2%;
       right: 0;
       z-index: 2;
+      opacity: 0.9;
     }
 
     .poster-bg {
