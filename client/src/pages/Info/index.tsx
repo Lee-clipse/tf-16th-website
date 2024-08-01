@@ -1,13 +1,13 @@
 import HeaderMenu from "../../components/HeaderMenu";
 
-const ActivityPage = () => {
+const InfoPage = () => {
   return (
     <>
       {/* 헤더 메뉴 */}
       <HeaderMenu />
-      활동 페이지
+      정보 페이지
     </>
   );
 };
 
-export default ActivityPage;
+export default InfoPage;

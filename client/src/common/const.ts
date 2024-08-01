@@ -3,8 +3,9 @@ export const ROUTE_PATH = {
   MAIN: "/",
   JOIN: "/join",
   REGISTER: "/register",
-  MAIN_ACTIVITY: "/activity",
-  MAIN_EVENT: "/event",
+  INFO: "/info",
+  COMMUNITY: "/community",
+  HISTORY: "/history",
   MAIN_ZEROGAME: "/zerogame",
   MY_PAGE: "/my-page",
 };

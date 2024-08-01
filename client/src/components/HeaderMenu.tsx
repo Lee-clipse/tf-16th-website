@@ -85,39 +85,39 @@ const HeaderMenu = () => {
             </PlainLink>
             <PlainLink
               to={"/"}
-              // to={ROUTE_PATH.MAIN_ACTIVITY}
+              // to={ROUTE_PATH.INFO}
               onClick={() => {
                 closeMenu();
                 guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
-                location.pathname === ROUTE_PATH.MAIN_ACTIVITY ? "active" : ""
+                location.pathname === ROUTE_PATH.INFO ? "active" : ""
               }`}
             >
               정보
             </PlainLink>
             <PlainLink
               to={"/"}
-              // to={ROUTE_PATH.MAIN_EVENT}
+              // to={ROUTE_PATH.COMMUNITY}
               onClick={() => {
                 closeMenu();
                 guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
-                location.pathname === ROUTE_PATH.MAIN_EVENT ? "active" : ""
+                location.pathname === ROUTE_PATH.COMMUNITY ? "active" : ""
               }`}
             >
               청년 커뮤니티{" "}
             </PlainLink>
             <PlainLink
-              to={"/"}
-              // to={ROUTE_PATH.MAIN_ZEROGAME}
+              // to={"/"}
+              to={ROUTE_PATH.HISTORY}
               onClick={() => {
                 closeMenu();
                 guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
-                location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
+                location.pathname === ROUTE_PATH.HISTORY ? "active" : ""
               }`}
             >
               연혁
