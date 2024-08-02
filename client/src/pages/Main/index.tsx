@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
@@ -16,7 +17,6 @@ import {
   Section6,
   Wrapper,
 } from "./style";
-import MainLogo from "../../assets/images/main_logo.webp";
 import InstaLogo from "../../assets/images/insta_logo.webp";
 import YoutubeLogo from "../../assets/images/youtube_logo.webp";
 import BlogLogo from "../../assets/images/blog_logo.webp";
@@ -108,6 +108,38 @@ const MainPage = () => {
     { className: "t-09", color: theme.color.ORANGE, size: "2rem", duration: 2.4, delay: 0.4 },
   ];
 
+  const CardComponent = ({ image, title, comment }: any) => {
+    return (
+      <div className="card">
+        <img src={image} alt={title} />
+        <div className="card-body">
+          <div className="card-title">{title}</div>
+          <div className="card-comment">{comment}</div>
+        </div>
+      </div>
+    );
+  };
+
+  const eventCards = [
+    {
+      image: ContentPoster1BG,
+      title: "전한길의 토크 콘서트",
+      comment:
+        '"청년, 성공과 행복을 연습하는 시기" 라는 제목으로 청년들을 향해 스피커로써 메시지를 던집니다.',
+    },
+    {
+      image: ContentPoster2,
+      title: "문화 공연",
+      comment: "퓨전 국악, 밴드 등의 다양한 문화공연이 준비되어 있습니다.",
+    },
+    {
+      image: ContentPoster3,
+      title: "제로게임",
+      comment:
+        "탄소제로게임, 기후/대기 부스, 청년 커뮤니티 등의 다양한 체험 액티비티들이 준비되어 있습니다.",
+    },
+  ];
+
   return (
     <>
       {/* 헤더 메뉴 */}
@@ -161,7 +193,7 @@ const MainPage = () => {
 
           <VisibilitySensor partialVisibility offset={{ bottom: 400 }}>
             {({ isVisible }: { isVisible: boolean }) => (
-              <div className={`block text-block ${isVisible ? "visible" : ""}`}>
+              <div className={`late-block text-block ${isVisible ? "visible" : ""}`}>
                 <div className="title f-col">
                   <div>부산 청년들이 만드는 축제로</div>
                   <div>당신을 초대합니다.</div>
@@ -225,10 +257,9 @@ const MainPage = () => {
         {/* 청건부산 가치 섹션 */}
         <Section2>
           <div>
-            <div className="sub-title">올해로 벌써 16년째!</div>
+            <div className="sub-title">청건부산!</div>
             <div className="title f-col">
-              <div>부산 청년들이 만드는 축제로</div>
-              <div>당신을 초대합니다.</div>
+              <div>청년이 건강해야 부산이 산다</div>
             </div>
 
             <div className="section f-col">
@@ -250,8 +281,9 @@ const MainPage = () => {
           <div className="button" onClick={() => guardAlert()}>
             <Button
               text="청건부산 자세히 보기"
-              backgroundColor={theme.color.DEEP_BLUE}
-              textColor={theme.color.WHITE}
+              backgroundColor={theme.color.WHITE}
+              textColor={theme.color.BLACK}
+              custom={`border: 1px solid ${theme.color.GRAY}`}
             ></Button>
           </div>
         </Section2>
@@ -263,26 +295,15 @@ const MainPage = () => {
             <div>이번 축제의 프로그램</div>
           </div>
 
-          <div className="h-center f-col">
-            <div className="box-title">토크 콘서트</div>
-            {/* <div className="box-sub-title">행복이란 무엇인가?</div> */}
-            <div id="box-1" className="box">
-              {/* <div className="title">전한길</div> */}
-              <img className="poster" src={ContentPoster1} alt="포스터1" />
-              <img className="poster-bg" src={ContentPoster1BG} alt="포스터1배경" />
-            </div>
-
-            <div className="box-title">문화 공연</div>
-            <div id="box-2" className="box">
-              {/* <div className="title">문화 공연</div> */}
-              <img className="poster" src={ContentPoster2} alt="포스터2" />
-            </div>
-
-            <div className="box-title">제로게임</div>
-            <div id="box-3" className="box">
-              {/* <div className="title">제로게임</div> */}
-              <img className="poster" src={ContentPoster3} alt="포스터3" />
-            </div>
+          <div className="f-col v-center">
+            {eventCards.map((card, index) => (
+              <CardComponent
+                key={index}
+                image={card.image}
+                title={card.title}
+                comment={card.comment}
+              />
+            ))}
           </div>
         </Section3>
 

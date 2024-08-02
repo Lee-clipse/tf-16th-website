@@ -148,9 +148,9 @@ export const CountDownSection = styled.div`
   .flip-clock {
     font-family: ${theme.font.FUT[5]};
     --fcc-flip-duration: 0.5s; /* transition duration when flip card */
-    --fcc-digit-block-width: 2.4rem; /* digit card's width */
-    --fcc-digit-block-height: 4.2rem; /* digit card's height */
-    --fcc-digit-font-size: 2.6rem; /* font size of digit */
+    --fcc-digit-block-width: 2.6rem; /* digit card's width */
+    --fcc-digit-block-height: 4.6rem; /* digit card's height */
+    --fcc-digit-font-size: 2.8rem; /* font size of digit */
     --fcc-digit-color: white; /* color of digit */
     --fcc-background: ${theme.color.BLACK}; /* digit card's background */
     --fcc-label-color: #black; /* time label's color */
@@ -160,10 +160,12 @@ export const CountDownSection = styled.div`
 
 // 문제 인식
 export const Section1 = styled.div`
-  background-color: ${theme.color.DEEP_BLUE};
   padding: 8rem 1.4rem 6rem 1.4rem;
   color: ${theme.color.WHITE};
   position: relative;
+
+  background-image: url("src/assets/images/section1_bg.webp");
+  background-size: cover;
 
   .block {
     display: flex;
@@ -216,7 +218,7 @@ export const Section2 = styled.div`
   text-align: center;
 
   .button {
-    margin: 3rem 0 0 0;
+    margin: 4.4rem 0 0 0;
   }
 
   .sub-title {
@@ -230,7 +232,7 @@ export const Section2 = styled.div`
     color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
-    margin-bottom: 3.6rem;
+    margin-bottom: 5rem;
     gap: 0.6rem;
   }
 
@@ -255,10 +257,11 @@ export const Section3 = styled.div`
   font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.L};
   padding: 6rem 0;
+  background-color: ${theme.color.MILKY_BLUE};
 
   .sub-title {
     color: ${theme.color.TEAL_BLUE};
-    font-family: ${theme.font.NOTO[7]};
+    font-family: ${theme.font.NOTO[9]};
     font-size: ${theme.font.SIZE.ML};
     margin-bottom: 1rem;
     text-align: center;
@@ -273,93 +276,38 @@ export const Section3 = styled.div`
     text-align: center;
   }
 
-  .box-title {
-    margin: 0 0 0.6rem 2rem;
-    text-align: left;
-    color: ${theme.color.BLACK};
-    font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.L};
-  }
-
-  .box-sub-title {
-    margin: 0 0 0.6rem 2rem;
-    text-align: left;
-    color: ${theme.color.BLACK};
-    font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.M};
-  }
-
-  .box {
-    margin: 0.4rem 2rem 3rem 2rem;
+  .card {
     border-radius: 1rem;
-    position: relative;
-    height: 16rem;
-    cursor: pointer;
-  }
-
-  #box-1 {
-    color: ${theme.color.WHITE};
-    font-size: ${theme.font.SIZE.L};
-
-    .title {
-      position: absolute;
-      top: 10%;
-      left: 6%;
-      z-index: 5;
-    }
-
-    .poster {
-      position: absolute;
-      width: 46vw;
-      max-width: 14rem;
-      bottom: -2%;
-      right: 0;
-      z-index: 2;
-      opacity: 0.9;
-    }
-
-    .poster-bg {
-      width: 100%;
-      object-fit: inherit;
-      opacity: 0.8;
-      border-radius: 1rem;
-    }
-  }
-
-  #box-2 {
+    width: 90vw;
+    height: 30vh;
     overflow: hidden;
-    color: ${theme.color.WHITE};
+    margin-bottom: 4rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.16);
 
-    .title {
-      position: absolute;
-      bottom: 10%;
-      right: 6%;
-      z-index: 2;
+    .card-body {
+      background-color: ${theme.color.WHITE};
+      padding: 1.6rem;
     }
 
-    .poster {
+    img {
       width: 100%;
-      object-fit: inherit;
+      height: 54%;
+      object-fit: cover;
       opacity: 0.8;
     }
-  }
 
-  #box-3 {
-    overflow: hidden;
-    color: ${theme.color.BLACK};
-    z-index: 100;
-
-    .title {
-      position: absolute;
-      bottom: 10%;
-      left: 6%;
-      z-index: 2;
+    .card-title {
+      color: ${theme.color.DEEP_BLUE};
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.L};
+      margin-bottom: 1rem;
     }
 
-    .poster {
-      width: 100%;
-      object-fit: inherit;
-      opacity: 0.8;
+    .card-comment {
+      color: ${theme.color.TEAL_BLUE};
+      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.SM};
+      line-height: 1.8rem;
     }
   }
 `;
