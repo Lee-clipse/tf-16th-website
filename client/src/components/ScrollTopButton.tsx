@@ -20,7 +20,7 @@ const ScrollToTopButton = styled.button`
   bottom: 10rem;
   right: 2rem;
   background-color: ${theme.color.GRAY};
-  color: ${theme.color.TEXT_WHITE};
+  color: ${theme.color.WHITE};
   border: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   padding: 1.2rem;

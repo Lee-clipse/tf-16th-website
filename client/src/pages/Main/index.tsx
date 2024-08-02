@@ -6,6 +6,7 @@ import {
   BottomFloatButton,
   CountDownSection,
   MainSection,
+  Partickle,
   Section1,
   Section2,
   Section3,
@@ -63,7 +64,7 @@ const MainPage = () => {
           <WideButton
             text="청건부산 참가하기 ✨"
             backgroundColor={theme.color.PURPLE}
-            textColor={theme.color.TEXT_WHITE}
+            textColor={theme.color.WHITE}
           />
         </div>
       );
@@ -75,7 +76,7 @@ const MainPage = () => {
           <WideButton
             text="관리 페이지로 가기 🔧"
             backgroundColor={theme.color.PURPLE}
-            textColor={theme.color.TEXT_WHITE}
+            textColor={theme.color.WHITE}
           />
         </div>
       );
@@ -86,13 +87,25 @@ const MainPage = () => {
         <div className="h-center v-center" onClick={() => guardAlert()}>
           <WideButton
             text="제로게임하러 가기 🎲"
-            backgroundColor={theme.color.LIGHT_BLUE}
-            textColor={theme.color.TEXT_WHITE}
+            backgroundColor={theme.color.TEAL_BLUE}
+            textColor={theme.color.WHITE}
           />
         </div>
       );
     }
   };
+
+  const patickles = [
+    { className: "t-01", color: theme.color.DEEP_BLUE, size: "3rem", duration: 1.5, delay: 0.2 },
+    { className: "t-02", color: theme.color.DEEP_BLUE, size: "2rem", duration: 2.2, delay: 0.4 },
+    { className: "t-03", color: theme.color.DEEP_BLUE, size: "2rem", duration: 1.4, delay: 0.6 },
+    { className: "t-04", color: theme.color.DEEP_BLUE, size: "3rem", duration: 2, delay: 0.1 },
+    { className: "t-05", color: theme.color.MINT, size: "2rem", duration: 2.1, delay: 0.3 },
+    { className: "t-06", color: theme.color.PURPLE, size: "3rem", duration: 1.2, delay: 0.5 },
+    { className: "t-07", color: theme.color.ORANGE, size: "3rem", duration: 2, delay: 0.7 },
+    { className: "t-08", color: theme.color.MINT, size: "2rem", duration: 1.2, delay: 0.2 },
+    { className: "t-09", color: theme.color.ORANGE, size: "2rem", duration: 2.4, delay: 0.4 },
+  ];
 
   return (
     <>
@@ -102,25 +115,30 @@ const MainPage = () => {
       <Wrapper className="f-col">
         {/* 메인 섹션 */}
         <MainSection>
-          <div className="header">
-            <p className="h-center">16th</p>
-            <p className="h-center">TOGETHER FESTIVAL</p>
+          <div id="main-title" className="h-center">
+            청건부산
           </div>
 
-          <div className="logo">
-            <div className="h-center">
-              <img src={MainLogo} />
-            </div>
-            <p className="h-center logo-text">청건부산</p>
-            <p className="h-center">청년이 건강해야 부산이 산다.</p>
-          </div>
-
-          <div className="info f-col">
-            <p className="h-center">2024. 09. 07(토) 오후 5시 - 7시 30분</p>
+          <div id="main-info" className=" f-col">
+            <p className="h-center">9월 7일 17시 - 19시 30분</p>
             <p className="h-center">부산시민공원 하야리아 잔디광장</p>
+          </div>
+
+          <div>
+            {patickles.map((partickle, index) => (
+              <Partickle
+                key={index}
+                className={partickle.className}
+                color={partickle.color}
+                size={partickle.size}
+                duration={Number(partickle.duration)}
+                delay={partickle.delay}
+              />
+            ))}
           </div>
         </MainSection>
 
+        {/* 카운트다운 */}
         <CountDownSection>
           <FlipClockCountdown className="flip-clock" to={1725667200000} />
         </CountDownSection>
@@ -204,8 +222,8 @@ const MainPage = () => {
           <div className="button" onClick={() => guardAlert()}>
             <Button
               text="청건부산 자세히 보기"
-              backgroundColor={theme.color.MAIN_BLUE}
-              textColor={theme.color.TEXT_WHITE}
+              backgroundColor={theme.color.DEEP_BLUE}
+              textColor={theme.color.WHITE}
             ></Button>
           </div>
         </Section2>
@@ -329,8 +347,8 @@ const MainPage = () => {
           <div className="button" onClick={() => guardAlert()}>
             <Button
               text="청년 커뮤니티 자세히 보기"
-              backgroundColor={theme.color.MAIN_BLUE}
-              textColor={theme.color.TEXT_WHITE}
+              backgroundColor={theme.color.DEEP_BLUE}
+              textColor={theme.color.WHITE}
             />
           </div>
         </Section5>

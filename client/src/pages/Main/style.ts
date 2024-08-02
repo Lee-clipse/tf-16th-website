@@ -1,43 +1,90 @@
-import styled from "styled-components";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
+import { PiStarFourFill } from "react-icons/pi";
 
 export const Wrapper = styled.div`
   justify-content: center;
 `;
 
 export const MainSection = styled.div`
-  color: ${theme.color.MAIN_BLUE};
-  margin: 7rem 0 10rem 0;
-  padding: 0 2rem;
+  background-color: ${theme.color.MILKY_BLUE};
+  margin: 0 0 10rem 0;
+  height: 100vh;
+  padding-top: 40vh;
+  position: relative;
 
-  .header {
-    font-family: ${theme.font.FUT[3]};
-    font-size: ${theme.font.SIZE.L};
+  #main-title {
+    font-family: ${theme.font.HAK[5]};
+    color: ${theme.color.DEEP_BLUE};
+    font-size: 5.2rem;
   }
 
-  .logo {
-    font-family: ${theme.font.NOTO[4]};
-    font-size: ${theme.font.SIZE.M};
-    margin-top: 5rem;
-
-    img {
-      width: 40%;
-    }
-
-    .logo-text {
-      font-family: ${theme.font.HAK[5]};
-      font-size: ${theme.font.SIZE.XXXL};
-      margin: 2.4rem 0 0.6rem 0;
-    }
+  #main-info {
+    font-size: ${theme.font.SIZE.XL};
+    font-family: ${theme.font.NOTO[6]};
+    margin-top: 2rem;
+    gap: 1rem;
   }
 
-  .info {
-    font-family: ${theme.font.NOTO[8]};
-    font-size: ${theme.font.SIZE.M};
-    color: ${theme.color.TEXT_BLACK};
-    margin-top: 3.6rem;
-    gap: 0.8rem;
+  .tickle {
+    position: absolute;
   }
+
+  .t-01 {
+    top: 20%;
+    left: 10%;
+  }
+  .t-02 {
+    top: 12%;
+    left: 80%;
+  }
+  .t-03 {
+    top: 80%;
+    left: 50%;
+  }
+  .t-04 {
+    top: 70%;
+    left: 80%;
+  }
+  .t-05 {
+    top: 66%;
+    left: 74%;
+  }
+  .t-06 {
+    top: 70%;
+    left: 20%;
+  }
+  .t-07 {
+    top: 29%;
+    left: 80%;
+  }
+  .t-08 {
+    top: 25%;
+    left: 18%;
+  }
+  .t-09 {
+    top: 90%;
+    left: 18%;
+  }
+`;
+
+const twinkle = keyframes`
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+`;
+
+export const Partickle = styled(PiStarFourFill)<{
+  size: string;
+  duration: number;
+  delay: number;
+}>`
+  position: absolute;
+  animation: ${twinkle} ${({ duration }) => duration}s ${({ delay }) => delay}s infinite;
 `;
 
 export const CountDownSection = styled.div`
@@ -53,7 +100,7 @@ export const CountDownSection = styled.div`
     --fcc-digit-block-height: 5rem; /* digit card's height */
     --fcc-digit-font-size: 40px; /* font size of digit */
     --fcc-digit-color: white; /* color of digit */
-    --fcc-background: ${theme.color.MAIN_BLUE}; /* digit card's background */
+    --fcc-background: ${theme.color.DEEP_BLUE}; /* digit card's background */
     --fcc-label-color: #black; /* time label's color */
     --fcc-divider-color: #ffffff66; /* divider's color */
   }
@@ -61,9 +108,9 @@ export const CountDownSection = styled.div`
 
 // 문제 인식
 export const Section1 = styled.div`
-  background-color: ${theme.color.MAIN_BLUE};
+  background-color: ${theme.color.DEEP_BLUE};
   padding: 8rem 1.4rem 6rem 1.4rem;
-  color: ${theme.color.TEXT_WHITE};
+  color: ${theme.color.WHITE};
   position: relative;
 
   .block {
@@ -121,14 +168,14 @@ export const Section2 = styled.div`
   }
 
   .sub-title {
-    color: ${theme.color.LIGHT_BLUE};
+    color: ${theme.color.TEAL_BLUE};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.ML};
     margin-bottom: 1rem;
   }
 
   .title {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
     margin-bottom: 3.6rem;
@@ -137,14 +184,14 @@ export const Section2 = styled.div`
 
   .section {
     text-align: left;
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[5]};
     font-size: ${theme.font.SIZE.M};
     line-height: 2.4rem;
     gap: 1.6rem;
 
     .dot {
-      color: ${theme.color.LIGHT_BLUE};
+      color: ${theme.color.TEAL_BLUE};
       padding-top: 0.3rem;
     }
   }
@@ -152,13 +199,13 @@ export const Section2 = styled.div`
 
 // 콘텐츠
 export const Section3 = styled.div`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.L};
   padding: 6rem 0;
 
   .sub-title {
-    color: ${theme.color.LIGHT_BLUE};
+    color: ${theme.color.TEAL_BLUE};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.ML};
     margin-bottom: 1rem;
@@ -166,7 +213,7 @@ export const Section3 = styled.div`
   }
 
   .title {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
     margin-bottom: 6rem;
@@ -177,7 +224,7 @@ export const Section3 = styled.div`
   .box-title {
     margin: 0 0 0.6rem 2rem;
     text-align: left;
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.L};
   }
@@ -185,7 +232,7 @@ export const Section3 = styled.div`
   .box-sub-title {
     margin: 0 0 0.6rem 2rem;
     text-align: left;
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.M};
   }
@@ -199,7 +246,7 @@ export const Section3 = styled.div`
   }
 
   #box-1 {
-    color: ${theme.color.TEXT_WHITE};
+    color: ${theme.color.WHITE};
     font-size: ${theme.font.SIZE.L};
 
     .title {
@@ -229,7 +276,7 @@ export const Section3 = styled.div`
 
   #box-2 {
     overflow: hidden;
-    color: ${theme.color.TEXT_WHITE};
+    color: ${theme.color.WHITE};
 
     .title {
       position: absolute;
@@ -247,7 +294,7 @@ export const Section3 = styled.div`
 
   #box-3 {
     overflow: hidden;
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     z-index: 100;
 
     .title {
@@ -267,13 +314,13 @@ export const Section3 = styled.div`
 
 // 카운팅
 export const Section4 = styled.div`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.XXL};
   padding: 8rem 0 10rem 0;
 
   .sub-title {
-    color: ${theme.color.LIGHT_BLUE};
+    color: ${theme.color.TEAL_BLUE};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.ML};
     margin-bottom: 1rem;
@@ -281,7 +328,7 @@ export const Section4 = styled.div`
   }
 
   .title {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
     margin-bottom: 4rem;
@@ -290,9 +337,9 @@ export const Section4 = styled.div`
   }
 
   .section4-box {
-    background-color: ${theme.color.MAIN_BLUE};
+    background-color: ${theme.color.DEEP_BLUE};
     padding: 5rem 2rem 0 3rem;
-    color: ${theme.color.TEXT_WHITE};
+    color: ${theme.color.WHITE};
   }
 
   .number-title {
@@ -316,13 +363,13 @@ export const Section4 = styled.div`
 
 // 청년 커뮤니티
 export const Section5 = styled.div`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.XL};
   padding: 2rem 2rem;
 
   .sub-title {
-    color: ${theme.color.LIGHT_BLUE};
+    color: ${theme.color.TEAL_BLUE};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.ML};
     margin-bottom: 1rem;
@@ -330,7 +377,7 @@ export const Section5 = styled.div`
   }
 
   .title {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
     margin-bottom: 6rem;
@@ -347,7 +394,7 @@ export const Section5 = styled.div`
   }
 
   .hashtag {
-    color: ${theme.color.LIGHT_BLUE};
+    color: ${theme.color.TEAL_BLUE};
     font-family: ${theme.font.NOTO[8]};
     font-size: ${theme.font.SIZE.SM};
     margin-bottom: 0.8rem;
@@ -355,7 +402,7 @@ export const Section5 = styled.div`
   }
 
   .text {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[4]};
     font-size: ${theme.font.SIZE.M};
     line-height: 1.5;
@@ -368,14 +415,14 @@ export const Section5 = styled.div`
 
 // Youtube 임베드
 export const Section6 = styled.div`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.L};
   padding: 2rem 2rem;
   margin: 8rem 0 8rem 0;
 
   .sub-title {
-    color: ${theme.color.LIGHT_BLUE};
+    color: ${theme.color.TEAL_BLUE};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.ML};
     margin-bottom: 1rem;
@@ -383,7 +430,7 @@ export const Section6 = styled.div`
   }
 
   .title {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
     margin-bottom: 4rem;
@@ -401,12 +448,12 @@ export const BottomFloatButton = styled.div`
 `;
 
 export const BannerSection = styled.div`
-  background-color: ${theme.color.MAIN_BLUE};
+  background-color: ${theme.color.DEEP_BLUE};
   padding: 4rem 0 12rem 0;
   text-align: center;
 
   .title {
-    color: ${theme.color.GRAY_BLUE};
+    color: ${theme.color.WHITE};
     font-family: ${theme.font.NOTO[3]};
     font-size: ${theme.font.SIZE.S};
     gap: 0.4rem;

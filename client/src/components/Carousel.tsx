@@ -95,7 +95,7 @@ const ArrowButton = styled.button<{ direction: string }>`
   top: 50%;
   transform: translateY(-50%);
   ${(props) => (props.direction === "left" ? "left: 6px;" : "right: 6px;")}
-  color: ${theme.color.TEXT_WHITE};
+  color: ${theme.color.WHITE};
   font-weight: bold;
   font-size: 4rem;
   border: none;
@@ -114,7 +114,7 @@ const IndicatorContainer = styled.div`
 const Dot = styled.div<{ isActive: boolean }>`
   width: 12px;
   height: 12px;
-  background-color: ${(props) => (props.isActive ? theme.color.TEXT_BLACK : theme.color.GRAY)};
+  background-color: ${(props) => (props.isActive ? theme.color.BLACK : theme.color.GRAY)};
   border-radius: 50%;
 `;
 

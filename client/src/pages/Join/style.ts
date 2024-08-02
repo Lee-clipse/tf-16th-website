@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const InputSection = styled.div`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.ML};
   padding: 0 3rem;
@@ -24,7 +24,7 @@ export const InputSection = styled.div`
   }
 
   #staff-button {
-    color: ${theme.color.MAIN_BLUE};
+    color: ${theme.color.DEEP_BLUE};
     font-size: ${theme.font.SIZE.SM};
     text-decoration: underline;
     text-align: center;

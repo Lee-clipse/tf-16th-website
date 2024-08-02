@@ -78,7 +78,7 @@ const MyPage = () => {
               <Button
                 text="스탭으로 지원하기 ✨"
                 backgroundColor={theme.color.PURPLE}
-                textColor={theme.color.TEXT_WHITE}
+                textColor={theme.color.WHITE}
               />
             </div>
 

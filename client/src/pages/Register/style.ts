@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const InputSection = styled.div`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.ML};
   padding: 9rem 3rem;

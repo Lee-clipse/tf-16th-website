@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   padding: 10rem 2rem 12rem 2rem;
 
   #title-box {
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[8]};
     font-size: ${theme.font.SIZE.XL};
     display: flex;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     gap: 1rem;
 
     .highlight {
-      color: ${theme.color.LIGHT_BLUE};
+      color: ${theme.color.TEAL_BLUE};
       margin: 0 0.4rem 0 0.6rem;
     }
 
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
 
   #content-box {
     margin-top: 4rem;
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[4]};
 
     #content-title {

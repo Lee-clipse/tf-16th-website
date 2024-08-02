@@ -1,24 +1,19 @@
 const color = {
-  MAIN_BLUE: "#0e5cb3",
-  GRAY_BLUE: "#A0B7D7",
-  GREEN_BLUE: "#50B0C8",
-  LIGHT_BLUE: "#0088d1",
-  MAIN_ORAGNE: "#ED7A4D",
-  TEXT_BLACK: "#424656",
-  // TEXT_LIGHT_BLACK: "#656C77",
-  TEXT_WHITE: "#FFFFFF",
-  // SOFT_BLUE: "#DCECFF",
-  // BACKGROUND_BLUE: "#E4EFFF",
-  BACKGROUND: "#FFFFFF",
-  PURPLE: "#8245bf",
+  DEEP_BLUE: "#18448A",
+  MILKY_BLUE: "#E2F3F8", // 배경
+  SKY_BLUE: "#00A2DF", // 하이라이팅
+  TEAL_BLUE: "#05B8DF", // 하이라이팅
+
+  BLACK: "#101113",
+  WHITE: "#FFFFFF",
+
+  PURPLE: "#8245BF", // 파티클
+  ORANGE: "#DF542F", // 파티클
+  MINT: "#18FF9D", // 파티클, 하이라이팅
+
   GRAY: "#a7aabd",
-  // SOFT_PURPLE: "#F3E8FF",
-  // PINK: "#E026C2",
-  // RED: "#E22525",
-  // GREEN: "#16BA13",
-  // DEEP_BLUE: "#1641B8",
-  // ORANGE: "#ED4600",
-  // YELLOW: "#FFF647",
+  MID_GRAY: "#434655",
+  LIGHT_GRAY: "#A8AABC",
 };
 
 const font = {

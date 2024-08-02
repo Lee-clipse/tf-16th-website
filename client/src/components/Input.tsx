@@ -3,7 +3,7 @@ import theme from "../styles/theme";
 import DownArrow from "../assets/images/down-arrow.png";
 
 export const Input = styled.input`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.M};
   padding: 0.8rem 0.8rem;
@@ -14,7 +14,7 @@ export const Input = styled.input`
 `;
 
 export const Select = styled.select`
-  color: ${theme.color.TEXT_BLACK};
+  color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.M};
   padding: 0.8rem 0.8rem 0.8rem 0.8rem;
@@ -26,7 +26,7 @@ export const Select = styled.select`
   background: url(${DownArrow}) no-repeat center right 12px;
 
   // option {
-  //   color: ${theme.color.TEXT_BLACK};
+  //   color: ${theme.color.BLACK};
   //   background: ${theme.color.PURPLE};
   //   font-family: ${theme.font.NOTO[6]};
   //   font-size: ${theme.font.SIZE.ML};

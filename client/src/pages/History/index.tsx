@@ -17,9 +17,9 @@ const HistoryPage = () => {
       <HeaderMenu />
 
       <Wrapper>
-        <div id="title">TF, 16년간의 여정</div>
+        <div id="photo-section">
+          <div className="title">TF, 16년간의 여정</div>
 
-        <div id="section">
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`fade-box ${isVisible ? "visible" : ""}`}>
@@ -123,6 +123,11 @@ const HistoryPage = () => {
               </div>
             )}
           </VisibilitySensor>
+        </div>
+
+        <div id="comment-section">
+          <div className="title">TF, 16년간의 여정</div>
+          <div></div>
         </div>
       </Wrapper>
     </>

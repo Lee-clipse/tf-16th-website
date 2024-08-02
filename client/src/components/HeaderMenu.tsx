@@ -165,7 +165,7 @@ const HeadWrapper = styled.div`
   #title {
     font-family: ${theme.font.HAK[5]};
     font-size: ${theme.font.SIZE.XL};
-    color: ${theme.color.TEXT_BLACK};
+    color: ${theme.color.BLACK};
     padding-top: 0.4rem;
   }
 `;

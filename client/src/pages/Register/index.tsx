@@ -173,7 +173,7 @@ const RegisterPage = () => {
             <Button
               text="등록하기"
               backgroundColor={theme.color.PURPLE}
-              textColor={theme.color.TEXT_WHITE}
+              textColor={theme.color.WHITE}
             />
           </div>
         </div>
