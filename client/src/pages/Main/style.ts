@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 
 export const MainSection = styled.div`
   background-color: ${theme.color.MILKY_BLUE};
-  margin: 0 0 10rem 0;
   height: 100vh;
   padding-top: 40vh;
   position: relative;
@@ -87,20 +86,46 @@ export const Partickle = styled(PiStarFourFill)<{
   animation: ${twinkle} ${({ duration }) => duration}s ${({ delay }) => delay}s infinite;
 `;
 
+export const Section0 = styled.div`
+  position: relative;
+  background-color: ${theme.color.WHITE};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .sub-title {
+    color: ${theme.color.TEAL_BLUE};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.ML};
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    color: ${theme.color.BLACK};
+    font-family: ${theme.font.NOTO[7]};
+    font-size: ${theme.font.SIZE.XL};
+    margin-bottom: 3.6rem;
+    gap: 0.6rem;
+  }
+`;
+
 export const CountDownSection = styled.div`
-  width: 100%;
-  padding: 0 0 10rem 0;
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 0%;
+  width: 90vw;
+  border-radius: 1.4rem;
+  background-color: ${theme.color.SKY_BLUE};
 
   .flip-clock {
     font-family: ${theme.font.FUT[5]};
     --fcc-flip-duration: 0.5s; /* transition duration when flip card */
-    --fcc-digit-block-width: 2.6rem; /* digit card's width */
-    --fcc-digit-block-height: 5rem; /* digit card's height */
+    --fcc-digit-block-width: 2.4rem; /* digit card's width */
+    --fcc-digit-block-height: 4.2rem; /* digit card's height */
     --fcc-digit-font-size: 40px; /* font size of digit */
     --fcc-digit-color: white; /* color of digit */
-    --fcc-background: ${theme.color.DEEP_BLUE}; /* digit card's background */
+    --fcc-background: ${theme.color.BLACK}; /* digit card's background */
     --fcc-label-color: #black; /* time label's color */
     --fcc-divider-color: #ffffff66; /* divider's color */
   }

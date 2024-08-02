@@ -7,6 +7,7 @@ import {
   CountDownSection,
   MainSection,
   Partickle,
+  Section0,
   Section1,
   Section2,
   Section3,
@@ -138,10 +139,18 @@ const MainPage = () => {
           </div>
         </MainSection>
 
-        {/* 카운트다운 */}
-        <CountDownSection>
-          <FlipClockCountdown className="flip-clock" to={1725667200000} />
-        </CountDownSection>
+        <Section0>
+          {/* 카운트다운 */}
+          <CountDownSection>
+            <FlipClockCountdown className="flip-clock" to={1725667200000} />
+          </CountDownSection>
+
+          <div className="sub-title">올해로 벌써 16년째!</div>
+          <div className="title f-col">
+            <div>부산 청년들이 만드는 축제로</div>
+            <div>당신을 초대합니다.</div>
+          </div>
+        </Section0>
 
         {/* 청건부산 빌드업 */}
         <Section1>
