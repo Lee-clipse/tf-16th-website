@@ -38,7 +38,7 @@ import {
   청건부산_유튜브_링크,
   청건부산_인스타_링크,
 } from "../../common/const";
-import ScrollTop from "../../components/ScrollTop";
+import ScrollTopButton from "../../components/ScrollTopButton";
 import { GoDotFill } from "react-icons/go";
 import { CarouselComponent } from "../../components/Carousel";
 import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
@@ -393,7 +393,7 @@ const MainPage = () => {
         <BottomFloatButton>{setFloatButtonComponent()}</BottomFloatButton>
 
         {/* 최상단 이동 버튼 */}
-        <ScrollTop />
+        <ScrollTopButton />
       </Wrapper>
     </>
   );

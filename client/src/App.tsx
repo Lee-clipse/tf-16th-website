@@ -9,12 +9,14 @@ import MyPage from "./pages/MyPage";
 import InfoPage from "./pages/Info";
 import CommunityPage from "./pages/Community";
 import HistoryPage from "./pages/History";
+import ScrollTop from "./components/ScrollTop";
 
 const MainPage = lazy(() => import("./pages/Main/index"));
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollTop />
       <Suspense fallback={<div></div>}>
         <Routes>
           {/* 테스트 페이지 */}

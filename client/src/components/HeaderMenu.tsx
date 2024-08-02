@@ -114,7 +114,6 @@ const HeaderMenu = () => {
               to={ROUTE_PATH.HISTORY}
               onClick={() => {
                 closeMenu();
-                guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.HISTORY ? "active" : ""
