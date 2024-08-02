@@ -139,17 +139,36 @@ const MainPage = () => {
           </div>
         </MainSection>
 
-        <Section0>
-          {/* 카운트다운 */}
-          <CountDownSection>
-            <FlipClockCountdown className="flip-clock" to={1725667200000} />
-          </CountDownSection>
+        <Section0 className="f-col h-center">
+          <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <>
+                {/* 카운트다운 */}
+                <CountDownSection className={`block ${isVisible ? "count-visible" : ""}`}>
+                  <FlipClockCountdown className="flip-clock" to={1725667200000} />
+                </CountDownSection>
+              </>
+            )}
+          </VisibilitySensor>
 
-          <div className="sub-title">올해로 벌써 16년째!</div>
-          <div className="title f-col">
-            <div>부산 청년들이 만드는 축제로</div>
-            <div>당신을 초대합니다.</div>
-          </div>
+          <VisibilitySensor partialVisibility offset={{ bottom: 250 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block text-block ${isVisible ? "visible" : ""}`}>
+                <div className="sub-title">올해로 벌써 16년째!</div>
+              </div>
+            )}
+          </VisibilitySensor>
+
+          <VisibilitySensor partialVisibility offset={{ bottom: 400 }}>
+            {({ isVisible }: { isVisible: boolean }) => (
+              <div className={`block text-block ${isVisible ? "visible" : ""}`}>
+                <div className="title f-col">
+                  <div>부산 청년들이 만드는 축제로</div>
+                  <div>당신을 초대합니다.</div>
+                </div>
+              </div>
+            )}
+          </VisibilitySensor>
         </Section0>
 
         {/* 청건부산 빌드업 */}
