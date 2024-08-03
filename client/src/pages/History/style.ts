@@ -91,8 +91,38 @@ export const Wrapper = styled.div`
     background-color: ${theme.color.MILKY_BLUE};
     padding: 8rem 0;
     margin-top: 6rem;
+
     .title {
       color: ${theme.color.DEEP_BLUE};
+    }
+
+    .c-box {
+      background-color: ${theme.color.WHITE};
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 90vw;
+      margin-bottom: 2rem;
+
+      font-family: ${theme.font.NOTO[5]};
+      color: ${theme.color.BLACK};
+      font-size: ${theme.font.SIZE.SM};
+
+      .c-header {
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .c-name {
+        font-size: ${theme.font.SIZE.ML};
+        font-family: ${theme.font.NOTO[6]};
+      }
+
+      .c-date {
+      }
+
+      .c-text {
+        line-height: 1.8rem;
+      }
     }
   }
 `;

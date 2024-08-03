@@ -3,8 +3,6 @@
 import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
 import {
-  BannerSection,
-  BottomFloatButton,
   CountDownSection,
   MainSection,
   Partickle,
@@ -17,9 +15,7 @@ import {
   Section6,
   Wrapper,
 } from "./style";
-import InstaLogo from "../../assets/images/insta_logo.webp";
-import YoutubeLogo from "../../assets/images/youtube_logo.webp";
-import BlogLogo from "../../assets/images/blog_logo.webp";
+
 import ContentPoster1BG from "../../assets/images/content_poster1_bg.png";
 import ContentPoster1 from "../../assets/images/content_poster1.png";
 import ContentPoster2 from "../../assets/images/content_poster2.webp";
@@ -34,68 +30,15 @@ import CountUp from "react-countup";
 import { useEffect, useState } from "react";
 import { guardAlert, isStepByToken, verifyByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
-import {
-  ROUTE_PATH,
-  청건부산_블로그_링크,
-  청건부산_유튜브_링크,
-  청건부산_인스타_링크,
-} from "../../common/const";
-import ScrollTopButton from "../../components/ScrollTopButton";
+import { ROUTE_PATH } from "../../common/const";
 import { GoDotFill } from "react-icons/go";
 import { CarouselComponent } from "../../components/Carousel";
 import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
+import FloatBottomButton from "../../components/FloatBottomButton";
+import Banner from "../../components/Banner";
 
 const MainPage = () => {
-  const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState<boolean>(false);
-
-  useEffect(() => {
-    const isTokenAlive = verifyByToken();
-    setIsLogin(isTokenAlive);
-  }, []);
-
-  const setFloatButtonComponent = () => {
-    const isStep = isStepByToken();
-
-    // 미로그인이라면 ->  참가 버튼
-    if (!isLogin) {
-      return (
-        <div className="h-center v-center" onClick={() => navigate(ROUTE_PATH.JOIN)}>
-          <WideButton
-            text="청건부산 참가하기 ✨"
-            backgroundColor={theme.color.PURPLE}
-            textColor={theme.color.WHITE}
-          />
-        </div>
-      );
-    }
-    // 스탭이라면 -> 관리 버튼
-    if (isStep) {
-      return (
-        <div className="h-center v-center" onClick={() => guardAlert()}>
-          <WideButton
-            text="관리 페이지로 가기 🔧"
-            backgroundColor={theme.color.PURPLE}
-            textColor={theme.color.WHITE}
-          />
-        </div>
-      );
-    }
-    // 스탭은 아니지만 로그인 유저라면 -> 제로게임 버튼
-    else {
-      return (
-        <div className="h-center v-center" onClick={() => guardAlert()}>
-          <WideButton
-            text="제로게임하러 가기 🎲"
-            backgroundColor={theme.color.TEAL_BLUE}
-            textColor={theme.color.WHITE}
-          />
-        </div>
-      );
-    }
-  };
-
   const patickles = [
     { className: "t-01", color: theme.color.DEEP_BLUE, size: "3rem", duration: 1.5, delay: 0.2 },
     { className: "t-02", color: theme.color.DEEP_BLUE, size: "2rem", duration: 2.2, delay: 0.4 },
@@ -430,40 +373,10 @@ const MainPage = () => {
           />
         </Section6>
 
-        {/* 배너 섹션 */}
-        <BannerSection>
-          <div className="title f-col">
-            <p className="logo">청건부산</p>
-            <p>청년이 건강해야 부산이 산다.</p>
-          </div>
+        <Banner />
 
-          <div className="icons f-row h-center">
-            <img
-              id="insta-icon"
-              className="icon"
-              src={InstaLogo}
-              onClick={() => window.open(청건부산_인스타_링크, "_blank", "noopener, noreferrer")}
-            />
-            <img
-              id="youtube-icon"
-              className="icon"
-              src={YoutubeLogo}
-              onClick={() => window.open(청건부산_유튜브_링크, "_blank", "noopener, noreferrer")}
-            />
-            <img
-              id="blog-icon"
-              className="icon"
-              src={BlogLogo}
-              onClick={() => window.open(청건부산_블로그_링크, "_blank", "noopener, noreferrer")}
-            />
-          </div>
-        </BannerSection>
-
-        {/* 스탭 지원 버튼 */}
-        <BottomFloatButton>{setFloatButtonComponent()}</BottomFloatButton>
-
-        {/* 최상단 이동 버튼 */}
-        <ScrollTopButton />
+        {/* 최하단 버튼 */}
+        <FloatBottomButton />
       </Wrapper>
     </>
   );

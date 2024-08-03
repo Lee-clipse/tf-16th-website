@@ -9,8 +9,35 @@ import History6 from "../../assets/images/history_06.webp";
 import History7 from "../../assets/images/history_07.webp";
 import History8 from "../../assets/images/history_08.webp";
 import VisibilitySensor from "react-visibility-sensor";
+import FloatBottomButton from "../../components/FloatBottomButton";
+import Banner from "../../components/Banner";
 
 const HistoryPage = () => {
+  const comments = [
+    {
+      name: "한**",
+      date: "5회 TF",
+      text: "여기서 끝나는 것이 아니라 6회 7회....  TF가 기대가 됩니다.",
+    },
+    { name: "김**", date: "6회 TF", text: "TF는 감동입니다." },
+    { name: "정**", date: "7회 TF", text: "TF는 나의 한계를 볼 수 있는 기회이며 도전입니다." },
+    {
+      name: "황**",
+      date: "10회 TF",
+      text: "한 번 더 해보고 싶습니다. 다음엔 좀 더 잘! 불가능으로 보인 TF의 꿈을 이루는 도구가 우리라는 사실이 참 기쁩니다.",
+    },
+    {
+      name: "이**",
+      date: "15회 TF",
+      text: "TF를 통해서 내 삶의 과정에 무엇 하나 무의미한 일이 없음을 느꼈습니다.",
+    },
+    {
+      name: "김**",
+      date: "15회 TF",
+      text: "TF 끝에 발견했던 것은 공동체가 없었다면 결코 할 수 없었던, 나와 함께 해 준 공동체에 대한 감사함이었습니다.",
+    },
+  ];
+
   return (
     <>
       {/* 헤더 메뉴 */}
@@ -125,10 +152,23 @@ const HistoryPage = () => {
           </VisibilitySensor>
         </div>
 
-        <div id="comment-section">
-          <div className="title">TF, 16년간의 여정</div>
-          <div></div>
+        <div id="comment-section" className="f-col v-center">
+          <div className="title">TF, 청년들의 한 마디</div>
+          {comments.map((comment) => (
+            <div className="c-box">
+              <div className="c-header f-row">
+                <div className="c-name">{comment.name}</div>
+                <div className="c-date">{comment.date}</div>
+              </div>
+              <div className="c-text">{comment.text} </div>
+            </div>
+          ))}
         </div>
+
+        <Banner />
+
+        {/* 최상단 이동 버튼 */}
+        <FloatBottomButton />
       </Wrapper>
     </>
   );
