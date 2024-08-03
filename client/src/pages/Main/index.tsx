@@ -140,6 +140,30 @@ const MainPage = () => {
     },
   ];
 
+  const communityCards = [
+    {
+      image: ContentPoster1BG,
+      title: "토크콘서트",
+      comment: "부산 청년들이 실생활에 당면한 문제에 대한 전문가의 강연을 통해 소통합니다.",
+    },
+    {
+      image: ContentPoster1BG,
+      title: "싱스틸러",
+      comment: "문화예술활동을 경험할 수 있는 장을 마련하여 무대 및 기회를 제공합니다.",
+    },
+    {
+      image: ContentPoster1BG,
+      title: "청정수",
+      comment:
+        "'나에게 유익한 정책을 넘어 우리 모두에게 유익한 정책'이라는 슬로건으로 청년들과 생각들을 나눕니다.",
+    },
+    {
+      image: ContentPoster1BG,
+      title: "다문화",
+      comment: "부산에 거주하는 다국적 청년들과 함께 마음을 이어가는 행사입니다.",
+    },
+  ];
+
   return (
     <>
       {/* 헤더 메뉴 */}
@@ -360,44 +384,23 @@ const MainPage = () => {
             <div>청건부산만의 커뮤니티</div>
           </div>
 
-          <div className="box">
-            <div className="label">토크콘서트</div>
-            <div className="hashtag">#티키타카 #전문가랑소통 #실생활</div>
-            <div className="text">
-              부산 청년들이 실생활에 당면한 문제에 대한 전문가의 강연을 통해 소통합니다.
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="label">싱스틸러</div>
-            <div className="hashtag">#나도밴드 #잼 #합주 #뮤직이스마이라이프</div>
-            <div className="text">
-              문화예술활동을 경험할 수 있는 장을 마련하여 무대 및 기회를 제공합니다.
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="label">청정수</div>
-            <div className="hashtag">#청년들과 #정책 #수다</div>
-            <div className="text">
-              '나에게 유익한 정책을 넘어 우리 모두에게 유익한 정책'이라는 슬로건을 내걸고 청년들과
-              생각들을 나눕니다.
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="label">다문화</div>
-            <div className="hashtag">#포트럭 #유학생친구 #부산투어</div>
-            <div className="text">
-              부산에 거주하는 다국적 청년들과 함께 마음을 이어가는 행사입니다.
-            </div>
+          <div className="f-col v-center">
+            {communityCards.map((card, index) => (
+              <CardComponent
+                key={index}
+                image={card.image}
+                title={card.title}
+                comment={card.comment}
+              />
+            ))}
           </div>
 
           <div className="button" onClick={() => guardAlert()}>
             <Button
               text="청년 커뮤니티 자세히 보기"
-              backgroundColor={theme.color.DEEP_BLUE}
-              textColor={theme.color.WHITE}
+              backgroundColor={theme.color.WHITE}
+              textColor={theme.color.BLACK}
+              custom={`border: 1px solid ${theme.color.GRAY}`}
             />
           </div>
         </Section5>

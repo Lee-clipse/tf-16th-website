@@ -1,3 +1,4 @@
+import { isMobile } from "is-mobile";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
@@ -5,6 +6,46 @@ import { PiStarFourFill } from "react-icons/pi";
 
 export const Wrapper = styled.div`
   justify-content: center;
+
+  .card {
+    border-radius: 1rem;
+    width: 90vw;
+    height: 30vh;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.16);
+    max-width: ${() => (isMobile() ? "90vw" : "360px")};
+    max-height: ${() => (isMobile() ? "30vh" : "250px")};
+    position: relative;
+
+    .card-body {
+      background-color: ${theme.color.WHITE};
+      padding: 1.6rem;
+      position: absolute;
+      bottom: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .card-title {
+      color: ${theme.color.DEEP_BLUE};
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.L};
+      margin-bottom: 1rem;
+    }
+
+    .card-comment {
+      color: ${theme.color.TEAL_BLUE};
+      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.SM};
+      line-height: 1.8rem;
+    }
+  }
 `;
 
 export const MainSection = styled.div`
@@ -144,13 +185,14 @@ export const CountDownSection = styled.div`
   border-radius: 1.4rem;
   background-color: ${theme.color.SKY_BLUE};
   padding: 2.6rem 0 2rem 0;
+  max-width: ${() => (isMobile() ? "90vw" : "360px")};
 
   .flip-clock {
     font-family: ${theme.font.FUT[5]};
     --fcc-flip-duration: 0.5s; /* transition duration when flip card */
-    --fcc-digit-block-width: 2.6rem; /* digit card's width */
+    --fcc-digit-block-width: 2.4rem; /* digit card's width */
     --fcc-digit-block-height: 4.6rem; /* digit card's height */
-    --fcc-digit-font-size: 2.8rem; /* font size of digit */
+    --fcc-digit-font-size: 2.6rem; /* font size of digit */
     --fcc-digit-color: white; /* color of digit */
     --fcc-background: ${theme.color.BLACK}; /* digit card's background */
     --fcc-label-color: #black; /* time label's color */
@@ -275,41 +317,6 @@ export const Section3 = styled.div`
     gap: 0.6rem;
     text-align: center;
   }
-
-  .card {
-    border-radius: 1rem;
-    width: 90vw;
-    height: 30vh;
-    overflow: hidden;
-    margin-bottom: 4rem;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.16);
-
-    .card-body {
-      background-color: ${theme.color.WHITE};
-      padding: 1.6rem;
-    }
-
-    img {
-      width: 100%;
-      height: 54%;
-      object-fit: cover;
-      opacity: 0.8;
-    }
-
-    .card-title {
-      color: ${theme.color.DEEP_BLUE};
-      font-family: ${theme.font.NOTO[6]};
-      font-size: ${theme.font.SIZE.L};
-      margin-bottom: 1rem;
-    }
-
-    .card-comment {
-      color: ${theme.color.TEAL_BLUE};
-      font-family: ${theme.font.NOTO[4]};
-      font-size: ${theme.font.SIZE.SM};
-      line-height: 1.8rem;
-    }
-  }
 `;
 
 // 카운팅
@@ -337,9 +344,9 @@ export const Section4 = styled.div`
   }
 
   .section4-box {
-    background-color: ${theme.color.DEEP_BLUE};
+    background-color: ${theme.color.WHITE};
     padding: 5rem 2rem 0 3rem;
-    color: ${theme.color.WHITE};
+    color: ${theme.color.BLACK};
   }
 
   .number-title {
@@ -348,6 +355,7 @@ export const Section4 = styled.div`
 
   .number {
     font-family: ${theme.font.OSW[6]};
+    color: ${theme.color.DEEP_BLUE};
     font-size: 5rem;
     margin-right: 0.4rem;
   }
@@ -366,7 +374,8 @@ export const Section5 = styled.div`
   color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.XL};
-  padding: 2rem 2rem;
+  padding: 8rem 2rem 6rem 2rem;
+  background-color: ${theme.color.MILKY_BLUE};
 
   .sub-title {
     color: ${theme.color.TEAL_BLUE};
@@ -419,7 +428,7 @@ export const Section6 = styled.div`
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.L};
   padding: 2rem 2rem;
-  margin: 8rem 0 8rem 0;
+  margin: 4rem 0 6rem 0;
 
   .sub-title {
     color: ${theme.color.TEAL_BLUE};

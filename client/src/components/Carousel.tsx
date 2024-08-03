@@ -73,7 +73,7 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ imageObjectList }) 
 
 const CarouselContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 300px;
   margin: 0 auto;
   overflow: hidden;
 `;
@@ -85,9 +85,11 @@ const ImageContainer = styled.div<{ currentIndex: number }>`
 `;
 
 const CarouselImage = styled.img`
-  width: 100%;
-  height: 200px; // 이미지 크기랑 맞춰야 함
-  object-fit: cover;
+  // width: 92vw;
+  // width: 100%;
+  width: 300px;
+  // height: 200px; // 이미지 크기랑 맞춰야 함
+  // object-fit: cover;
 `;
 
 const ArrowButton = styled.button<{ direction: string }>`
