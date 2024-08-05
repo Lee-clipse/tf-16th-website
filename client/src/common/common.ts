@@ -1,5 +1,5 @@
 import Swal, { SweetAlertIcon } from "sweetalert2";
-import { STEP_SIGN, TOKEN } from "./const";
+import { STAFF_SIGN, TOKEN } from "./const";
 
 const Toast = Swal.mixin({
   toast: true,
@@ -62,12 +62,12 @@ export const getUserPkByToken = (): number => {
   return Number(pk);
 };
 
-// step이라면 true, 아니면 false
-export const isStepByToken = (): boolean => {
+// staff이라면 true, 아니면 false
+export const isStaffByToken = (): boolean => {
   const token = localStorage.getItem("token");
   if (token === null) {
     return false;
   }
-  const step: string = token.split("-")[TOKEN.STEP_NODE];
-  return step === STEP_SIGN.STEP ? true : false;
+  const staff: string = token.split("-")[TOKEN.STAFF_NODE];
+  return staff === STAFF_SIGN.STAFF ? true : false;
 };

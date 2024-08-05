@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { guardAlert, isStepByToken, verifyByToken } from "../common/common";
+import { guardAlert, isStaffByToken, verifyByToken } from "../common/common";
 import WideButton from "./WideButton";
 import { ROUTE_PATH } from "../common/const";
 import theme from "../styles/theme";
@@ -17,7 +17,7 @@ const FloatBottomButton = () => {
   }, []);
 
   const setFloatButtonComponent = () => {
-    const isStep = isStepByToken();
+    const isStaff = isStaffByToken();
 
     // 미로그인이라면 ->  참가 버튼
     if (!isLogin) {
@@ -32,7 +32,7 @@ const FloatBottomButton = () => {
       );
     }
     // 스탭이라면 -> 관리 버튼
-    if (isStep) {
+    if (isStaff) {
       return (
         <div className="h-center v-center" onClick={() => guardAlert()}>
           <WideButton

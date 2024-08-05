@@ -23,6 +23,6 @@ export type User = {
   agree: boolean;
   createdAt: string;
   recommandPerson: string;
-  step: boolean;
+  staff: boolean;
   zgJoin: boolean;
 };

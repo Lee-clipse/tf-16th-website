@@ -28,7 +28,7 @@ import VisibilitySensor from "react-visibility-sensor";
 import Button from "../../components/Button";
 import CountUp from "react-countup";
 import { useEffect, useState } from "react";
-import { guardAlert, isStepByToken, verifyByToken } from "../../common/common";
+import { guardAlert, isStaffByToken, verifyByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../../common/const";
 import { GoDotFill } from "react-icons/go";

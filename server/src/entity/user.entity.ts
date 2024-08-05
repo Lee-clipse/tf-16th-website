@@ -26,8 +26,8 @@ export class UserEntity {
   @Column({ type: 'varchar', name: 'recommand_person' })
   recommandPerson: string;
 
-  @Column({ type: 'boolean', name: 'step', default: false })
-  step: boolean;
+  @Column({ type: 'boolean', name: 'staff', default: false })
+  staff: boolean;
 
   @Column({ type: 'boolean', name: 'zg_join', default: false })
   zgJoin: boolean;

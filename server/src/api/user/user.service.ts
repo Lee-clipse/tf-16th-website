@@ -74,7 +74,7 @@ export class UserService {
     const pk_node = userData.pk.toString();
 
     // 스탭이라면 tf
-    const step_node = userData.step ? 'tf' : 'al';
+    const staff_node = userData.staff ? 'tf' : 'al';
 
     // 현 시점 + 60일 만료
     const expire_node = (
@@ -82,7 +82,7 @@ export class UserService {
       60 * 24 * 60 * 60 * 1000
     ).toString();
 
-    const token = `${pk_node}-${step_node}-${expire_node}`;
+    const token = `${pk_node}-${staff_node}-${expire_node}`;
     return token;
   }
 }

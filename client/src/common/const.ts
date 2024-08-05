@@ -17,13 +17,13 @@ export const HOST = {
 
 export const TOKEN = {
   PK_NODE: 0,
-  STEP_NODE: 1,
+  STAFF_NODE: 1,
   EXPIRE_NODE: 2,
 };
 
-export const STEP_SIGN = {
-  STEP: "tf",
-  NOT_STEP: "al",
+export const STAFF_SIGN = {
+  STAFF: "tf",
+  NOT_STAFF: "al",
 };
 
 export const API_CODE = {
