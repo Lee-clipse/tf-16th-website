@@ -8,6 +8,7 @@ import { ROUTE_PATH } from "../common/const";
 import { getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
+import isMobile from "is-mobile";
 
 const HeaderMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -97,11 +98,9 @@ const HeaderMenu = () => {
               정보
             </PlainLink>
             <PlainLink
-              to={"/"}
-              // to={ROUTE_PATH.COMMUNITY}
+              to={ROUTE_PATH.COMMUNITY}
               onClick={() => {
                 closeMenu();
-                guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.COMMUNITY ? "active" : ""
@@ -110,7 +109,6 @@ const HeaderMenu = () => {
               청년 커뮤니티{" "}
             </PlainLink>
             <PlainLink
-              // to={"/"}
               to={ROUTE_PATH.HISTORY}
               onClick={() => {
                 closeMenu();
@@ -157,6 +155,7 @@ const HeaderMenu = () => {
 const HeadWrapper = styled.div`
   position: fixed;
   width: 100%;
+  max-width: ${isMobile() ? "100vw" : "375px"};
   padding: 1.6rem 1.4rem;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
@@ -186,6 +185,7 @@ const SideBarWrapper = styled.div<{ isOpen: boolean }>`
   top: ${(props) => (props.isOpen ? "5.4rem" : "5rem")};
   left: 0;
   width: 100%;
+  max-width: ${isMobile() ? "100vw" : "375px"};
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
   overflow: auto;
   transition: top 0.4s;

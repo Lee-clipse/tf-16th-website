@@ -13,6 +13,7 @@
     "@leenguyen/react-flip-clock-countdown": "^1.6.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "framer-motion": "^11.3.21",
     "is-mobile": "^4.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.4",
