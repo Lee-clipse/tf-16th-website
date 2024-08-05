@@ -9,7 +9,7 @@ const ScrollTopButton = () => {
 
   return (
     <ScrollToTopButton onClick={scrollToTop}>
-      <IoIosArrowUp size={theme.font.SIZE.XXXL} />
+      <IoIosArrowUp size={theme.font.SIZE.XXL} />
     </ScrollToTopButton>
   );
 };
@@ -19,12 +19,12 @@ const ScrollToTopButton = styled.button`
   z-index: 100;
   bottom: 10rem;
   right: 2rem;
-  background-color: ${theme.color.GRAY};
+  background-color: ${theme.color.MID_GRAY};
   color: ${theme.color.WHITE};
   border: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  padding: 1.2rem;
-  border-radius: 10rem;
+  padding: 0.6rem;
+  border-radius: 1rem;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
 

@@ -190,7 +190,7 @@ export const CountDownSection = styled.div`
   .flip-clock {
     font-family: ${theme.font.FUT[5]};
     --fcc-flip-duration: 0.5s; /* transition duration when flip card */
-    --fcc-digit-block-width: 2.4rem; /* digit card's width */
+    --fcc-digit-block-width: 2.2rem; /* digit card's width */
     --fcc-digit-block-height: 4.6rem; /* digit card's height */
     --fcc-digit-font-size: 2.6rem; /* font size of digit */
     --fcc-digit-color: white; /* color of digit */
@@ -248,7 +248,7 @@ export const Section1 = styled.div`
 
   .question {
     font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.XL};
+    font-size: ${theme.font.SIZE.L};
     margin: 5rem 0 3rem 0;
   }
 `;

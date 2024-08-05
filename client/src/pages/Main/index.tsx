@@ -29,7 +29,7 @@ import Button from "../../components/Button";
 import CountUp from "react-countup";
 import { useEffect, useState } from "react";
 import { guardAlert, isStaffByToken, verifyByToken } from "../../common/common";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../../common/const";
 import { GoDotFill } from "react-icons/go";
 import { CarouselComponent } from "../../components/Carousel";
@@ -39,6 +39,8 @@ import FloatBottomButton from "../../components/FloatBottomButton";
 import Banner from "../../components/Banner";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
   const patickles = [
     { className: "t-01", color: theme.color.DEEP_BLUE, size: "3rem", duration: 1.5, delay: 0.2 },
     { className: "t-02", color: theme.color.DEEP_BLUE, size: "2rem", duration: 2.2, delay: 0.4 },
@@ -245,7 +247,7 @@ const MainPage = () => {
             </div>
           </div>
 
-          <div className="button" onClick={() => guardAlert()}>
+          <div className="button" onClick={() => navigate(ROUTE_PATH.INFO)}>
             <Button
               text="청건부산 자세히 보기"
               backgroundColor={theme.color.WHITE}
@@ -338,7 +340,7 @@ const MainPage = () => {
             ))}
           </div>
 
-          <div className="button" onClick={() => guardAlert()}>
+          <div className="button" onClick={() => navigate(ROUTE_PATH.COMMUNITY)}>
             <Button
               text="청년 커뮤니티 자세히 보기"
               backgroundColor={theme.color.WHITE}

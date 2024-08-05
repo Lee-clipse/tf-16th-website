@@ -12,8 +12,8 @@ const color = {
   MINT: "#18FF9D", // 파티클, 하이라이팅
 
   GRAY: "#a7aabd",
-  MID_GRAY: "#434655",
-  LIGHT_GRAY: "#A8AABC",
+  MID_GRAY: "#757579",
+  LIGHT_GRAY: "#F8F9FA",
 };
 
 const font = {

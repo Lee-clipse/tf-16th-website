@@ -85,11 +85,9 @@ const HeaderMenu = () => {
               홈
             </PlainLink>
             <PlainLink
-              to={"/"}
-              // to={ROUTE_PATH.INFO}
+              to={ROUTE_PATH.INFO}
               onClick={() => {
                 closeMenu();
-                guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
                 location.pathname === ROUTE_PATH.INFO ? "active" : ""
