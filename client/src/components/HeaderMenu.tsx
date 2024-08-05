@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { FiMenu } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../common/const";
 import { getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 import isMobile from "is-mobile";
+import MenuBar from "../assets/icons/menu-bar.png";
 
 const HeaderMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -62,7 +62,7 @@ const HeaderMenu = () => {
         <div id="title" onClick={() => navigate(ROUTE_PATH.MAIN)}>
           청건부산
         </div>
-        <FiMenu fontSize={30} onClick={toggleMenu} color={theme.color.GRAY} />
+        <img src={MenuBar} onClick={toggleMenu} style={{ width: "2rem" }} />
       </HeadWrapper>
 
       {/* 메뉴 바 */}
@@ -163,7 +163,7 @@ const HeadWrapper = styled.div`
     font-family: ${theme.font.HAK[5]};
     font-size: ${theme.font.SIZE.XL};
     color: ${theme.color.BLACK};
-    padding-top: 0.4rem;
+    padding-top: 0.6rem;
   }
 `;
 

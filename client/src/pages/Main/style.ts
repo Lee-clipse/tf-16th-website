@@ -286,9 +286,10 @@ export const Section2 = styled.div`
     line-height: 2.4rem;
     gap: 1.6rem;
 
-    .dot {
-      color: ${theme.color.TEAL_BLUE};
-      padding-top: 0.3rem;
+    // dot
+    img {
+      width: 1.4rem;
+      margin-right: 0.4rem;
     }
   }
 `;

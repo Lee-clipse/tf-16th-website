@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
-import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 import { useSwipeable } from "react-swipeable";
 import styled from "styled-components";
 import theme from "../styles/theme";
+import LeftArrow from "../assets/icons/left-arrow.png";
+import RightArrow from "../assets/icons/right-arrow.png";
 
 interface CarouselProps {
   imageObjectList: { image: string; link: string }[];
@@ -54,11 +55,11 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ imageObjectList }) 
         </ImageContainer>
 
         <ArrowButton onClick={handlePrev} direction="left">
-          <MdOutlineArrowBackIos />
+          <img src={LeftArrow} />
         </ArrowButton>
 
         <ArrowButton onClick={handleNext} direction="right">
-          <MdOutlineArrowForwardIos />
+          <img src={RightArrow} />
         </ArrowButton>
       </CarouselContainer>
 

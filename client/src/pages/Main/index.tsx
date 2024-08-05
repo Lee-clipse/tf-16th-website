@@ -27,11 +27,9 @@ import HeaderMenu from "../../components/HeaderMenu";
 import VisibilitySensor from "react-visibility-sensor";
 import Button from "../../components/Button";
 import CountUp from "react-countup";
-import { useEffect, useState } from "react";
-import { guardAlert, isStaffByToken, verifyByToken } from "../../common/common";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../../common/const";
-import { GoDotFill } from "react-icons/go";
+import CheckIcon from "../../assets/icons/check.png";
 import { CarouselComponent } from "../../components/Carousel";
 import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
@@ -233,15 +231,15 @@ const MainPage = () => {
 
             <div className="section f-col">
               <div>
-                <GoDotFill className="dot" /> 건강한 가치관을 가진 깨어있는 청년들을 양성합니다.
+                <img src={CheckIcon} /> 건강한 가치관을 가진 깨어있는 청년들을 양성합니다.
               </div>
               <div>
-                <GoDotFill className="dot" />
+                <img src={CheckIcon} />
                 부산이 당면한 문제들을 풀어가기 위해 함께 고민하고 소통하며 포기하지 않고
                 도전합니다.
               </div>
               <div>
-                <GoDotFill className="dot" />
+                <img src={CheckIcon} />
                 부산을 살리고 변화시키는 출발점이 부산 청년이 될 것입니다.
               </div>
             </div>

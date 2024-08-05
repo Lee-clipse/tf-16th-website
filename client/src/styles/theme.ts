@@ -11,7 +11,7 @@ const color = {
   ORANGE: "#DF542F", // 파티클
   MINT: "#18FF9D", // 파티클, 하이라이팅
 
-  GRAY: "#a7aabd",
+  GRAY: "#A7A7AB",
   MID_GRAY: "#757579",
   LIGHT_GRAY: "#F8F9FA",
 };

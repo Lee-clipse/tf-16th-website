@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { IoIosArrowUp } from "react-icons/io";
+import UpArrow from "../assets/icons/up-arrow.png";
 
 const ScrollTopButton = () => {
   const scrollToTop = () => {
@@ -9,7 +9,7 @@ const ScrollTopButton = () => {
 
   return (
     <ScrollToTopButton onClick={scrollToTop}>
-      <IoIosArrowUp size={theme.font.SIZE.XXL} />
+      <img src={UpArrow} />
     </ScrollToTopButton>
   );
 };
@@ -27,6 +27,10 @@ const ScrollToTopButton = styled.button`
   border-radius: 1rem;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
+
+  img {
+    width: 2rem;
+  }
 
   &:hover {
     opacity: 1;
