@@ -37,7 +37,7 @@ const MyPage = () => {
           <div className="f-row">
             환영합니다! <div className="highlight">{userData?.name}</div>님
           </div>
-          <div className="f-row">
+          <div className="f-row mini-title">
             당신은{" "}
             <CountUp
               className="number highlight"

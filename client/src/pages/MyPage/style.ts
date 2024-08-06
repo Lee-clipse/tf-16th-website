@@ -12,6 +12,16 @@ export const Wrapper = styled.div`
     flex-direction: column;
     gap: 1rem;
 
+    .mini-title {
+      font-size: ${theme.font.SIZE.ML};
+      margin-top: 0.6rem;
+      align-items: end;
+    }
+
+    .number {
+      font-size: ${theme.font.SIZE.XXXL};
+    }
+
     .highlight {
       color: ${theme.color.TEAL_BLUE};
       margin: 0 0.4rem 0 0.6rem;
