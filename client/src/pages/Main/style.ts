@@ -267,8 +267,13 @@ export const Section1 = styled.div`
   color: ${theme.color.WHITE};
   position: relative;
 
-  background-image: url("src/assets/images/section1_bg.webp");
-  background-size: cover;
+  img {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    z-index: -1;
+  }
 
   .block {
     display: flex;

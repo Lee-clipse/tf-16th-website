@@ -21,6 +21,7 @@ import ProgramPoster3 from "../../assets/images/program_poster3.png";
 import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
 import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
 import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
+import Section1BG from "../../assets/images/section1_bg.webp";
 import IconTalk from "../../assets/icons/talk.png";
 import IconDebate from "../../assets/icons/debate.png";
 import IconInternational from "../../assets/icons/international.png";
@@ -162,6 +163,7 @@ const MainPage = () => {
 
         {/* 청건부산 빌드업 */}
         <Section1>
+          <img src={Section1BG} />
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
               <div className={`block left-block ${isVisible ? "visible" : ""}`}>
