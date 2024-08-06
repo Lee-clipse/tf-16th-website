@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import isMobile from "is-mobile";
-import { WEB_WIDTH } from "../../common/const";
 
 export const Wrapper = styled.div`
   color: ${theme.color.BLACK};
