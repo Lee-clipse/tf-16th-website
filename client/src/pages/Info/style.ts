@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import isMobile from "is-mobile";
+import { WEB_WIDTH } from "../../common/const";
 
 export const Wrapper = styled.div`
   margin: 5.6rem 0 0 0;
@@ -19,7 +21,7 @@ export const Section1 = styled.div`
     font-family: ${theme.font.NOTO[8]};
     font-size: ${theme.font.SIZE.XL};
     color: ${theme.color.WHITE};
-    width: 100vw;
+    width: ${isMobile() ? "100vw" : WEB_WIDTH};
     height: 28vh;
     position: relative;
     text-align: center;
@@ -83,7 +85,7 @@ export const Section2 = styled.div`
       width: 100%;
 
       img {
-        width: 26vw;
+        width: ${isMobile() ? "26vw" : "8vw"};
       }
     }
 

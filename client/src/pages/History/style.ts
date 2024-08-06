@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import isMobile from "is-mobile";
+import { WEB_WIDTH } from "../../common/const";
 
 export const Wrapper = styled.div`
   color: ${theme.color.BLACK};
@@ -49,8 +51,7 @@ export const Wrapper = styled.div`
 
       img {
         margin: 1.4rem 0 2rem 0;
-        width: 70vw;
-        // max-width: 40vw;
+        width: ${isMobile() ? "70vw" : "282px"};
       }
     }
 
@@ -107,7 +108,7 @@ export const Wrapper = styled.div`
       background-color: ${theme.color.WHITE};
       border-radius: 1rem;
       padding: 2rem;
-      width: 90vw;
+      width: ${isMobile() ? "90vw" : "340px"};
       margin-bottom: 2rem;
       box-shadow: 1px 1px 14px 1px lightgray;
 

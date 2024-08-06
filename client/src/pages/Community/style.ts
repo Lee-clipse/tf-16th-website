@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
+import isMobile from "is-mobile";
+import { WEB_WIDTH } from "../../common/const";
 
 const moveToLeft = keyframes`
   0% {
@@ -20,7 +22,7 @@ export const Wrapper = styled.div`
 
   #poster-list-wrapper {
     overflow: hidden;
-    width: 100vw;
+    width: ${isMobile() ? "100vw" : WEB_WIDTH};
 
     #poster-list {
       gap: 1rem;
@@ -28,7 +30,7 @@ export const Wrapper = styled.div`
       animation: ${moveToLeft} 5s linear infinite;
 
       img {
-        width: 80vw;
+        width: ${isMobile() ? "80vw" : "360px"};
       }
     }
   }
