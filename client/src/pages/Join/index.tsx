@@ -10,11 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { reqUserLogin } from "../../api/user";
 import { UserLoginInfo } from "../../type/type";
 import { alert, setToken } from "../../common/common";
+import Loading from "../../components/Loading";
 
 const JoinPage = () => {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState<UserLoginInfo>({ name: "", phoneNumber: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUserInfo = (key: string, value: string) => {
     if (!validateInput(key, value as string)) return;
@@ -25,7 +27,10 @@ const JoinPage = () => {
   };
 
   const doLogin = async () => {
+    setIsLoading(true);
     const res = await reqUserLogin(userInfo.name, userInfo.phoneNumber);
+    setIsLoading(false);
+
     const isLoginSuccess = Number(res.data.code) === API_CODE.SUCCESS;
     if (isLoginSuccess) {
       setToken(res.data.token);
@@ -52,6 +57,8 @@ const JoinPage = () => {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {/* 헤더 메뉴 */}
       <HeaderMenu />
 

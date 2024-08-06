@@ -11,10 +11,12 @@ import { InputSection } from "./style";
 import { UserRegisterInfo } from "../../type/type";
 import { reqUserRegister } from "../../api/user";
 import { alert } from "../../common/common";
+import Loading from "../../components/Loading";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState<UserRegisterInfo>({
     name: "",
     sex: SEX.MALE,
@@ -70,7 +72,9 @@ const RegisterPage = () => {
 
   const doRegister = async () => {
     if (validateRegisterInput()) {
+      setIsLoading(true);
       const res = await reqUserRegister(userInfo);
+      setIsLoading(false);
       const isRegisterSuccess = Number(res.data.code) === API_CODE.SUCCESS;
       if (isRegisterSuccess) {
         alert("가입에 성공했습니다!", "success");
@@ -83,6 +87,8 @@ const RegisterPage = () => {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {/* 헤더 메뉴 */}
       <HeaderMenu />
 

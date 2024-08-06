@@ -17,3 +17,12 @@ export const reqUserData = async (pk: string) => {
   const res = await axios.get(`${API_HOST}/user/get?pk=${pk}`);
   return res;
 };
+
+/*
+  const [isLoading, setIsLoading] = useState(false);
+
+  setIsLoading(true);
+  setIsLoading(false);
+
+  {isLoading && <Loading />}
+*/
