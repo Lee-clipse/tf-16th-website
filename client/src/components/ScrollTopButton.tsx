@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
 import UpArrow from "../assets/icons/up-arrow.png";
+import isMobile from "is-mobile";
 
 const ScrollTopButton = () => {
   const scrollToTop = () => {
@@ -18,7 +19,7 @@ const ScrollToTopButton = styled.button`
   position: fixed;
   z-index: 100;
   bottom: 10rem;
-  right: 2rem;
+  right: ${isMobile() ? "2rem" : "37%"};
   background-color: ${theme.color.MID_GRAY};
   color: ${theme.color.WHITE};
   border: none;

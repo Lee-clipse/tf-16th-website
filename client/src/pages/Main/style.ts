@@ -3,6 +3,7 @@ import { isMobile } from "is-mobile";
 import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
 import { PiStarFourFill } from "react-icons/pi";
+import { WEB_WIDTH } from "../../common/const";
 
 export const Wrapper = styled.div`
   justify-content: center;
@@ -12,10 +13,13 @@ export const Wrapper = styled.div`
     width: 100vw;
     overflow: hidden;
     position: relative;
+    ${isMobile() ? "" : "text-align: center;"};
 
     img {
       width: 100%;
+      max-width: ${isMobile() ? "100vw" : WEB_WIDTH};
       height: 100%;
+      text-align: center;
       object-fit: cover;
     }
   }
@@ -46,6 +50,7 @@ export const Wrapper = styled.div`
     bottom: 0;
     left: 0;
     padding: 2rem;
+    ${!isMobile() && "left: 50% !important; transform: translateX(-60%); text-align: left;"};
 
     .c-title1 {
       font-family: ${theme.font.NOTO[6]};
@@ -71,6 +76,7 @@ export const Wrapper = styled.div`
     right: 0;
     text-align: right;
     padding: 2rem;
+    ${!isMobile() && "right: 50% !important; transform: translateX(102%);"};
 
     .c-title2 {
       font-family: ${theme.font.NOTO[6]};
@@ -89,6 +95,7 @@ export const Wrapper = styled.div`
     bottom: 0;
     left: 0;
     padding: 2rem;
+    ${!isMobile() && "left: 50% !important; transform: translateX(-84%); text-align: left;"};
 
     .c-title3 {
       font-family: ${theme.font.NOTO[6]};
@@ -271,6 +278,7 @@ export const Section1 = styled.div`
     position: absolute;
     top: 0%;
     left: 0%;
+    width: 100%;
     height: 100%;
     z-index: -1;
   }
@@ -475,7 +483,7 @@ export const Section5 = styled.div`
       width: 100%;
 
       img {
-        width: 26vw;
+        width: ${isMobile() ? "26vw" : "8vw"};
       }
     }
 

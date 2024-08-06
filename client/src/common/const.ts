@@ -69,3 +69,5 @@ export const LOCATION = [
   "해운대구",
   "기타",
 ];
+
+export const WEB_WIDTH = "375px";

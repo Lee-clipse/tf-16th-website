@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ROUTE_PATH } from "../common/const";
+import { ROUTE_PATH, WEB_WIDTH } from "../common/const";
 import { getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
@@ -157,7 +157,7 @@ const HeaderMenu = () => {
 const HeadWrapper = styled.div`
   position: fixed;
   width: 100%;
-  max-width: ${isMobile() ? "100vw" : "375px"};
+  max-width: ${isMobile() ? "100vw" : WEB_WIDTH};
   padding: 1.6rem 1.4rem;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
@@ -185,9 +185,9 @@ const SideBarWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
   background-color: rgba(255, 255, 255, 0.9);
   top: ${(props) => (props.isOpen ? "5.4rem" : "5rem")};
-  left: 0;
+  left: ${isMobile() ? "0" : ""};
   width: 100%;
-  max-width: ${isMobile() ? "100vw" : "375px"};
+  max-width: ${isMobile() ? "100vw" : WEB_WIDTH};
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
   overflow: auto;
   transition: top 0.4s;

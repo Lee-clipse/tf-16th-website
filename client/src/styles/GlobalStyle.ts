@@ -23,6 +23,7 @@ import OswaldLight from "../assets/fonts/Oswald-Light.ttf";
 import OswaldMedium from "../assets/fonts/Oswald-Medium.ttf";
 import OswaldRegular from "../assets/fonts/Oswald-Regular.ttf";
 import OswaldSemiBold from "../assets/fonts/Oswald-SemiBold.ttf";
+import { WEB_WIDTH } from "../common/const";
 
 const FontStyle = `
   // 모든 영문
@@ -288,7 +289,7 @@ const GlobalStyle = createGlobalStyle`
   // 웹 환경을 위한 스타일 
   @media (min-width: 769px) {
     html {
-      width: 375px;
+      width: ${WEB_WIDTH};
       margin: 0 auto;
     }
 

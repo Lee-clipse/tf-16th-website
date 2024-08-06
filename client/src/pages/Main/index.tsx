@@ -38,6 +38,7 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 import FloatBottomButton from "../../components/FloatBottomButton";
 import Banner from "../../components/Banner";
+import isMobile from "is-mobile";
 
 const MainPage = () => {
   const navigate = useNavigate();
