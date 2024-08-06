@@ -85,7 +85,7 @@ const JoinPage = () => {
           <div onClick={() => doLogin()}>
             <Button
               text="로그인"
-              backgroundColor={theme.color.DEEP_BLUE}
+              backgroundColor={theme.color.SKY_BLUE}
               textColor={theme.color.WHITE}
             />
           </div>
@@ -97,7 +97,7 @@ const JoinPage = () => {
           >
             <Button
               text="등록하러 가기"
-              backgroundColor={theme.color.PURPLE}
+              backgroundColor={theme.color.DEEP_BLUE}
               textColor={theme.color.WHITE}
             />
           </div>

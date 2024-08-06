@@ -205,7 +205,7 @@ const RegisterPage = () => {
           <div onClick={() => doRegister()}>
             <Button
               text="등록하기"
-              backgroundColor={theme.color.PURPLE}
+              backgroundColor={theme.color.SKY_BLUE}
               textColor={theme.color.WHITE}
             />
           </div>
