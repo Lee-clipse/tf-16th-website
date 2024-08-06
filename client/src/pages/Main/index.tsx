@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import WideButton from "../../components/WideButton";
 import theme from "../../styles/theme";
 import {
   CountDownSection,
@@ -53,21 +52,6 @@ const MainPage = () => {
     { className: "t-08", color: theme.color.MINT, size: "2rem", duration: 1.2, delay: 0.2 },
     { className: "t-09", color: theme.color.ORANGE, size: "2rem", duration: 2.4, delay: 0.4 },
   ];
-
-  const CardComponent = ({ key, image, title, text1, text2 }: any) => {
-    return (
-      <div className="card">
-        <img src={image} alt={title} />
-        <div className={`card-body ${Number(key) % 2 === 0 ? "right" : "left"}`}>
-          <div className="card-title">{title}</div>
-          <div className="c-text">
-            <div className="c-text1">{text1}</div>
-            <div className="c-text2">{text2}</div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   const eventCards = [
     {
