@@ -33,6 +33,7 @@ const JoinPage = () => {
 
     const isLoginSuccess = Number(res.data.code) === API_CODE.SUCCESS;
     if (isLoginSuccess) {
+      alert(`환영합니다 ${userInfo.name}님!`, "success");
       setToken(res.data.token);
       navigate(ROUTE_PATH.MAIN);
     } else {
