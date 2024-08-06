@@ -20,6 +20,9 @@ const MyPage = () => {
 
   const fetchUserData = async () => {
     const userPk = getUserPkByToken().toString();
+    if (Number(userPk) === 0) {
+      navigate(ROUTE_PATH.MAIN);
+    }
     const res = await reqUserData(userPk);
     setUserData(res.data.user);
   };
@@ -40,7 +43,7 @@ const MyPage = () => {
               className="number highlight"
               start={1}
               end={userData?.pk as number}
-              duration={1}
+              duration={3}
             />
             번째 가입자입니다.
           </div>

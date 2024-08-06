@@ -70,7 +70,11 @@ const HeaderMenu = () => {
         <SideBarWrapper isOpen={isMenuOpen} onClick={(e) => e.stopPropagation()}>
           <SideBar>
             <div className="profile-tab">
-              {isLogin && <div id="welcome-text">환영합니다! {userData?.name} 님</div>}
+              {isLogin && (
+                <div id="welcome-text">
+                  환영합니다! <span className="highlight">{userData?.name}</span> 님
+                </div>
+              )}
             </div>
             <PlainLink
               to={"/"}
@@ -200,6 +204,11 @@ const SideBar = styled.div`
   #welcome-text {
     text-align: center;
     padding: 1.4rem 0;
+  }
+
+  .highlight {
+    color: ${theme.color.SKY_BLUE};
+    font-family: ${theme.font.NOTO[6]};
   }
 `;
 
