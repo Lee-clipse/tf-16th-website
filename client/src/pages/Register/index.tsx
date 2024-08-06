@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import theme from "../../styles/theme";
 import { AGREE, API_CODE, LOCATION, ROUTE_PATH, SEX } from "../../common/const";
 import { useNavigate } from "react-router-dom";
-import { InputSection } from "./style";
+import { InputSection, TermsButton, TermsDropdown } from "./style";
 import { UserRegisterInfo } from "../../type/type";
 import { reqUserRegister } from "../../api/user";
 import { alert } from "../../common/common";
@@ -26,6 +26,10 @@ const RegisterPage = () => {
     agree: AGREE.NOT_SELECTED,
     recommandPerson: "",
   });
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const toggleTermsDropdown = () => {
+    setIsTermsOpen(!isTermsOpen);
+  };
 
   const handleUserInfo = (key: string, value: string | number | boolean) => {
     if (!validateInput(key, value as string)) return;
@@ -146,6 +150,16 @@ const RegisterPage = () => {
         </div>
 
         <div className="box">
+          <div className="label">추천인</div>
+          <div className="desc">청건부산에 초대한 분의 이름을 적어주세요!</div>
+          <Input
+            placeholder="추천인"
+            value={userInfo.recommandPerson}
+            onChange={(e) => handleUserInfo("recommandPerson", e.target.value)}
+          />
+        </div>
+
+        <div className="box">
           <div className="label">개인정보 수집 동의</div>
           <Radio>
             <input
@@ -163,15 +177,28 @@ const RegisterPage = () => {
             />
             <label htmlFor="agreeNo">비동의</label>
           </Radio>
-        </div>
+          <TermsButton onClick={toggleTermsDropdown}>개인정보 수집 약관 자세히 보기</TermsButton>
+          <TermsDropdown isTermsOpen={isTermsOpen}>
+            <p>*개인정보 수집 및 활용 동의서</p>
+            <p>1. 수정 및 활용 개인정보 항목</p>
+            <p>
+              : 개인정보보호법 시행령 제15조에 의거 이름, 전화번호 등 [청건부산 스텝모집] 참여
+              희망자 정보
+            </p>
 
-        <div className="box">
-          <div className="label">추천인</div>
-          <Input
-            placeholder="추천인"
-            value={userInfo.recommandPerson}
-            onChange={(e) => handleUserInfo("recommandPerson", e.target.value)}
-          />
+            <p>2. 개인정보의 수집 및 활용 목적</p>
+            <p>: 개인정보의 수집은 [청건부산 스텝모집] 구성원 모집 목적을 위하여 수집됩니다.</p>
+            <p>3. 개인정보의 보유 및 활동 기간</p>
+            <p>: 개인 정보 보유 및 이용기간 : 1년</p>
+            <p>4. 개인정보 수집동의 거부의 권리</p>
+            <p>:개인정보 수집 동의를 거부할 수 있으며, 동의 거부 시 참여 대상에서 제외됩니다.</p>
+            <p>청건부산 모집 (인원)과 관련하여 개인정보 보호법</p>
+            <p>
+              제15조 및 22조에 따라 본인의 동의가 필요하므로 본인은 상기 내용을 숙지하였으며,
+              청건부산 위원회에서 본인의 개인정보를 수집 및 이용하는 것에 동의합니다.
+            </p>
+            {/* 약관의 나머지 내용을 여기에 추가하세요 */}
+          </TermsDropdown>
         </div>
 
         <div className="box">
