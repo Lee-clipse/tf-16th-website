@@ -7,9 +7,16 @@ export const Wrapper = styled.div`
 
   .title {
     text-align: center;
-    font-family: ${theme.font.NOTO[9]};
-    font-size: ${theme.font.SIZE.XXXXL};
+    font-family: ${theme.font.NOTO[8]};
+    font-size: ${theme.font.SIZE.XXXL};
+    box-shadow: 0 8px 0 ${theme.color.SKY_BLUE};
+    line-height: 21px;
+    width: fit-content;
+
     margin: 0 0 8rem 0;
+  }
+
+  .underline {
   }
 
   #photo-section {
@@ -28,15 +35,15 @@ export const Wrapper = styled.div`
       margin-bottom: 3rem;
 
       .name {
-        font-family: ${theme.font.NOTO[9]};
-        color: ${theme.color.DEEP_BLUE};
-        font-size: ${theme.font.SIZE.XL};
+        font-family: ${theme.font.NOTO[7]};
+        color: ${theme.color.BLACK};
+        font-size: ${theme.font.SIZE.L};
       }
 
       .comment {
         margin-top: 1rem;
         font-family: ${theme.font.NOTO[5]};
-        color: ${theme.color.BLACK};
+        color: ${theme.color.MID_GRAY};
         font-size: ${theme.font.SIZE.SM};
       }
 
@@ -88,12 +95,12 @@ export const Wrapper = styled.div`
   }
 
   #comment-section {
-    background-color: ${theme.color.MILKY_BLUE};
+    background-color: ${theme.color.LIGHT_GRAY};
     padding: 8rem 0;
     margin-top: 6rem;
 
     .title {
-      color: ${theme.color.DEEP_BLUE};
+      color: ${theme.color.BLACK};
     }
 
     .c-box {
@@ -102,6 +109,7 @@ export const Wrapper = styled.div`
       padding: 2rem;
       width: 90vw;
       margin-bottom: 2rem;
+      box-shadow: 1px 1px 14px 1px lightgray;
 
       font-family: ${theme.font.NOTO[5]};
       color: ${theme.color.BLACK};
@@ -118,6 +126,7 @@ export const Wrapper = styled.div`
       }
 
       .c-date {
+        color: ${theme.color.MID_GRAY};
       }
 
       .c-text {

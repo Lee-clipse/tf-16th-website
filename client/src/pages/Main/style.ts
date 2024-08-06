@@ -8,42 +8,103 @@ export const Wrapper = styled.div`
   justify-content: center;
 
   .card {
-    border-radius: 1rem;
-    width: 90vw;
-    height: 30vh;
+    color: ${theme.color.WHITE};
+    width: 100vw;
     overflow: hidden;
-    margin-bottom: 4rem;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.16);
-    max-width: ${() => (isMobile() ? "90vw" : "360px")};
-    max-height: ${() => (isMobile() ? "30vh" : "250px")};
     position: relative;
-
-    .card-body {
-      background-color: ${theme.color.WHITE};
-      padding: 1.6rem;
-      position: absolute;
-      bottom: 0;
-    }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.8;
     }
+  }
 
-    .card-title {
-      color: ${theme.color.DEEP_BLUE};
+  #card1 {
+    height: 40vh;
+    img {
+      opacity: 0.9 !important;
+    }
+  }
+
+  #card2 {
+    height: 36vh;
+    img {
+      opacity: 1 !important;
+    }
+  }
+
+  #card3 {
+    height: 36vh;
+    img {
+      opacity: 1 !important;
+    }
+  }
+
+  .c-body1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+
+    .c-title1 {
       font-family: ${theme.font.NOTO[6]};
-      font-size: ${theme.font.SIZE.L};
-      margin-bottom: 1rem;
+      font-size: ${theme.font.SIZE.XXXL};
+      margin-bottom: 1.4rem;
     }
 
-    .card-comment {
-      color: ${theme.color.TEAL_BLUE};
+    .c-subtitle1 {
+      font-family: ${theme.font.NOTO[5]};
+      font-size: ${theme.font.SIZE.L};
+      margin-bottom: 1.4rem;
+    }
+
+    .c-text1 {
       font-family: ${theme.font.NOTO[4]};
-      font-size: ${theme.font.SIZE.SM};
-      line-height: 1.8rem;
+      font-size: ${theme.font.SIZE.M};
+    }
+  }
+
+  .c-body2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    padding: 2rem;
+
+    .c-title2 {
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.XXL};
+      margin-bottom: 1.4rem;
+    }
+
+    .c-subtitle2 {
+      font-family: ${theme.font.NOTO[5]};
+      font-size: ${theme.font.SIZE.ML};
+    }
+  }
+
+  .c-body3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+
+    .c-title3 {
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.XXL};
+      margin-bottom: 1.4rem;
+    }
+
+    .c-subtitle3 {
+      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.M};
+      margin-bottom: 1.4rem;
+    }
+
+    .c-text3 {
+      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.M};
     }
   }
 `;
@@ -299,8 +360,7 @@ export const Section3 = styled.div`
   color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.L};
-  padding: 6rem 0;
-  background-color: ${theme.color.MILKY_BLUE};
+  padding: 6rem 0 0 0;
 
   .sub-title {
     color: ${theme.color.TEAL_BLUE};
@@ -325,7 +385,7 @@ export const Section4 = styled.div`
   color: ${theme.color.BLACK};
   font-family: ${theme.font.NOTO[7]};
   font-size: ${theme.font.SIZE.XXL};
-  padding: 8rem 0 10rem 0;
+  padding: 12rem 0 10rem 0;
 
   .sub-title {
     color: ${theme.color.TEAL_BLUE};
@@ -376,7 +436,7 @@ export const Section5 = styled.div`
   font-family: ${theme.font.NOTO[6]};
   font-size: ${theme.font.SIZE.XL};
   padding: 8rem 2rem 6rem 2rem;
-  background-color: ${theme.color.MILKY_BLUE};
+  background-color: ${theme.color.LIGHT_GRAY};
 
   .sub-title {
     color: ${theme.color.TEAL_BLUE};
@@ -390,36 +450,43 @@ export const Section5 = styled.div`
     color: ${theme.color.BLACK};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XL};
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     gap: 0.6rem;
     text-align: center;
   }
 
-  .box {
-    margin: 1rem 0 3rem 0;
-  }
-
-  .label {
-    margin-bottom: 1.2rem;
-  }
-
-  .hashtag {
-    color: ${theme.color.TEAL_BLUE};
-    font-family: ${theme.font.NOTO[8]};
-    font-size: ${theme.font.SIZE.SM};
-    margin-bottom: 0.8rem;
-    word-spacing: 0.6rem;
-  }
-
-  .text {
-    color: ${theme.color.BLACK};
-    font-family: ${theme.font.NOTO[4]};
-    font-size: ${theme.font.SIZE.M};
-    line-height: 1.5;
-  }
-
   .button {
-    margin: 2rem 0;
+    margin: 8rem 0 0 0;
+  }
+
+  .c-card {
+    padding: 0 2rem;
+    margin-top: 1rem;
+    text-align: center;
+
+    .c-c-icon {
+      margin-top: 5rem;
+      text-align: center;
+      width: 100%;
+
+      img {
+        width: 26vw;
+      }
+    }
+
+    .c-c-title {
+      font-family: ${theme.font.NOTO[7]};
+      font-size: ${theme.font.SIZE.L};
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .c-c-text {
+      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.SM};
+      line-height: 2rem;
+      margin-top: 1.6rem;
+    }
   }
 `;
 

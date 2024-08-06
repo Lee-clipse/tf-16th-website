@@ -25,7 +25,7 @@ const FloatBottomButton = () => {
         <div className="h-center v-center" onClick={() => navigate(ROUTE_PATH.JOIN)}>
           <WideButton
             text="청건부산 참가하기 ✨"
-            backgroundColor={theme.color.PURPLE}
+            backgroundColor={theme.color.SKY_BLUE}
             textColor={theme.color.WHITE}
           />
         </div>

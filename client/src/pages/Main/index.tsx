@@ -16,13 +16,16 @@ import {
   Wrapper,
 } from "./style";
 
-import ContentPoster1BG from "../../assets/images/content_poster1_bg.png";
-import ContentPoster1 from "../../assets/images/content_poster1.png";
-import ContentPoster2 from "../../assets/images/content_poster2.webp";
-import ContentPoster3 from "../../assets/images/content_poster3.webp";
+import ProgramPoster1 from "../../assets/images/program_poster1.png";
+import ProgramPoster2 from "../../assets/images/program_poster2.png";
+import ProgramPoster3 from "../../assets/images/program_poster3.png";
 import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
 import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
 import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
+import IconTalk from "../../assets/icons/talk.png";
+import IconDebate from "../../assets/icons/debate.png";
+import IconInternational from "../../assets/icons/international.png";
+import IconSing from "../../assets/icons/sing.png";
 import HeaderMenu from "../../components/HeaderMenu";
 import VisibilitySensor from "react-visibility-sensor";
 import Button from "../../components/Button";
@@ -51,13 +54,16 @@ const MainPage = () => {
     { className: "t-09", color: theme.color.ORANGE, size: "2rem", duration: 2.4, delay: 0.4 },
   ];
 
-  const CardComponent = ({ image, title, comment }: any) => {
+  const CardComponent = ({ key, image, title, text1, text2 }: any) => {
     return (
       <div className="card">
         <img src={image} alt={title} />
-        <div className="card-body">
+        <div className={`card-body ${Number(key) % 2 === 0 ? "right" : "left"}`}>
           <div className="card-title">{title}</div>
-          <div className="card-comment">{comment}</div>
+          <div className="c-text">
+            <div className="c-text1">{text1}</div>
+            <div className="c-text2">{text2}</div>
+          </div>
         </div>
       </div>
     );
@@ -65,45 +71,45 @@ const MainPage = () => {
 
   const eventCards = [
     {
-      image: ContentPoster1BG,
-      title: "전한길의 토크 콘서트",
-      comment:
-        '"청년, 성공과 행복을 연습하는 시기" 라는 제목으로 청년들을 향해 스피커로써 메시지를 던집니다.',
+      image: ProgramPoster1,
+      title: "전한길",
+      subtitle: "토크 콘서트",
+      text: `"청년, 성공과 행복을 연습하는 시기"`,
     },
     {
-      image: ContentPoster2,
+      image: ProgramPoster2,
       title: "문화 공연",
-      comment: "퓨전 국악, 밴드 등의 다양한 문화공연이 준비되어 있습니다.",
+      subtitle: "퓨전 국악, 밴드",
+      text: "",
     },
     {
-      image: ContentPoster3,
+      image: ProgramPoster3,
       title: "제로게임",
-      comment:
-        "탄소제로게임, 기후/대기 부스, 청년 커뮤니티 등의 다양한 체험 액티비티들이 준비되어 있습니다.",
+      subtitle: "기후/대기 체험 부스",
+      text: "청년 커뮤니티 체험 부스",
     },
   ];
 
   const communityCards = [
     {
-      image: ContentPoster1BG,
+      icon: IconTalk,
       title: "토크콘서트",
-      comment: "부산 청년들이 실생활에 당면한 문제에 대한 전문가의 강연을 통해 소통합니다.",
+      text: "부산 청년들이 실생활에 당면한 문제에 대한 전문가의 강연을 통해 소통합니다.",
     },
     {
-      image: ContentPoster1BG,
+      icon: IconSing,
       title: "싱스틸러",
-      comment: "문화예술활동을 경험할 수 있는 장을 마련하여 무대 및 기회를 제공합니다.",
+      text: "문화예술활동을 경험할 수 있는 장을 마련하여 무대 및 기회를 제공합니다.",
     },
     {
-      image: ContentPoster1BG,
+      icon: IconDebate,
       title: "청정수",
-      comment:
-        "'나에게 유익한 정책을 넘어 우리 모두에게 유익한 정책'이라는 슬로건으로 청년들과 생각들을 나눕니다.",
+      text: "'나에게 유익한 정책을 넘어 우리 모두에게 유익한 정책'이라는 슬로건으로 청년들과 생각들을 나눕니다.",
     },
     {
-      image: ContentPoster1BG,
+      icon: IconInternational,
       title: "다문화",
-      comment: "부산에 거주하는 다국적 청년들과 함께 마음을 이어가는 행사입니다.",
+      text: "부산에 거주하는 다국적 청년들과 함께 마음을 이어가는 행사입니다.",
     },
   ];
 
@@ -263,14 +269,31 @@ const MainPage = () => {
           </div>
 
           <div className="f-col v-center">
-            {eventCards.map((card, index) => (
-              <CardComponent
-                key={index}
-                image={card.image}
-                title={card.title}
-                comment={card.comment}
-              />
-            ))}
+            <div id="card1" className="card">
+              <img src={eventCards[0].image} alt={eventCards[0].title} />
+              <div className="c-body1">
+                <div className="c-title1">{eventCards[0].title}</div>
+                <div className="c-subtitle1">{eventCards[0].subtitle}</div>
+                <div className="c-text1">{eventCards[0].text}</div>
+              </div>
+            </div>
+
+            <div id="card2" className="card">
+              <img src={eventCards[1].image} alt={eventCards[1].title} />
+              <div className="c-body2">
+                <div className="c-title2">{eventCards[1].title}</div>
+                <div className="c-subtitle2">{eventCards[1].subtitle}</div>
+              </div>
+            </div>
+
+            <div id="card3" className="card">
+              <img src={eventCards[2].image} alt={eventCards[2].title} />
+              <div className="c-body3">
+                <div className="c-title3">{eventCards[2].title}</div>
+                <div className="c-subtitle3">{eventCards[2].subtitle}</div>
+                <div className="c-text3">{eventCards[2].text}</div>
+              </div>
+            </div>
           </div>
         </Section3>
 
@@ -328,13 +351,15 @@ const MainPage = () => {
           </div>
 
           <div className="f-col v-center">
-            {communityCards.map((card, index) => (
-              <CardComponent
-                key={index}
-                image={card.image}
-                title={card.title}
-                comment={card.comment}
-              />
+            {communityCards.map((card) => (
+              <div className="c-card">
+                <div className="c-c-icon">
+                  <img src={card.icon} />
+                </div>
+
+                <div className="c-c-title">{card.title}</div>
+                <div className="c-c-text">{card.text}</div>
+              </div>
             ))}
           </div>
 

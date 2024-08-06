@@ -45,7 +45,9 @@ const HistoryPage = () => {
 
       <Wrapper>
         <div id="photo-section">
-          <div className="title">TF, 16년간의 여정</div>
+          <div className="h-center">
+            <div className="title">TF, 16년간의 여정</div>
+          </div>
 
           <VisibilitySensor partialVisibility offset={{ bottom: 10 }}>
             {({ isVisible }: { isVisible: boolean }) => (
@@ -153,7 +155,10 @@ const HistoryPage = () => {
         </div>
 
         <div id="comment-section" className="f-col v-center">
-          <div className="title">TF, 청년들의 한 마디</div>
+          <div className="h-center">
+            <div className="title">TF, 청년들의 한 마디</div>
+          </div>
+
           {comments.map((comment) => (
             <div className="c-box">
               <div className="c-header f-row">

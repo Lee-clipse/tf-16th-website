@@ -75,6 +75,7 @@ export const Section2 = styled.div`
   .content-2 {
     padding: 0 3rem;
     margin-top: 5rem;
+    text-align: center;
 
     .icon-2 {
       margin-top: 5rem;
