@@ -26,3 +26,11 @@ export type User = {
   staff: boolean;
   zgJoin: boolean;
 };
+
+export type ZGUser = {
+  userId: number;
+  point: number;
+  boothLog: string;
+  waitingBoothId: number;
+  goodsReceived: boolean;
+};

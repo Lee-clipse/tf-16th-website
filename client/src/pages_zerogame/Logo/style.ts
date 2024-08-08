@@ -84,6 +84,7 @@ export const Modal = styled.div`
   }
 
   #m-body {
+    font-family: ${theme.font.NOTO[5]};
     padding: 1rem;
 
     #radio-row > label {

@@ -48,6 +48,19 @@ export const AGREE = {
   NOT_AGREE: 2,
 };
 
+export const BOOTH_LIST: { [key: number]: string } = {
+  0: "대기",
+  1: "1번 부스",
+  2: "2번 부스",
+  3: "3번 부스",
+  4: "4번 부스",
+  5: "5번 부스",
+  101: "101번 부스",
+  201: "201번 부스",
+  301: "301번 부스",
+  777: "굿즈 수령 부스",
+};
+
 export const 스탭_지원_폼_링크 =
   "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
 export const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
