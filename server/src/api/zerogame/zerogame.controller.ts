@@ -96,6 +96,15 @@ export class ZerogameController {
     return res;
   }
 
+  @Get('/booth/hp')
+  @ApiOperation({
+    summary: '몬스터 현재 체력 반환',
+  })
+  async getMonsterHp() {
+    const res = await this.zerogameService.getMonsterHp();
+    return res;
+  }
+
   @Post('/monster/attack')
   @ApiOperation({
     summary: '몬스터에게 공격',

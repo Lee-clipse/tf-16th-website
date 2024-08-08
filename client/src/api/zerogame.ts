@@ -49,6 +49,11 @@ export const reqAttackMonster = async (body: object) => {
   return res;
 };
 
+export const reqMonsterHp = async () => {
+  const res = await axios.get(`${API_HOST}/game/monster/hp`);
+  return res;
+};
+
 export const reqUserGoodsFetch = async () => {
   const res = await axios.get(`${API_HOST}/game/goods/fetch`);
   return res;

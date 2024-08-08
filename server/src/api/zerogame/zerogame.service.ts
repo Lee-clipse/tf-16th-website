@@ -68,6 +68,11 @@ export class ZerogameService {
   }
 
   // API
+  async getMonsterHp() {
+    return;
+  }
+
+  // API
   async receiveGoods(userId: number) {
     return;
   }
