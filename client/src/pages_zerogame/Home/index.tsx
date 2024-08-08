@@ -10,6 +10,7 @@ import { reqUserData } from "../../api/user";
 import { ZGUser } from "../../type/type";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
+import HomeIcon from "../../assets/icons/home.png";
 
 const ZGHomePage = () => {
   const navigate = useNavigate();
@@ -55,8 +56,14 @@ const ZGHomePage = () => {
       )}
 
       <Wrapper className="f-col f-spb">
-        <div id="point">
-          Point: <span id="number">{userData?.point}</span>
+        <div id="h-header" className="f-row f-spb v-center">
+          <div id="point">
+            Point: <span id="number">{userData?.point}</span>
+          </div>
+
+          <div id="home-btn" onClick={() => navigate(ROUTE_PATH.MAIN)}>
+            <img src={HomeIcon} />
+          </div>
         </div>
 
         <div>

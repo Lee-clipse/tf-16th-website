@@ -9,11 +9,19 @@ export const Wrapper = styled.div`
   font-family: ${theme.font.NOTO[5]};
   font-size: ${theme.font.SIZE.ML};
 
-  #point {
-    font-size: 3rem;
-    #number {
-      font-family: ${theme.font.OSW[6]};
+  #h-header {
+    #point {
       font-size: 3rem;
+      #number {
+        font-family: ${theme.font.OSW[6]};
+        font-size: 3rem;
+      }
+    }
+
+    #home-btn {
+      img {
+        width: 10vw;
+      }
     }
   }
 

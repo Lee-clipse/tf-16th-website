@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import { Modal, Wrapper } from "./style";
-import { useNavigate } from "react-router-dom";
-import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { Wrapper } from "./style";
 import { getUserIdByToken } from "../../common/common";
-import CloseIcon from "../../assets/icons/close.png";
-import { reqMonsterHp, reqSelectBooth, reqUserGameFetch } from "../../api/zerogame";
+import { reqMonsterHp, reqUserGameFetch } from "../../api/zerogame";
 import Monster from "../../assets/images/monster.png";
 import { ZGUser } from "../../type/type";
 
 const ZGMonsterPage = () => {
-  const navigate = useNavigate();
   const [monsterHp, setMonsterHp] = useState<number>(0);
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
