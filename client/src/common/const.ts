@@ -6,8 +6,13 @@ export const ROUTE_PATH = {
   INFO: "/info",
   COMMUNITY: "/community",
   HISTORY: "/history",
-  MAIN_ZEROGAME: "/zerogame",
   MY_PAGE: "/my-page",
+  ZG_LOGO: "/zg-logo",
+  ZG_CARTOON: "/zg-cartoon",
+  ZG_HOME: "/zg-home",
+  ZG_BOOTH: "/zg-booth",
+  ZG_MONSTER: "/zg-monster",
+  ZG_GOODS: "/zg-goods",
 };
 
 export const HOST = {
