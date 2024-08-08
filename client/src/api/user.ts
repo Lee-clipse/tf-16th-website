@@ -13,8 +13,8 @@ export const reqUserRegister = async (body: object) => {
   return res;
 };
 
-export const reqUserData = async (pk: string) => {
-  const res = await axios.get(`${API_HOST}/user/get?pk=${pk}`);
+export const reqUserData = async (id: string) => {
+  const res = await axios.get(`${API_HOST}/user/get?id=${id}`);
   return res;
 };
 

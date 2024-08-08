@@ -53,7 +53,7 @@ export const verifyByToken = (): boolean => {
 };
 
 // number pk를 반환
-export const getUserPkByToken = (): number => {
+export const getUserIdByToken = (): number => {
   const token = localStorage.getItem("token");
   if (token === null) {
     return 0;

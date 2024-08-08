@@ -12,8 +12,8 @@ export class UserController {
   @ApiOperation({
     summary: '사용자 정보 반환',
   })
-  async getUser(@Query('pk') pk: string) {
-    return await this.userService.getUser(pk);
+  async getUser(@Query('id') id: string) {
+    return await this.userService.getUser(id);
   }
 
   @Get('/login')

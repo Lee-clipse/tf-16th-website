@@ -2,8 +2,8 @@ import { Entity, Column, CreateDateColumn, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'user', schema: 'tf' })
 export class UserEntity {
-  @PrimaryColumn({ type: 'int', name: 'pk' })
-  pk: number;
+  @PrimaryColumn({ type: 'int', name: 'id' })
+  id: number;
 
   @Column({ type: 'varchar', name: 'name' })
   name: string;
@@ -28,9 +28,6 @@ export class UserEntity {
 
   @Column({ type: 'boolean', name: 'staff', default: false })
   staff: boolean;
-
-  @Column({ type: 'boolean', name: 'zg_join', default: false })
-  zgJoin: boolean;
 
   @CreateDateColumn({
     type: 'timestamp',

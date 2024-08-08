@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import HeaderMenu from "../../components/HeaderMenu";
 import { User } from "../../type/type";
-import { deleteToken, getUserPkByToken } from "../../common/common";
+import { deleteToken, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
 import { Wrapper } from "./style";
 import { ROUTE_PATH, SEX, 스탭_지원_폼_링크 } from "../../common/const";
@@ -19,11 +19,11 @@ const MyPage = () => {
   }, []);
 
   const fetchUserData = async () => {
-    const userPk = getUserPkByToken().toString();
-    if (Number(userPk) === 0) {
+    const userId = getUserIdByToken().toString();
+    if (Number(userId) === 0) {
       navigate(ROUTE_PATH.MAIN);
     }
-    const res = await reqUserData(userPk);
+    const res = await reqUserData(userId);
     setUserData(res.data.user);
   };
 

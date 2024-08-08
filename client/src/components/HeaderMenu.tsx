@@ -4,7 +4,7 @@ import styled from "styled-components";
 import theme from "../styles/theme";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH, WEB_WIDTH } from "../common/const";
-import { getUserPkByToken, guardAlert, verifyByToken } from "../common/common";
+import { getUserIdByToken, guardAlert, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 import isMobile from "is-mobile";
@@ -27,8 +27,8 @@ const HeaderMenu = () => {
   };
 
   const fetchUserData = async () => {
-    const userPk = getUserPkByToken().toString();
-    const res = await reqUserData(userPk);
+    const userId = getUserIdByToken().toString();
+    const res = await reqUserData(userId);
     setUserData(res.data.user);
   };
 
@@ -123,13 +123,13 @@ const HeaderMenu = () => {
             </PlainLink>
             <PlainLink
               to={"/"}
-              // to={ROUTE_PATH.MAIN_ZEROGAME}
+              // to={ROUTE_PATH.ZG_LOGO}
               onClick={() => {
                 closeMenu();
                 guardAlert();
               }}
               className={`tab f-spb v-center h-center ${
-                location.pathname === ROUTE_PATH.MAIN_ZEROGAME ? "active" : ""
+                location.pathname === ROUTE_PATH.ZG_LOGO ? "active" : ""
               }`}
             >
               제로게임

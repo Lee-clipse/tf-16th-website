@@ -12,8 +12,8 @@ export class UserService {
   ) {}
 
   // API
-  async getUser(pk: string) {
-    const user = await this.getUserDataByPk(pk);
+  async getUser(id: string) {
+    const user = await this.getUserDataById(id);
     if (user) {
       return { code: 200, user };
     }
@@ -37,7 +37,7 @@ export class UserService {
     if (isUserExist) {
       return { code: 400 };
     }
-    await this.userRepository.save({ ...dto, pk: userCount });
+    await this.userRepository.save({ ...dto, id: userCount });
     return { code: 200 };
   }
 
@@ -55,9 +55,9 @@ export class UserService {
     return user;
   }
 
-  async getUserDataByPk(pk: string): Promise<UserEntity> {
+  async getUserDataById(id: string): Promise<UserEntity> {
     const user = await this.userRepository.findOne({
-      where: { pk: Number(pk) },
+      where: { id: Number(id) },
     });
     return user;
   }
@@ -70,8 +70,8 @@ export class UserService {
   async generateUserToken(name: string, phoneNumber: string) {
     const userData = await this.getUserData(name, phoneNumber);
 
-    // pk 값
-    const pk_node = userData.pk.toString();
+    // id 값
+    const id_node = userData.id.toString();
 
     // 스탭이라면 tf
     const staff_node = userData.staff ? 'tf' : 'al';
@@ -82,7 +82,7 @@ export class UserService {
       60 * 24 * 60 * 60 * 1000
     ).toString();
 
-    const token = `${pk_node}-${staff_node}-${expire_node}`;
+    const token = `${id_node}-${staff_node}-${expire_node}`;
     return token;
   }
 }
