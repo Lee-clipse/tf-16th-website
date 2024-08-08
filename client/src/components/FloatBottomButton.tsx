@@ -46,7 +46,7 @@ const FloatBottomButton = () => {
     // 스탭은 아니지만 로그인 유저라면 -> 제로게임 버튼
     else {
       return (
-        <div className="h-center v-center" onClick={() => guardAlert()}>
+        <div className="h-center v-center" onClick={() => navigate(ROUTE_PATH.ZG_LOGO)}>
           <WideButton
             text="제로게임하러 가기 🎲"
             backgroundColor={theme.color.TEAL_BLUE}

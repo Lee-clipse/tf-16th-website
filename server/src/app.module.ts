@@ -7,10 +7,12 @@ import { MapEntity } from './entity/map.entity';
 import { MonsterEntity } from './entity/monster.entity';
 import { StaffEntity } from './entity/staff.entity';
 import { ZerogameEntity } from './entity/zerogame.entity';
+import { ZerogameModule } from './api/zerogame/zerogame.module';
 
 @Module({
   imports: [
     UserModule,
+    ZerogameModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost', // local

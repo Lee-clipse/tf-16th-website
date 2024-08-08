@@ -21,4 +21,4 @@ import { MonsterEntity } from 'src/entity/monster.entity';
   controllers: [ZerogameController],
   providers: [ZerogameService],
 })
-export class UserModule {}
+export class ZerogameModule {}
