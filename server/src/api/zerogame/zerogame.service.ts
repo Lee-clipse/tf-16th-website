@@ -21,4 +21,54 @@ export class ZerogameService {
     @InjectRepository(MonsterEntity)
     private monsterRepository: Repository<MonsterEntity>,
   ) {}
+
+  // API
+  async enterGame(userId: number) {
+    return;
+  }
+
+  // API
+  async selectBooth(userId: number, boothId: number) {
+    return;
+  }
+
+  // API
+  async fetchUser(userId: number) {
+    return;
+  }
+
+  // API
+  async fetchStaff(boothId: number) {
+    return;
+  }
+
+  // API
+  async fetchGoodsStaff() {
+    return;
+  }
+
+  // API
+  async givePoint(userId: number, boothId: number, point: number) {
+    return;
+  }
+
+  // API
+  async changeBooth(userId: number, boothId: number) {
+    return;
+  }
+
+  // API
+  async outBooth(userId: number, boothId: number) {
+    return;
+  }
+
+  // API
+  async attackMonster(point: number) {
+    return;
+  }
+
+  // API
+  async receiveGoods(userId: number) {
+    return;
+  }
 }
