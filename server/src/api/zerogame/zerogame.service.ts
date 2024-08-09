@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ZerogameEntity } from 'src/entity/zerogame.entity';
 import { MapEntity } from 'src/entity/map.entity';
-import { BoothEntity } from 'src/entity/booth.entity';
 import { StaffEntity } from 'src/entity/staff.entity';
 import { MonsterEntity } from 'src/entity/monster.entity';
 import { UserEntity } from 'src/entity/user.entity';
@@ -15,8 +14,6 @@ export class ZerogameService {
     private zerogameRepository: Repository<ZerogameEntity>,
     @InjectRepository(MapEntity)
     private mapRepository: Repository<MapEntity>,
-    @InjectRepository(BoothEntity)
-    private boothRepository: Repository<BoothEntity>,
     @InjectRepository(StaffEntity)
     private staffRepository: Repository<StaffEntity>,
     @InjectRepository(MonsterEntity)
@@ -55,6 +52,9 @@ export class ZerogameService {
   async fetchUser(userId: number) {
     try {
       const user = await this.zerogameRepository.findOne({ where: { userId } });
+      if (user === null) {
+        return { code: 400 };
+      }
       return { code: 200, user };
     } catch (error) {
       return { code: 400 };
@@ -68,13 +68,14 @@ export class ZerogameService {
       const rowList = await this.mapRepository.find({
         where: { boothId, cleared: false },
       });
-      const userNameList = rowList.map(async (row: MapEntity) => {
-        const findUser = await this.userRepository.findOne({
-          where: { id: row.userId },
-        });
-        return findUser.name;
-      });
-      return { code: 200, userNameList };
+      const userList = await Promise.all(
+        rowList.map(async (row: MapEntity) => {
+          return await this.userRepository.findOne({
+            where: { id: row.userId },
+          });
+        }),
+      );
+      return { code: 200, userList };
     } catch (error) {
       return { code: 400 };
     }
@@ -173,6 +174,21 @@ export class ZerogameService {
       row.goodsReceived = true;
       await this.zerogameRepository.save(row);
       return { code: 200 };
+    } catch (error) {
+      return { code: 400 };
+    }
+  }
+
+  // API
+  async getBoothIdOfStaff(staffId: number) {
+    try {
+      const row = await this.staffRepository.findOne({
+        where: { staffId },
+      });
+      if (row === null) {
+        return { code: 400 };
+      }
+      return { code: 200, boothId: row.boothId };
     } catch (error) {
       return { code: 400 };
     }

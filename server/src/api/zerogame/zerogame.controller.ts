@@ -125,4 +125,13 @@ export class ZerogameController {
     const res = await this.zerogameService.receiveGoods(userId);
     return res;
   }
+
+  @Get('/staff/booth')
+  @ApiOperation({
+    summary: '해당 스탭의 부스 id 반환',
+  })
+  async getBoothIdOfStaff(@Query('staff_id') staffId: string) {
+    const res = await this.zerogameService.getBoothIdOfStaff(Number(staffId));
+    return res;
+  }
 }

@@ -14,7 +14,7 @@ export type UserLoginInfo = {
 };
 
 export type User = {
-  pk: number;
+  id: number;
   name: string;
   sex: number;
   age: number;

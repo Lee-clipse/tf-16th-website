@@ -158,7 +158,7 @@ const HeadWrapper = styled.div`
   max-width: ${isMobile() ? "100vw" : WEB_WIDTH};
   padding: 1.6rem 1.4rem;
   background-color: rgba(255, 255, 255, 0.9);
-  z-index: 1000;
+  z-index: 997;
   text-align: right;
 
   #title {

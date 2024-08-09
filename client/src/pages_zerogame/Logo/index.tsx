@@ -3,7 +3,7 @@ import { Modal, Wrapper } from "./style";
 import ZGBackground from "../../assets/images/zg_bg.png";
 import CloseIcon from "../../assets/icons/close.png";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_PATH } from "../../common/const";
+import { API_CODE, ROUTE_PATH } from "../../common/const";
 import { useEffect, useState } from "react";
 import { reqUserGameFetch } from "../../api/zerogame";
 import { getUserIdByToken } from "../../common/common";
@@ -28,9 +28,9 @@ const ZGLogoPage = () => {
   const fetchUserData = async () => {
     const userId = getUserIdByToken().toString();
     const res = await reqUserGameFetch(userId);
-    const isAlreadyEntered = res.data.user;
     // 이미 제로게임에 입장했던 유저라면 패스
-    if (isAlreadyEntered !== undefined) {
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
       setIsEntered(true);
     }
   };

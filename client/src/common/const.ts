@@ -13,6 +13,7 @@ export const ROUTE_PATH = {
   ZG_BOOTH: "/zg-booth",
   ZG_MONSTER: "/zg-monster",
   ZG_GOODS: "/zg-goods",
+  STAFF: "/staff",
 };
 
 export const HOST = {

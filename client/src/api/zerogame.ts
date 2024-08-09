@@ -25,11 +25,11 @@ export const reqUserGameFetch = async (userId: string) => {
 
 export const reqStaffGameFetch = async (boothId: string) => {
   const res = await axios.get(`${API_HOST}/game/staff/fetch?booth_id=${boothId}`);
-  // { code, userNameList }
+  // { code, userList }
   return res;
 };
 
-// body: booth_id, user_id
+// body: booth_id, user_id, point
 export const reqGivePoint = async (body: object) => {
   const res = await axios.post(`${API_HOST}/game/give-point`, body);
   // { code }
@@ -66,6 +66,12 @@ export const reqMonsterHp = async () => {
 export const reqUserGoodsFetch = async () => {
   const res = await axios.get(`${API_HOST}/game/goods/fetch`);
   // { code }
+  return res;
+};
+
+export const reqBoothIdOfStaff = async (staffId: string) => {
+  const res = await axios.get(`${API_HOST}/game/staff/booth?staff_id=${staffId}`);
+  // { code, staff_id }
   return res;
 };
 
