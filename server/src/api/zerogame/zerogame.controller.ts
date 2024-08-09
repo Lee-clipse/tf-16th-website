@@ -16,8 +16,7 @@ export class ZerogameController {
   // user_id
   async enterGame(@Body() dto: UserBoothDto) {
     const userId = Number(dto.userId);
-    const res = await this.zerogameService.enterGame(userId);
-    return res;
+    return await this.zerogameService.enterGame(userId);
   }
 
   @Post('/select-booth')
