@@ -6,6 +6,12 @@ import { MapEntity } from 'src/entity/map.entity';
 import { StaffEntity } from 'src/entity/staff.entity';
 import { MonsterEntity } from 'src/entity/monster.entity';
 import { UserEntity } from 'src/entity/user.entity';
+import {
+  API_CODE,
+  BOOTH_DOMAIN,
+  BOOTH_VALUE,
+  ZEROGAME,
+} from 'src/common/const';
 
 @Injectable()
 export class ZerogameService {
@@ -27,9 +33,9 @@ export class ZerogameService {
     try {
       await this.zerogameRepository.save({ userId });
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
-    return { code: 200 };
+    return { code: API_CODE.SUCCESS };
   }
 
   // API
@@ -42,9 +48,9 @@ export class ZerogameService {
 
       // 부스 대기 중으로 세팅
       await this.mapRepository.save({ userId, boothId });
-      return { code: 200 };
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -53,11 +59,11 @@ export class ZerogameService {
     try {
       const user = await this.zerogameRepository.findOne({ where: { userId } });
       if (user === null) {
-        return { code: 400 };
+        return { code: API_CODE.INVALID };
       }
-      return { code: 200, user };
+      return { code: API_CODE.SUCCESS, user };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -75,9 +81,9 @@ export class ZerogameService {
           });
         }),
       );
-      return { code: 200, userList };
+      return { code: API_CODE.SUCCESS, userList };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -93,7 +99,7 @@ export class ZerogameService {
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       row.point += point;
       row.waitingBoothId = 0;
-      row.boothLog = this.updateBoothLog(row.boothLog, boothId);
+      row.boothLog = this.updateBoothLog(row.boothLog, boothId.toString());
       await this.zerogameRepository.save(row);
 
       // 부스 기록 업데이트
@@ -103,9 +109,9 @@ export class ZerogameService {
       map.cleared = true;
       await this.mapRepository.save(map);
 
-      return { code: 200 };
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -121,9 +127,9 @@ export class ZerogameService {
       // 부스 기록 갱신
       await this.mapRepository.delete({ userId, boothId: prevBoothId });
       await this.mapRepository.save({ userId, boothId });
-      return { code: 200 };
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -138,21 +144,25 @@ export class ZerogameService {
 
       // 부스 기록 갱신
       await this.mapRepository.delete({ userId, boothId: prevBoothId });
-      return { code: 200 };
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
   // API
-  async attackMonster(point: number) {
+  async attackMonster(userId: number, point: number) {
     try {
+      const user = await this.zerogameRepository.findOne({ where: { userId } });
+      user.isAttack = true;
+      await this.zerogameRepository.save(user);
+
       const row = await this.monsterRepository.findOne({ where: { pk: 1 } });
       row.hp -= point;
-      await this.mapRepository.save(row);
-      return { code: 200 };
+      await this.monsterRepository.save(row);
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -161,9 +171,9 @@ export class ZerogameService {
     try {
       const row = await this.monsterRepository.findOne({ where: { pk: 1 } });
       const hp = row.hp;
-      return { code: 200, hp };
+      return { code: API_CODE.SUCCESS, hp };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -173,9 +183,9 @@ export class ZerogameService {
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       row.goodsReceived = true;
       await this.zerogameRepository.save(row);
-      return { code: 200 };
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -186,11 +196,11 @@ export class ZerogameService {
         where: { staffId },
       });
       if (row === null) {
-        return { code: 400 };
+        return { code: API_CODE.INVALID };
       }
-      return { code: 200, boothId: row.boothId };
+      return { code: API_CODE.SUCCESS, boothId: row.boothId };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
@@ -201,13 +211,23 @@ export class ZerogameService {
         where: { userId, cleared: true },
       });
       const boothLog = mapRows.map((row: MapEntity) => row.boothId.toString());
-      return { code: 200, boothLog };
+      return { code: API_CODE.SUCCESS, boothLog };
     } catch (error) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
   }
 
-  updateBoothLog(boothLog: string, boothId: number) {
-    return '';
+  // test OK
+  updateBoothLog(boothLog: string, boothId: string) {
+    let boothDomain = '';
+    Object.entries(BOOTH_DOMAIN).map(([key, value]) => {
+      if (value.includes(boothId)) {
+        boothDomain = key;
+      }
+    });
+    const newBoothLog = (
+      Number(boothLog) + BOOTH_VALUE[boothDomain]
+    ).toString();
+    return newBoothLog;
   }
 }

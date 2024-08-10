@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../../entity/user.entity';
 import { UserRegisterDto } from 'src/dto/register.dto';
+import { API_CODE } from 'src/common/const';
 
 @Injectable()
 export class UserService {
@@ -15,9 +16,9 @@ export class UserService {
   async getUser(id: string) {
     const user = await this.getUserDataById(id);
     if (user) {
-      return { code: 200, user };
+      return { code: API_CODE.SUCCESS, user };
     }
-    return { code: 404 };
+    return { code: API_CODE.NOT_FOUND };
   }
 
   // API
@@ -25,9 +26,9 @@ export class UserService {
     const isUserExist = await this.isUserExist(name, phoneNumber);
     if (isUserExist) {
       const token = await this.generateUserToken(name, phoneNumber);
-      return { code: 200, token };
+      return { code: API_CODE.SUCCESS, token };
     }
-    return { code: 404 };
+    return { code: API_CODE.NOT_FOUND };
   }
 
   // API
@@ -35,10 +36,10 @@ export class UserService {
     const isUserExist = await this.isUserExist(dto.name, dto.phoneNumber);
     const userCount = (await this.getUserCount()) + 1;
     if (isUserExist) {
-      return { code: 400 };
+      return { code: API_CODE.INVALID };
     }
     await this.userRepository.save({ ...dto, id: userCount });
-    return { code: 200 };
+    return { code: API_CODE.SUCCESS };
   }
 
   async isUserExist(name: string, phoneNumber: string): Promise<boolean> {

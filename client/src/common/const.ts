@@ -62,6 +62,27 @@ export const BOOTH_LIST: { [key: number]: string } = {
   777: "굿즈 수령 부스",
 };
 
+export const ZEROGAME = "ZEROGAME";
+export const CLIMATE = "CLIMATE";
+export const YOUTH = "YOUTH";
+export const MULTI_CULTURE = "MULTI_CULTURE";
+
+export const BOOTH_CLEAR_LOG = "3111";
+
+export const BOOTH_VALUE = {
+  ZEROGAME: 1000,
+  CLIMATE: 100,
+  YOUTH: 10,
+  MULTI_CULTURE: 1,
+};
+
+export const BOOTH_DOMAIN = {
+  ZEROGAME: ["1", "2", "3", "4"],
+  CLIMATE: ["101"],
+  YOUTH: ["201"],
+  MULTI_CULTURE: ["301"],
+};
+
 export const 스탭_지원_폼_링크 =
   "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
 export const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";

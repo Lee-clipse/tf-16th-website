@@ -14,6 +14,9 @@ export class ZerogameEntity {
   @Column({ type: 'int', name: 'waiting_booth_id', default: 0 })
   waitingBoothId: number;
 
+  @Column({ type: 'boolean', name: 'is_attack', default: false })
+  isAttack: boolean;
+
   @Column({ type: 'boolean', name: 'goods_received', default: false })
   goodsReceived: boolean;
 }

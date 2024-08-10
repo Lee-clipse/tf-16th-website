@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Wrapper } from "./style";
-import { getUserIdByToken } from "../../common/common";
-import { reqMonsterHp, reqUserGameFetch } from "../../api/zerogame";
+import { alert, getUserIdByToken } from "../../common/common";
+import { reqAttackMonster, reqMonsterHp, reqUserGameFetch } from "../../api/zerogame";
 import Monster from "../../assets/images/monster.png";
 import { ZGUser } from "../../type/type";
+import { API_CODE, ROUTE_PATH } from "../../common/const";
+import { useNavigate } from "react-router-dom";
 
 const ZGMonsterPage = () => {
+  const navigate = useNavigate();
+
   const [monsterHp, setMonsterHp] = useState<number>(0);
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
@@ -13,6 +17,7 @@ const ZGMonsterPage = () => {
     boothLog: "0000",
     waitingBoothId: 101,
     goodsReceived: false,
+    isAttack: false,
   });
 
   useEffect(() => {
@@ -31,12 +36,23 @@ const ZGMonsterPage = () => {
 
   const fetchMonsterHp = async () => {
     const res = await reqMonsterHp();
-    const hp = res.data.hp;
-    setMonsterHp(Number(hp));
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      const hp = res.data.hp;
+      setMonsterHp(Number(hp));
+    }
   };
 
   const handleAttackButton = async () => {
-    console.log(userData.point);
+    const res = await reqAttackMonster({
+      userId: userData.userId.toString(),
+      point: userData.point.toString(),
+    });
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      alert("몬스터 공격!", "success");
+      navigate(ROUTE_PATH.ZG_GOODS);
+    }
   };
 
   return (

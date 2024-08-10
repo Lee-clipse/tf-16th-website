@@ -43,6 +43,18 @@ export const Wrapper = styled.div`
     margin: 2rem 0;
   }
 
+  #clear-btn {
+    border: 3px solid ${theme.color.ORANGE};
+    font-size: ${theme.font.SIZE.ML};
+    color: ${theme.color.ORANGE};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
   #btn-row {
     text-align: center;
   }

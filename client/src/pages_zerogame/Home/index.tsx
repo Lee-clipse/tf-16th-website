@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import { Modal, Wrapper } from "./style";
 import Monster from "../../assets/images/monster.png";
 import { useNavigate } from "react-router-dom";
-import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { BOOTH_CLEAR_LOG, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { getUserIdByToken } from "../../common/common";
 import { reqUserGameFetch } from "../../api/zerogame";
-import { reqUserData } from "../../api/user";
 import { ZGUser } from "../../type/type";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
@@ -15,12 +14,15 @@ import HomeIcon from "../../assets/icons/home.png";
 const ZGHomePage = () => {
   const navigate = useNavigate();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
+  const [viewClearButton, setViewClearButton] = useState<boolean>(false);
+  const [viewGoodsButton, setViewGoodsButton] = useState<boolean>(false);
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
     point: 0,
     boothLog: "0000",
-    waitingBoothId: 101,
+    waitingBoothId: 0,
     goodsReceived: false,
+    isAttack: false,
   });
 
   useEffect(() => {
@@ -32,8 +34,14 @@ const ZGHomePage = () => {
     const res = await reqUserGameFetch(userId);
     const resUserData = res.data.user;
     if (resUserData) {
-      setUserData(res.data.user);
+      setUserData(resUserData);
+      renderClearButton(resUserData);
     }
+  };
+
+  const renderClearButton = (zgUser: ZGUser) => {
+    setViewClearButton(zgUser.boothLog === BOOTH_CLEAR_LOG);
+    setViewGoodsButton(zgUser.isAttack);
   };
 
   const handleRefreshButton = async () => {
@@ -70,8 +78,20 @@ const ZGHomePage = () => {
           <div id="monster">
             <img src={Monster} />
           </div>
-          <div id="clear-booth">부스 현황: {userData.boothLog}</div>
+
+          <div id="clear-booth">부스 현황: {userData?.boothLog}</div>
           <div id="booth-waiting">{BOOTH_LIST[Number(userData?.waitingBoothId)]} 입장 중</div>
+          {viewGoodsButton ? (
+            <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
+              굿즈받기
+            </div>
+          ) : (
+            viewClearButton && (
+              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
+                공격하기
+              </div>
+            )
+          )}
         </div>
 
         <div id="btn-row" className="f-row f-spb">

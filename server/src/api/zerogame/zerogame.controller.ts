@@ -95,7 +95,7 @@ export class ZerogameController {
     return res;
   }
 
-  @Get('/booth/hp')
+  @Get('/monster/hp')
   @ApiOperation({
     summary: '몬스터 현재 체력 반환',
   })
@@ -109,9 +109,10 @@ export class ZerogameController {
     summary: '몬스터에게 공격',
   })
   // point
-  async attackMonster(@Body() dto: PointDto) {
+  async attackMonster(@Body() dto: UserBoothDto) {
+    const userId = Number(dto.userId);
     const point = Number(dto.point);
-    const res = await this.zerogameService.attackMonster(point);
+    const res = await this.zerogameService.attackMonster(userId, point);
     return res;
   }
 
