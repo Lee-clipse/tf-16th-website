@@ -14,6 +14,8 @@ const color = {
   GRAY: "#A7A7AB",
   MID_GRAY: "#757579",
   LIGHT_GRAY: "#F8F9FA",
+
+  GREEN: "#0ba11f",
 };
 
 const font = {

@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Modal, Wrapper } from "./style";
 import Monster from "../../assets/images/monster.png";
+import ZGBackground from "../../assets/images/zg-bg.jpeg";
+import Location from "../../assets/images/location.png";
 import { useNavigate } from "react-router-dom";
 import { BOOTH_CLEAR_LOG, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { getUserIdByToken } from "../../common/common";
@@ -10,6 +12,7 @@ import { ZGUser } from "../../type/type";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import HomeIcon from "../../assets/icons/home.png";
+import LocationIcon from "../../assets/icons/location.png";
 
 const ZGHomePage = () => {
   const navigate = useNavigate();
@@ -58,12 +61,17 @@ const ZGHomePage = () => {
             <div id="m-header">
               <img src={CloseIcon} onClick={() => setViewMapModal(false)} />
             </div>
-            <div id="m-body">시민공원 내 부스 지도</div>
+            <div id="m-body">
+              <div id="m-b-title">시민공원 내 부스 지도</div>
+              <img id="location-map" src={Location} />
+            </div>
           </div>
         </Modal>
       )}
 
       <Wrapper className="f-col f-spb">
+        <img id="zg-bg" src={ZGBackground} />
+
         <div id="h-header" className="f-row f-spb v-center">
           <div id="point">
             Point: <span id="number">{userData?.point}</span>
@@ -96,7 +104,7 @@ const ZGHomePage = () => {
 
         <div id="btn-row" className="f-row f-spb">
           <div id="map-btn" className="v-center h-center" onClick={() => setViewMapModal(true)}>
-            지도
+            <img src={LocationIcon} />
           </div>
           <div
             id="booth-list-btn"

@@ -15,6 +15,8 @@ import { User, ZGUser } from "../../type/type";
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
+import Location from "../../assets/images/location.png";
+import LocationIcon from "../../assets/icons/location.png";
 
 const StaffPage = () => {
   const navigate = useNavigate();
@@ -131,7 +133,10 @@ const StaffPage = () => {
             <div id="m-header">
               <img src={CloseIcon} onClick={() => setViewMapModal(false)} />
             </div>
-            <div id="m-body">시민공원 내 부스 지도</div>
+            <div id="m-body">
+              <div id="m-b-title">시민공원 내 부스 지도</div>
+              <img id="location-map" src={Location} />
+            </div>
           </div>
         </Modal>
       )}
@@ -144,7 +149,7 @@ const StaffPage = () => {
             <div id="m-header">
               <img src={CloseIcon} onClick={() => setViewPointModal(false)} />
             </div>
-            <div id="m-body">
+            <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
               <div>
                 {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
               </div>
@@ -216,7 +221,7 @@ const StaffPage = () => {
 
         <div id="btn-row" className="f-row f-spb">
           <div id="map-btn" className="v-center h-center" onClick={() => setViewMapModal(true)}>
-            지도
+            <img src={LocationIcon} />
           </div>
           <div
             id="booth-list-btn"
