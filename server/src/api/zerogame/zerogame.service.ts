@@ -194,6 +194,19 @@ export class ZerogameService {
     }
   }
 
+  // API
+  async getBoothLogOfUser(userId: number) {
+    try {
+      const mapRows = await this.mapRepository.find({
+        where: { userId, cleared: true },
+      });
+      const boothLog = mapRows.map((row: MapEntity) => row.boothId.toString());
+      return { code: 200, boothLog };
+    } catch (error) {
+      return { code: 400 };
+    }
+  }
+
   updateBoothLog(boothLog: string, boothId: number) {
     return '';
   }

@@ -25,6 +25,10 @@ export const Wrapper = styled.div`
       border-bottom: 1px solid lightgray;
       padding: 2rem;
     }
+
+    .cleard {
+      background-color: ${theme.color.GRAY};
+    }
   }
 `;
 

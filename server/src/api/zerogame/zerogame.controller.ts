@@ -134,4 +134,13 @@ export class ZerogameController {
     const res = await this.zerogameService.getBoothIdOfStaff(Number(staffId));
     return res;
   }
+
+  @Get('/booth/log')
+  @ApiOperation({
+    summary: '사용자의 지금까지 부스 기록 반환',
+  })
+  async getBoothLogOfUser(@Query('user_id') userId: string) {
+    const res = await this.zerogameService.getBoothLogOfUser(Number(userId));
+    return res;
+  }
 }

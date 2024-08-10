@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { guardAlert, isStaffByToken, verifyByToken } from "../common/common";
+import { isStaffByToken, verifyByToken } from "../common/common";
 import WideButton from "./WideButton";
 import { ROUTE_PATH } from "../common/const";
 import theme from "../styles/theme";
@@ -34,9 +34,9 @@ const FloatBottomButton = () => {
     // 스탭이라면 -> 관리 버튼
     if (isStaff) {
       return (
-        <div className="h-center v-center" onClick={() => guardAlert()}>
+        <div className="h-center v-center" onClick={() => navigate(ROUTE_PATH.STAFF)}>
           <WideButton
-            text="관리 페이지로 가기 🔧"
+            text="스탭 페이지로 가기 🔧"
             backgroundColor={theme.color.PURPLE}
             textColor={theme.color.WHITE}
           />
