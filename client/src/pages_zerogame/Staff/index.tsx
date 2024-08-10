@@ -6,6 +6,7 @@ import { reqUserData } from "../../api/user";
 import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import {
   reqBoothIdOfStaff,
+  reqBoothOut,
   reqGivePoint,
   reqStaffGameFetch,
   reqUserGameFetch,
@@ -25,6 +26,7 @@ const StaffPage = () => {
   const [selectUserGameData, setSelectUserGameData] = useState<ZGUser>();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
   const [viewPointModal, setViewPointModal] = useState<boolean>(false);
+  const [viewOutModal, setViewOutModal] = useState<boolean>(false);
   const [inputPoint, setInputPoint] = useState<string>("");
 
   useEffect(() => {
@@ -36,8 +38,12 @@ const StaffPage = () => {
     const staffId = getUserIdByToken().toString();
     const res = await reqUserData(staffId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
-    if (ok) {
+    const isStaff = res.data.user.staff;
+    if (ok && isStaff) {
       setStaffName(res.data.user.name);
+    } else {
+      navigate(ROUTE_PATH.MAIN);
+      alert("해당 페이지에 권한이 없습니다.", "warning");
     }
   };
 
@@ -96,6 +102,25 @@ const StaffPage = () => {
     }
   };
 
+  const handleSelectOutUser = (user: User) => {
+    setSelectUser(user);
+    fetchUserGameData(user.id.toString());
+    setViewOutModal(true);
+  };
+
+  const handleOutButton = async () => {
+    const res = await reqBoothOut({
+      userId: selectUser?.id.toString(),
+      boothId,
+    });
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      alert("이탈 처리 되었습니다.", "success");
+      setViewOutModal(false);
+      window.location.reload();
+    }
+  };
+
   return (
     <>
       {/* 지도 모달 */}
@@ -137,6 +162,27 @@ const StaffPage = () => {
         </Modal>
       )}
 
+      {/* 이탈 모달 */}
+      {viewOutModal && (
+        <Modal>
+          <div id="back-drop" onClick={() => setViewOutModal(false)}></div>
+          <div id="m-wrapper">
+            <div id="m-header">
+              <img src={CloseIcon} onClick={() => setViewOutModal(false)} />
+            </div>
+            <div id="m-body">
+              <div>
+                {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
+              </div>
+              <div>현재 포인트: {selectUserGameData?.point}</div>
+              <div className="b-btn" onClick={() => handleOutButton()}>
+                이탈 처리
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
+
       {/* 헤더 메뉴 */}
       <HeaderMenu />
 
@@ -158,7 +204,9 @@ const StaffPage = () => {
                     <div className="s-p-point-btn" onClick={() => handleSelectUser(user)}>
                       포인트
                     </div>
-                    <div className="s-p-out-btn">이탈</div>
+                    <div className="s-p-out-btn" onClick={() => handleSelectOutUser(user)}>
+                      이탈
+                    </div>
                   </div>
                 </div>
               );
