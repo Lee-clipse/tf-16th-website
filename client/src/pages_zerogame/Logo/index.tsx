@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Modal, Wrapper } from "./style";
-import ZGBackground from "../../assets/images/zg_bg.png";
+import ZGBackground from "../../assets/images/zg-logo.jpg";
 import CloseIcon from "../../assets/icons/close.png";
 import { useNavigate } from "react-router-dom";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
