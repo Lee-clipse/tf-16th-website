@@ -61,7 +61,7 @@ export const Wrapper = styled.div`
   }
 
   #button-box {
-    margin-top: 6rem;
+    margin-top: 3rem;
 
     #logout-button {
       margin-top: 1.4rem;

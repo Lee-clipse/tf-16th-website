@@ -4,9 +4,7 @@ import { User } from "../../type/type";
 import { deleteToken, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
 import { Wrapper } from "./style";
-import { ROUTE_PATH, SEX, 스탭_지원_폼_링크 } from "../../common/const";
-import theme from "../../styles/theme";
-import Button from "../../components/Button";
+import { ROUTE_PATH, SEX } from "../../common/const";
 import CountUp from "react-countup";
 import { useNavigate } from "react-router-dom";
 
@@ -42,7 +40,7 @@ const MyPage = () => {
             <CountUp
               className="number highlight"
               start={1}
-              end={userData?.pk as number}
+              end={userData?.id as number}
               duration={3}
             />
             번째 가입자입니다.
@@ -77,14 +75,6 @@ const MyPage = () => {
           </div>
 
           <div id="button-box" className="h-center v-center f-col">
-            <div onClick={() => window.open(스탭_지원_폼_링크, "_blank", "noopener, noreferrer")}>
-              <Button
-                text="스탭으로 지원하기 ✨"
-                backgroundColor={theme.color.PURPLE}
-                textColor={theme.color.WHITE}
-              />
-            </div>
-
             <div
               id="logout-button"
               onClick={() => {
