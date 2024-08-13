@@ -5,6 +5,7 @@ import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { alert, getUserIdByToken, isStaffByToken } from "../../common/common";
 import CloseIcon from "../../assets/icons/close.png";
 import { reqBoothLogOfUser, reqSelectBooth } from "../../api/zerogame";
+import ZGBackground from "../../assets/images/zg_bg.webp";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
@@ -70,6 +71,8 @@ const ZGBoothPage = () => {
 
       {/* TODO: 이미 클리어한 부스에 대해 처리 */}
       <Wrapper>
+        <img id="zg-bg" src={ZGBackground} />
+
         <div id="b-title">부스 목록</div>
         <div id="b-list" className="f-col h-center">
           {Object.entries(BOOTH_LIST).map(([key, value]) => {

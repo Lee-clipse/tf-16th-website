@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
 import { Wrapper } from "./style";
-import { getUserIdByToken } from "../../common/common";
-import { reqMonsterHp, reqUserGameFetch } from "../../api/zerogame";
 import GoodsMap from "../../assets/images/goods_map.png";
 import Goods from "../../assets/images/goods.png";
-import { ZGUser } from "../../type/type";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_PATH } from "../../common/const";
+import ZGBackground from "../../assets/images/zg_bg.webp";
 
 const ZGGoodsPage = () => {
   const navigate = useNavigate();
@@ -15,6 +12,8 @@ const ZGGoodsPage = () => {
   return (
     <>
       <Wrapper>
+        <img id="zg-bg" src={ZGBackground} />
+
         <div id="g-map">
           <img src={GoodsMap} />
         </div>

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Wrapper } from "./style";
 import { alert, getUserIdByToken } from "../../common/common";
 import { reqAttackMonster, reqMonsterHp, reqUserGameFetch } from "../../api/zerogame";
-import Monster from "../../assets/images/monster.png";
+import Monster from "../../assets/images/zg_monster.webp";
 import { ZGUser } from "../../type/type";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import { useNavigate } from "react-router-dom";
+import ZGBackground from "../../assets/images/zg_bg.webp";
 
 const ZGMonsterPage = () => {
   const navigate = useNavigate();
@@ -58,6 +59,8 @@ const ZGMonsterPage = () => {
   return (
     <>
       <Wrapper>
+        <img id="zg-bg" src={ZGBackground} />
+
         <div id="monster">
           <div id="m-hp">HP: {monsterHp}</div>
           <img src={Monster} />

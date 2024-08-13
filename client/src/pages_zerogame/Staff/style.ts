@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   height: 100vh;
   font-family: ${theme.font.NOTO[5]};
   font-size: ${theme.font.SIZE.ML};
-  margin-top: 7rem;
 
   #zg-bg {
     z-index: -1;
@@ -19,25 +18,28 @@ export const Wrapper = styled.div`
   }
 
   #s-name {
+    padding-top: 9rem;
     text-align: center;
-    font-family: ${theme.font.NOTO[7]};
+    font-family: ${theme.font.NOTO[9]};
     font-size: ${theme.font.SIZE.XL};
+    color: ${theme.color.WHITE};
     margin-bottom: 1rem;
   }
 
   #s-booth-name {
     text-align: center;
-    font-family: ${theme.font.NOTO[7]};
+    font-family: ${theme.font.NOTO[9]};
     font-size: ${theme.font.SIZE.XXXXL};
-    color: ${theme.color.SKY_BLUE};
+    color: ${theme.color.ORANGE};
     margin-bottom: 3rem;
   }
 
   #s-people {
     #s-p-title {
       text-align: center;
-      font-family: ${theme.font.NOTO[5]};
+      font-family: ${theme.font.NOTO[8]};
       font-size: ${theme.font.SIZE.XL};
+      color: ${theme.color.WHITE};
       margin-bottom: 1rem;
     }
 
@@ -48,6 +50,7 @@ export const Wrapper = styled.div`
       height: 52vh;
       overflow: scroll;
       margin-bottom: 3rem;
+      background-color: ${theme.color.WHITE};
 
       .s-p-item {
         border-bottom: 2px solid lightgray;

@@ -17,6 +17,7 @@ import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import Location from "../../assets/images/location.png";
 import LocationIcon from "../../assets/icons/location.png";
+import ZGBackground from "../../assets/images/zg_bg.webp";
 
 const StaffPage = () => {
   const navigate = useNavigate();
@@ -175,7 +176,7 @@ const StaffPage = () => {
             <div id="m-header">
               <img src={CloseIcon} onClick={() => setViewOutModal(false)} />
             </div>
-            <div id="m-body">
+            <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
               <div>
                 {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
               </div>
@@ -192,6 +193,8 @@ const StaffPage = () => {
       <HeaderMenu />
 
       <Wrapper>
+        <img id="zg-bg" src={ZGBackground} />
+
         <div id="s-name">{staffName} 스탭님 환영합니다!</div>
         <div id="s-booth-name">{BOOTH_LIST[Number(boothId)]} 담당</div>
 

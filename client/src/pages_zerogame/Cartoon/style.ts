@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
     color: ${theme.color.WHITE};
     font-family: ${theme.font.NOTO[7]};
     font-size: ${theme.font.SIZE.XXXL};
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
     position: absolute;
     text-align: center;
     top: 86%;

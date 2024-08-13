@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Modal, Wrapper } from "./style";
-import ZGBackground from "../../assets/images/zg-logo.jpg";
+import ZGLogo from "../../assets/images/zg_logo.webp";
 import CloseIcon from "../../assets/icons/close.png";
 import { useNavigate } from "react-router-dom";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
@@ -71,10 +71,7 @@ const ZGLogoPage = () => {
 
       <Wrapper>
         {/* 배경 */}
-        <img id="bg" src={ZGBackground} />
-
-        {/* 로고 텍스트 */}
-        <div id="zg-logo">제로게임</div>
+        <img id="bg" src={ZGLogo} />
 
         {/* 버튼 */}
         <div

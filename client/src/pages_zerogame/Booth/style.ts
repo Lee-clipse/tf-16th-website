@@ -5,21 +5,34 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  padding: 3rem 2rem;
   font-family: ${theme.font.NOTO[5]};
   font-size: ${theme.font.SIZE.ML};
 
   #b-title {
-    font-size: ${theme.font.SIZE.XXL};
+    font-size: ${theme.font.SIZE.XXXXL};
+    font-family: ${theme.font.NOTO[9]};
     text-align: center;
-    margin-bottom: 4rem;
+    color: ${theme.color.WHITE};
+    margin: 6rem 0 4rem 0;
+  }
+
+  #zg-bg {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.8;
   }
 
   #b-list {
+    margin: 0 3rem;
     height: 70vh;
     overflow: scroll;
     border: 2px solid lightgray;
     border-radius: 1rem;
+    background-color: ${theme.color.WHITE};
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     .b {
       border-bottom: 1px solid lightgray;

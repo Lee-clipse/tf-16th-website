@@ -5,21 +5,30 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  padding: 3rem 2rem;
   font-family: ${theme.font.NOTO[5]};
   font-size: ${theme.font.SIZE.ML};
 
+  #zg-bg {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.8;
+  }
+
   #monster {
     text-align: center;
-    margin: 2rem 0;
+    margin: 5rem 0;
 
     #m-hp {
-      font-size: ${theme.font.SIZE.XL};
+      font-size: ${theme.font.SIZE.XXXXXL};
+      color: ${theme.color.WHITE};
       margin-bottom: 2rem;
     }
 
     img {
-      width: 80%;
+      width: 100%;
     }
   }
 
@@ -36,6 +45,7 @@ export const Wrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
     width: 90vw;
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
   }
 `;
 

@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { Modal, Wrapper } from "./style";
-import Monster from "../../assets/images/monster.png";
-import ZGBackground from "../../assets/images/zg-bg.jpeg";
+import Monster from "../../assets/images/zg_monster.webp";
+import ZGBackground from "../../assets/images/zg_bg.webp";
+import BlueStone from "../../assets/images/blue_stone.webp";
+import GreenStone from "../../assets/images/green_stone.webp";
+import RedStone from "../../assets/images/red_stone.webp";
+import YellowStone from "../../assets/images/yellow_stone.webp";
 import Location from "../../assets/images/location.png";
 import { useNavigate } from "react-router-dom";
 import { BOOTH_CLEAR_LOG, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
@@ -87,19 +91,50 @@ const ZGHomePage = () => {
             <img src={Monster} />
           </div>
 
-          <div id="clear-booth">부스 현황: {userData?.boothLog}</div>
-          <div id="booth-waiting">{BOOTH_LIST[Number(userData?.waitingBoothId)]} 입장 중</div>
-          {viewGoodsButton ? (
-            <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
-              굿즈받기
+          <div id="booth-map-box" className="f-row">
+            <div className="b-m-box">
+              <div className="b-m-title">제로게임</div>
+              <img className="stone" src={BlueStone} />
+              <div className="b-m-score">{userData.boothLog[0]}/3</div>
             </div>
-          ) : (
-            viewClearButton && (
-              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
-                공격하기
+            <div className="b-m-box">
+              <div className="b-m-title">기후위기</div>
+              <img className="stone" src={RedStone} />
+              <div className="b-m-score">{userData.boothLog[1]}/1</div>
+            </div>
+            <div className="b-m-box">
+              <div className="b-m-title">다문화</div>
+              <img className="stone" src={YellowStone} />
+              <div className="b-m-score">{userData.boothLog[2]}/1</div>
+            </div>
+            <div className="b-m-box">
+              <div className="b-m-title">청년</div>
+              <img className="stone" src={GreenStone} />
+              <div className="b-m-score">{userData.boothLog[3]}/1</div>
+            </div>
+          </div>
+
+          <div id="booth-waiting">
+            {userData.boothLog === "3111" ? (
+              viewGoodsButton ? (
+                <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
+                  굿즈받기
+                </div>
+              ) : (
+                viewClearButton && (
+                  <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
+                    공격하기!
+                  </div>
+                )
+              )
+            ) : userData?.waitingBoothId === 0 ? (
+              <div className="next-alert">다음 부스로 이동해주세요!</div>
+            ) : (
+              <div className="next-alert">
+                {BOOTH_LIST[Number(userData?.waitingBoothId)] + " 입장"}
               </div>
-            )
-          )}
+            )}
+          </div>
         </div>
 
         <div id="btn-row" className="f-row f-spb">

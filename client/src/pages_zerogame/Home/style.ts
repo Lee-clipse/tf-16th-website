@@ -40,13 +40,39 @@ export const Wrapper = styled.div`
     text-align: center;
     margin: 2rem 0;
     img {
-      width: 50%;
+      width: 100%;
     }
   }
 
-  #clear-booth {
+  #booth-map-box {
     text-align: center;
     margin: 2rem 0;
+    width: 90vw;
+    margin: 0 auto;
+    background: ${theme.color.WHITE};
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+
+    .b-m-title {
+      font-family: ${theme.font.NOTO[7]};
+      font-size: ${theme.font.SIZE.M};
+      margin-bottom: 1rem;
+    }
+
+    .stone {
+      width: 100%;
+      padding: 0.4rem;
+      border-radius: 1rem;
+      border: 2px solid lightgray;
+      margin-bottom: 1rem;
+    }
+
+    .b-m-score {
+      font-family: ${theme.font.NOTO[7]};
+      font-size: ${theme.font.SIZE.L};
+    }
   }
 
   #booth-waiting {
@@ -56,24 +82,33 @@ export const Wrapper = styled.div`
     font-size: ${theme.font.SIZE.XXL};
     font-family: ${theme.font.NOTO[8]};
     color: ${theme.color.MID_GRAY};
-    padding: 1.6rem 0;
     box-shadow: 0px 0 20px rgba(0, 0, 0, 1);
+
+    .next-alert {
+      font-size: ${theme.font.SIZE.XXL};
+      color: ${theme.color.MID_GRAY};
+      background-color: ${theme.color.WHITE};
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   #clear-btn {
-    border: 3px solid ${theme.color.ORANGE};
-    font-size: ${theme.font.SIZE.ML};
-    color: ${theme.color.ORANGE};
+    font-size: ${theme.font.SIZE.XXL};
+    color: ${theme.color.WHITE};
+    background-color: ${theme.color.ORANGE};
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-radius: 1rem;
-    padding: 1rem;
   }
 
   #btn-row {
-    padding: 2rem 2rem;
+    padding: 2rem 2rem 3rem 2rem;
     text-align: center;
   }
 
