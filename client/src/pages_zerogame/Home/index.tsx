@@ -22,6 +22,7 @@ const ZGHomePage = () => {
   const navigate = useNavigate();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
   const [viewClearButton, setViewClearButton] = useState<boolean>(false);
+  const [viewAttackButton, setViewAttackButton] = useState<boolean>(false);
   const [viewGoodsButton, setViewGoodsButton] = useState<boolean>(false);
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
@@ -47,12 +48,21 @@ const ZGHomePage = () => {
   };
 
   const renderClearButton = (zgUser: ZGUser) => {
-    setViewClearButton(zgUser.boothLog === BOOTH_CLEAR_LOG);
-    setViewGoodsButton(zgUser.isAttack);
+    setViewAttackButton(zgUser.isAttack);
+    setViewClearButton(isClearable(zgUser.boothLog));
+    setViewGoodsButton(zgUser.goodsReceived);
   };
 
   const handleRefreshButton = async () => {
     fetchUserData();
+  };
+
+  const isClearable = (boothLog: string) => {
+    const c1 = Number(boothLog[0]) >= 3;
+    const c2 = Number(boothLog[1]) >= 1;
+    const c3 = Number(boothLog[2]) >= 1;
+    const c4 = Number(boothLog[3]) >= 1;
+    return c1 && c2 && c3 && c4;
   };
 
   return (
@@ -94,44 +104,54 @@ const ZGHomePage = () => {
           <div id="booth-map-box" className="f-row">
             <div className="b-m-box">
               <div className="b-m-title">제로게임</div>
-              <img className="stone" src={BlueStone} />
+              <img
+                className="stone"
+                src={BlueStone}
+                style={{ opacity: `${Number(userData.boothLog[0]) >= 3 ? "1" : "0.3"}` }}
+              />
               <div className="b-m-score">{userData.boothLog[0]}/3</div>
             </div>
             <div className="b-m-box">
               <div className="b-m-title">기후위기</div>
-              <img className="stone" src={RedStone} />
+              <img
+                className="stone"
+                src={RedStone}
+                style={{ opacity: `${Number(userData.boothLog[1]) >= 1 ? "1" : "0.3"}` }}
+              />
               <div className="b-m-score">{userData.boothLog[1]}/1</div>
             </div>
             <div className="b-m-box">
               <div className="b-m-title">다문화</div>
-              <img className="stone" src={YellowStone} />
+              <img
+                className="stone"
+                src={YellowStone}
+                style={{ opacity: `${Number(userData.boothLog[2]) >= 1 ? "1" : "0.3"}` }}
+              />
               <div className="b-m-score">{userData.boothLog[2]}/1</div>
             </div>
             <div className="b-m-box">
               <div className="b-m-title">청년</div>
-              <img className="stone" src={GreenStone} />
+              <img
+                className="stone"
+                src={GreenStone}
+                style={{ opacity: `${Number(userData.boothLog[3]) >= 1 ? "1" : "0.3"}` }}
+              />
               <div className="b-m-score">{userData.boothLog[3]}/1</div>
             </div>
           </div>
 
           <div id="booth-waiting">
-            {userData.boothLog === "3111" ? (
-              viewGoodsButton ? (
+            {!isClearable(userData.boothLog) ? (
+              <div className="next-alert">다음 부스로 이동해주세요!</div>
+            ) : viewAttackButton ? (
+              viewGoodsButton ? null : (
                 <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
                   굿즈받기
                 </div>
-              ) : (
-                viewClearButton && (
-                  <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
-                    공격하기!
-                  </div>
-                )
               )
-            ) : userData?.waitingBoothId === 0 ? (
-              <div className="next-alert">다음 부스로 이동해주세요!</div>
             ) : (
-              <div className="next-alert">
-                {BOOTH_LIST[Number(userData?.waitingBoothId)] + " 입장"}
+              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
+                공격하기!
               </div>
             )}
           </div>
