@@ -21,6 +21,7 @@ import ProgramPoster3 from "../../assets/images/program_poster3.png";
 import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
 import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
 import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
+import YoutubeThumbnail4 from "../../assets/images/youtube_4.png";
 import Section1BG from "../../assets/images/section1_bg.webp";
 import IconTalk from "../../assets/icons/talk.png";
 import IconDebate from "../../assets/icons/debate.png";
@@ -368,6 +369,10 @@ const MainPage = () => {
 
           <CarouselComponent
             imageObjectList={[
+              {
+                image: YoutubeThumbnail4,
+                link: "https://youtu.be/H2gX-V8nqrw?si=m7I796JqJuTVWbul",
+              },
               {
                 image: YoutubeThumbnail1,
                 link: "https://www.youtube.com/watch?v=zOgL-9ZLsC8&t=80s&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
