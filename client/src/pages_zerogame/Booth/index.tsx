@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { alert, getUserIdByToken, isStaffByToken } from "../../common/common";
 import CloseIcon from "../../assets/icons/close.png";
-import { reqBoothLogOfUser, reqSelectBooth } from "../../api/zerogame";
+import { reqBoothLogOfUser, reqBoothWaitList, reqSelectBooth } from "../../api/zerogame";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import styled from "styled-components";
 import BlueStone from "../../assets/images/blue_stone.webp";
@@ -19,9 +19,11 @@ const ZGBoothPage = () => {
   const [viewBoothModal, setViewBoothModal] = useState<boolean>(false);
   const [selectBoothId, setSelectBoothId] = useState<string>("0");
   const [boothLog, setBoothLog] = useState<string[]>([]);
+  const [boothWaitList, setBoothWaitList] = useState<{ [key: number]: number }>({});
 
   useEffect(() => {
     fetchBoothLog();
+    fetchBoothWaitList();
   }, []);
 
   const fetchBoothLog = async () => {
@@ -31,6 +33,15 @@ const ZGBoothPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       setBoothLog(res.data.boothLog);
+    }
+  };
+
+  const fetchBoothWaitList = async () => {
+    const res = await reqBoothWaitList();
+
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      setBoothWaitList(res.data.boothWaitList);
     }
   };
 
@@ -116,7 +127,11 @@ const ZGBoothPage = () => {
                         }
                       }}
                     >
-                      <div>{value.title} 부스</div>
+                      <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>{value.title} 부스</div>
+                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                      </div>
+
                       <img src={GoIcon} />
                     </div>
                   );
@@ -153,7 +168,11 @@ const ZGBoothPage = () => {
                         }
                       }}
                     >
-                      <div>{value.title} 부스</div>
+                      <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>{value.title} 부스</div>
+                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                      </div>
+
                       <img src={GoIcon} />
                     </div>
                   );
@@ -190,7 +209,11 @@ const ZGBoothPage = () => {
                         }
                       }}
                     >
-                      <div>{value.title} 부스</div>
+                      <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>{value.title} 부스</div>
+                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                      </div>
+
                       <img src={GoIcon} />
                     </div>
                   );
@@ -227,7 +250,11 @@ const ZGBoothPage = () => {
                         }
                       }}
                     >
-                      <div>{value.title} 부스</div>
+                      <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>{value.title} 부스</div>
+                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                      </div>
+
                       <img src={GoIcon} />
                     </div>
                   );

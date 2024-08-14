@@ -217,6 +217,28 @@ export class ZerogameService {
     }
   }
 
+  // API
+  async fetchBoothWaitList() {
+    try {
+      const result = await this.mapRepository
+        .createQueryBuilder('map')
+        .select('map.boothId', 'boothId')
+        .addSelect('COUNT(map.pk)', 'count')
+        .where('map.cleared = :cleared', { cleared: false })
+        .groupBy('map.boothId')
+        .getRawMany();
+
+      // 배열을 객체로 변환
+      const boothWaitList: { [boothId: number]: number } = {};
+      result.forEach((item) => {
+        boothWaitList[item.boothId] = parseInt(item.count, 10);
+      });
+      return { code: API_CODE.SUCCESS, boothWaitList };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
   // test OK
   updateBoothLog(boothLog: string, boothId: string) {
     let boothDomain = '';

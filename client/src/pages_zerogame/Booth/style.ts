@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
   }
 
   #b-list {
-    margin: 0 3rem;
+    margin: 0 2rem;
     height: 70vh;
     overflow: scroll;
     border: 2px solid lightgray;
@@ -45,13 +45,19 @@ export const Wrapper = styled.div`
 
     .dr {
       .dr-item {
-        padding: 1.6rem 1.4rem 1.6rem 1rem;
+        padding: 1rem 1.4rem 1rem 1.4rem;
         font-family: ${theme.font.NOTO[6]};
         font-size: ${theme.font.SIZE.M};
         border-bottom: 1px solid lightgray;
 
         img {
           width: 1.4rem;
+        }
+
+        .wait {
+          font-family: ${theme.font.NOTO[6]};
+          font-size: ${theme.font.SIZE.SM};
+          color: ${theme.color.MID_GRAY};
         }
       }
 

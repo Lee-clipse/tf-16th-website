@@ -144,4 +144,13 @@ export class ZerogameController {
     const res = await this.zerogameService.getBoothLogOfUser(Number(userId));
     return res;
   }
+
+  @Get('/booth/wait')
+  @ApiOperation({
+    summary: '현재 부스 대기 인원',
+  })
+  async fetchBoothWaitList() {
+    const res = await this.zerogameService.fetchBoothWaitList();
+    return res;
+  }
 }

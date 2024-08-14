@@ -81,6 +81,12 @@ export const reqBoothLogOfUser = async (userId: string) => {
   return res;
 };
 
+export const reqBoothWaitList = async () => {
+  const res = await axios.get(`${API_HOST}/game/booth/wait`);
+  // { code, boothWaitList }
+  return res;
+};
+
 // TODO
 // body: user_id
 export const reqReceiveGoods = async (body: object) => {
