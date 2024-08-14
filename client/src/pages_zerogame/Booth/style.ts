@@ -42,6 +42,38 @@ export const Wrapper = styled.div`
     .cleard {
       background-color: ${theme.color.GRAY};
     }
+
+    .dr {
+      .dr-item {
+        padding: 1.6rem 1.4rem 1.6rem 1rem;
+        font-family: ${theme.font.NOTO[6]};
+        font-size: ${theme.font.SIZE.M};
+        border-bottom: 1px solid lightgray;
+
+        img {
+          width: 1.4rem;
+        }
+      }
+
+      .dr-row {
+        padding: 1.4rem;
+        .dr-label {
+          .dr-icon {
+            width: 2.6rem;
+            margin-right: 1rem;
+          }
+          .dr-title {
+            font-family: ${theme.font.NOTO[7]};
+            font-size: ${theme.font.SIZE.ML};
+          }
+        }
+
+        .dr-btn {
+          font-size: ${theme.font.SIZE.SM};
+          color: ${theme.color.MID_GRAY};
+        }
+      }
+    }
   }
 `;
 
@@ -89,7 +121,18 @@ export const Modal = styled.div`
   #m-body {
     font-family: ${theme.font.NOTO[5]};
     font-size: ${theme.font.SIZE.ML};
-    padding: 1rem;
+    padding: 1.4rem;
+    gap: 1.4rem;
+
+    .m-title {
+      font-family: ${theme.font.NOTO[6]};
+    }
+
+    .m-desc {
+      font-size: ${theme.font.SIZE.M};
+      font-family: ${theme.font.NOTO[6]};
+      color: ${theme.color.MID_GRAY};
+    }
 
     .b-btn {
       border: 2px solid ${theme.color.BLACK};
