@@ -18,6 +18,11 @@ export const reqUserData = async (id: string) => {
   return res;
 };
 
+export const reqJoinZerogame = async (id: string) => {
+  const res = await axios.get(`${API_HOST}/user/zg-join?id=${id}`);
+  return res;
+};
+
 /*
   const [isLoading, setIsLoading] = useState(false);
 

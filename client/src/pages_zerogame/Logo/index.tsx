@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { reqUserGameFetch } from "../../api/zerogame";
 import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
-import { reqUserData } from "../../api/user";
+import { reqJoinZerogame, reqUserData } from "../../api/user";
 import ZGBooth from "../../assets/images/zg_booth.png";
 
 const ZGLogoPage = () => {
@@ -57,12 +57,15 @@ const ZGLogoPage = () => {
     setZeroCode(value);
   };
 
-  const handleClickCodeButton = () => {
+  const handleClickCodeButton = async () => {
     // TODO: 제로게임 접수 부스 입장 코드 (변경 필요)
     if (zeroCode === "1111") {
       setViewCodeModal(false);
       setIsCodeValid(true);
       setViewAgreeModal(true);
+
+      const userId = getUserIdByToken().toString();
+      await reqJoinZerogame(userId);
     } else {
       alert("코드를 다시 확인해주세요.", "info");
     }

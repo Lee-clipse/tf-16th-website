@@ -35,4 +35,12 @@ export class UserController {
     const result = await this.userService.register(dto);
     return result;
   }
+
+  @Get('/zg-join')
+  @ApiOperation({
+    summary: '제로게임 코드 접수',
+  })
+  async joinGame(@Query('id') id: string) {
+    return await this.userService.joinGame(id);
+  }
 }

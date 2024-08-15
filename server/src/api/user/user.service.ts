@@ -42,6 +42,18 @@ export class UserService {
     return { code: API_CODE.SUCCESS };
   }
 
+  // API
+  async joinGame(id: string) {
+    try {
+      const user = await this.getUserDataById(id);
+      user.zgJoin = true;
+      await this.userRepository.save(user);
+      return { code: API_CODE.SUCCESS, user };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
   async isUserExist(name: string, phoneNumber: string): Promise<boolean> {
     const userExist = await this.userRepository.findOne({
       where: { name, phoneNumber },

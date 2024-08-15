@@ -40,14 +40,14 @@ export const Wrapper = styled.div`
     text-align: center;
     margin: 2rem 0;
     img {
-      width: 100%;
+      width: 75%;
     }
   }
 
   #booth-map-box {
     text-align: center;
     margin: 2rem 0;
-    width: 90vw;
+    width: 96vw;
     margin: 0 auto;
     background: ${theme.color.WHITE};
     border-radius: 1rem;
@@ -108,7 +108,7 @@ export const Wrapper = styled.div`
   }
 
   #btn-row {
-    padding: 2rem 2rem 3rem 2rem;
+    padding: 2rem 2rem 2rem 2rem;
     text-align: center;
   }
 
