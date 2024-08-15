@@ -85,10 +85,10 @@ export const Wrapper = styled.div`
     box-shadow: 0px 0 20px rgba(0, 0, 0, 1);
 
     .next-alert {
-      font-size: ${theme.font.SIZE.XXL};
+      font-size: ${theme.font.SIZE.XL};
       color: ${theme.color.MID_GRAY};
       background-color: ${theme.color.WHITE};
-      padding: 1rem 0;
+      padding: 1.4rem 0;
       display: flex;
       justify-content: center;
       align-items: center;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
 
 export const Wrapper = styled.div`
@@ -145,6 +145,43 @@ export const Modal = styled.div`
       text-align: center;
       padding: 1rem;
       border-radius: 1rem;
+    }
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+export const LoadingPage = styled.div`
+  #background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: ${theme.color.SKY_BLUE};
+    z-index: 1999;
+    color: ${theme.color.WHITE};
+    animation: ${fadeIn} 0.3s ease-in-out;
+
+    img {
+      width: 50vw;
+    }
+
+    .l-title {
+      font-size: ${theme.font.SIZE.XXXXXL};
+      font-family: ${theme.font.NOTO[8]};
+    }
+
+    .l-desc {
+      font-size: ${theme.font.SIZE.XL};
+      font-family: ${theme.font.NOTO[6]};
     }
   }
 `;

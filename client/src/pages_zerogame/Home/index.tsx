@@ -142,7 +142,13 @@ const ZGHomePage = () => {
 
           <div id="booth-waiting">
             {!isClearable(userData.boothLog) ? (
-              <div className="next-alert">다음 부스로 이동해주세요!</div>
+              userData.waitingBoothId === 0 ? (
+                <div className="next-alert">다음 부스를 선택해주세요!</div>
+              ) : (
+                <div className="next-alert">
+                  {BOOTH_LIST[userData.waitingBoothId].title} 부스 입장
+                </div>
+              )
             ) : viewAttackButton ? (
               viewGoodsButton ? null : (
                 <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>

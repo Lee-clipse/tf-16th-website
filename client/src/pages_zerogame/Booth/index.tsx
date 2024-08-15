@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
-import { Modal, Wrapper } from "./style";
+import { LoadingPage, Modal, Wrapper } from "./style";
 import { useNavigate } from "react-router-dom";
 import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { alert, getUserIdByToken, isStaffByToken } from "../../common/common";
@@ -13,6 +13,7 @@ import GreenStone from "../../assets/images/green_stone.webp";
 import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import GoIcon from "../../assets/icons/go-right-arrow.png";
+import RunIcon from "../../assets/icons/race.png";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const ZGBoothPage = () => {
   const [selectBoothId, setSelectBoothId] = useState<string>("0");
   const [boothLog, setBoothLog] = useState<string[]>([]);
   const [boothWaitList, setBoothWaitList] = useState<{ [key: number]: number }>({});
+  const [loadingPage, setLoadingPage] = useState<boolean>(false);
 
   useEffect(() => {
     fetchBoothLog();
@@ -56,14 +58,24 @@ const ZGBoothPage = () => {
       setViewBoothModal(false);
       return;
     }
+
     const userId = getUserIdByToken().toString();
     const res = await reqSelectBooth({ userId, boothId: selectBoothId });
 
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
+      showLoadingPage();
+    }
+  };
+
+  const showLoadingPage = () => {
+    setLoadingPage(true);
+    setTimeout(() => {
+      setLoadingPage(false);
+
       navigate(ROUTE_PATH.ZG_HOME);
       setViewBoothModal(false);
-    }
+    }, 2000);
   };
 
   const [openDropdown, setOpenDropdown] = useState<string>("");
@@ -90,6 +102,20 @@ const ZGBoothPage = () => {
             </div>
           </div>
         </Modal>
+      )}
+
+      {/* 로딩 페이지 */}
+      {loadingPage && (
+        <LoadingPage>
+          <div id="background" className="f-col v-center h-center" style={{ gap: "2rem" }}>
+            <img src={RunIcon} />
+            <div className="l-title">로딩중...</div>
+            <div className="l-desc f-col" style={{ gap: "1.4rem" }}>
+              <div>그거 아시나요?</div>
+              <div>설명</div>
+            </div>
+          </div>
+        </LoadingPage>
       )}
 
       {/* TODO: 이미 클리어한 부스에 대해 처리 */}
