@@ -1,4 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({ name: 'map', schema: 'tf' })
 export class MapEntity {
@@ -13,4 +18,7 @@ export class MapEntity {
 
   @Column({ type: 'boolean', name: 'cleared', default: false })
   cleared: boolean;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

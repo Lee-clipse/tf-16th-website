@@ -87,9 +87,22 @@ export const reqBoothWaitList = async () => {
   return res;
 };
 
-// TODO
+// body: user_id
+export const reqFullfillGoods = async (body: object) => {
+  const res = await axios.post(`${API_HOST}/game/fullfill-goods`, body);
+  // { code }
+  return res;
+};
+
 // body: user_id
 export const reqReceiveGoods = async (body: object) => {
   const res = await axios.post(`${API_HOST}/game/receive-goods`, body);
+  // { code }
+  return res;
+};
+
+export const reqGoodsLogList = async () => {
+  const res = await axios.get(`${API_HOST}/game/goods/log`);
+  // { code, goodsLogList }
   return res;
 };

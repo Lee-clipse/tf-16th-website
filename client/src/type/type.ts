@@ -35,3 +35,9 @@ export type ZGUser = {
   goodsReceived: boolean;
   isAttack: boolean;
 };
+
+export type GoodsLog = {
+  name: string;
+  phoneNumber: string;
+  clearedAt: string;
+};

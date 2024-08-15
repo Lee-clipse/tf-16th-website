@@ -16,6 +16,7 @@ import ZGBoothPage from "./pages_zerogame/Booth";
 import ZGMonsterPage from "./pages_zerogame/Monster";
 import ZGGoodsPage from "./pages_zerogame/Goods";
 import StaffPage from "./pages_zerogame/Staff";
+import GoodsStaffPage from "./pages_zerogame/GoodsStaff";
 
 const MainPage = lazy(() => import("./pages/Main/index"));
 
@@ -44,6 +45,7 @@ function App() {
           <Route path={ROUTE_PATH.ZG_MONSTER} element={<ZGMonsterPage />}></Route>
           <Route path={ROUTE_PATH.ZG_GOODS} element={<ZGGoodsPage />}></Route>
           <Route path={ROUTE_PATH.STAFF} element={<StaffPage />}></Route>
+          <Route path={ROUTE_PATH.GOODS_STAFF} element={<GoodsStaffPage />}></Route>
         </Routes>
       </Suspense>
     </BrowserRouter>

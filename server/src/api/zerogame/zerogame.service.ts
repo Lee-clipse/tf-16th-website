@@ -178,8 +178,31 @@ export class ZerogameService {
   }
 
   // API
+  async fullfillGoods(userId: number) {
+    try {
+      const row = await this.mapRepository.findOne({
+        where: { userId, boothId: 999 },
+      });
+      // 공격 -> 굿즈 -> 부스 체험 -> 공격 로직을 위함
+      if (row) return;
+      await this.mapRepository.save({ userId, boothId: 999 });
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
   async receiveGoods(userId: number) {
     try {
+      const mapRow = await this.mapRepository.findOne({
+        where: { userId, boothId: 999 },
+      });
+      if (mapRow) {
+        mapRow.cleared = true;
+        await this.mapRepository.save(mapRow);
+      }
+
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       row.goodsReceived = true;
       await this.zerogameRepository.save(row);
@@ -212,6 +235,30 @@ export class ZerogameService {
       });
       const boothLog = mapRows.map((row: MapEntity) => row.boothId.toString());
       return { code: API_CODE.SUCCESS, boothLog };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async getGoodsLogList() {
+    try {
+      const rowList = await this.mapRepository.find({
+        where: { boothId: 999, cleared: true },
+      });
+      const goodsLogList = await Promise.all(
+        rowList.map(async (row: MapEntity) => {
+          const user = await this.userRepository.findOne({
+            where: { id: row.userId },
+          });
+          return {
+            name: user.name,
+            phoneNumber: user.phoneNumber,
+            clearedAt: row.updatedAt.toLocaleString('ko-KR'),
+          };
+        }),
+      );
+      return { code: API_CODE.SUCCESS, goodsLogList };
     } catch (error) {
       return { code: API_CODE.INVALID };
     }

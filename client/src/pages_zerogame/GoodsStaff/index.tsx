@@ -3,34 +3,39 @@ import { Modal, Wrapper } from "./style";
 import HeaderMenu from "../../components/HeaderMenu";
 import { alert, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
-import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { API_CODE, ROUTE_PATH } from "../../common/const";
 import {
   reqBoothIdOfStaff,
   reqBoothOut,
-  reqGivePoint,
+  reqGoodsLogList,
+  reqReceiveGoods,
   reqStaffGameFetch,
   reqUserGameFetch,
 } from "../../api/zerogame";
-import { User, ZGUser } from "../../type/type";
+import { GoodsLog, User, ZGUser } from "../../type/type";
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import Location from "../../assets/images/location.png";
 import LocationIcon from "../../assets/icons/location.png";
+import SearchIcon from "../../assets/icons/loupe.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 
-const StaffPage = () => {
+const GoodsStaffPage = () => {
   const navigate = useNavigate();
 
   const [boothId, setBoothId] = useState<string>("");
   const [staffName, setStaffName] = useState<string>("");
   const [userList, setUserList] = useState<User[]>([]);
+  const [searchUserList, setSearchUserList] = useState<User[]>([]);
+  const [goodsLogList, setGoodsLogList] = useState<GoodsLog[]>([]);
   const [selectUser, setSelectUser] = useState<User>();
   const [selectUserGameData, setSelectUserGameData] = useState<ZGUser>();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
-  const [viewPointModal, setViewPointModal] = useState<boolean>(false);
   const [viewOutModal, setViewOutModal] = useState<boolean>(false);
-  const [inputPoint, setInputPoint] = useState<string>("");
+  const [viewGoodsModal, setViewGoodsModal] = useState<boolean>(false);
+  const [viewGoodsLogModal, setViewGoodsLogModal] = useState<boolean>(false);
+  const [searchUserName, setSearchUserName] = useState<string>("");
 
   useEffect(() => {
     fetchUserData();
@@ -38,10 +43,10 @@ const StaffPage = () => {
   }, []);
 
   useEffect(() => {
-    if (Number(boothId) === 999) {
-      navigate(ROUTE_PATH.GOODS_STAFF);
+    if (searchUserName === "") {
+      fetchStaffData();
     }
-  }, [boothId]);
+  }, [searchUserName]);
 
   const fetchUserData = async () => {
     const staffId = getUserIdByToken().toString();
@@ -71,6 +76,7 @@ const StaffPage = () => {
     const res = await reqStaffGameFetch(thisBoothId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
+      setSearchUserList(res.data.userList);
       setUserList(res.data.userList);
     }
   };
@@ -83,32 +89,14 @@ const StaffPage = () => {
     }
   };
 
-  const handleSelectUser = (user: User) => {
+  const handleGiveGoodsUser = (user: User) => {
     setSelectUser(user);
     fetchUserGameData(user.id.toString());
-    setViewPointModal(true);
+    setViewGoodsModal(true);
   };
 
   const handleRefreshButton = () => {
     fetchUserList(boothId);
-  };
-
-  const handleInputPoint = (point: string) => {
-    setInputPoint(point);
-  };
-
-  const handleAddPoint = async () => {
-    const res = await reqGivePoint({
-      userId: selectUser?.id.toString(),
-      boothId,
-      point: inputPoint,
-    });
-    const ok = Number(res.data.code) === API_CODE.SUCCESS;
-    if (ok) {
-      setViewPointModal(false);
-      alert("포인트 지급에 성공했습니다!", "success");
-      window.location.reload();
-    }
   };
 
   const handleSelectOutUser = (user: User) => {
@@ -130,6 +118,41 @@ const StaffPage = () => {
     }
   };
 
+  const handleGiveGoods = async () => {
+    const res = await reqReceiveGoods({
+      userId: selectUser?.id.toString(),
+    });
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      setViewGoodsModal(false);
+      alert("굿즈 지급에 성공했습니다!", "success");
+      window.location.reload();
+    }
+  };
+
+  const handleSearchUserName = (value: string) => {
+    setSearchUserName(value);
+  };
+
+  const handleViewGoodsLogModal = async () => {
+    await fetchGoodsLogList();
+    setViewGoodsLogModal(true);
+  };
+
+  const fetchGoodsLogList = async () => {
+    const res = await reqGoodsLogList();
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      setGoodsLogList(res.data.goodsLogList);
+    }
+  };
+
+  const handleUserSearch = () => {
+    if (searchUserName === "") return;
+    const searchUserList = userList.filter((user: User) => user.name === searchUserName);
+    setSearchUserList(searchUserList);
+  };
+
   return (
     <>
       {/* 지도 모달 */}
@@ -148,26 +171,20 @@ const StaffPage = () => {
         </Modal>
       )}
 
-      {/* 포인트 모달 */}
-      {viewPointModal && (
+      {/* 굿즈 증정 모달 */}
+      {viewGoodsModal && (
         <Modal>
-          <div id="back-drop" onClick={() => setViewPointModal(false)}></div>
+          <div id="back-drop" onClick={() => setViewGoodsModal(false)}></div>
           <div id="m-wrapper">
             <div id="m-header">
-              <img src={CloseIcon} onClick={() => setViewPointModal(false)} />
+              <img src={CloseIcon} onClick={() => setViewGoodsModal(false)} />
             </div>
             <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
               <div>
                 {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
               </div>
-              <div>현재 포인트: {selectUserGameData?.point}</div>
-              <input
-                type="text"
-                placeholder="포인트 입력"
-                onChange={(e) => handleInputPoint(e.target.value)}
-              />
-              <div className="b-btn" onClick={() => handleAddPoint()}>
-                포인트 지급
+              <div className="b-btn" onClick={() => handleGiveGoods()}>
+                굿즈 증정
               </div>
             </div>
           </div>
@@ -195,6 +212,31 @@ const StaffPage = () => {
         </Modal>
       )}
 
+      {/* 굿즈 증정 내역 모달 */}
+      {viewGoodsLogModal && (
+        <Modal>
+          <div id="back-drop" onClick={() => setViewGoodsLogModal(false)}></div>
+          <div id="m-wrapper">
+            <div id="m-header">
+              <img src={CloseIcon} onClick={() => setViewGoodsLogModal(false)} />
+            </div>
+            <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
+              {goodsLogList &&
+                goodsLogList.map((goodsLog) => {
+                  return (
+                    <div className="s-p-item f-col f-spb log-row">
+                      <div className="s-p-name">
+                        {goodsLog.name} {goodsLog.phoneNumber.slice(-4)}
+                      </div>
+                      <div className="s-p-date">증정: {goodsLog.clearedAt}</div>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </Modal>
+      )}
+
       {/* 헤더 메뉴 */}
       <HeaderMenu />
 
@@ -202,21 +244,40 @@ const StaffPage = () => {
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="s-name">{staffName} 스탭님 환영합니다!</div>
-        <div id="s-booth-name">{BOOTH_LIST[Number(boothId)].title} 담당</div>
 
         {/* 부스 내 대기자 리스트 */}
         <div id="s-people">
-          <div id="s-p-title">부스 접수 인원</div>
+          <div id="s-p-header" className="f-row f-spb v-center">
+            <div id="s-p-title">굿즈 증정 가능 명단</div>
+            <div id="s-p-log-btn" onClick={() => handleViewGoodsLogModal()}>
+              증정 내역
+            </div>
+          </div>
+
+          <div id="search-row">
+            <div className="s-row f-row">
+              <input
+                type="text"
+                placeholder="이름 검색"
+                value={searchUserName}
+                onChange={(e) => handleSearchUserName(e.target.value)}
+              ></input>
+              <div className="s-btn v-center h-center" onClick={() => handleUserSearch()}>
+                <img src={SearchIcon} />
+              </div>
+            </div>
+          </div>
+
           <div id="s-p-list">
-            {userList.map((user: User) => {
+            {searchUserList.map((user: User) => {
               return (
                 <div className="s-p-item f-row f-spb v-center">
                   <div className="s-p-name">
                     {user.name} {user.phoneNumber.slice(-4)}
                   </div>
                   <div className="f-row v-center">
-                    <div className="s-p-point-btn" onClick={() => handleSelectUser(user)}>
-                      포인트
+                    <div className="s-p-point-btn" onClick={() => handleGiveGoodsUser(user)}>
+                      굿즈 증정
                     </div>
                     <div className="s-p-out-btn" onClick={() => handleSelectOutUser(user)}>
                       이탈
@@ -248,4 +309,4 @@ const StaffPage = () => {
   );
 };
 
-export default StaffPage;
+export default GoodsStaffPage;

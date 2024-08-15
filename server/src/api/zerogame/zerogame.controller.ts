@@ -116,6 +116,17 @@ export class ZerogameController {
     return res;
   }
 
+  @Post('/fullfill-goods')
+  @ApiOperation({
+    summary: '굿즈 수령 가능',
+  })
+  // user_id
+  async fullfillGoods(@Body() dto: UserBoothDto) {
+    const userId = Number(dto.userId);
+    const res = await this.zerogameService.fullfillGoods(userId);
+    return res;
+  }
+
   @Post('/receive-goods')
   @ApiOperation({
     summary: '굿즈 수령 완료',
@@ -151,6 +162,15 @@ export class ZerogameController {
   })
   async fetchBoothWaitList() {
     const res = await this.zerogameService.fetchBoothWaitList();
+    return res;
+  }
+
+  @Get('/goods/log')
+  @ApiOperation({
+    summary: '굿즈 증정 완료 명단 반환',
+  })
+  async getGoodsLogList() {
+    const res = await this.zerogameService.getGoodsLogList();
     return res;
   }
 }

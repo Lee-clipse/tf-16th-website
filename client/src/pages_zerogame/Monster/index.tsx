@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Wrapper } from "./style";
 import { alert, getUserIdByToken } from "../../common/common";
-import { reqAttackMonster, reqMonsterHp, reqUserGameFetch } from "../../api/zerogame";
+import {
+  reqAttackMonster,
+  reqFullfillGoods,
+  reqMonsterHp,
+  reqUserGameFetch,
+} from "../../api/zerogame";
 import Monster from "../../assets/images/zg_monster.webp";
 import { ZGUser } from "../../type/type";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
@@ -45,14 +50,17 @@ const ZGMonsterPage = () => {
   };
 
   const handleAttackButton = async () => {
+    const userId = userData.userId.toString();
+
     const res = await reqAttackMonster({
-      userId: userData.userId.toString(),
+      userId,
       point: userData.point.toString(),
     });
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       alert("몬스터 공격!", "success");
       navigate(ROUTE_PATH.ZG_GOODS);
+      await reqFullfillGoods({ userId });
     }
   };
 

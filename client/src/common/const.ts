@@ -14,6 +14,7 @@ export const ROUTE_PATH = {
   ZG_MONSTER: "/zg-monster",
   ZG_GOODS: "/zg-goods",
   STAFF: "/staff",
+  GOODS_STAFF: "/goods-staff",
 };
 
 export const HOST = {
@@ -51,6 +52,7 @@ export const AGREE = {
 
 export const BOOTH_LIST: { [key: number]: { title: string; desc: string } } = {
   0: { title: "대기", desc: "부스 설명입니다." },
+
   1: { title: "병뚜껑 키링 만들기", desc: "부스 설명입니다." },
   2: { title: "실찌 만들기", desc: "부스 설명입니다." },
   3: { title: "제기차기", desc: "부스 설명입니다." },
@@ -88,6 +90,8 @@ export const BOOTH_LIST: { [key: number]: { title: string; desc: string } } = {
   302: { title: "꼼지락", desc: "부스 설명입니다." },
   303: { title: "골든타임", desc: "부스 설명입니다." },
   304: { title: "GRIT", desc: "부스 설명입니다." },
+
+  999: { title: "굿즈", desc: "부스 설명입니다." },
 };
 
 export const ZEROGAME = "ZEROGAME";
