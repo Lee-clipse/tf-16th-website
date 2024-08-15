@@ -86,7 +86,8 @@ export const Modal = styled.div`
 
   #m-body {
     font-family: ${theme.font.NOTO[5]};
-    padding: 1rem;
+    font-size: ${theme.font.SIZE.M};
+    padding: 1.4rem;
 
     #radio-row > label {
       font-size: ${theme.font.SIZE.SM} !important;
@@ -94,6 +95,49 @@ export const Modal = styled.div`
 
     #radio-row > input {
       width: 1.6rem !important;
+    }
+  }
+
+  #codem-body {
+    font-family: ${theme.font.NOTO[5]};
+    font-size: ${theme.font.SIZE.M};
+    padding: 1.4rem;
+
+    .m-b-title {
+      font-size: ${theme.font.SIZE.ML};
+      margin-bottom: 1.6rem;
+    }
+
+    .m-b-body > p > p {
+      color: ${theme.color.MID_GRAY};
+      margin-bottom: 0.4rem;
+    }
+
+    .map {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      border: 2px solid ${theme.color.BLACK};
+      color: ${theme.color.BLACK};
+      font-size: ${theme.font.SIZE.M};
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.6rem;
+    }
+
+    input::placeholder {
+      font-size: ${theme.font.SIZE.M};
+      font-family: ${theme.font.NOTO[5]};
+    }
+
+    .m-b-button {
+      color: ${theme.color.BLACK};
+      border: 2px solid ${theme.color.BLACK};
+      text-align: center;
+      padding: 1rem;
+      border-radius: 0.6rem;
     }
   }
 `;

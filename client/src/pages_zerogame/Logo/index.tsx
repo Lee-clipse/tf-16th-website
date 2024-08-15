@@ -6,17 +6,24 @@ import { useNavigate } from "react-router-dom";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import { useEffect, useState } from "react";
 import { reqUserGameFetch } from "../../api/zerogame";
-import { getUserIdByToken } from "../../common/common";
+import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
+import { reqUserData } from "../../api/user";
+import LocationMap from "../../assets/images/location.png";
+import Button from "../../components/Button";
 
 const ZGLogoPage = () => {
   const navigate = useNavigate();
   const [isEntered, setIsEntered] = useState<boolean>(false);
+  const [isCodeValid, setIsCodeValid] = useState<boolean>(false);
   const [viewAgreeModal, setViewAgreeModal] = useState<boolean>(false);
+  const [viewCodeModal, setViewCodeModal] = useState<boolean>(false);
   const [agreeSign, setAgreeSign] = useState<boolean>(false);
+  const [zeroCode, setZeroCode] = useState<string>("");
 
   useEffect(() => {
     fetchUserData();
+    fetchUserGameData();
   }, []);
 
   useEffect(() => {
@@ -27,11 +34,38 @@ const ZGLogoPage = () => {
 
   const fetchUserData = async () => {
     const userId = getUserIdByToken().toString();
+    if (Number(userId) === 0) {
+      navigate(ROUTE_PATH.MAIN);
+    }
+    const res = await reqUserData(userId);
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      setIsCodeValid(res.data.user.zgJoin);
+    }
+  };
+
+  const fetchUserGameData = async () => {
+    const userId = getUserIdByToken().toString();
     const res = await reqUserGameFetch(userId);
     // 이미 제로게임에 입장했던 유저라면 패스
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       setIsEntered(true);
+    }
+  };
+
+  const handleZeroCodeInput = (value: string) => {
+    setZeroCode(value);
+  };
+
+  const handleClickCodeButton = () => {
+    // TODO: 제로게임 접수 부스 입장 코드 (변경 필요)
+    if (zeroCode === "1111") {
+      setViewCodeModal(false);
+      setIsCodeValid(true);
+      setViewAgreeModal(true);
+    } else {
+      alert("코드를 다시 확인해주세요.", "info");
     }
   };
 
@@ -69,6 +103,37 @@ const ZGLogoPage = () => {
         </Modal>
       )}
 
+      {viewCodeModal && (
+        <Modal>
+          <div id="back-drop"></div>
+          <div id="m-wrapper">
+            <div id="m-header">
+              <img src={CloseIcon} onClick={() => setViewCodeModal(false)} />
+            </div>
+            <div id="codem-body">
+              <div className="m-b-title">제로게임 접수 안내</div>
+              <div className="m-b-body f-col" style={{ gap: "1rem" }}>
+                <img className="map" src={LocationMap} />
+                <p>
+                  <p>제로게임 접수 부스로 찾아가셔서</p>
+                  <p>코드를 입력해주세요!</p>
+                </p>
+                <input
+                  type="text"
+                  placeholder="코드 입력"
+                  value={zeroCode}
+                  onChange={(e) => handleZeroCodeInput(e.target.value)}
+                ></input>
+                <div className="m-b-button" onClick={() => handleClickCodeButton()}>
+                  {" "}
+                  확인{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
+
       <Wrapper>
         {/* 배경 */}
         <img id="bg" src={ZGLogo} />
@@ -80,10 +145,14 @@ const ZGLogoPage = () => {
             if (isEntered) {
               navigate(ROUTE_PATH.ZG_HOME);
             } else {
-              if (agreeSign) {
-                navigate(ROUTE_PATH.ZG_CARTOON);
+              if (isCodeValid) {
+                if (agreeSign) {
+                  navigate(ROUTE_PATH.ZG_CARTOON);
+                } else {
+                  setViewAgreeModal(true);
+                }
               } else {
-                setViewAgreeModal(true);
+                setViewCodeModal(true);
               }
             }
           }}

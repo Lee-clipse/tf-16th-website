@@ -29,6 +29,9 @@ export class UserEntity {
   @Column({ type: 'boolean', name: 'staff', default: false })
   staff: boolean;
 
+  @Column({ type: 'boolean', name: 'zg_join', default: false })
+  zgJoin: boolean;
+
   @CreateDateColumn({
     type: 'timestamp',
     name: 'created_at',
