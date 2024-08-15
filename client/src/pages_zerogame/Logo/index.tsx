@@ -9,8 +9,7 @@ import { reqUserGameFetch } from "../../api/zerogame";
 import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
 import { reqUserData } from "../../api/user";
-import LocationMap from "../../assets/images/location.png";
-import Button from "../../components/Button";
+import ZGBooth from "../../assets/images/zg_booth.png";
 
 const ZGLogoPage = () => {
   const navigate = useNavigate();
@@ -113,7 +112,7 @@ const ZGLogoPage = () => {
             <div id="codem-body">
               <div className="m-b-title">제로게임 접수 안내</div>
               <div className="m-b-body f-col" style={{ gap: "1rem" }}>
-                <img className="map" src={LocationMap} />
+                <img className="map" src={ZGBooth} />
                 <p>
                   <p>제로게임 접수 부스로 찾아가셔서</p>
                   <p>코드를 입력해주세요!</p>
