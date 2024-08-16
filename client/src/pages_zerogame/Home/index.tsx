@@ -149,15 +149,13 @@ const ZGHomePage = () => {
                   {BOOTH_LIST[userData.waitingBoothId].title} 부스 입장
                 </div>
               )
-            ) : viewAttackButton ? (
-              viewGoodsButton ? null : (
-                <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
-                  굿즈받기
-                </div>
-              )
-            ) : (
+            ) : viewGoodsButton ? (
               <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
                 공격하기!
+              </div>
+            ) : (
+              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
+                굿즈받기
               </div>
             )}
           </div>

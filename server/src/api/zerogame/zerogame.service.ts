@@ -42,12 +42,18 @@ export class ZerogameService {
   async selectBooth(userId: number, boothId: number) {
     try {
       // 대기 중 부스로 변경
-      const find = await this.zerogameRepository.findOne({ where: { userId } });
-      find.waitingBoothId = boothId;
-      await this.zerogameRepository.save(find);
+      const row = await this.zerogameRepository.findOne({ where: { userId } });
+      const existBoothId = row.waitingBoothId;
+      row.waitingBoothId = boothId;
+      await this.zerogameRepository.save(row);
 
       // 부스 대기 중으로 세팅
       await this.mapRepository.save({ userId, boothId });
+
+      // 부스 변경의 경우
+      if (existBoothId !== 0) {
+        await this.mapRepository.delete({ userId, boothId: existBoothId });
+      }
       return { code: API_CODE.SUCCESS };
     } catch (error) {
       return { code: API_CODE.INVALID };
@@ -155,6 +161,7 @@ export class ZerogameService {
     try {
       const user = await this.zerogameRepository.findOne({ where: { userId } });
       user.isAttack = true;
+      user.point = 0;
       await this.zerogameRepository.save(user);
 
       const row = await this.monsterRepository.findOne({ where: { pk: 1 } });
