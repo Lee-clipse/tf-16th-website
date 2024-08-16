@@ -50,6 +50,8 @@ export const AGREE = {
   NOT_AGREE: 2,
 };
 
+export const MONSTER_FULL_HP = 300000;
+
 export const BOOTH_LIST: { [key: number]: { title: string; desc: string } } = {
   0: { title: "대기", desc: "부스 설명입니다." },
 

@@ -9,7 +9,7 @@ import {
 } from "../../api/zerogame";
 import Monster from "../../assets/images/zg_monster.webp";
 import { ZGUser } from "../../type/type";
-import { API_CODE, ROUTE_PATH } from "../../common/const";
+import { API_CODE, MONSTER_FULL_HP, ROUTE_PATH } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 
@@ -64,13 +64,22 @@ const ZGMonsterPage = () => {
     }
   };
 
+  const calcMonsterHpRatio = () => {
+    return Math.max((monsterHp / MONSTER_FULL_HP) * 100, 1).toFixed(0) + "%";
+  };
+
   return (
     <>
       <Wrapper>
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="monster">
-          <div id="m-hp">HP: {monsterHp}</div>
+          <div id="m-hp-bar" className="f-row">
+            <div id="m-hp" style={{ width: calcMonsterHpRatio() }}></div>
+          </div>
+          <div id="m-hp-num">
+            HP: {monsterHp.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+          </div>
           <img src={Monster} />
         </div>
 

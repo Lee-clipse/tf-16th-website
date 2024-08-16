@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { MonsterFloatAnimation } from "../Home/style";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -21,14 +22,28 @@ export const Wrapper = styled.div`
     text-align: center;
     margin: 5rem 0;
 
-    #m-hp {
-      font-size: ${theme.font.SIZE.XXXXXL};
+    #m-hp-bar {
+      border: 4px solid ${theme.color.WHITE};
+      border-radius: 0.4rem;
+      height: 3rem;
+      width: 90vw;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+
+      #m-hp {
+        background-color: ${theme.color.ORANGE};
+      }
+    }
+
+    #m-hp-num {
+      font-size: ${theme.font.SIZE.XXXXL};
       color: ${theme.color.WHITE};
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
     }
 
     img {
       width: 100%;
+      animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
   }
 

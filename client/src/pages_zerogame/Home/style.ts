@@ -1,5 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
+
+export const MonsterFloatAnimation = keyframes`
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+`;
 
 export const Wrapper = styled.div`
   position: relative;
@@ -41,6 +53,7 @@ export const Wrapper = styled.div`
     margin: 2rem 0;
     img {
       width: 75%;
+      animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
   }
 

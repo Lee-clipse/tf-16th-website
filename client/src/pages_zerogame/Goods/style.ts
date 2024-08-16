@@ -37,7 +37,7 @@ export const Wrapper = styled.div`
     text-align: center;
     background-color: ${theme.color.WHITE};
     font-family: ${theme.font.NOTO[9]};
-    font-size: ${theme.font.SIZE.XXXL};
+    font-size: ${theme.font.SIZE.XL};
     color: ${theme.color.ORANGE};
     padding: 1.6rem 0;
   }
@@ -48,7 +48,7 @@ export const Wrapper = styled.div`
     padding: 1rem;
     color: ${theme.color.WHITE};
     font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.XXXL};
+    font-size: ${theme.font.SIZE.XL};
     position: absolute;
     text-align: center;
     top: 86%;
