@@ -7,7 +7,7 @@ import BlueStone from "../../assets/images/blue_stone.webp";
 import GreenStone from "../../assets/images/green_stone.webp";
 import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
-import Location from "../../assets/images/location.png";
+import BoothMap from "../../assets/images/booth_map.png";
 import { useNavigate } from "react-router-dom";
 import { BOOTH_CLEAR_LOG, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { getUserIdByToken } from "../../common/common";
@@ -77,7 +77,7 @@ const ZGHomePage = () => {
             </div>
             <div id="m-body">
               <div id="m-b-title">시민공원 내 부스 지도</div>
-              <img id="location-map" src={Location} />
+              <img id="location-map" src={BoothMap} />
             </div>
           </div>
         </Modal>
