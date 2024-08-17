@@ -21,6 +21,7 @@ import LocationIcon from "../../assets/icons/location.png";
 const ZGHomePage = () => {
   const navigate = useNavigate();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
+  const [viewAttackButton, setViewAttackButton] = useState<boolean>(false);
   const [viewGoodsButton, setViewGoodsButton] = useState<boolean>(false);
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
@@ -47,6 +48,7 @@ const ZGHomePage = () => {
 
   const renderClearButton = (zgUser: ZGUser) => {
     setViewGoodsButton(zgUser.goodsReceived);
+    setViewAttackButton(zgUser.isAttack);
   };
 
   const handleRefreshButton = async () => {
@@ -149,9 +151,13 @@ const ZGHomePage = () => {
               <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
                 공격하기!
               </div>
-            ) : (
+            ) : viewAttackButton ? (
               <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
                 굿즈받기
+              </div>
+            ) : (
+              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
+                공격하기!
               </div>
             )}
           </div>
