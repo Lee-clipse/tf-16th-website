@@ -170,7 +170,7 @@ const ZGBoothPage = () => {
               onClick={() => handleDropdownClick("기후위기")}
             >
               <div className="dr-label f-row v-center">
-                <img className="dr-icon" src={RedStone} />
+                <img className="dr-icon" src={GreenStone} />
                 <div className="dr-title">기후위기</div>
               </div>
               <div className="dr-btn">열기</div>
@@ -252,7 +252,7 @@ const ZGBoothPage = () => {
               onClick={() => handleDropdownClick("청년 커뮤니티")}
             >
               <div className="dr-label f-row v-center">
-                <img className="dr-icon" src={GreenStone} />
+                <img className="dr-icon" src={RedStone} />
                 <div className="dr-title">청년 커뮤니티</div>
               </div>
               <div className="dr-btn">열기</div>

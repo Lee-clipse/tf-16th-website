@@ -10,6 +10,7 @@ import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
 import { reqJoinZerogame, reqUserData } from "../../api/user";
 import ZGBooth from "../../assets/images/zg_booth.png";
+import { motion, Variants } from "framer-motion";
 
 const ZGLogoPage = () => {
   const navigate = useNavigate();
@@ -69,6 +70,46 @@ const ZGLogoPage = () => {
     } else {
       alert("코드를 다시 확인해주세요.", "info");
     }
+  };
+
+  const StartButton = () => {
+    return (
+      <div
+        id="start-btn"
+        onClick={() => {
+          if (isEntered) {
+            navigate(ROUTE_PATH.ZG_HOME);
+          } else {
+            if (isCodeValid) {
+              if (agreeSign) {
+                navigate(ROUTE_PATH.ZG_CARTOON);
+              } else {
+                setViewAgreeModal(true);
+              }
+            } else {
+              setViewCodeModal(true);
+            }
+          }
+        }}
+      >
+        시작하기
+      </div>
+    );
+  };
+
+  const variants: Variants = {
+    hidden: {
+      opacity: 0.6,
+    },
+    visible: () => ({
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+        duration: 0.6,
+        repeat: Infinity,
+        repeatType: "reverse",
+      },
+    }),
   };
 
   return (
@@ -141,26 +182,10 @@ const ZGLogoPage = () => {
         <img id="bg" src={ZGLogo} />
 
         {/* 버튼 */}
-        <div
-          id="start-btn"
-          onClick={() => {
-            if (isEntered) {
-              navigate(ROUTE_PATH.ZG_HOME);
-            } else {
-              if (isCodeValid) {
-                if (agreeSign) {
-                  navigate(ROUTE_PATH.ZG_CARTOON);
-                } else {
-                  setViewAgreeModal(true);
-                }
-              } else {
-                setViewCodeModal(true);
-              }
-            }
-          }}
-        >
-          시작하기
-        </div>
+
+        <motion.li key={"start-btn"} initial="hidden" animate="visible" variants={variants}>
+          <StartButton />
+        </motion.li>
       </Wrapper>
     </>
   );

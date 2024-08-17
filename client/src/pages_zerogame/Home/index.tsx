@@ -115,7 +115,7 @@ const ZGHomePage = () => {
               <div className="b-m-title">기후위기</div>
               <img
                 className="stone"
-                src={RedStone}
+                src={GreenStone}
                 style={{ opacity: `${Number(userData.boothLog[1]) >= 1 ? "1" : "0.3"}` }}
               />
               <div className="b-m-score">{userData.boothLog[1]}/1</div>
@@ -133,7 +133,7 @@ const ZGHomePage = () => {
               <div className="b-m-title">청년</div>
               <img
                 className="stone"
-                src={GreenStone}
+                src={RedStone}
                 style={{ opacity: `${Number(userData.boothLog[3]) >= 1 ? "1" : "0.3"}` }}
               />
               <div className="b-m-score">{userData.boothLog[3]}/1</div>
