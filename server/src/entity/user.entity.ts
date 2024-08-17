@@ -1,8 +1,13 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'user', schema: 'tf' })
 export class UserEntity {
-  @PrimaryColumn({ type: 'int', name: 'id' })
+  @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
   id: number;
 
   @Column({ type: 'varchar', name: 'name' })

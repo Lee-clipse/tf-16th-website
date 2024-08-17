@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
 import { Wrapper } from "./style";
 import ZGCartoon from "../../assets/images/zg_intro_cartoon.png";
 import { useNavigate } from "react-router-dom";

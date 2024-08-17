@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Popup01 from "../assets/images/pop_01.webp";
 import Popup02 from "../assets/images/pop_02.webp";
 import Popup03 from "../assets/images/pop_03.webp";

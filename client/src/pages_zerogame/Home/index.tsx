@@ -9,7 +9,7 @@ import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import BoothMap from "../../assets/images/booth_map.png";
 import { useNavigate } from "react-router-dom";
-import { BOOTH_CLEAR_LOG, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { BOOTH_LIST, ROUTE_PATH } from "../../common/const";
 import { getUserIdByToken } from "../../common/common";
 import { reqUserGameFetch } from "../../api/zerogame";
 import { ZGUser } from "../../type/type";
@@ -21,8 +21,6 @@ import LocationIcon from "../../assets/icons/location.png";
 const ZGHomePage = () => {
   const navigate = useNavigate();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
-  const [viewClearButton, setViewClearButton] = useState<boolean>(false);
-  const [viewAttackButton, setViewAttackButton] = useState<boolean>(false);
   const [viewGoodsButton, setViewGoodsButton] = useState<boolean>(false);
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
@@ -48,8 +46,6 @@ const ZGHomePage = () => {
   };
 
   const renderClearButton = (zgUser: ZGUser) => {
-    setViewAttackButton(zgUser.isAttack);
-    setViewClearButton(isClearable(zgUser.boothLog));
     setViewGoodsButton(zgUser.goodsReceived);
   };
 

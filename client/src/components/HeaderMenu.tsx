@@ -4,7 +4,7 @@ import styled from "styled-components";
 import theme from "../styles/theme";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATH, WEB_WIDTH } from "../common/const";
-import { getUserIdByToken, guardAlert, verifyByToken } from "../common/common";
+import { getUserIdByToken, verifyByToken } from "../common/common";
 import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 import isMobile from "is-mobile";
