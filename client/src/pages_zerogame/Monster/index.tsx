@@ -12,6 +12,8 @@ import { ZGUser } from "../../type/type";
 import { API_CODE, MONSTER_FULL_HP, ROUTE_PATH } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import ZGBackground from "../../assets/images/zg_bg.webp";
+import AttackIcon from "../../assets/images/attack_icon.webp";
+import HitIcon from "../../assets/icons/hit.png";
 
 const ZGMonsterPage = () => {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ const ZGMonsterPage = () => {
     goodsReceived: false,
     isAttack: false,
   });
+  const [isHitVisible, setIsHitVisible] = useState<boolean>(false);
 
   useEffect(() => {
     fetchUserData();
@@ -50,8 +53,23 @@ const ZGMonsterPage = () => {
   };
 
   const handleAttackButton = async () => {
-    const userId = userData.userId.toString();
+    attackMonster();
+  };
 
+  const calcMonsterHpRatio = () => {
+    return Math.max((monsterHp / MONSTER_FULL_HP) * 100, 1).toFixed(0) + "%";
+  };
+
+  const attackMonster = () => {
+    setIsHitVisible(true);
+    setTimeout(() => {
+      setIsHitVisible(false);
+      attackApi();
+    }, 600);
+  };
+
+  const attackApi = async () => {
+    const userId = userData.userId.toString();
     const res = await reqAttackMonster({
       userId,
       point: userData.point.toString(),
@@ -64,16 +82,17 @@ const ZGMonsterPage = () => {
     }
   };
 
-  const calcMonsterHpRatio = () => {
-    return Math.max((monsterHp / MONSTER_FULL_HP) * 100, 1).toFixed(0) + "%";
-  };
-
   return (
     <>
-      <Wrapper>
+      <Wrapper isHitVisible={isHitVisible}>
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="monster">
+          <div id="hit">
+            <div id="damage-num">-{userData.point}</div>
+            <img src={HitIcon} />
+          </div>
+
           <div id="m-hp-bar" className="f-row">
             <div id="m-hp" style={{ width: calcMonsterHpRatio() }}></div>
           </div>
@@ -83,8 +102,16 @@ const ZGMonsterPage = () => {
           <img src={Monster} />
         </div>
 
-        <div id="attack-btn" onClick={() => handleAttackButton()}>
-          공격하기
+        <div id="a-box" className="f-col" style={{ gap: "1.6rem" }}>
+          <div id="a-img-box" className="h-center v-center">
+            <div id="img-line">
+              <img src={AttackIcon} />
+            </div>
+          </div>
+          <div id="damage">포인트: {userData.point}</div>
+          <div id="a-btn" onClick={() => handleAttackButton()}>
+            공격하기
+          </div>
         </div>
       </Wrapper>
     </>

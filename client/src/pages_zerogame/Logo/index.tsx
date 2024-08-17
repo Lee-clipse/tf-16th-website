@@ -11,6 +11,7 @@ import { Radio } from "../../components/Input";
 import { reqJoinZerogame, reqUserData } from "../../api/user";
 import ZGBooth from "../../assets/images/zg_booth.png";
 import { motion, Variants } from "framer-motion";
+import Loading from "../../components/Loading";
 
 const ZGLogoPage = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const ZGLogoPage = () => {
   const [viewCodeModal, setViewCodeModal] = useState<boolean>(false);
   const [agreeSign, setAgreeSign] = useState<boolean>(false);
   const [zeroCode, setZeroCode] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchUserData();
@@ -66,7 +68,9 @@ const ZGLogoPage = () => {
       setViewAgreeModal(true);
 
       const userId = getUserIdByToken().toString();
+      setIsLoading(true);
       await reqJoinZerogame(userId);
+      setIsLoading(false);
     } else {
       alert("코드를 다시 확인해주세요.", "info");
     }
@@ -114,6 +118,8 @@ const ZGLogoPage = () => {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {viewAgreeModal && (
         <Modal>
           <div id="back-drop"></div>

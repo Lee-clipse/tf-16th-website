@@ -1,9 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from "../../styles/theme";
 import { MonsterFloatAnimation } from "../Home/style";
 import { FADEIN_ANIMATION } from "../../common/const";
 
-export const Wrapper = styled.div`
+const blinkAnimation = keyframes`
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+`;
+
+export const Wrapper = styled.div<{ isHitVisible: boolean }>`
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -20,8 +29,29 @@ export const Wrapper = styled.div`
   }
 
   #monster {
+    position: relative;
     text-align: center;
     margin: 5rem 0;
+
+    #hit {
+      position: absolute;
+      display: ${(props) => (props.isHitVisible ? "block" : "none")};
+      top: 30%;
+      left: 24%;
+      z-index: 4;
+      width: 62%;
+      animation: ${blinkAnimation} 0.3s ease-in-out;
+
+      #damage-num {
+        font-size: 6rem;
+        font-family: ${theme.font.OSW[5]};
+        color: ${theme.color.WHITE};
+      }
+
+      img {
+        width: 100%;
+      }
+    }
 
     #m-hp-bar {
       border: 4px solid ${theme.color.WHITE};
@@ -48,20 +78,42 @@ export const Wrapper = styled.div`
     }
   }
 
-  #attack-btn {
-    background-color: ${theme.color.ORANGE};
-    border-radius: 0.6rem;
-    padding: 1rem;
-    color: ${theme.color.WHITE};
-    font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.XXXL};
-    position: absolute;
+  #a-box {
     text-align: center;
-    top: 86%;
+    position: absolute;
+    top: 70%;
     left: 50%;
     transform: translateX(-50%);
-    width: 90vw;
-    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+    justify-contnet: center;
+
+    #a-img-box {
+      text-align: center;
+
+      #img-line {
+        outline: 4px solid black;
+        width: 42%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    #damage {
+      color: ${theme.color.BLACK};
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.XL};
+    }
+
+    #a-btn {
+      background-color: ${theme.color.ORANGE};
+      border-radius: 0.6rem;
+      padding: 1rem;
+      color: ${theme.color.WHITE};
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.XL};
+      box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+    }
   }
 `;
 
