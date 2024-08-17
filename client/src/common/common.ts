@@ -71,3 +71,20 @@ export const isStaffByToken = (): boolean => {
   const staff: string = token.split("-")[TOKEN.STAFF_NODE];
   return staff === STAFF_SIGN.STAFF ? true : false;
 };
+
+export const setPopupToken = (popupToken: number) => {
+  localStorage.setItem("popup", popupToken.toString());
+};
+
+export const verifyByPopupToken = (): boolean => {
+  const popupToken = localStorage.getItem("popup");
+  if (popupToken === null) {
+    return false;
+  }
+  const expire: number = Number(popupToken);
+  const cur: number = new Date().getTime();
+  if (cur >= expire) {
+    deleteToken();
+  }
+  return cur < expire;
+};

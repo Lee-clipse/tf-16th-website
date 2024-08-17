@@ -7,7 +7,7 @@ import LeftArrow from "../assets/icons/left-arrow.png";
 import RightArrow from "../assets/icons/right-arrow.png";
 
 interface CarouselProps {
-  imageObjectList: { image: string; link: string }[];
+  imageObjectList: { image: string; link?: string }[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

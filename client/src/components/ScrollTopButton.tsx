@@ -18,7 +18,7 @@ const ScrollTopButton = () => {
 const ScrollToTopButton = styled.button`
   position: fixed;
   z-index: 100;
-  bottom: 10rem;
+  bottom: 9rem;
   right: ${isMobile() ? "2rem" : "37%"};
   background-color: ${theme.color.MID_GRAY};
   color: ${theme.color.WHITE};
