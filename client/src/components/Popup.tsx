@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Popup01 from "../assets/images/pop_01.webp";
 import Popup02 from "../assets/images/pop_02.webp";
 import Popup03 from "../assets/images/pop_03.webp";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from "../styles/theme";
 import { setPopupToken, verifyByPopupToken } from "../common/common";
 import { useSwipeable } from "react-swipeable";
@@ -76,6 +76,15 @@ const PopupModal = ({ viewPopup, isClickable }: any) => {
   );
 };
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const ImageContainer = styled.div<{ currentIndex: number }>`
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -120,6 +129,7 @@ const Wrapper = styled.div`
   }
 
   #m-wrapper {
+    animation: ${fadeIn} 0.5s ease-in-out;
     z-index: 1000;
     position: fixed;
     top: 50%;
