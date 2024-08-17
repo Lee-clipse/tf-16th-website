@@ -1,3 +1,5 @@
+import { keyframes } from "styled-components";
+
 export const ROUTE_PATH = {
   TEST: "/test",
   MAIN: "/",
@@ -117,6 +119,13 @@ export const BOOTH_DOMAIN = {
   MULTI_CULTURE: ["301"],
 };
 
+export const LOADING_DESC = [
+  "하야리야 잔디 광장 입구에는 감사부스가 배치되어 있습니다! 모든 게임이 종료된 후 감사부스를 방문해주세요!",
+  "청건부산은 부산 청년들이 직접 기획, 운영, 홍보까지 참여해서 기획한 행사입니다!",
+  "제로게임 3개, 다문화 부스 1개, 기후위기 부스 1개, 청년 커뮤니티 부스 1개, 총 6개의 부스를 체험하면 소정의 굿즈를 증정합니다!",
+  "청건부산은 청년이 건강해야 부산이 산다의 줄임말로, 부산을 사랑하는 청년들의 목소리입니다!",
+];
+
 export const 스탭_지원_폼_링크 =
   "https://docs.google.com/forms/d/1YCzLX4S9JhsTQI41K_n7AwubNbbooLm0839-3rclJtU/viewform?pli=1&pli=1&edit_requested=true";
 export const 청건부산_인스타_링크 = "https://www.instagram.com/together_festival52/";
@@ -145,3 +154,12 @@ export const LOCATION = [
 ];
 
 export const WEB_WIDTH = "375px";
+
+export const FADEIN_ANIMATION = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;

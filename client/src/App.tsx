@@ -2,7 +2,6 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ROUTE_PATH } from "./common/const";
 import JoinPage from "./pages/Join";
-import TestPage from "./pages/Test";
 import RegisterPage from "./pages/Register";
 import MyPage from "./pages/MyPage";
 import InfoPage from "./pages/Info";
@@ -26,9 +25,6 @@ function App() {
       <ScrollTop />
       <Suspense fallback={<div></div>}>
         <Routes>
-          {/* 테스트 페이지 */}
-          <Route path={ROUTE_PATH.TEST} element={<TestPage />}></Route>
-
           <Route path={ROUTE_PATH.MAIN} element={<MainPage />}></Route>
           <Route path={ROUTE_PATH.JOIN} element={<JoinPage />}></Route>
           <Route path={ROUTE_PATH.REGISTER} element={<RegisterPage />}></Route>

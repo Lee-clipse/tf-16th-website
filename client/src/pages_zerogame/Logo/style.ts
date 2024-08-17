@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { FADEIN_ANIMATION } from "../../common/const";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -55,6 +56,7 @@ export const Modal = styled.div`
   }
 
   #m-wrapper {
+    animation: ${FADEIN_ANIMATION} 0.5s ease-in-out;
     z-index: 1000;
     position: fixed;
     top: 50%;

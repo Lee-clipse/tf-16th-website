@@ -1,5 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import theme from "../../styles/theme";
+import { FADEIN_ANIMATION } from "../../common/const";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -95,6 +96,7 @@ export const Modal = styled.div`
   }
 
   #m-wrapper {
+    animation: ${FADEIN_ANIMATION} 0.5s ease-in-out;
     z-index: 1000;
     position: fixed;
     top: 50%;
@@ -149,15 +151,6 @@ export const Modal = styled.div`
   }
 `;
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
 export const LoadingPage = styled.div`
   #background {
     position: fixed;
@@ -168,7 +161,7 @@ export const LoadingPage = styled.div`
     background-color: ${theme.color.SKY_BLUE};
     z-index: 1999;
     color: ${theme.color.WHITE};
-    animation: ${fadeIn} 0.3s ease-in-out;
+    animation: ${FADEIN_ANIMATION} 0.3s ease-in-out;
 
     img {
       width: 50vw;
@@ -179,9 +172,16 @@ export const LoadingPage = styled.div`
       font-family: ${theme.font.NOTO[8]};
     }
 
-    .l-desc {
-      font-size: ${theme.font.SIZE.XL};
-      font-family: ${theme.font.NOTO[6]};
+    .l-desc-box {
+      font-size: ${theme.font.SIZE.XXL};
+      font-family: ${theme.font.NOTO[7]};
+
+      .l-desc {
+        width: 80vw;
+        font-size: ${theme.font.SIZE.L};
+        font-family: ${theme.font.NOTO[5]};
+        line-height: 2.6rem;
+      }
     }
   }
 `;

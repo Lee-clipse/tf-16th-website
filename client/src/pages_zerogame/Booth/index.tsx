@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { LoadingPage, Modal, Wrapper } from "./style";
 import { useNavigate } from "react-router-dom";
-import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { API_CODE, BOOTH_LIST, LOADING_DESC, ROUTE_PATH } from "../../common/const";
 import { alert, getUserIdByToken, isStaffByToken } from "../../common/common";
 import CloseIcon from "../../assets/icons/close.png";
 import { reqBoothLogOfUser, reqBoothWaitList, reqSelectBooth } from "../../api/zerogame";
@@ -109,10 +109,9 @@ const ZGBoothPage = () => {
         <LoadingPage>
           <div id="background" className="f-col v-center h-center" style={{ gap: "2rem" }}>
             <img src={RunIcon} />
-            <div className="l-title">로딩중...</div>
-            <div className="l-desc f-col" style={{ gap: "1.4rem" }}>
+            <div className="l-desc-box f-col" style={{ gap: "2rem" }}>
               <div>그거 아시나요?</div>
-              <div>설명</div>
+              <div className="l-desc">{LOADING_DESC[Math.floor(Math.random() * 4)]}</div>
             </div>
           </div>
         </LoadingPage>
