@@ -39,13 +39,11 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 import FloatBottomButton from "../../components/FloatBottomButton";
 import Banner from "../../components/Banner";
-import PopupModal from "../../components/Popup";
-import { useState } from "react";
 
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const [viewPopup, setViewPopup] = useState<boolean>(true);
+  // const [viewPopup, setViewPopup] = useState<boolean>(true);
 
   const patickles = [
     { className: "t-01", color: theme.color.DEEP_BLUE, size: "3rem", duration: 1.5, delay: 0.2 },
@@ -106,9 +104,9 @@ const MainPage = () => {
   return (
     <>
       {/* 팝업 */}
-      {viewPopup && (
+      {/* {viewPopup && (
         <PopupModal viewPopup={(flag: boolean) => setViewPopup(flag)} isClickable={false} />
-      )}
+      )} */}
 
       {/* 헤더 메뉴 */}
       <HeaderMenu />
