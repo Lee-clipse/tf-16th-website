@@ -65,6 +65,7 @@ const RegisterPage = () => {
     if (
       userInfo.name.trim() === "" ||
       userInfo.age === 0 ||
+      userInfo.location === "" ||
       userInfo.phoneNumber === "" ||
       userInfo.agree === AGREE.NOT_SELECTED
     ) {
