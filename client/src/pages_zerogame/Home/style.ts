@@ -56,6 +56,34 @@ export const Wrapper = styled.div`
       width: 75%;
       animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
+
+    #attack-btn {
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.L};
+      color: ${theme.color.WHITE};
+      background-color: ${theme.color.ORANGE};
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      border-radius: 0.4rem;
+      margin: 0 auto;
+    }
+
+    #goods-btn {
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.L};
+      color: ${theme.color.WHITE};
+      background-color: ${theme.color.PURPLE};
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      border-radius: 0.4rem;
+      margin: 0 auto;
+    }
   }
 
   #booth-map-box {

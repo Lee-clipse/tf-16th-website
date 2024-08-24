@@ -105,7 +105,8 @@ export class ZerogameService {
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       row.point += point;
       row.waitingBoothId = 0;
-      row.boothLog = this.updateBoothLog(row.boothLog, boothId.toString());
+      const nowBoothLog = row.boothLog;
+      row.boothLog = this.updateBoothLog(nowBoothLog, boothId.toString());
       await this.zerogameRepository.save(row);
 
       // 부스 기록 업데이트

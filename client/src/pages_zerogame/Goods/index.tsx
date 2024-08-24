@@ -3,15 +3,32 @@ import { Modal, Wrapper } from "./style";
 import GoodsMap from "../../assets/images/goods_map.png";
 import Goods from "../../assets/images/goods.png";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_PATH } from "../../common/const";
+import { API_CODE, ROUTE_PATH } from "../../common/const";
 import ZGBackground from "../../assets/images/zg_bg.webp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CloseIcon from "../../assets/icons/close.png";
 import MapIcon from "../../assets/icons/location.png";
+import { reqUserGameFetch } from "../../api/zerogame";
+import { getUserIdByToken } from "../../common/common";
 
 const ZGGoodsPage = () => {
   const navigate = useNavigate();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchUserGameData();
+  }, []);
+
+  const fetchUserGameData = async () => {
+    const userId = getUserIdByToken().toString();
+    const res = await reqUserGameFetch(userId);
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      if (res.data.user.goodsReceived === true) {
+        navigate(ROUTE_PATH.ZG_HOME);
+      }
+    }
+  };
 
   return (
     <>

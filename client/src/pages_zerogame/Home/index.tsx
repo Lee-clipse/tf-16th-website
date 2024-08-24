@@ -97,6 +97,16 @@ const ZGHomePage = () => {
         <div>
           <div id="monster">
             <img src={Monster} />
+            {isClearable(userData.boothLog) && (viewGoodsButton || !viewAttackButton) && (
+              <div id="attack-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
+                공격하기!
+              </div>
+            )}
+            {isClearable(userData.boothLog) && !viewGoodsButton && viewAttackButton && (
+              <div id="goods-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
+                굿즈 받기!
+              </div>
+            )}
           </div>
 
           <div id="booth-map-box" className="f-row">
@@ -139,25 +149,11 @@ const ZGHomePage = () => {
           </div>
 
           <div id="booth-waiting">
-            {!isClearable(userData.boothLog) ? (
-              userData.waitingBoothId === 0 ? (
-                <div className="next-alert">다음 부스를 선택해주세요!</div>
-              ) : (
-                <div className="next-alert">
-                  {BOOTH_LIST[userData.waitingBoothId].title} 부스 입장
-                </div>
-              )
-            ) : viewGoodsButton ? (
-              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
-                공격하기!
-              </div>
-            ) : viewAttackButton ? (
-              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_GOODS)}>
-                굿즈받기
-              </div>
+            {userData.waitingBoothId === 0 ? (
+              <div className="next-alert">다음 부스를 선택해주세요!</div>
             ) : (
-              <div id="clear-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
-                공격하기!
+              <div className="next-alert">
+                {BOOTH_LIST[userData.waitingBoothId].title} 부스 입장
               </div>
             )}
           </div>
