@@ -19,7 +19,6 @@ import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import GoIcon from "../../assets/icons/go-right-arrow.png";
 import RunIcon from "../../assets/icons/race.png";
-import { reqUserData } from "../../api/user";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();

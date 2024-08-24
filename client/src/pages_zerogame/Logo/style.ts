@@ -64,6 +64,7 @@ export const Modal = styled.div`
     transform: translate(-50%, -50%);
     width: 86%;
     max-height: 90vh;
+    overflow-y: auto;
 
     background: ${theme.color.WHITE};
     border-radius: 1rem;
