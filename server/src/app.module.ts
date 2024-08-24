@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entity/user.entity';
 import { UserModule } from './api/user/user.module';
@@ -7,6 +7,24 @@ import { MonsterEntity } from './entity/monster.entity';
 import { StaffEntity } from './entity/staff.entity';
 import { ZerogameEntity } from './entity/zerogame.entity';
 import { ZerogameModule } from './api/zerogame/zerogame.module';
+import {
+  utilities as nestWinstonModuleUtilities,
+  WinstonModule,
+} from 'nest-winston';
+import * as moment from 'moment-timezone';
+import * as winston from 'winston';
+import { LoggerMiddleware } from './pipe/logger.middleware';
+
+const winstonFormat = winston.format.combine(
+  winston.format.colorize(),
+  winston.format.timestamp({
+    format: () => moment().tz('Asia/Seoul').format('YYYY-MM-DD, HH:mm:ss'),
+  }),
+  nestWinstonModuleUtilities.format.nestLike('SERVER', {
+    colors: true,
+    prettyPrint: true,
+  }),
+);
 
 @Module({
   imports: [
@@ -28,9 +46,28 @@ import { ZerogameModule } from './api/zerogame/zerogame.module';
         ZerogameEntity,
       ],
       synchronize: true,
+      logging: false,
+    }),
+    WinstonModule.forRoot({
+      transports: [
+        new winston.transports.Console({
+          level: 'info',
+          format: winstonFormat,
+        }),
+        new winston.transports.File({
+          dirname: `./logs`,
+          filename: `${moment(new Date()).format('YYYY-MM-DD')}.log`,
+          level: 'info',
+          format: winstonFormat,
+        }),
+      ],
     }),
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('api/*');
+  }
+}

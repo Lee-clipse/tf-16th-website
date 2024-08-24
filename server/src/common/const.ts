@@ -35,3 +35,41 @@ export const BOOTH_DOMAIN = {
   YOUTH: ['201'],
   MULTI_CULTURE: ['301'],
 };
+
+export const LOG_IGNORE_URL_LIST = [
+  '/api/user/login',
+  '/api/game/enter',
+  '/api/game/user/fetch',
+  '/api/game/staff/fetch',
+  '/api/game/goods/fetch',
+  '/api/game/monster/hp',
+  '/api/game/staff/booth',
+  '/api/game/booth/wait',
+  '/api/game/goods/log',
+];
+
+export const LOG_IMPORTANT_URL_LIST = [
+  '/api/user/get', //
+  '/api/user/register',
+  '/api/user/zg-join',
+  '/api/game/select-booth',
+  '/api/game/give-point',
+  '/api/game/booth/change',
+  '/api/game/booth/out',
+  '/api/game/monster/attack',
+  '/api/game/fullfill-goods',
+  '/api/game/receive-goods',
+];
+
+export const API_WHERE = {
+  '/api/user/get': '테스트', //
+  '/api/user/register': '회원가입',
+  '/api/user/zg-join': '제로게임 접수',
+  '/api/game/select-booth': '부스 선택',
+  '/api/game/give-point': '포인트 획득',
+  '/api/game/booth/change': '부스 변경',
+  '/api/game/booth/out': '부스 이탈',
+  '/api/game/monster/attack': '공격',
+  '/api/game/fullfill-goods': '제로게임 종료',
+  '/api/game/receive-goods': '굿즈 획득',
+};
