@@ -294,16 +294,16 @@ export class ZerogameService {
   }
 
   // test OK
-  updateBoothLog(boothLog: string, boothId: string) {
+  updateBoothLog(boothLog: string, boothId: string): string {
     let boothDomain = '';
     Object.entries(BOOTH_DOMAIN).map(([key, value]) => {
       if (value.includes(boothId)) {
         boothDomain = key;
       }
     });
-    const newBoothLog = (
-      Number(boothLog) + BOOTH_VALUE[boothDomain]
-    ).toString();
+    const newBoothLog = (Number(boothLog) + BOOTH_VALUE[boothDomain])
+      .toString()
+      .padStart(4, '0');
     return newBoothLog;
   }
 }

@@ -37,6 +37,7 @@ export const BOOTH_DOMAIN = {
 };
 
 export const LOG_IGNORE_URL_LIST = [
+  '/api/user/get',
   '/api/user/login',
   '/api/game/enter',
   '/api/game/user/fetch',
@@ -45,11 +46,11 @@ export const LOG_IGNORE_URL_LIST = [
   '/api/game/monster/hp',
   '/api/game/staff/booth',
   '/api/game/booth/wait',
+  '/api/game/booth/log',
   '/api/game/goods/log',
 ];
 
 export const LOG_IMPORTANT_URL_LIST = [
-  '/api/user/get', //
   '/api/user/register',
   '/api/user/zg-join',
   '/api/game/select-booth',
@@ -62,7 +63,6 @@ export const LOG_IMPORTANT_URL_LIST = [
 ];
 
 export const API_WHERE = {
-  '/api/user/get': '테스트', //
   '/api/user/register': '회원가입',
   '/api/user/zg-join': '제로게임 접수',
   '/api/game/select-booth': '부스 선택',

@@ -64,7 +64,6 @@ export const Modal = styled.div`
     transform: translate(-50%, -50%);
     width: 86%;
     max-height: 90vh;
-    overflow-y: auto;
 
     background: ${theme.color.WHITE};
     border-radius: 1rem;
@@ -107,12 +106,14 @@ export const Modal = styled.div`
 
     .m-b-title {
       font-size: ${theme.font.SIZE.ML};
+      font-family: ${theme.font.NOTO[7]};
       margin-bottom: 1.6rem;
     }
 
-    .m-b-body > p > p {
+    .m-b-body > p {
       color: ${theme.color.MID_GRAY};
       margin-bottom: 0.4rem;
+      line-height: 2rem;
     }
 
     .map {

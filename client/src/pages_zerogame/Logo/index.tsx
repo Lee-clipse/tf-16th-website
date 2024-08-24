@@ -9,7 +9,7 @@ import { reqUserGameFetch } from "../../api/zerogame";
 import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
 import { reqJoinZerogame, reqUserData } from "../../api/user";
-import ZGBooth from "../../assets/images/zg_booth.png";
+import ZGBooth from "../../assets/images/map_tmp.jpg";
 import { motion, Variants } from "framer-motion";
 import Loading from "../../components/Loading";
 
@@ -62,7 +62,7 @@ const ZGLogoPage = () => {
 
   const handleClickCodeButton = async () => {
     // TODO: 제로게임 접수 부스 입장 코드 (변경 필요)
-    if (zeroCode === "leeclipse") {
+    if (zeroCode === "0825") {
       setViewCodeModal(false);
       setIsCodeValid(true);
       setViewAgreeModal(true);
@@ -163,10 +163,7 @@ const ZGLogoPage = () => {
               <div className="m-b-title">제로게임 접수 안내</div>
               <div className="m-b-body f-col" style={{ gap: "1rem" }}>
                 <img className="map" src={ZGBooth} />
-                <p>
-                  <p>제로게임 접수 부스로 찾아가셔서</p>
-                  <p>코드를 입력해주세요!</p>
-                </p>
+                <p>입장 코드는 행사 내 모든 부스 스탭을 통해 받을 수 있습니다!</p>
                 <input
                   type="text"
                   placeholder="코드 입력"

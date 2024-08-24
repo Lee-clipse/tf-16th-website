@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { API_CODE, BOOTH_LIST, LOADING_DESC, ROUTE_PATH } from "../../common/const";
 import { alert, getUserIdByToken, isStaffByToken } from "../../common/common";
 import CloseIcon from "../../assets/icons/close.png";
-import { reqBoothLogOfUser, reqBoothWaitList, reqSelectBooth } from "../../api/zerogame";
+import {
+  reqBoothLogOfUser,
+  reqBoothWaitList,
+  reqSelectBooth,
+  reqUserGameFetch,
+} from "../../api/zerogame";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import styled from "styled-components";
 import BlueStone from "../../assets/images/blue_stone.webp";
@@ -14,19 +19,32 @@ import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import GoIcon from "../../assets/icons/go-right-arrow.png";
 import RunIcon from "../../assets/icons/race.png";
+import { reqUserData } from "../../api/user";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
   const [viewBoothModal, setViewBoothModal] = useState<boolean>(false);
   const [selectBoothId, setSelectBoothId] = useState<string>("0");
+  const [waitBoothId, setWaitBoothId] = useState<number>(0);
   const [boothLog, setBoothLog] = useState<string[]>([]);
   const [boothWaitList, setBoothWaitList] = useState<{ [key: number]: number }>({});
   const [loadingPage, setLoadingPage] = useState<boolean>(false);
 
   useEffect(() => {
+    fetchUserGameData();
     fetchBoothLog();
     fetchBoothWaitList();
   }, []);
+
+  const fetchUserGameData = async () => {
+    const userId = getUserIdByToken().toString();
+    const res = await reqUserGameFetch(userId);
+
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      setWaitBoothId(Number(res.data.user.waitingBoothId));
+    }
+  };
 
   const fetchBoothLog = async () => {
     const userId = getUserIdByToken().toString();
@@ -117,7 +135,6 @@ const ZGBoothPage = () => {
         </LoadingPage>
       )}
 
-      {/* TODO: 이미 클리어한 부스에 대해 처리 */}
       <Wrapper>
         <img id="zg-bg" src={ZGBackground} />
 
@@ -140,13 +157,18 @@ const ZGBoothPage = () => {
                 .filter(([key]) => Number(key) >= 1 && Number(key) <= 100)
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
+                  const isWaitingBooth = waitBoothId === Number(key);
                   return (
                     <div
-                      className={`dr-item f-row f-spb v-center ${isClearedBooth && "cleard"}`}
+                      className={`dr-item f-row f-spb v-center ${
+                        (isClearedBooth || isWaitingBooth) && "cleard"
+                      }`}
                       key={key}
                       onClick={() => {
                         if (isClearedBooth) {
                           alert("이미 클리어한 부스입니다.", "info");
+                        } else if (isWaitingBooth) {
+                          alert("현재 대기중인 부스입니다.", "info");
                         } else {
                           handleSelectBooth(key);
                         }
@@ -181,13 +203,18 @@ const ZGBoothPage = () => {
                 .filter(([key]) => Number(key) >= 101 && Number(key) <= 200)
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
+                  const isWaitingBooth = waitBoothId === Number(key);
                   return (
                     <div
-                      className={`dr-item f-row f-spb v-center ${isClearedBooth && "cleard"}`}
+                      className={`dr-item f-row f-spb v-center ${
+                        (isClearedBooth || isWaitingBooth) && "cleard"
+                      }`}
                       key={key}
                       onClick={() => {
                         if (isClearedBooth) {
                           alert("이미 클리어한 부스입니다.", "info");
+                        } else if (isWaitingBooth) {
+                          alert("현재 대기중인 부스입니다.", "info");
                         } else {
                           handleSelectBooth(key);
                         }
@@ -222,13 +249,18 @@ const ZGBoothPage = () => {
                 .filter(([key]) => Number(key) >= 201 && Number(key) <= 300)
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
+                  const isWaitingBooth = waitBoothId === Number(key);
                   return (
                     <div
-                      className={`dr-item f-row f-spb v-center ${isClearedBooth && "cleard"}`}
+                      className={`dr-item f-row f-spb v-center ${
+                        (isClearedBooth || isWaitingBooth) && "cleard"
+                      }`}
                       key={key}
                       onClick={() => {
                         if (isClearedBooth) {
                           alert("이미 클리어한 부스입니다.", "info");
+                        } else if (isWaitingBooth) {
+                          alert("현재 대기중인 부스입니다.", "info");
                         } else {
                           handleSelectBooth(key);
                         }
@@ -263,13 +295,18 @@ const ZGBoothPage = () => {
                 .filter(([key]) => Number(key) >= 301 && Number(key) <= 400)
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
+                  const isWaitingBooth = waitBoothId === Number(key);
                   return (
                     <div
-                      className={`dr-item f-row f-spb v-center ${isClearedBooth && "cleard"}`}
+                      className={`dr-item f-row f-spb v-center ${
+                        (isClearedBooth || isWaitingBooth) && "cleard"
+                      }`}
                       key={key}
                       onClick={() => {
                         if (isClearedBooth) {
                           alert("이미 클리어한 부스입니다.", "info");
+                        } else if (isWaitingBooth) {
+                          alert("현재 대기중인 부스입니다.", "info");
                         } else {
                           handleSelectBooth(key);
                         }
