@@ -12,6 +12,7 @@ import { reqJoinZerogame, reqUserData } from "../../api/user";
 import ZGBooth from "../../assets/images/map_tmp.jpg";
 import { motion, Variants } from "framer-motion";
 import Loading from "../../components/Loading";
+import Agree from "../../assets/images/agree.png";
 
 const ZGLogoPage = () => {
   const navigate = useNavigate();
@@ -128,7 +129,8 @@ const ZGLogoPage = () => {
               <img src={CloseIcon} onClick={() => setViewAgreeModal(false)} />
             </div>
             <div id="m-body">
-              <div>약관 동의서</div>
+              <div>개인정보 제공 및 이용 동의서</div>
+              <img id="agree" src={Agree} />
               <div>
                 <Radio id="radio-row" className="f-row h-center" style={{ gap: "0.4rem" }}>
                   <input

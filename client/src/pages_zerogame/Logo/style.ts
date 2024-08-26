@@ -91,6 +91,11 @@ export const Modal = styled.div`
     font-size: ${theme.font.SIZE.M};
     padding: 1.4rem;
 
+    #agree {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
     #radio-row > label {
       font-size: ${theme.font.SIZE.SM} !important;
     }
