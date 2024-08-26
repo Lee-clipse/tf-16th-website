@@ -62,7 +62,7 @@ const ZGLogoPage = () => {
 
   const handleClickCodeButton = async () => {
     // TODO: 제로게임 접수 부스 입장 코드 (변경 필요)
-    if (zeroCode === "0825") {
+    if (zeroCode === "leeclipse") {
       setViewCodeModal(false);
       setIsCodeValid(true);
       setViewAgreeModal(true);
