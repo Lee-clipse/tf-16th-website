@@ -14,7 +14,6 @@ import {
   Section6,
   Wrapper,
 } from "./style";
-
 import ProgramPoster1 from "../../assets/images/program_poster1.png";
 import ProgramPoster2 from "../../assets/images/program_poster2.png";
 import ProgramPoster3 from "../../assets/images/program_poster3.png";
@@ -22,6 +21,11 @@ import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
 import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
 import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
 import YoutubeThumbnail4 from "../../assets/images/youtube_4.png";
+import Popup1_1 from "../../assets/images/popup1-1.webp";
+import Popup1_2 from "../../assets/images/popup1-2.webp";
+import Popup1_3 from "../../assets/images/popup1-3.webp";
+import Popup2_1 from "../../assets/images/popup2-1.webp";
+import Popup2_2 from "../../assets/images/popup2-2.webp";
 import Section1BG from "../../assets/images/section1_bg.webp";
 import IconTalk from "../../assets/icons/talk.png";
 import IconDebate from "../../assets/icons/debate.png";
@@ -39,11 +43,14 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 import FloatBottomButton from "../../components/FloatBottomButton";
 import Banner from "../../components/Banner";
+import { useState } from "react";
+import PopupModal from "../../components/Popup";
 
 const MainPage = () => {
   const navigate = useNavigate();
 
-  // const [viewPopup, setViewPopup] = useState<boolean>(true);
+  const [viewPopup1, setViewPopup1] = useState<boolean>(true);
+  const [viewPopup2, setViewPopup2] = useState<boolean>(true);
 
   const patickles = [
     { className: "t-01", color: theme.color.DEEP_BLUE, size: "3rem", duration: 1.5, delay: 0.2 },
@@ -104,9 +111,22 @@ const MainPage = () => {
   return (
     <>
       {/* 팝업 */}
-      {/* {viewPopup && (
-        <PopupModal viewPopup={(flag: boolean) => setViewPopup(flag)} isClickable={false} />
-      )} */}
+      {viewPopup1 && (
+        <PopupModal
+          viewPopup={(flag: boolean) => setViewPopup1(flag)}
+          isClickable={false}
+          imageList={[Popup1_1, Popup1_2, Popup1_3]}
+          tokenName="popup1"
+        />
+      )}
+      {viewPopup2 && (
+        <PopupModal
+          viewPopup={(flag: boolean) => setViewPopup2(flag)}
+          isClickable={false}
+          imageList={[Popup2_1, Popup2_2]}
+          tokenName="popup2"
+        />
+      )}
 
       {/* 헤더 메뉴 */}
       <HeaderMenu />

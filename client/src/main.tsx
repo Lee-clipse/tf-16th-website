@@ -5,12 +5,15 @@ import "./index.css";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme.ts";
 import GlobalStyle from "./styles/GlobalStyle.ts";
+import { CookiesProvider } from "react-cookie";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
 root.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <App />
-  </ThemeProvider>
+  <CookiesProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  </CookiesProvider>
 );

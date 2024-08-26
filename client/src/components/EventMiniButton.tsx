@@ -4,18 +4,41 @@ import PresentBox from "../assets/icons/present-box.png";
 import isMobile from "is-mobile";
 import { useState } from "react";
 import PopupModal from "./Popup";
+import Popup1_1 from "../assets/images/popup1-1.webp";
+import Popup1_2 from "../assets/images/popup1-2.webp";
+import Popup1_3 from "../assets/images/popup1-3.webp";
+import Popup2_1 from "../assets/images/popup2-1.webp";
+import Popup2_2 from "../assets/images/popup2-2.webp";
 
 const EventMiniButton = () => {
-  const [viewPopup, setViewPopup] = useState<boolean>(false);
+  const [viewPopup1, setViewPopup1] = useState<boolean>(false);
+  const [viewPopup2, setViewPopup2] = useState<boolean>(false);
 
   return (
     <>
       {/* 팝업 */}
-      {viewPopup && (
-        <PopupModal viewPopup={(flag: boolean) => setViewPopup(flag)} isClickable={true} />
+      {viewPopup1 && (
+        <PopupModal
+          viewPopup={(flag: boolean) => setViewPopup1(flag)}
+          isClickable={true}
+          imageList={[Popup1_1, Popup1_2, Popup1_3]}
+          tokenName="popup1"
+        />
       )}
-
-      <Wrapper onClick={() => setViewPopup(true)}>
+      {viewPopup2 && (
+        <PopupModal
+          viewPopup={(flag: boolean) => setViewPopup2(flag)}
+          isClickable={true}
+          imageList={[Popup2_1, Popup2_2]}
+          tokenName="popup2"
+        />
+      )}
+      <Wrapper
+        onClick={() => {
+          setViewPopup1(true);
+          setViewPopup2(true);
+        }}
+      >
         <img src={PresentBox} />
       </Wrapper>
     </>

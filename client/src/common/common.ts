@@ -1,5 +1,8 @@
 import Swal, { SweetAlertIcon } from "sweetalert2";
 import { STAFF_SIGN, TOKEN } from "./const";
+import { Cookies } from "react-cookie";
+
+const cookies = new Cookies();
 
 const Toast = Swal.mixin({
   toast: true,
@@ -72,19 +75,16 @@ export const isStaffByToken = (): boolean => {
   return staff === STAFF_SIGN.STAFF ? true : false;
 };
 
-export const setPopupToken = (popupToken: number) => {
-  localStorage.setItem("popup", popupToken.toString());
+export const setPopupToken = (tokenName: string) => {
+  if (cookies.get(tokenName)) {
+    return;
+  }
+  const expires = new Date();
+  expires.setHours(expires.getHours() + 24);
+  cookies.set(tokenName, tokenName, { path: "/", expires });
 };
 
-export const verifyByPopupToken = (): boolean => {
-  const popupToken = localStorage.getItem("popup");
-  if (popupToken === null) {
-    return false;
-  }
-  const expire: number = Number(popupToken);
-  const cur: number = new Date().getTime();
-  if (cur >= expire) {
-    deleteToken();
-  }
-  return cur < expire;
+export const verifyByPopupToken = (tokenName: string): boolean => {
+  const popupToken = cookies.get(tokenName);
+  return popupToken !== undefined;
 };

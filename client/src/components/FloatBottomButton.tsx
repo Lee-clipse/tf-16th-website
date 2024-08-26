@@ -6,6 +6,7 @@ import { ROUTE_PATH } from "../common/const";
 import theme from "../styles/theme";
 import ScrollTopButton from "./ScrollTopButton";
 import styled from "styled-components";
+import EventMiniButton from "./EventMiniButton";
 
 const FloatBottomButton = () => {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ const FloatBottomButton = () => {
       <ScrollTopButton />
 
       {/* 이벤트 팝업 버튼 */}
-      {/* <EventMiniButton /> */}
+      <EventMiniButton />
     </>
   );
 };

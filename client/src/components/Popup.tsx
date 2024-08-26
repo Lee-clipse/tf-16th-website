@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
-import Popup01 from "../assets/images/pop_01.webp";
-import Popup02 from "../assets/images/pop_02.webp";
-import Popup03 from "../assets/images/pop_03.webp";
+import { Key, useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { setPopupToken, verifyByPopupToken } from "../common/common";
@@ -11,17 +8,17 @@ import LeftArrow from "../assets/icons/left-arrow-black.png";
 import RightArrow from "../assets/icons/right-arrow-black.png";
 import { FADEIN_ANIMATION } from "../common/const";
 
-const PopupModal = ({ viewPopup, isClickable }: any) => {
+const PopupModal = ({ viewPopup, isClickable, imageList, tokenName }: any) => {
   const [isPopupValid, setIsPopupValid] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const imageList = [Popup01, Popup02, Popup03];
+  const length: number = imageList.length;
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % 3);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + 3) % 3);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + length) % length);
   };
 
   const handlers = useSwipeable({
@@ -34,14 +31,13 @@ const PopupModal = ({ viewPopup, isClickable }: any) => {
     // 이벤트 버튼 클릭 진입시 무조건 렌더링
     if (isClickable) return;
 
-    setIsPopupValid(verifyByPopupToken());
+    setIsPopupValid(verifyByPopupToken(tokenName));
   }, []);
 
   const handleClosePopup = () => {
     viewPopup(false);
     // 현 시점 + 24시간 만료
-    const expire = new Date().getTime() + 24 * 60 * 60 * 1000;
-    setPopupToken(expire);
+    setPopupToken(tokenName);
   };
 
   return (
@@ -53,7 +49,7 @@ const PopupModal = ({ viewPopup, isClickable }: any) => {
             <div id="m-body">
               <div>
                 <ImageContainer className="popup" {...handlers} currentIndex={currentIndex}>
-                  {imageList.map((image, index) => (
+                  {imageList.map((image: string, index: Key) => (
                     <img key={index} src={image} alt={`Slide ${index}`} />
                   ))}
                 </ImageContainer>
