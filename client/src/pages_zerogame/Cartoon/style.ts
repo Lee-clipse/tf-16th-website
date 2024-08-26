@@ -14,6 +14,20 @@ export const Wrapper = styled.div`
     position: absolute;
   }
 
+  #next-btn {
+    background-color: ${theme.color.ORANGE};
+    border-radius: 0.6rem;
+    padding: 1rem;
+    color: ${theme.color.WHITE};
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.M};
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    text-align: center;
+    top: 92%;
+    right: 6%;
+  }
+
   #start-btn {
     background-color: ${theme.color.ORANGE};
     border-radius: 0.6rem;
