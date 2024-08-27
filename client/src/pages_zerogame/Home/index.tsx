@@ -8,7 +8,7 @@ import GreenStone from "../../assets/images/green_stone.webp";
 import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import { useNavigate } from "react-router-dom";
-import { BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { BOOTH_LIST, ROUTE_PATH, WAIT_BOOTH_ID } from "../../common/const";
 import { getUserIdByToken } from "../../common/common";
 import { reqUserGameFetch } from "../../api/zerogame";
 import { ZGUser } from "../../type/type";
@@ -25,8 +25,8 @@ const ZGHomePage = () => {
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
     point: 0,
-    boothLog: "0000",
-    waitingBoothId: 0,
+    boothLog: "0-0-0-0",
+    waitingBoothId: WAIT_BOOTH_ID,
     goodsReceived: false,
     isAttack: false,
   });
@@ -55,10 +55,11 @@ const ZGHomePage = () => {
   };
 
   const isClearable = (boothLog: string) => {
-    const c1 = Number(boothLog[0]) >= 3;
-    const c2 = Number(boothLog[1]) >= 1;
-    const c3 = Number(boothLog[2]) >= 1;
-    const c4 = Number(boothLog[3]) >= 1;
+    const boothIndexList = boothLog.split("-");
+    const c1 = Number(boothIndexList[0]) >= 3;
+    const c2 = Number(boothIndexList[1]) >= 1;
+    const c3 = Number(boothIndexList[2]) >= 1;
+    const c4 = Number(boothIndexList[3]) >= 1;
     return c1 && c2 && c3 && c4;
   };
 
@@ -113,42 +114,45 @@ const ZGHomePage = () => {
               <img
                 className="stone"
                 src={BlueStone}
-                style={{ opacity: `${Number(userData.boothLog[0]) >= 3 ? "1" : "0.3"}` }}
+                style={{ opacity: `${Number(userData.boothLog.split("-")[0]) >= 3 ? "1" : "0.3"}` }}
               />
-              <div className="b-m-score">{userData.boothLog[0]}/3</div>
+              <div className="b-m-score">{userData.boothLog.split("-")[0]}/3</div>
             </div>
             <div className="b-m-box">
               <div className="b-m-title">기후위기</div>
               <img
                 className="stone"
                 src={GreenStone}
-                style={{ opacity: `${Number(userData.boothLog[1]) >= 1 ? "1" : "0.3"}` }}
+                style={{ opacity: `${Number(userData.boothLog.split("-")[1]) >= 1 ? "1" : "0.3"}` }}
               />
-              <div className="b-m-score">{userData.boothLog[1]}/1</div>
+              <div className="b-m-score">{userData.boothLog.split("-")[1]}/1</div>
             </div>
             <div className="b-m-box">
               <div className="b-m-title">다문화</div>
               <img
                 className="stone"
                 src={YellowStone}
-                style={{ opacity: `${Number(userData.boothLog[2]) >= 1 ? "1" : "0.3"}` }}
+                style={{ opacity: `${Number(userData.boothLog.split("-")[2]) >= 1 ? "1" : "0.3"}` }}
               />
-              <div className="b-m-score">{userData.boothLog[2]}/1</div>
+              <div className="b-m-score">{userData.boothLog.split("-")[2]}/1</div>
             </div>
             <div className="b-m-box">
               <div className="b-m-title">청년</div>
               <img
                 className="stone"
                 src={RedStone}
-                style={{ opacity: `${Number(userData.boothLog[3]) >= 1 ? "1" : "0.3"}` }}
+                style={{ opacity: `${Number(userData.boothLog.split("-")[3]) >= 1 ? "1" : "0.3"}` }}
               />
-              <div className="b-m-score">{userData.boothLog[3]}/1</div>
+              <div className="b-m-score">{userData.boothLog.split("-")[3]}/1</div>
             </div>
           </div>
 
           <div id="booth-waiting">
-            {userData.waitingBoothId === 0 ? (
-              <div className="next-alert">다음 부스를 선택해주세요!</div>
+            {userData.waitingBoothId === WAIT_BOOTH_ID ? (
+              <div className="next-alert">
+                [부스 목록]에서 체험할 부스를 <br />
+                선택해주세요!
+              </div>
             ) : (
               <div className="next-alert">
                 [{BOOTH_LIST[userData.waitingBoothId].title}] 부스로 이동해주세요!

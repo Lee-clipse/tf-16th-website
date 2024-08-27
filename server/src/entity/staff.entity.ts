@@ -5,6 +5,6 @@ export class StaffEntity {
   @PrimaryColumn({ type: 'int', name: 'staff_id' })
   staffId: number;
 
-  @Column({ type: 'int', name: 'booth_id' })
-  boothId: number;
+  @Column({ type: 'varchar', name: 'booth_id' })
+  boothId: string;
 }

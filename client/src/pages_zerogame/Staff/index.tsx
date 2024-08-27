@@ -3,7 +3,7 @@ import { Modal, Wrapper } from "./style";
 import HeaderMenu from "../../components/HeaderMenu";
 import { alert, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
-import { API_CODE, BOOTH_LIST, ROUTE_PATH } from "../../common/const";
+import { API_CODE, BOOTH_LIST, GOODS_BOOTH_ID, ROUTE_PATH } from "../../common/const";
 import {
   reqBoothIdOfStaff,
   reqBoothOut,
@@ -38,7 +38,7 @@ const StaffPage = () => {
   }, []);
 
   useEffect(() => {
-    if (Number(boothId) === 999) {
+    if (boothId === GOODS_BOOTH_ID) {
       navigate(ROUTE_PATH.GOODS_STAFF);
     }
   }, [boothId]);
@@ -58,6 +58,8 @@ const StaffPage = () => {
 
   const fetchStaffData = async () => {
     const staffId = getUserIdByToken().toString();
+    console.log("??");
+    console.log(staffId);
     const res = await reqBoothIdOfStaff(staffId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
@@ -202,7 +204,7 @@ const StaffPage = () => {
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="s-name">{staffName} 스탭님 환영합니다!</div>
-        <div id="s-booth-name">{BOOTH_LIST[Number(boothId)].title} 담당</div>
+        <div id="s-booth-name">{BOOTH_LIST[boothId]?.title} 담당</div>
 
         {/* 부스 내 대기자 리스트 */}
         <div id="s-people">

@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ZerogameService } from './zerogame.service';
 import { UserBoothDto } from 'src/dto/user_booth.dto';
-import { PointDto } from 'src/dto/point.dto';
 
 @ApiTags('ZEROGAME API')
 @Controller('api/game')
@@ -26,7 +25,7 @@ export class ZerogameController {
   // booth_id, user_id
   async selectBooth(@Body() dto: UserBoothDto) {
     const userId = Number(dto.userId);
-    const boothId = Number(dto.boothId);
+    const boothId = dto.boothId;
     const res = await this.zerogameService.selectBooth(userId, boothId);
     return res;
   }
@@ -45,16 +44,7 @@ export class ZerogameController {
     summary: '스탭 새로고침',
   })
   async fetchStaff(@Query('booth_id') boothId: string) {
-    const res = await this.zerogameService.fetchStaff(Number(boothId));
-    return res;
-  }
-
-  @Get('/goods/fetch')
-  @ApiOperation({
-    summary: '굿즈 스탭 새로고침',
-  })
-  async fetchGoodsStaff() {
-    const res = await this.zerogameService.fetchGoodsStaff();
+    const res = await this.zerogameService.fetchStaff(boothId);
     return res;
   }
 
@@ -65,7 +55,7 @@ export class ZerogameController {
   // booth_id, user_id, point
   async givePoint(@Body() dto: UserBoothDto) {
     const userId = Number(dto.userId);
-    const boothId = Number(dto.boothId);
+    const boothId = dto.boothId;
     const point = Number(dto.point);
     const res = await this.zerogameService.givePoint(userId, boothId, point);
     return res;
@@ -78,7 +68,7 @@ export class ZerogameController {
   // booth_id, user_id
   async changeBooth(@Body() dto: UserBoothDto) {
     const userId = Number(dto.userId);
-    const boothId = Number(dto.boothId);
+    const boothId = dto.boothId;
     const res = await this.zerogameService.changeBooth(userId, boothId);
     return res;
   }
@@ -90,7 +80,7 @@ export class ZerogameController {
   // booth_id, user_id
   async outBooth(@Body() dto: UserBoothDto) {
     const userId = Number(dto.userId);
-    const boothId = Number(dto.boothId);
+    const boothId = dto.boothId;
     const res = await this.zerogameService.outBooth(userId, boothId);
     return res;
   }

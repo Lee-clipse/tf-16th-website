@@ -170,7 +170,8 @@ export const Modal = styled.div`
     gap: 1.4rem;
 
     #m-b-booth-log {
-      margin-top: 1rem;
+      margin-top: 2rem;
+      gap: 1.4rem;
     }
 
     .m-title {
@@ -181,6 +182,8 @@ export const Modal = styled.div`
       font-size: ${theme.font.SIZE.M};
       font-family: ${theme.font.NOTO[6]};
       color: ${theme.color.MID_GRAY};
+      line-height: 2.4rem;
+      margin: 1.6rem 0;
     }
 
     .b-btn {

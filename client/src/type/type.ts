@@ -31,7 +31,7 @@ export type ZGUser = {
   userId: number;
   point: number;
   boothLog: string;
-  waitingBoothId: number;
+  waitingBoothId: string;
   goodsReceived: boolean;
   isAttack: boolean;
 };

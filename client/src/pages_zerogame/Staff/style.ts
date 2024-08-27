@@ -19,27 +19,27 @@ export const Wrapper = styled.div`
   }
 
   #s-name {
-    padding-top: 9rem;
+    padding-top: 7rem;
     text-align: center;
-    font-family: ${theme.font.NOTO[9]};
-    font-size: ${theme.font.SIZE.XL};
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.M};
     color: ${theme.color.WHITE};
     margin-bottom: 1rem;
   }
 
   #s-booth-name {
     text-align: center;
-    font-family: ${theme.font.NOTO[9]};
-    font-size: ${theme.font.SIZE.XXXXL};
+    font-family: ${theme.font.NOTO[8]};
+    font-size: ${theme.font.SIZE.L};
     color: ${theme.color.ORANGE};
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   #s-people {
     #s-p-title {
       text-align: center;
-      font-family: ${theme.font.NOTO[8]};
-      font-size: ${theme.font.SIZE.XL};
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.L};
       color: ${theme.color.WHITE};
       margin-bottom: 1rem;
     }
@@ -48,31 +48,33 @@ export const Wrapper = styled.div`
       margin: 0 2rem;
       border: 2px solid lightgray;
       border-radius: 1rem;
-      height: 46vh;
+      height: 50vh;
       overflow: scroll;
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
       background-color: ${theme.color.WHITE};
 
       .s-p-item {
         border-bottom: 2px solid lightgray;
-        padding: 1rem 2rem;
+        padding: 0.8rem 1.4rem;
 
         .s-p-name {
+          font-family: ${theme.font.NOTO[6]};
+          font-size: ${theme.font.SIZE.M};
         }
 
         .s-p-point-btn {
           background-color: ${theme.color.TEAL_BLUE};
-          font-family: ${theme.font.NOTO[7]};
+          font-family: ${theme.font.NOTO[6]};
           color: ${theme.color.WHITE};
-          padding: 0.8rem;
+          padding: 0.6rem;
           border-radius: 0.6rem;
-          font-size: ${theme.font.SIZE.M};
+          font-size: ${theme.font.SIZE.SM};
           box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
         }
 
         .s-p-out-btn {
           margin-left: 1rem;
-          font-family: ${theme.font.NOTO[7]};
+          font-family: ${theme.font.NOTO[6]};
           font-size: ${theme.font.SIZE.SM};
           color: ${theme.color.MID_GRAY};
           text-decoration: underline;
@@ -82,7 +84,10 @@ export const Wrapper = styled.div`
   }
 
   #btn-row {
-    padding: 1.4rem 2rem;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding: 2rem 2rem 2rem 2rem;
     text-align: center;
   }
 
@@ -94,17 +99,16 @@ export const Wrapper = styled.div`
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     img {
-      width: 3rem;
+      width: 2.6rem;
     }
   }
 
   #booth-list-btn {
-    font-size: ${theme.font.SIZE.L};
-    font-family: ${theme.font.NOTO[9]};
+    font-size: ${theme.font.SIZE.ML};
+    font-family: ${theme.font.NOTO[7]};
     color: ${theme.color.WHITE};
     background-color: ${theme.color.ORANGE};
-    width: 44vw;
-    height: 16vw;
+    padding: 1rem 1.4rem;
     border-radius: 1rem;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
   }
@@ -117,7 +121,7 @@ export const Wrapper = styled.div`
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     img {
-      width: 2.6rem;
+      width: 2.2rem;
     }
   }
 `;

@@ -4,51 +4,38 @@ export const API_CODE = {
   NOT_FOUND: 404,
 };
 
-export const ZEROGAME = 'ZEROGAME';
-export const CLIMATE = 'CLIMATE';
-export const YOUTH = 'YOUTH';
-export const MULTI_CULTURE = 'MULTI_CULTURE';
-
-export const BOOTH_VALUE = {
-  ZEROGAME: 1000,
-  CLIMATE: 100,
-  MULTI_CULTURE: 10,
-  YOUTH: 1,
+export const BOOTH_INDEX_VALUE = {
+  ZEROGAME: 0,
+  CLIMATE: 1,
+  MULTI_CULTURE: 2,
+  YOUTH: 3,
 };
+
+export const WAIT_BOOTH_ID = 'Z0';
+export const GOODS_BOOTH_ID = 'A2';
 
 export const BOOTH_DOMAIN = {
   ZEROGAME: [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-    '16',
+    'D1',
+    'D2',
+    'D3',
+    'D4',
+    'D5',
+    'D6',
+    'D7',
+    'D8',
+    'D9',
+    'D10',
+    'D11',
+    'D12',
+    'D13',
+    'D14',
+    'D15',
+    'D16',
   ],
-  CLIMATE: [
-    '101',
-    '102',
-    '103',
-    '104',
-    '105',
-    '106',
-    '107',
-    '108',
-    '109',
-    '110',
-  ],
-  MULTI_CULTURE: ['201', '202', '203', '204'],
-  YOUTH: ['301', '302', '303', '304'],
+  CLIMATE: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F0'],
+  MULTI_CULTURE: ['C1', 'C2', 'C3', 'C4'],
+  YOUTH: ['B1', 'B2', 'B3', 'B4'],
 };
 
 export const LOG_IGNORE_URL_LIST = [

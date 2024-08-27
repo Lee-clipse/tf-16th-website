@@ -8,11 +8,16 @@ export class ZerogameEntity {
   @Column({ type: 'int', name: 'point', default: 0 })
   point: number;
 
-  @Column({ type: 'varchar', name: 'booth_log', length: '64', default: '0000' })
+  @Column({
+    type: 'varchar',
+    name: 'booth_log',
+    length: '64',
+    default: '0-0-0-0',
+  })
   boothLog: string;
 
-  @Column({ type: 'int', name: 'waiting_booth_id', default: 0 })
-  waitingBoothId: number;
+  @Column({ type: 'varchar', name: 'waiting_booth_id', default: 'Z0' })
+  waitingBoothId: string;
 
   @Column({ type: 'boolean', name: 'is_attack', default: false })
   isAttack: boolean;

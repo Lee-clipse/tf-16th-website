@@ -26,9 +26,9 @@ const ZGBoothPage = () => {
   const navigate = useNavigate();
   const [viewBoothModal, setViewBoothModal] = useState<boolean>(false);
   const [selectBoothId, setSelectBoothId] = useState<string>("0");
-  const [waitBoothId, setWaitBoothId] = useState<number>(0);
+  const [waitBoothId, setWaitBoothId] = useState<string>("");
   const [boothLog, setBoothLog] = useState<string[]>([]);
-  const [boothWaitList, setBoothWaitList] = useState<{ [key: number]: number }>({});
+  const [boothWaitList, setBoothWaitList] = useState<{ [key: string]: number }>({});
   const [loadingPage, setLoadingPage] = useState<boolean>(false);
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
   const [viewClearBoothModal, setViewClearBoothModal] = useState<boolean>(false);
@@ -45,7 +45,7 @@ const ZGBoothPage = () => {
 
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
-      setWaitBoothId(Number(res.data.user.waitingBoothId));
+      setWaitBoothId(res.data.user.waitingBoothId);
     }
   };
 
@@ -56,7 +56,6 @@ const ZGBoothPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       setBoothLog(res.data.boothLog);
-      console.log(res.data.boothLog);
     }
   };
 
@@ -133,9 +132,9 @@ const ZGBoothPage = () => {
             </div>
             <div id="m-body">
               <div id="m-b-title">클리어한 부스 목록</div>
-              <div id="m-b-booth-log">
+              <div id="m-b-booth-log" className="f-col">
                 {boothLog.map((boothIndex: string) => {
-                  return <div>{BOOTH_LIST[Number(boothIndex)].title}</div>;
+                  return <div>{BOOTH_LIST[boothIndex].title}</div>;
                 })}
               </div>
             </div>
@@ -152,8 +151,8 @@ const ZGBoothPage = () => {
               <img src={CloseIcon} onClick={() => setViewBoothModal(false)} />
             </div>
             <div id="m-body" className="f-col">
-              <div className="m-title">{BOOTH_LIST[Number(selectBoothId)].title} 부스</div>
-              <div className="m-desc">{BOOTH_LIST[Number(selectBoothId)].desc}</div>
+              <div className="m-title">{BOOTH_LIST[selectBoothId].title}</div>
+              <div className="m-desc">{BOOTH_LIST[selectBoothId].desc}</div>
               <div className="b-btn" onClick={() => handleEnterBooth()}>
                 부스 선택
               </div>
@@ -194,10 +193,10 @@ const ZGBoothPage = () => {
 
             <DropdownContent isOpen={openDropdown === "제로게임"}>
               {Object.entries(BOOTH_LIST)
-                .filter(([key]) => Number(key) >= 1 && Number(key) <= 100)
+                .filter(([key]) => key[0] === "D")
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
-                  const isWaitingBooth = waitBoothId === Number(key);
+                  const isWaitingBooth = waitBoothId === key;
                   return (
                     <div
                       className={`dr-item f-row f-spb v-center ${
@@ -216,7 +215,7 @@ const ZGBoothPage = () => {
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
                         <div>{value.title}</div>
-                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                        <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
 
                       <img src={GoIcon} />
@@ -240,10 +239,10 @@ const ZGBoothPage = () => {
 
             <DropdownContent isOpen={openDropdown === "기후위기"}>
               {Object.entries(BOOTH_LIST)
-                .filter(([key]) => Number(key) >= 101 && Number(key) <= 200)
+                .filter(([key]) => key[0] === "F")
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
-                  const isWaitingBooth = waitBoothId === Number(key);
+                  const isWaitingBooth = waitBoothId === key;
                   return (
                     <div
                       className={`dr-item f-row f-spb v-center ${
@@ -262,7 +261,7 @@ const ZGBoothPage = () => {
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
                         <div>{value.title}</div>
-                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                        <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
 
                       <img src={GoIcon} />
@@ -286,10 +285,10 @@ const ZGBoothPage = () => {
 
             <DropdownContent isOpen={openDropdown === "다문화"}>
               {Object.entries(BOOTH_LIST)
-                .filter(([key]) => Number(key) >= 201 && Number(key) <= 300)
+                .filter(([key]) => key[0] === "C")
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
-                  const isWaitingBooth = waitBoothId === Number(key);
+                  const isWaitingBooth = waitBoothId === key;
                   return (
                     <div
                       className={`dr-item f-row f-spb v-center ${
@@ -308,7 +307,7 @@ const ZGBoothPage = () => {
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
                         <div>{value.title}</div>
-                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                        <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
 
                       <img src={GoIcon} />
@@ -332,10 +331,10 @@ const ZGBoothPage = () => {
 
             <DropdownContent isOpen={openDropdown === "청년 커뮤니티"}>
               {Object.entries(BOOTH_LIST)
-                .filter(([key]) => Number(key) >= 301 && Number(key) <= 400)
+                .filter(([key]) => key[0] === "B")
                 .map(([key, value]) => {
                   const isClearedBooth = boothLog.includes(key);
-                  const isWaitingBooth = waitBoothId === Number(key);
+                  const isWaitingBooth = waitBoothId === key;
                   return (
                     <div
                       className={`dr-item f-row f-spb v-center ${
@@ -354,7 +353,7 @@ const ZGBoothPage = () => {
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
                         <div>{value.title}</div>
-                        <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
+                        <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
 
                       <img src={GoIcon} />

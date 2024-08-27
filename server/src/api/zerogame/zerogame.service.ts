@@ -9,8 +9,9 @@ import { UserEntity } from 'src/entity/user.entity';
 import {
   API_CODE,
   BOOTH_DOMAIN,
-  BOOTH_VALUE,
-  ZEROGAME,
+  BOOTH_INDEX_VALUE,
+  GOODS_BOOTH_ID,
+  WAIT_BOOTH_ID,
 } from 'src/common/const';
 
 @Injectable()
@@ -39,7 +40,7 @@ export class ZerogameService {
   }
 
   // API
-  async selectBooth(userId: number, boothId: number) {
+  async selectBooth(userId: number, boothId: string) {
     try {
       // 대기 중 부스로 변경
       const row = await this.zerogameRepository.findOne({ where: { userId } });
@@ -51,7 +52,7 @@ export class ZerogameService {
       await this.mapRepository.save({ userId, boothId });
 
       // 부스 변경의 경우
-      if (existBoothId !== 0) {
+      if (existBoothId !== WAIT_BOOTH_ID) {
         await this.mapRepository.delete({ userId, boothId: existBoothId });
       }
       return { code: API_CODE.SUCCESS };
@@ -74,7 +75,7 @@ export class ZerogameService {
   }
 
   // API
-  async fetchStaff(boothId: number) {
+  async fetchStaff(boothId: string) {
     try {
       // 본인 부스의 대기중인 참가자 id 추출
       const rowList = await this.mapRepository.find({
@@ -94,19 +95,14 @@ export class ZerogameService {
   }
 
   // API
-  async fetchGoodsStaff() {
-    return;
-  }
-
-  // API
-  async givePoint(userId: number, boothId: number, point: number) {
+  async givePoint(userId: number, boothId: string, point: number) {
     try {
       // 제로게임 기록 업데이트
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       row.point += point;
-      row.waitingBoothId = 0;
+      row.waitingBoothId = WAIT_BOOTH_ID;
       const nowBoothLog = row.boothLog;
-      row.boothLog = this.updateBoothLog(nowBoothLog, boothId.toString());
+      row.boothLog = this.updateBoothLog(nowBoothLog, boothId);
       await this.zerogameRepository.save(row);
 
       // 부스 기록 업데이트
@@ -123,7 +119,7 @@ export class ZerogameService {
   }
 
   // API
-  async changeBooth(userId: number, boothId: number) {
+  async changeBooth(userId: number, boothId: string) {
     try {
       // 제로게임 기록 업데이트
       const row = await this.zerogameRepository.findOne({ where: { userId } });
@@ -141,12 +137,12 @@ export class ZerogameService {
   }
 
   // API
-  async outBooth(userId: number, boothId: number) {
+  async outBooth(userId: number, boothId: string) {
     try {
       // 제로게임 기록 업데이트
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       const prevBoothId = row.waitingBoothId;
-      row.waitingBoothId = 0;
+      row.waitingBoothId = WAIT_BOOTH_ID;
       await this.zerogameRepository.save(row);
 
       // 부스 기록 갱신
@@ -189,11 +185,11 @@ export class ZerogameService {
   async fullfillGoods(userId: number) {
     try {
       const row = await this.mapRepository.findOne({
-        where: { userId, boothId: 999 },
+        where: { userId, boothId: GOODS_BOOTH_ID },
       });
       // 공격 -> 굿즈 -> 부스 체험 -> 공격 로직을 위함
       if (row) return;
-      await this.mapRepository.save({ userId, boothId: 999 });
+      await this.mapRepository.save({ userId, boothId: GOODS_BOOTH_ID });
       return { code: API_CODE.SUCCESS };
     } catch (error) {
       return { code: API_CODE.INVALID };
@@ -204,7 +200,7 @@ export class ZerogameService {
   async receiveGoods(userId: number) {
     try {
       const mapRow = await this.mapRepository.findOne({
-        where: { userId, boothId: 999 },
+        where: { userId, boothId: GOODS_BOOTH_ID },
       });
       if (mapRow) {
         mapRow.cleared = true;
@@ -252,7 +248,7 @@ export class ZerogameService {
   async getGoodsLogList() {
     try {
       const rowList = await this.mapRepository.find({
-        where: { boothId: 999, cleared: true },
+        where: { boothId: GOODS_BOOTH_ID, cleared: true },
       });
       const goodsLogList = await Promise.all(
         rowList.map(async (row: MapEntity) => {
@@ -294,17 +290,14 @@ export class ZerogameService {
     }
   }
 
-  // test OK
   updateBoothLog(boothLog: string, boothId: string): string {
-    let boothDomain = '';
+    const boothLogIndex = boothLog.split('-').map((index) => Number(index));
     Object.entries(BOOTH_DOMAIN).map(([key, value]) => {
       if (value.includes(boothId)) {
-        boothDomain = key;
+        boothLogIndex[BOOTH_INDEX_VALUE[key]] += 1;
       }
     });
-    const newBoothLog = (Number(boothLog) + BOOTH_VALUE[boothDomain])
-      .toString()
-      .padStart(4, '0');
+    const newBoothLog = boothLogIndex.join('-');
     return newBoothLog;
   }
 }

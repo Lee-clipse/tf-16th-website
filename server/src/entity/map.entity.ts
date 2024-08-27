@@ -10,8 +10,8 @@ export class MapEntity {
   @PrimaryGeneratedColumn({ type: 'int', name: 'pk' })
   pk: number;
 
-  @Column({ type: 'int', name: 'booth_id' })
-  boothId: number;
+  @Column({ type: 'varchar', name: 'booth_id' })
+  boothId: string;
 
   @Column({ type: 'int', name: 'user_id' })
   userId: number;

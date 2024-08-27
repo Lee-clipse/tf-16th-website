@@ -9,7 +9,7 @@ import {
 } from "../../api/zerogame";
 import Monster from "../../assets/images/zg_monster.webp";
 import { ZGUser } from "../../type/type";
-import { API_CODE, MONSTER_FULL_HP, ROUTE_PATH } from "../../common/const";
+import { API_CODE, MONSTER_FULL_HP, ROUTE_PATH, WAIT_BOOTH_ID } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import AttackIcon from "../../assets/images/attack_icon.webp";
@@ -22,8 +22,8 @@ const ZGMonsterPage = () => {
   const [userData, setUserData] = useState<ZGUser>({
     userId: 1,
     point: 0,
-    boothLog: "0000",
-    waitingBoothId: 101,
+    boothLog: "0-0-0-0",
+    waitingBoothId: WAIT_BOOTH_ID,
     goodsReceived: false,
     isAttack: false,
   });
