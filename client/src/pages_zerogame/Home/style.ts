@@ -52,37 +52,50 @@ export const Wrapper = styled.div`
   #monster {
     text-align: center;
     margin: 1rem 0 4rem 0;
+    position: relative;
+
     img {
       width: 70%;
       animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
 
+    #clear-bg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      padding: 1rem 0;
+      background-color: ${theme.color.BLACK};
+      opacity: 0.8;
+      color: ${theme.color.WHITE};
+      font-family: ${theme.font.NOTO[8]};
+      font-size: ${theme.font.SIZE.L};
+    }
+
     #attack-btn {
+      position: absolute;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
       font-family: ${theme.font.NOTO[6]};
       font-size: ${theme.font.SIZE.ML};
       color: ${theme.color.WHITE};
       background-color: ${theme.color.ORANGE};
-      padding: 1rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 30%;
-      border-radius: 0.4rem;
-      margin: 0 auto;
+      padding: 1rem 1.4rem;
+      border-radius: 0.6rem;
     }
 
     #goods-btn {
+      position: absolute;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
       font-family: ${theme.font.NOTO[6]};
       font-size: ${theme.font.SIZE.ML};
       color: ${theme.color.WHITE};
       background-color: ${theme.color.PURPLE};
-      padding: 1rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 30%;
-      border-radius: 0.4rem;
-      margin: 0 auto;
+      padding: 1rem 1.4rem;
+      border-radius: 0.6rem;
     }
   }
 
@@ -103,7 +116,7 @@ export const Wrapper = styled.div`
     }
 
     .stone {
-      width: 90%;
+      width: 80%;
       padding: 0.4rem;
       border-radius: 1rem;
       border: 2px solid lightgray;

@@ -96,6 +96,7 @@ const ZGHomePage = () => {
         <div>
           <div id="monster">
             <img src={Monster} />
+            {isClearable(userData.boothLog) && viewGoodsButton && <div id="clear-bg">CLEAR!</div>}
             {isClearable(userData.boothLog) && (viewGoodsButton || !viewAttackButton) && (
               <div id="attack-btn" onClick={() => navigate(ROUTE_PATH.ZG_MONSTER)}>
                 공격하기!

@@ -61,7 +61,11 @@ const ZGGoodsPage = () => {
 
         <div id="g-text" className="f-col" style={{ gap: ".8rem" }}>
           <div>제로게임 클리어를 축하합니다!</div>
-          <div>지도에 적힌 부스에서 굿즈를 받아가세요!</div>
+          <div>지도에 적힌 부스에서 굿즈를 받아가세요.</div>
+        </div>
+
+        <div id="g-text" className="f-col" style={{ gap: ".8rem", marginTop: "2rem" }}>
+          <div>계속해서 부스를 체험하실 수 있어요!</div>
         </div>
 
         <div id="btn-row" className="f-col" style={{ gap: "1rem" }}>

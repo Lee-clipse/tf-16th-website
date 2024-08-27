@@ -6,8 +6,6 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  font-family: ${theme.font.NOTO[5]};
-  font-size: ${theme.font.SIZE.ML};
 
   #zg-bg {
     z-index: -1;
@@ -21,18 +19,10 @@ export const Wrapper = styled.div`
   #s-name {
     padding-top: 8rem;
     text-align: center;
-    font-family: ${theme.font.NOTO[9]};
-    font-size: ${theme.font.SIZE.XL};
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.M};
     color: ${theme.color.WHITE};
-    margin-bottom: 1.4rem;
-  }
-
-  #s-booth-name {
-    text-align: center;
-    font-family: ${theme.font.NOTO[9]};
-    font-size: ${theme.font.SIZE.XXXXL};
-    color: ${theme.color.ORANGE};
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 
   #s-people {
@@ -41,15 +31,15 @@ export const Wrapper = styled.div`
       #s-p-title {
         text-align: center;
         font-family: ${theme.font.NOTO[8]};
-        font-size: ${theme.font.SIZE.L};
+        font-size: ${theme.font.SIZE.ML};
         color: ${theme.color.WHITE};
         color: ${theme.color.ORANGE};
       }
 
       #s-p-log-btn {
         background-color: ${theme.color.MID_GRAY};
-        font-family: ${theme.font.NOTO[6]};
-        font-size: ${theme.font.SIZE.M};
+        font-family: ${theme.font.NOTO[5]};
+        font-size: ${theme.font.SIZE.SM};
         color: ${theme.color.WHITE};
         padding: 1rem;
         border-radius: 0.4rem;
@@ -61,23 +51,25 @@ export const Wrapper = styled.div`
       margin: 0 2rem;
       border: 2px solid lightgray;
       border-radius: 1rem;
-      height: 46vh;
+      height: 50vh;
       overflow: scroll;
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
       background-color: ${theme.color.WHITE};
 
       .s-p-item {
         border-bottom: 2px solid lightgray;
-        padding: 1rem 2rem;
+        padding: 0.8rem 1.4rem;
 
         .s-p-name {
+          font-family: ${theme.font.NOTO[6]};
+          font-size: ${theme.font.SIZE.M};
         }
 
         .s-p-point-btn {
           background-color: ${theme.color.TEAL_BLUE};
-          font-family: ${theme.font.NOTO[7]};
+          font-family: ${theme.font.NOTO[6]};
           color: ${theme.color.WHITE};
-          padding: 0.8rem;
+          padding: 0.6rem;
           border-radius: 0.6rem;
           font-size: ${theme.font.SIZE.M};
           box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
@@ -101,20 +93,21 @@ export const Wrapper = styled.div`
     }
     input {
       border: 2px solid lightgray;
-      font-size: ${theme.font.SIZE.ML};
-      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.SM};
+      font-family: ${theme.font.NOTO[6]};
       width: 100%;
       padding: 1rem;
       border-radius: 0.6rem;
     }
     input::placeholder {
-      font-size: ${theme.font.SIZE.ML};
-      font-family: ${theme.font.NOTO[4]};
+      font-size: ${theme.font.SIZE.SM};
+      font-family: ${theme.font.NOTO[6]};
       color: ${theme.color.MID_GRAY};
     }
     .s-btn {
       background-color: ${theme.color.MID_GRAY};
       width: 5rem;
+      padding: 0.4rem;
       margin-left: 1rem;
       border-radius: 0.6rem;
       box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
@@ -125,37 +118,38 @@ export const Wrapper = styled.div`
   }
 
   #btn-row {
-    padding: 0rem 2rem 1.4rem 2rem;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding: 2rem 2rem 2rem 2rem;
     text-align: center;
   }
 
   #map-btn {
     background-color: ${theme.color.GREEN};
-    width: 14vw;
-    height: 14vw;
+    width: 16vw;
+    height: 16vw;
     border-radius: 1rem;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     img {
-      width: 2rem;
+      width: 2.6rem;
     }
   }
-
   #booth-list-btn {
     font-size: ${theme.font.SIZE.ML};
-    font-family: ${theme.font.NOTO[9]};
+    font-family: ${theme.font.NOTO[7]};
     color: ${theme.color.WHITE};
     background-color: ${theme.color.ORANGE};
-    width: 44vw;
-    height: 14vw;
+    padding: 1rem 1.4rem;
     border-radius: 1rem;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
   }
 
   #refresh-btn {
     background-color: ${theme.color.GREEN};
-    width: 14vw;
-    height: 14vw;
+    width: 16vw;
+    height: 16vw;
     border-radius: 50%;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 

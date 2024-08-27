@@ -50,8 +50,8 @@ export const Wrapper = styled.div`
     top: 76%;
     width: 100%;
     color: ${theme.color.WHITE};
-    font-family: ${theme.font.NOTO[7]};
-    font-size: ${theme.font.SIZE.L};
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.ML};
 
     #map-btn {
       background-color: ${theme.color.GREEN};
@@ -60,7 +60,7 @@ export const Wrapper = styled.div`
       padding: 1rem;
 
       img {
-        width: 2rem;
+        width: 1.6rem;
         margin-left: 1rem;
       }
     }
