@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   font-family: ${theme.font.NOTO[5]};
-  font-size: ${theme.font.SIZE.ML};
+  font-size: ${theme.font.SIZE.M};
 
   #zg-bg {
     z-index: -1;
@@ -31,35 +31,35 @@ export const Wrapper = styled.div`
   }
 
   #h-header {
-    padding: 2rem 2rem;
+    padding: 1.4rem 1.4rem;
 
     #point {
       color: ${theme.color.WHITE};
-      font-size: 3rem;
+      font-size: 2rem;
       #number {
         font-family: ${theme.font.OSW[6]};
-        font-size: 3rem;
+        font-size: 2rem;
       }
     }
 
     #home-btn {
       img {
-        width: 10vw;
+        width: 6vw;
       }
     }
   }
 
   #monster {
     text-align: center;
-    margin: 2rem 0;
+    margin: 1rem 0 4rem 0;
     img {
-      width: 75%;
+      width: 70%;
       animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
 
     #attack-btn {
       font-family: ${theme.font.NOTO[6]};
-      font-size: ${theme.font.SIZE.L};
+      font-size: ${theme.font.SIZE.ML};
       color: ${theme.color.WHITE};
       background-color: ${theme.color.ORANGE};
       padding: 1rem 0;
@@ -73,7 +73,7 @@ export const Wrapper = styled.div`
 
     #goods-btn {
       font-family: ${theme.font.NOTO[6]};
-      font-size: ${theme.font.SIZE.L};
+      font-size: ${theme.font.SIZE.ML};
       color: ${theme.color.WHITE};
       background-color: ${theme.color.PURPLE};
       padding: 1rem 0;
@@ -88,13 +88,12 @@ export const Wrapper = styled.div`
 
   #booth-map-box {
     text-align: center;
-    margin: 2rem 0;
+    margin: 1rem 0;
     width: 96vw;
     margin: 0 auto;
     background: ${theme.color.WHITE};
     border-radius: 1rem;
     padding: 1rem;
-    gap: 1rem;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     .b-m-title {
@@ -104,16 +103,16 @@ export const Wrapper = styled.div`
     }
 
     .stone {
-      width: 100%;
+      width: 90%;
       padding: 0.4rem;
       border-radius: 1rem;
       border: 2px solid lightgray;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .b-m-score {
       font-family: ${theme.font.NOTO[7]};
-      font-size: ${theme.font.SIZE.L};
+      font-size: ${theme.font.SIZE.ML};
     }
   }
 
@@ -121,16 +120,17 @@ export const Wrapper = styled.div`
     text-align: center;
     margin: 2rem 0;
     background-color: ${theme.color.WHITE};
-    font-size: ${theme.font.SIZE.XXL};
-    font-family: ${theme.font.NOTO[8]};
+    font-size: ${theme.font.SIZE.ML};
+    font-family: ${theme.font.NOTO[7]};
     color: ${theme.color.MID_GRAY};
     box-shadow: 0px 0 20px rgba(0, 0, 0, 1);
 
     .next-alert {
-      font-size: ${theme.font.SIZE.XL};
+      font-size: ${theme.font.SIZE.ML};
       color: ${theme.color.MID_GRAY};
       background-color: ${theme.color.WHITE};
-      padding: 1.4rem 0;
+      padding: 1.4rem 1rem;
+      line-height: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -139,7 +139,7 @@ export const Wrapper = styled.div`
   }
 
   #clear-btn {
-    font-size: ${theme.font.SIZE.XXL};
+    font-size: ${theme.font.SIZE.XL};
     color: ${theme.color.WHITE};
     background-color: ${theme.color.ORANGE};
     padding: 1rem 0;
@@ -154,7 +154,7 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 
-  #map-btn {
+  #guide-btn {
     background-color: ${theme.color.GREEN};
     width: 16vw;
     height: 16vw;
@@ -162,17 +162,16 @@ export const Wrapper = styled.div`
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     img {
-      width: 3rem;
+      width: 2.6rem;
     }
   }
 
   #booth-list-btn {
-    font-size: ${theme.font.SIZE.L};
-    font-family: ${theme.font.NOTO[9]};
+    font-size: ${theme.font.SIZE.ML};
+    font-family: ${theme.font.NOTO[7]};
     color: ${theme.color.WHITE};
     background-color: ${theme.color.ORANGE};
-    width: 44vw;
-    height: 16vw;
+    padding: 1rem 2rem;
     border-radius: 1rem;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
   }
@@ -185,7 +184,7 @@ export const Wrapper = styled.div`
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     img {
-      width: 2.6rem;
+      width: 2.2rem;
     }
   }
 `;

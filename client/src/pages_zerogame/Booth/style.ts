@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
 
   #b-list {
     margin: 0 2rem;
-    height: 70vh;
+    height: 60vh;
     overflow: scroll;
     border: 2px solid lightgray;
     border-radius: 1rem;
@@ -53,6 +53,7 @@ export const Wrapper = styled.div`
 
         img {
           width: 1.4rem;
+          margin-left: 0.4rem;
         }
 
         .wait {
@@ -82,6 +83,36 @@ export const Wrapper = styled.div`
       }
     }
   }
+
+  #btn-row {
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding: 2rem 2rem 2rem 2rem;
+    text-align: center;
+  }
+
+  #map-btn {
+    background-color: ${theme.color.GREEN};
+    width: 16vw;
+    height: 16vw;
+    border-radius: 1rem;
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+
+    img {
+      width: 2.6rem;
+    }
+  }
+
+  #c-booth-list-btn {
+    font-size: ${theme.font.SIZE.ML};
+    font-family: ${theme.font.NOTO[7]};
+    color: ${theme.color.WHITE};
+    background-color: ${theme.color.ORANGE};
+    padding: 1rem 1.4rem;
+    border-radius: 1rem;
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+  }
 `;
 
 export const Modal = styled.div`
@@ -110,6 +141,12 @@ export const Modal = styled.div`
     border-radius: 1rem;
   }
 
+  #location-map {
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+  }
+
   #m-header {
     display: flex;
     flex-direction: row;
@@ -131,6 +168,10 @@ export const Modal = styled.div`
     font-size: ${theme.font.SIZE.ML};
     padding: 1.4rem;
     gap: 1.4rem;
+
+    #m-b-booth-log {
+      margin-top: 1rem;
+    }
 
     .m-title {
       font-family: ${theme.font.NOTO[6]};

@@ -19,6 +19,8 @@ import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import GoIcon from "../../assets/icons/go-right-arrow.png";
 import RunIcon from "../../assets/icons/race.png";
+import BoothMap from "../../assets/images/booth_map.png";
+import MapIcon from "../../assets/icons/location.png";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
@@ -28,6 +30,8 @@ const ZGBoothPage = () => {
   const [boothLog, setBoothLog] = useState<string[]>([]);
   const [boothWaitList, setBoothWaitList] = useState<{ [key: number]: number }>({});
   const [loadingPage, setLoadingPage] = useState<boolean>(false);
+  const [viewMapModal, setViewMapModal] = useState<boolean>(false);
+  const [viewClearBoothModal, setViewClearBoothModal] = useState<boolean>(false);
 
   useEffect(() => {
     fetchUserGameData();
@@ -52,6 +56,7 @@ const ZGBoothPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       setBoothLog(res.data.boothLog);
+      console.log(res.data.boothLog);
     }
   };
 
@@ -102,6 +107,42 @@ const ZGBoothPage = () => {
 
   return (
     <>
+      {/* 지도 모달 */}
+      {viewMapModal && (
+        <Modal>
+          <div id="back-drop" onClick={() => setViewMapModal(false)}></div>
+          <div id="m-wrapper">
+            <div id="m-header">
+              <img src={CloseIcon} onClick={() => setViewMapModal(false)} />
+            </div>
+            <div id="m-body">
+              <div id="m-b-title">시민공원 내 부스 지도</div>
+              <img id="location-map" src={BoothMap} />
+            </div>
+          </div>
+        </Modal>
+      )}
+
+      {/* 클리어 부스 목록 모달 */}
+      {viewClearBoothModal && (
+        <Modal>
+          <div id="back-drop" onClick={() => setViewClearBoothModal(false)}></div>
+          <div id="m-wrapper">
+            <div id="m-header">
+              <img src={CloseIcon} onClick={() => setViewClearBoothModal(false)} />
+            </div>
+            <div id="m-body">
+              <div id="m-b-title">클리어한 부스 목록</div>
+              <div id="m-b-booth-log">
+                {boothLog.map((boothIndex: string) => {
+                  return <div>{BOOTH_LIST[Number(boothIndex)].title}</div>;
+                })}
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
+
       {/* 부스 선택 모달 */}
       {viewBoothModal && (
         <Modal>
@@ -174,7 +215,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
-                        <div>{value.title} 부스</div>
+                        <div>{value.title}</div>
                         <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
                       </div>
 
@@ -220,7 +261,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
-                        <div>{value.title} 부스</div>
+                        <div>{value.title}</div>
                         <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
                       </div>
 
@@ -266,7 +307,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
-                        <div>{value.title} 부스</div>
+                        <div>{value.title}</div>
                         <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
                       </div>
 
@@ -312,7 +353,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
-                        <div>{value.title} 부스</div>
+                        <div>{value.title}</div>
                         <div className="wait">{boothWaitList[Number(key)] || 0}명 대기</div>
                       </div>
 
@@ -321,6 +362,19 @@ const ZGBoothPage = () => {
                   );
                 })}
             </DropdownContent>
+          </div>
+        </div>
+
+        <div id="btn-row" className="f-row f-spb">
+          <div id="map-btn" className="v-center h-center" onClick={() => setViewMapModal(true)}>
+            <img src={MapIcon} />
+          </div>
+          <div
+            id="c-booth-list-btn"
+            className="v-center h-center"
+            onClick={() => setViewClearBoothModal(true)}
+          >
+            클리어한 부스 목록
           </div>
         </div>
       </Wrapper>
