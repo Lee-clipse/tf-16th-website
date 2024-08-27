@@ -9,13 +9,6 @@ import IntroCartoon02 from "../../assets/images/intro02.webp";
 import IntroCartoon03 from "../../assets/images/intro03.webp";
 import IntroCartoon04 from "../../assets/images/intro04.webp";
 import IntroCartoon05 from "../../assets/images/intro05.webp";
-import IntroCartoon06 from "../../assets/images/intro06.webp";
-import IntroCartoon07 from "../../assets/images/intro07.webp";
-import IntroCartoon08 from "../../assets/images/intro08.webp";
-import IntroCartoon09 from "../../assets/images/intro09.webp";
-import IntroCartoon10 from "../../assets/images/intro10.webp";
-import IntroCartoon11 from "../../assets/images/intro11.webp";
-import IntroCartoon12 from "../../assets/images/intro12.webp";
 import { useState } from "react";
 
 const ZGCartoonPage = () => {
@@ -28,13 +21,6 @@ const ZGCartoonPage = () => {
     IntroCartoon03,
     IntroCartoon04,
     IntroCartoon05,
-    IntroCartoon06,
-    IntroCartoon07,
-    IntroCartoon08,
-    IntroCartoon09,
-    IntroCartoon10,
-    IntroCartoon11,
-    IntroCartoon12,
   ];
 
   const handleNextButton = () => {
