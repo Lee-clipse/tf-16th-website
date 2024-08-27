@@ -24,6 +24,7 @@ import YoutubeThumbnail4 from "../../assets/images/youtube_4.png";
 import Popup1_1 from "../../assets/images/popup1-1.webp";
 import Popup1_2 from "../../assets/images/popup1-2.webp";
 import Popup1_3 from "../../assets/images/popup1-3.webp";
+import Popup1_4 from "../../assets/images/popup1-4.webp";
 import Popup2_1 from "../../assets/images/popup2-1.webp";
 import Popup2_2 from "../../assets/images/popup2-2.webp";
 import Section1BG from "../../assets/images/section1_bg.webp";
@@ -115,7 +116,7 @@ const MainPage = () => {
         <PopupModal
           viewPopup={(flag: boolean) => setViewPopup1(flag)}
           isClickable={false}
-          imageList={[Popup1_1, Popup1_2, Popup1_3]}
+          imageList={[Popup1_1, Popup1_2, Popup1_3, Popup1_4]}
           tokenName="popup1"
         />
       )}
