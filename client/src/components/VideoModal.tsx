@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 import theme from "../styles/theme";
 import { FADEIN_ANIMATION, WEB_WIDTH } from "../common/const";
 import styled from "styled-components";
