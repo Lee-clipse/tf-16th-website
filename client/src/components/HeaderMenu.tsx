@@ -9,11 +9,17 @@ import { reqUserData } from "../api/user";
 import { User } from "../type/type";
 import isMobile from "is-mobile";
 import MenuBar from "../assets/icons/menu-bar.png";
+import TopPopup from "../assets/images/toppopup.png";
+import VideoModal from "./VideoModal";
+import DownArrow from "../assets/icons/down-arrow.png";
 
 const HeaderMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [userData, setUserData] = useState<User>();
+  const [viewVideoModal, setViewVideoModal] = useState<boolean>(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopupHidden, setIsPopupHidden] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,6 +42,16 @@ const HeaderMenu = () => {
     const isTokenAlive = verifyByToken();
     setIsLogin(isTokenAlive);
 
+    // 메인 페이지에서만 기본 재생
+    if (location.pathname === ROUTE_PATH.MAIN) {
+      setIsPopupOpen(true);
+    }
+
+    // 로그인, 회원가입 페이지에서는 숨기기
+    if (location.pathname === ROUTE_PATH.JOIN || location.pathname === ROUTE_PATH.REGISTER) {
+      setIsPopupHidden(true);
+    }
+
     if (isTokenAlive) {
       fetchUserData();
     }
@@ -56,13 +72,29 @@ const HeaderMenu = () => {
     };
   }, [isMenuOpen]);
 
+  const handlePopupToggle = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
   return (
     <>
-      <HeadWrapper className="f-row f-spb v-center">
-        <div id="title" onClick={() => navigate(ROUTE_PATH.MAIN)}>
-          청건부산
+      {viewVideoModal && <VideoModal viewModal={(flag: boolean) => setViewVideoModal(flag)} />}
+
+      <HeadWrapper isPopupOpen={isPopupOpen}>
+        <div className="f-row f-spb v-center">
+          <div id="title" onClick={() => navigate(ROUTE_PATH.MAIN)}>
+            청건부산
+          </div>
+          <img src={MenuBar} onClick={toggleMenu} style={{ width: "2rem" }} />
         </div>
-        <img src={MenuBar} onClick={toggleMenu} style={{ width: "2rem" }} />
+        {!isPopupHidden && (
+          <div id="top-popup-box">
+            <img id="top-popup" src={TopPopup} onClick={() => setViewVideoModal(true)} />
+            <div id="close" onClick={() => handlePopupToggle()}>
+              <img src={DownArrow} />
+            </div>
+          </div>
+        )}
       </HeadWrapper>
 
       {/* 메뉴 바 */}
@@ -152,14 +184,48 @@ const HeaderMenu = () => {
   );
 };
 
-const HeadWrapper = styled.div`
+const HeadWrapper = styled.div<{ isPopupOpen: boolean }>`
   position: fixed;
   width: 100%;
   max-width: ${isMobile() ? "100vw" : WEB_WIDTH};
-  padding: 1.6rem 1.4rem;
+  padding: 1.6rem 1.4rem 1rem 1.4rem;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 997;
   text-align: right;
+
+  #top-popup-box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(90%);
+    z-index: 995;
+
+    #top-popup {
+      width: ${isMobile() ? "100%" : WEB_WIDTH};
+      background-color: ${theme.color.WHITE};
+      padding: 1rem;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      transform: ${({ isPopupOpen }) => (isPopupOpen ? "translateY(0)" : "translateY(-150%)")};
+      opacity: ${({ isPopupOpen }) => (isPopupOpen ? 1 : 0)};
+    }
+
+    #close {
+      position: absolute;
+      bottom: -26px;
+      right: 0;
+      padding: 1rem 1rem 0.4rem 1rem;
+      border-radius: 0.8rem;
+      background-color: ${theme.color.WHITE};
+      transition: transform 0.5s ease;
+      transform: ${({ isPopupOpen }) => (isPopupOpen ? "translateY(0)" : "translateY(-100px)")};
+
+      img {
+        width: 30px;
+        height: 22px;
+        transition: transform 0.5s ease;
+      }
+    }
+  }
 
   #title {
     font-family: ${theme.font.HAK[5]};
