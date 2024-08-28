@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { FADEIN_ANIMATION } from "../../common/const";
+import { FADEIN_ANIMATION, WEB_WIDTH } from "../../common/const";
+import isMobile from "is-mobile";
 
 export const Wrapper = styled.div`
   position: relative;
-  width: 100vw;
+  width: ${isMobile() ? "100vw" : WEB_WIDTH};
   height: 100vh;
 
   #bg {
@@ -40,7 +41,7 @@ export const Wrapper = styled.div`
     top: 84%;
     left: 50%;
     transform: translateX(-50%);
-    width: 90vw;
+    width: ${isMobile() ? "90vw" : WEB_WIDTH};
   }
 `;
 
@@ -62,7 +63,7 @@ export const Modal = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 86%;
+    width: ${isMobile() ? "90vw" : "330px"};
     max-height: 90vh;
     overflow-y: auto;
 
@@ -107,19 +108,19 @@ export const Modal = styled.div`
 
   #codem-body {
     font-family: ${theme.font.NOTO[5]};
-    font-size: ${theme.font.SIZE.M};
+    font-size: ${theme.font.SIZE.SM};
     padding: 1.4rem;
 
     .m-b-title {
       font-size: ${theme.font.SIZE.ML};
       font-family: ${theme.font.NOTO[7]};
-      margin-bottom: 1.6rem;
+      margin-bottom: 1rem;
     }
 
     .m-b-body > p {
       color: ${theme.color.MID_GRAY};
       margin-bottom: 0.4rem;
-      line-height: 2rem;
+      line-height: 1.4rem;
     }
 
     .map {

@@ -6,7 +6,8 @@ import { setPopupToken, verifyByPopupToken } from "../common/common";
 import { useSwipeable } from "react-swipeable";
 import LeftArrow from "../assets/icons/left-arrow-black.png";
 import RightArrow from "../assets/icons/right-arrow-black.png";
-import { FADEIN_ANIMATION } from "../common/const";
+import { FADEIN_ANIMATION, WEB_WIDTH } from "../common/const";
+import isMobile from "is-mobile";
 
 const PopupModal = ({ viewPopup, isClickable, imageList, tokenName }: any) => {
   const [isPopupValid, setIsPopupValid] = useState<boolean>(false);
@@ -123,7 +124,7 @@ const Wrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: ${isMobile() ? "90vw" : WEB_WIDTH};
     max-height: 90vh;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
     overflow: hidden;
