@@ -22,7 +22,7 @@ const RegisterPage = () => {
     sex: SEX.MALE,
     age: 0,
     phoneNumber: "",
-    location: "",
+    location: "강서구",
     agree: AGREE.NOT_SELECTED,
     recommandPerson: "",
   });
