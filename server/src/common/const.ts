@@ -34,7 +34,7 @@ export const BOOTH_DOMAIN = {
     'D16',
   ],
   CLIMATE: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F0'],
-  MULTI_CULTURE: ['C1', 'C2', 'C3', 'C4'],
+  MULTI_CULTURE: ['C1-1', 'C1-2', 'C2', 'C3', 'C4'],
   YOUTH: ['B1', 'B2', 'B3', 'B4'],
 };
 

@@ -71,12 +71,16 @@ export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
     desc: "심폐소생술 등 응급처치술을 배울 수 있어요! 시민 대상으로 응급처치를 교육하는 골든타임 커뮤니티로 오세요",
   },
   B4: {
-    title: "GRIT-청년 취업창업상담소",
+    title: "GRIT-청년 취업·창업 상담소",
     desc: "'청년이 살고싶은 부산'에 보탬이 되고자 활동하는 GRIT커뮤니티에서 청년 취업과 창업을 상담해드립니다!",
   },
 
-  C1: {
-    title: "IWC",
+  "C1-1": {
+    title: "아가페 이주민센터",
+    desc: "이주민 자녀들을 돌보고 노동상담 지원으로 이주민 정착을 돕는 아가페 이주민 센터를 소개합니다!",
+  },
+  "C1-2": {
+    title: "IWC-PNU",
     desc: "International Welcome Center : 부산대의 유학생들은 어떤 고민을 안고 있을까? 어떻게 하면 친구가 될 수 있을까? 우리 친구들을 알아가 봐요",
   },
   C2: {
@@ -91,7 +95,6 @@ export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
     title: "ISF",
     desc: "International Scholar Fellowship : 유학생에게 정착을 도와주고 한국어를 가르쳐주는 ISF를 소개합니다!",
   },
-  C5: { title: "아가페 이주민 센터", desc: "-" },
 
   D1: {
     title: "4글자 퀴즈",
@@ -126,7 +129,7 @@ export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
     desc: "어디 어디가 다른지 열심히 눈알을 굴려봐요! 틀린그림찾기 게임하러 오세요~",
   },
   D9: {
-    title: "모기 기피제",
+    title: "모기 기피제 만들기",
     desc: "더운 여름날 기승인 모기를 퇴치해줄 모기기피제 만들기~ 화학재료 없이 아로마 향이 나는 모기기피제를 만들어보아요!",
   },
   D10: {
@@ -138,7 +141,7 @@ export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
     desc: "손가락의 힘과 감각을 사용해서 탁구 슛! 원하는 골망에 많은 점수를 넣는 팀이 승리해요!",
   },
   D12: {
-    title: "캔쌓기 챌린지",
+    title: "캔 쌓기 챌린지",
     desc: "쓰레기가 장난감이 될 수 있다? 2분 안에 캔을 높이 쌓아 많이 쌓을 수록 이기는 게임!",
   },
   D13: {
@@ -195,7 +198,7 @@ export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
     desc: "애니메이션으로 알아보는, 기후위기에 대응하는 시민들의 올바른 자세를 알아볼까요?",
   },
   F10: {
-    title: "푸른 하늘의 날에 놀자!!",
+    title: "푸른 하늘을 보며 놀자",
     desc: "푸른하늘의 날? 부산시 탄소중립과에서 알려주는 푸른 하늘 이야기를 들으러 오세요!",
   },
 };
