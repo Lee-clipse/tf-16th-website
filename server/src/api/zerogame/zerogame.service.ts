@@ -83,9 +83,13 @@ export class ZerogameService {
       });
       const userList = await Promise.all(
         rowList.map(async (row: MapEntity) => {
-          return await this.userRepository.findOne({
+          const userRow = await this.userRepository.findOne({
             where: { id: row.userId },
           });
+          return {
+            ...userRow,
+            isIng: row.isIng,
+          };
         }),
       );
       return { code: API_CODE.SUCCESS, userList };
@@ -130,6 +134,22 @@ export class ZerogameService {
       // 부스 기록 갱신
       await this.mapRepository.delete({ userId, boothId: prevBoothId });
       await this.mapRepository.save({ userId, boothId });
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async checkBooth(userId: number, boothId: string, ing: boolean) {
+    try {
+      // 제로게임 기록 업데이트
+      const row = await this.mapRepository.findOne({
+        where: { boothId, userId },
+      });
+      row.isIng = ing;
+      await this.mapRepository.save(row);
+
       return { code: API_CODE.SUCCESS };
     } catch (error) {
       return { code: API_CODE.INVALID };

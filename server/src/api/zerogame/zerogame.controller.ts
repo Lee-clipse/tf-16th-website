@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ZerogameService } from './zerogame.service';
 import { UserBoothDto } from 'src/dto/user_booth.dto';
+import { BoothIngDto } from 'src/dto/booth_ing';
 
 @ApiTags('ZEROGAME API')
 @Controller('api/game')
@@ -70,6 +71,19 @@ export class ZerogameController {
     const userId = Number(dto.userId);
     const boothId = dto.boothId;
     const res = await this.zerogameService.changeBooth(userId, boothId);
+    return res;
+  }
+
+  @Post('/booth/check')
+  @ApiOperation({
+    summary: '사용자의 부스 진행 여부 토글',
+  })
+  // booth_id, user_id, ing
+  async checkBoothIng(@Body() dto: BoothIngDto) {
+    const userId = Number(dto.userId);
+    const boothId = dto.boothId;
+    const ing = dto.ing;
+    const res = await this.zerogameService.checkBooth(userId, boothId, ing);
     return res;
   }
 

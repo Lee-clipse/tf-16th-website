@@ -43,6 +43,13 @@ export const reqBoothChange = async (body: object) => {
   return res;
 };
 
+// body: booth_id, user_id, ing
+export const reqBoothCheck = async (body: object) => {
+  const res = await axios.post(`${API_HOST}/game/booth/check`, body);
+  // { code }
+  return res;
+};
+
 // body: booth_id, user_id
 export const reqBoothOut = async (body: object) => {
   const res = await axios.post(`${API_HOST}/game/booth/out`, body);

@@ -25,6 +25,7 @@ export type User = {
   recommandPerson: string;
   staff: boolean;
   zgJoin: boolean;
+  isIng?: boolean;
 };
 
 export type ZGUser = {

@@ -53,6 +53,10 @@ export const Wrapper = styled.div`
       margin-bottom: 1rem;
       background-color: ${theme.color.WHITE};
 
+      .ing {
+        background-color: #90e193;
+      }
+
       .s-p-item {
         border-bottom: 2px solid lightgray;
         padding: 0.8rem 1.4rem;
@@ -62,14 +66,22 @@ export const Wrapper = styled.div`
           font-size: ${theme.font.SIZE.M};
         }
 
+        .s-p-check {
+          font-family: ${theme.font.NOTO[5]};
+          color: ${theme.color.MID_GRAY};
+          font-size: ${theme.font.SIZE.SM};
+          text-decoration: underline;
+        }
+
         .s-p-point-btn {
           background-color: ${theme.color.TEAL_BLUE};
           font-family: ${theme.font.NOTO[6]};
           color: ${theme.color.WHITE};
           padding: 0.6rem;
           border-radius: 0.6rem;
-          font-size: ${theme.font.SIZE.SM};
+          font-size: ${theme.font.SIZE.S};
           box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
+          margin-left: 1rem;
         }
 
         .s-p-out-btn {
@@ -186,10 +198,20 @@ export const Modal = styled.div`
     }
 
     .b-btn {
-      border: 2px solid ${theme.color.BLACK};
+      color: ${theme.color.WHITE};
+      background-color: ${theme.color.BLACK};
       text-align: center;
       padding: 1rem;
       border-radius: 0.6rem;
+    }
+
+    .out-btn {
+      font-family: ${theme.font.NOTO[5]};
+      font-size: ${theme.font.SIZE.SM};
+      color: ${theme.color.MID_GRAY};
+      text-decoration: underline;
+      margin-top: 0.4rem;
+      text-align: center;
     }
 
     input {

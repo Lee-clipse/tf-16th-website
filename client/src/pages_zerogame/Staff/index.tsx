@@ -5,6 +5,7 @@ import { alert, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
 import { API_CODE, BOOTH_LIST, GOODS_BOOTH_ID, ROUTE_PATH } from "../../common/const";
 import {
+  reqBoothCheck,
   reqBoothIdOfStaff,
   reqBoothOut,
   reqGivePoint,
@@ -29,7 +30,6 @@ const StaffPage = () => {
   const [selectUserGameData, setSelectUserGameData] = useState<ZGUser>();
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
   const [viewPointModal, setViewPointModal] = useState<boolean>(false);
-  const [viewOutModal, setViewOutModal] = useState<boolean>(false);
   const [inputPoint, setInputPoint] = useState<string>("");
 
   useEffect(() => {
@@ -58,8 +58,6 @@ const StaffPage = () => {
 
   const fetchStaffData = async () => {
     const staffId = getUserIdByToken().toString();
-    console.log("??");
-    console.log(staffId);
     const res = await reqBoothIdOfStaff(staffId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
@@ -73,7 +71,10 @@ const StaffPage = () => {
     const res = await reqStaffGameFetch(thisBoothId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
-      setUserList(res.data.userList);
+      const sortedUserList: User[] = res.data.userList.sort(
+        (a: { isIng: boolean }, b: { isIng: boolean }) => (b.isIng ? 1 : 0) - (a.isIng ? 1 : 0)
+      );
+      setUserList(sortedUserList);
     }
   };
 
@@ -113,12 +114,6 @@ const StaffPage = () => {
     }
   };
 
-  const handleSelectOutUser = (user: User) => {
-    setSelectUser(user);
-    fetchUserGameData(user.id.toString());
-    setViewOutModal(true);
-  };
-
   const handleOutButton = async () => {
     const res = await reqBoothOut({
       userId: selectUser?.id.toString(),
@@ -127,7 +122,18 @@ const StaffPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       alert("이탈 처리 되었습니다.", "success");
-      setViewOutModal(false);
+      window.location.reload();
+    }
+  };
+
+  const handleCheck = async (thisUserId: string, check: boolean) => {
+    const res = await reqBoothCheck({
+      userId: thisUserId,
+      boothId,
+      ing: !check,
+    });
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
       window.location.reload();
     }
   };
@@ -171,25 +177,7 @@ const StaffPage = () => {
               <div className="b-btn" onClick={() => handleAddPoint()}>
                 포인트 지급
               </div>
-            </div>
-          </div>
-        </Modal>
-      )}
-
-      {/* 이탈 모달 */}
-      {viewOutModal && (
-        <Modal>
-          <div id="back-drop" onClick={() => setViewOutModal(false)}></div>
-          <div id="m-wrapper">
-            <div id="m-header">
-              <img src={CloseIcon} onClick={() => setViewOutModal(false)} />
-            </div>
-            <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
-              <div>
-                {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
-              </div>
-              <div>현재 포인트: {selectUserGameData?.point}</div>
-              <div className="b-btn" onClick={() => handleOutButton()}>
+              <div className="out-btn" onClick={() => handleOutButton()}>
                 이탈 처리
               </div>
             </div>
@@ -212,17 +200,29 @@ const StaffPage = () => {
           <div id="s-p-list">
             {userList.map((user: User) => {
               return (
-                <div className="s-p-item f-row f-spb v-center">
+                <div className={`s-p-item f-row f-spb v-center ${user.isIng && "ing"}`}>
                   <div className="s-p-name">
                     {user.name} {user.phoneNumber.slice(-4)}
                   </div>
                   <div className="f-row v-center">
-                    <div className="s-p-point-btn" onClick={() => handleSelectUser(user)}>
-                      포인트
+                    <div
+                      className="s-p-check"
+                      onClick={() => handleCheck(user.id.toString(), user.isIng as boolean)}
+                    >
+                      체크
                     </div>
-                    <div className="s-p-out-btn" onClick={() => handleSelectOutUser(user)}>
-                      이탈
-                    </div>
+                    {user.isIng && (
+                      <div
+                        className="s-p-point-btn"
+                        onClick={() => {
+                          if (user.isIng) {
+                            handleSelectUser(user);
+                          }
+                        }}
+                      >
+                        포인트
+                      </div>
+                    )}
                   </div>
                 </div>
               );

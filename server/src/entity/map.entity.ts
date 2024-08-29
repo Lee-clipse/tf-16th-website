@@ -19,6 +19,9 @@ export class MapEntity {
   @Column({ type: 'boolean', name: 'cleared', default: false })
   cleared: boolean;
 
+  @Column({ type: 'boolean', name: 'is_ing', default: false })
+  isIng: boolean;
+
   @UpdateDateColumn()
   updatedAt: Date;
 }

@@ -48,7 +48,12 @@ const HeaderMenu = () => {
     }
 
     // 로그인, 회원가입 페이지에서는 숨기기
-    if (location.pathname === ROUTE_PATH.JOIN || location.pathname === ROUTE_PATH.REGISTER) {
+    if (
+      location.pathname === ROUTE_PATH.JOIN ||
+      location.pathname === ROUTE_PATH.REGISTER ||
+      location.pathname === ROUTE_PATH.STAFF ||
+      location.pathname === ROUTE_PATH.GOODS_STAFF
+    ) {
       setIsPopupHidden(true);
     }
 

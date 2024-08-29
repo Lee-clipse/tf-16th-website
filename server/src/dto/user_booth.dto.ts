@@ -7,6 +7,6 @@ export class UserBoothDto {
   @ApiProperty({ description: 'boothId', example: 'Z0' })
   readonly boothId?: string;
 
-  @ApiProperty({ description: 'point', example: 1 })
+  @ApiProperty({ description: 'point', example: 0 })
   readonly point?: number;
 }
