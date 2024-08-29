@@ -16,10 +16,9 @@ import { GoodsLog, User, ZGUser } from "../../type/type";
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
-import Location from "../../assets/images/location.png";
-import LocationIcon from "../../assets/icons/location.png";
 import SearchIcon from "../../assets/icons/loupe.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
+import GuideIcon from "../../assets/icons/questions.png";
 
 const GoodsStaffPage = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const GoodsStaffPage = () => {
   const [goodsLogList, setGoodsLogList] = useState<GoodsLog[]>([]);
   const [selectUser, setSelectUser] = useState<User>();
   const [selectUserGameData, setSelectUserGameData] = useState<ZGUser>();
-  const [viewMapModal, setViewMapModal] = useState<boolean>(false);
+  const [viewGuideModal, setViewGuideModal] = useState<boolean>(false);
   const [viewOutModal, setViewOutModal] = useState<boolean>(false);
   const [viewGoodsModal, setViewGoodsModal] = useState<boolean>(false);
   const [viewGoodsLogModal, setViewGoodsLogModal] = useState<boolean>(false);
@@ -155,17 +154,16 @@ const GoodsStaffPage = () => {
 
   return (
     <>
-      {/* 지도 모달 */}
-      {viewMapModal && (
+      {/* 가이드 모달 */}
+      {viewGuideModal && (
         <Modal>
-          <div id="back-drop" onClick={() => setViewMapModal(false)}></div>
+          <div id="back-drop" onClick={() => setViewGuideModal(false)}></div>
           <div id="m-wrapper">
             <div id="m-header">
-              <img src={CloseIcon} onClick={() => setViewMapModal(false)} />
+              <img src={CloseIcon} onClick={() => setViewGuideModal(false)} />
             </div>
             <div id="m-body">
-              <div id="m-b-title">시민공원 내 부스 지도</div>
-              <img id="location-map" src={Location} />
+              <div id="m-b-title">제로게임 가이드</div>
             </div>
           </div>
         </Modal>
@@ -290,8 +288,8 @@ const GoodsStaffPage = () => {
         </div>
 
         <div id="btn-row" className="f-row f-spb">
-          <div id="map-btn" className="v-center h-center" onClick={() => setViewMapModal(true)}>
-            <img src={LocationIcon} />
+          <div id="guide-btn" className="v-center h-center" onClick={() => setViewGuideModal(true)}>
+            <img src={GuideIcon} />
           </div>
           <div
             id="booth-list-btn"

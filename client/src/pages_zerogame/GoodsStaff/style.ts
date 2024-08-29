@@ -125,7 +125,7 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 
-  #map-btn {
+  #guide-btn {
     background-color: ${theme.color.GREEN};
     width: 16vw;
     height: 16vw;
@@ -136,6 +136,7 @@ export const Wrapper = styled.div`
       width: 2.6rem;
     }
   }
+
   #booth-list-btn {
     font-size: ${theme.font.SIZE.ML};
     font-family: ${theme.font.NOTO[7]};

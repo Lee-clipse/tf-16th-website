@@ -103,7 +103,7 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 
-  #map-btn {
+  #guide-btn {
     background-color: ${theme.color.GREEN};
     width: 16vw;
     height: 16vw;
