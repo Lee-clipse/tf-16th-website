@@ -20,13 +20,17 @@ export class LoggerMiddleware implements NestMiddleware {
       if (!isIgnoreableUrl(method, originalUrl, body)) {
         if (isImportantUrl(originalUrl)) {
           this.logger.log(
-            `\n\t 🟢 ${method} ${originalUrl} ${convertImportantUrl(
+            `\n\t ${new Date().toLocaleTimeString(
+              'ko-KR',
+            )} \n\t 🟢 ${method} ${originalUrl} ${convertImportantUrl(
               originalUrl,
             )}\n\t - body: ${JSON.stringify(body)}\n`,
           );
         } else {
           this.logger.log(
-            `\n\t ${method} ${originalUrl} ${statusCodeText} \n\t - body: ${JSON.stringify(
+            `\n\t ${new Date().toLocaleTimeString(
+              'ko-KR',
+            )} \n\t ${method} ${originalUrl} ${statusCodeText} \n\t - body: ${JSON.stringify(
               body,
             )}\n`,
           );
