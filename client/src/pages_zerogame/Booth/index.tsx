@@ -19,8 +19,9 @@ import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import GoIcon from "../../assets/icons/go-right-arrow.png";
 import RunIcon from "../../assets/icons/race.png";
-import BoothMap from "../../assets/images/booth_map.png";
+import BoothMap from "../../assets/images/booth_map.webp";
 import MapIcon from "../../assets/icons/location.png";
+import RefreshIcon from "../../assets/icons/refresh.png";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
@@ -102,6 +103,10 @@ const ZGBoothPage = () => {
   const [openDropdown, setOpenDropdown] = useState<string>("");
   const handleDropdownClick = (category: string) => {
     setOpenDropdown(openDropdown === category ? "" : category);
+  };
+
+  const handleRefreshButton = async () => {
+    window.location.reload();
   };
 
   return (
@@ -374,6 +379,9 @@ const ZGBoothPage = () => {
             onClick={() => setViewClearBoothModal(true)}
           >
             클리어한 부스 목록
+          </div>
+          <div id="refresh-btn" className="v-center h-center" onClick={() => handleRefreshButton()}>
+            <img src={RefreshIcon} />
           </div>
         </div>
       </Wrapper>

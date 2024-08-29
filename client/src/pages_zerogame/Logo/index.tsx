@@ -9,7 +9,6 @@ import { reqUserGameFetch } from "../../api/zerogame";
 import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
 import { reqJoinZerogame, reqUserData } from "../../api/user";
-import ZGBooth from "../../assets/images/map_tmp.jpg";
 import { motion, Variants } from "framer-motion";
 import Loading from "../../components/Loading";
 import Agree from "../../assets/images/agree.png";
@@ -164,7 +163,10 @@ const ZGLogoPage = () => {
             <div id="codem-body">
               <div className="m-b-title">제로게임 접수 안내</div>
               <div className="m-b-body f-col" style={{ gap: "1rem" }}>
-                <img className="map" src={ZGBooth} />
+                <div>
+                  <p>제로게임이란?</p>
+                  <div></div>
+                </div>
                 <p>입장 코드는 행사 내 모든 부스 스탭을 통해 받을 수 있습니다!</p>
                 <input
                   type="text"

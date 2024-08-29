@@ -94,13 +94,25 @@ export const Wrapper = styled.div`
 
   #map-btn {
     background-color: ${theme.color.GREEN};
-    width: 16vw;
-    height: 16vw;
+    width: 14vw;
+    height: 14vw;
     border-radius: 1rem;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
 
     img {
-      width: 2.6rem;
+      width: 2rem;
+    }
+  }
+
+  #refresh-btn {
+    background-color: ${theme.color.GREEN};
+    width: 14vw;
+    height: 14vw;
+    border-radius: 50%;
+    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+
+    img {
+      width: 2rem;
     }
   }
 
@@ -133,7 +145,7 @@ export const Modal = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
+    width: 90%;
     max-height: 90vh;
     overflow-y: auto;
 
