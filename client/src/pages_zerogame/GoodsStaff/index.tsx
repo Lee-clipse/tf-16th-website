@@ -19,6 +19,7 @@ import RefreshIcon from "../../assets/icons/refresh.png";
 import SearchIcon from "../../assets/icons/loupe.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import GuideIcon from "../../assets/icons/questions.png";
+import Loading from "../../components/Loading";
 
 const GoodsStaffPage = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const GoodsStaffPage = () => {
   const [viewGoodsModal, setViewGoodsModal] = useState<boolean>(false);
   const [viewGoodsLogModal, setViewGoodsLogModal] = useState<boolean>(false);
   const [searchUserName, setSearchUserName] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchUserData();
@@ -118,11 +120,13 @@ const GoodsStaffPage = () => {
   };
 
   const handleGiveGoods = async () => {
+    setIsLoading(true);
     const res = await reqReceiveGoods({
       userId: selectUser?.id.toString(),
     });
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
+      setIsLoading(false);
       setViewGoodsModal(false);
       alert("굿즈 지급에 성공했습니다!", "success");
       window.location.reload();
@@ -154,6 +158,8 @@ const GoodsStaffPage = () => {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {/* 가이드 모달 */}
       {viewGuideModal && (
         <Modal>

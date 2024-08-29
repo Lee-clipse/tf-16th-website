@@ -18,6 +18,7 @@ import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import GuideIcon from "../../assets/icons/questions.png";
+import Loading from "../../components/Loading";
 
 const StaffPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const StaffPage = () => {
   const [viewPointModal, setViewPointModal] = useState<boolean>(false);
   const [inputPoint, setInputPoint] = useState<string>("");
   const [viewGuideModal, setViewGuideModal] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchUserData();
@@ -100,6 +102,7 @@ const StaffPage = () => {
   };
 
   const handleAddPoint = async () => {
+    setIsLoading(true);
     const res = await reqGivePoint({
       userId: selectUser?.id.toString(),
       boothId,
@@ -107,6 +110,7 @@ const StaffPage = () => {
     });
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
+      setIsLoading(false);
       setViewPointModal(false);
       alert("포인트 지급에 성공했습니다!", "success");
       window.location.reload();
@@ -126,6 +130,7 @@ const StaffPage = () => {
   };
 
   const handleCheck = async (thisUserId: string, check: boolean) => {
+    setIsLoading(true);
     const res = await reqBoothCheck({
       userId: thisUserId,
       boothId,
@@ -133,12 +138,15 @@ const StaffPage = () => {
     });
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
+      setIsLoading(false);
       window.location.reload();
     }
   };
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {/* 가이드 모달 */}
       {viewGuideModal && (
         <Modal>

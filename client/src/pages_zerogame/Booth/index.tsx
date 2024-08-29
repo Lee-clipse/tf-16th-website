@@ -22,6 +22,7 @@ import RunIcon from "../../assets/icons/race.png";
 import BoothMap from "../../assets/images/booth_map.webp";
 import MapIcon from "../../assets/icons/location.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
+import Loading from "../../components/Loading";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const ZGBoothPage = () => {
   const [loadingPage, setLoadingPage] = useState<boolean>(false);
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
   const [viewClearBoothModal, setViewClearBoothModal] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchUserGameData();
@@ -81,11 +83,13 @@ const ZGBoothPage = () => {
       return;
     }
 
+    setIsLoading(true);
     const userId = getUserIdByToken().toString();
     const res = await reqSelectBooth({ userId, boothId: selectBoothId });
 
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
+      setIsLoading(false);
       showLoadingPage();
     }
   };
@@ -111,6 +115,8 @@ const ZGBoothPage = () => {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {/* 지도 모달 */}
       {viewMapModal && (
         <Modal>
