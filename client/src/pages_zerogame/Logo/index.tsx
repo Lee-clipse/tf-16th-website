@@ -164,10 +164,18 @@ const ZGLogoPage = () => {
               <div className="m-b-title">제로게임 접수 안내</div>
               <div className="m-b-body f-col" style={{ gap: "1rem" }}>
                 <div>
-                  <p>제로게임이란?</p>
-                  <div></div>
+                  <p>👽 제로게임이란?</p>
+                  <div>
+                    2023년 해치웠던 탄소 괴물이 다시 돌아왔다! 시민공원의 36개{" "}
+                    <span className="h">체험 부스</span>에서 각 테마별 부스 총{" "}
+                    <span className="h">6개</span>를 체험하여 <span className="h">보석</span>을
+                    모으자! 체험 활동으로 얻은 <span className="h">포인트</span>로 우리 함께{" "}
+                    <span className="h">탄소괴물을 퇴치</span>하여 ’탄소제로‘ 지구를 만들자!
+                  </div>
                 </div>
-                <p>입장 코드는 행사 내 모든 부스 스탭을 통해 받을 수 있습니다!</p>
+                <div className="bh">
+                  입장 코드는 행사 내 모든 부스 스탭을 통해 받을 수 있습니다!
+                </div>
                 <input
                   type="text"
                   placeholder="코드 입력"

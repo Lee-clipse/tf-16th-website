@@ -101,7 +101,7 @@ const ZGBoothPage = () => {
 
       navigate(ROUTE_PATH.ZG_HOME);
       setViewBoothModal(false);
-    }, 2000);
+    }, 4000);
   };
 
   const [openDropdown, setOpenDropdown] = useState<string>("");

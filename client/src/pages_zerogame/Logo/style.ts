@@ -117,10 +117,33 @@ export const Modal = styled.div`
       margin-bottom: 1rem;
     }
 
-    .m-b-body > p {
-      color: ${theme.color.MID_GRAY};
+    .m-b-body {
+      .h {
+        color: ${theme.color.TEAL_BLUE};
+        font-family: ${theme.font.NOTO[7]};
+      }
+
+      .bh {
+        background-color: ${theme.color.ORANGE};
+        color: ${theme.color.WHITE};
+        border-radius: 0.4rem;
+        padding: 0.8rem;
+        line-height: 2rem;
+      }
+    }
+
+    .m-b-body > div > p {
+      color: ${theme.color.BLACK};
+      font-size: ${theme.font.SIZE.M};
       margin-bottom: 0.4rem;
       line-height: 1.4rem;
+      margin: 1.4rem 0;
+    }
+
+    .m-b-body > div > div {
+      color: ${theme.color.MID_GRAY};
+      margin-bottom: 0.4rem;
+      line-height: 2.2rem;
     }
 
     .map {
@@ -144,6 +167,7 @@ export const Modal = styled.div`
 
     .m-b-button {
       color: ${theme.color.BLACK};
+      font-size: ${theme.font.SIZE.M};
       border: 2px solid ${theme.color.BLACK};
       text-align: center;
       padding: 1rem;
