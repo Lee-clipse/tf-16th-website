@@ -22,6 +22,7 @@ import RunIcon from "../../assets/icons/race.png";
 import BoothMap from "../../assets/images/booth_map.webp";
 import MapIcon from "../../assets/icons/location.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
+import BackIcon from "../../assets/icons/left-arrow.png";
 import Loading from "../../components/Loading";
 
 const ZGBoothPage = () => {
@@ -99,8 +100,8 @@ const ZGBoothPage = () => {
     setTimeout(() => {
       setLoadingPage(false);
 
-      navigate(ROUTE_PATH.ZG_HOME);
       setViewBoothModal(false);
+      navigate(ROUTE_PATH.ZG_HOME);
     }, 4000);
   };
 
@@ -111,6 +112,10 @@ const ZGBoothPage = () => {
 
   const handleRefreshButton = async () => {
     window.location.reload();
+  };
+
+  const handleBackClick = () => {
+    navigate(-1);
   };
 
   return (
@@ -186,6 +191,11 @@ const ZGBoothPage = () => {
       )}
 
       <Wrapper>
+        <div id="back-btn" className="f-row v-center" onClick={() => handleBackClick()}>
+          <img src={BackIcon} />
+          뒤로가기
+        </div>
+
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="b-title">부스 목록</div>

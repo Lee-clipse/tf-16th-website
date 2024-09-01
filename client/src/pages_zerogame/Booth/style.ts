@@ -17,6 +17,19 @@ export const Wrapper = styled.div`
     margin: 6rem 0 4rem 0;
   }
 
+  #back-btn {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    font-family: ${theme.font.NOTO[8]};
+    color: ${theme.color.WHITE};
+    padding: 1.6rem 1rem;
+
+    img {
+      width: 3rem;
+    }
+  }
+
   #zg-bg {
     z-index: -1;
     position: absolute;
