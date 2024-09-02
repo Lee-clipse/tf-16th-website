@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Modal, Wrapper } from "./style";
+import { Dropdown, Modal, Wrapper } from "./style";
 import HeaderMenu from "../../components/HeaderMenu";
 import { alert, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
@@ -98,10 +98,13 @@ const StaffPage = () => {
   };
 
   const handleInputPoint = (point: string) => {
+    if (point === "") return;
     setInputPoint(point);
   };
 
   const handleAddPoint = async () => {
+    if (inputPoint === "") return;
+
     setIsLoading(true);
     const res = await reqGivePoint({
       userId: selectUser?.id.toString(),
@@ -175,11 +178,15 @@ const StaffPage = () => {
                 {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
               </div>
               <div>현재 포인트: {selectUserGameData?.point}</div>
-              <input
-                type="text"
-                placeholder="포인트 입력"
-                onChange={(e) => handleInputPoint(e.target.value)}
-              />
+              <Dropdown value={inputPoint} onChange={(e) => handleInputPoint(e.target.value)}>
+                <option value="" disabled>
+                  포인트 선택
+                </option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="1500">1500</option>
+                <option value="2000">2000</option>
+              </Dropdown>
               <div className="b-btn" onClick={() => handleAddPoint()}>
                 포인트 지급
               </div>

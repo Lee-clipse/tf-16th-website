@@ -138,6 +138,21 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Dropdown = styled.select`
+  width: 100%;
+  padding: 0.4rem;
+  margin-bottom: 0.4em;
+  border-radius: 5px.4rem;
+  font-family: ${theme.font.NOTO[5]};
+  font-size: ${theme.font.SIZE.M};
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #0056b3;
+  }
+`;
+
 export const Modal = styled.div`
   #back-drop {
     position: fixed;
