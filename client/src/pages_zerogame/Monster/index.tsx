@@ -92,6 +92,7 @@ const ZGMonsterPage = () => {
       <div>waitingBoothId: {userData.waitingBoothId}</div>
 
       <div>monsterHp: {monsterHp}</div>
+
       {/* <Wrapper isHitVisible={isHitVisible}>
         <img id="zg-bg" src={ZGBackground} />
 
