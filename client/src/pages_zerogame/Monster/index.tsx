@@ -84,16 +84,7 @@ const ZGMonsterPage = () => {
 
   return (
     <>
-      <div>boothLog: {userData.boothLog}</div>
-      <div>goodsReceived: {userData.goodsReceived}</div>
-      <div>isAttack: {userData.isAttack}</div>
-      <div>point: {userData.point}</div>
-      <div>userId: {userData.userId}</div>
-      <div>waitingBoothId: {userData.waitingBoothId}</div>
-
-      <div>monsterHp: {monsterHp}</div>
-
-      {/* <Wrapper isHitVisible={isHitVisible}>
+      <Wrapper isHitVisible={isHitVisible}>
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="monster">
@@ -120,7 +111,7 @@ const ZGMonsterPage = () => {
             공격하기
           </div>
         </div>
-      </Wrapper> */}
+      </Wrapper>
     </>
   );
 };
