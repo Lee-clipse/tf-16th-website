@@ -202,6 +202,13 @@ export const Section0 = styled.div`
   justify-content: center;
   padding: 12rem 0 8rem 0;
 
+  .end {
+    color: ${theme.color.WHITE};
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.XXL};
+    gap: 1rem;
+  }
+
   .visible {
     opacity: 1 !important;
     transform: translate(0, 0) !important;

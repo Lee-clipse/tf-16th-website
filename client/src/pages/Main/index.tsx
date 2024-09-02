@@ -53,6 +53,8 @@ const MainPage = () => {
   const [viewPopup1, setViewPopup1] = useState<boolean>(true);
   const [viewPopup2, setViewPopup2] = useState<boolean>(true);
 
+  const [countDownEnd, setCountDownEnd] = useState<boolean>(false);
+
   const patickles = [
     { className: "t-01", color: theme.color.DEEP_BLUE, size: "3rem", duration: 1.5, delay: 0.2 },
     { className: "t-02", color: theme.color.DEEP_BLUE, size: "2rem", duration: 2.2, delay: 0.4 },
@@ -109,6 +111,10 @@ const MainPage = () => {
     },
   ];
 
+  const handleCountDownEnd = () => {
+    setCountDownEnd(true);
+  };
+
   return (
     <>
       {/* 팝업 */}
@@ -164,7 +170,18 @@ const MainPage = () => {
               <>
                 {/* 카운트다운 */}
                 <CountDownSection className={`block ${isVisible ? "count-visible" : ""}`}>
-                  <FlipClockCountdown className="flip-clock" to={1725667200000} />
+                  {countDownEnd ? (
+                    <div className="end f-col">
+                      <div>청년이 건강해야</div>
+                      <div>부산이 산다!</div>
+                    </div>
+                  ) : (
+                    <FlipClockCountdown
+                      className="flip-clock"
+                      onComplete={() => handleCountDownEnd()}
+                      to={1725667200000}
+                    />
+                  )}
                 </CountDownSection>
               </>
             )}
