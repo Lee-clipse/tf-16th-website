@@ -84,7 +84,15 @@ const ZGMonsterPage = () => {
 
   return (
     <>
-      <Wrapper isHitVisible={isHitVisible}>
+      <div>boothLog: {userData.boothLog}</div>
+      <div>goodsReceived: {userData.goodsReceived}</div>
+      <div>isAttack: {userData.isAttack}</div>
+      <div>point: {userData.point}</div>
+      <div>userId: {userData.userId}</div>
+      <div>waitingBoothId: {userData.waitingBoothId}</div>
+
+      <div>monsterHp: {monsterHp}</div>
+      {/* <Wrapper isHitVisible={isHitVisible}>
         <img id="zg-bg" src={ZGBackground} />
 
         <div id="monster">
@@ -96,9 +104,7 @@ const ZGMonsterPage = () => {
           <div id="m-hp-bar" className="f-row">
             <div id="m-hp" style={{ width: calcMonsterHpRatio() }}></div>
           </div>
-          <div id="m-hp-num">
-            HP: {monsterHp.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
-          </div>
+          <div id="m-hp-num">HP: {monsterHp.toLocaleString("ko-KR")}</div>
           <img src={Monster} />
         </div>
 
@@ -113,7 +119,7 @@ const ZGMonsterPage = () => {
             공격하기
           </div>
         </div>
-      </Wrapper>
+      </Wrapper> */}
     </>
   );
 };
