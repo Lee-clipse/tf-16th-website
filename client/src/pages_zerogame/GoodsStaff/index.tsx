@@ -152,7 +152,7 @@ const GoodsStaffPage = () => {
 
   const handleUserSearch = () => {
     if (searchUserName === "") return;
-    const searchUserList = userList.filter((user: User) => user.name === searchUserName);
+    const searchUserList = userList.filter((user: User) => user.name.includes(searchUserName));
     setSearchUserList(searchUserList);
   };
 

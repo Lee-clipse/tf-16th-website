@@ -19,6 +19,7 @@ import RefreshIcon from "../../assets/icons/refresh.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import GuideIcon from "../../assets/icons/questions.png";
 import Loading from "../../components/Loading";
+import SearchIcon from "../../assets/icons/loupe.png";
 
 const StaffPage = () => {
   const navigate = useNavigate();
@@ -32,11 +33,29 @@ const StaffPage = () => {
   const [inputPoint, setInputPoint] = useState<string>("");
   const [viewGuideModal, setViewGuideModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchUserList, setSearchUserList] = useState<User[]>([]);
+  const [searchUserName, setSearchUserName] = useState<string>("");
 
   useEffect(() => {
     fetchUserData();
     fetchStaffData();
   }, []);
+
+  useEffect(() => {
+    if (searchUserName === "") {
+      fetchStaffData();
+    }
+  }, [searchUserName]);
+
+  const handleSearchUserName = (value: string) => {
+    setSearchUserName(value);
+  };
+
+  const handleUserSearch = () => {
+    if (searchUserName === "") return;
+    const searchUserList = userList.filter((user: User) => user.name.includes(searchUserName));
+    setSearchUserList(searchUserList);
+  };
 
   useEffect(() => {
     if (boothId === GOODS_BOOTH_ID) {
@@ -75,6 +94,7 @@ const StaffPage = () => {
       const sortedUserList: User[] = res.data.userList.sort(
         (a: { isIng: boolean }, b: { isIng: boolean }) => (b.isIng ? 1 : 0) - (a.isIng ? 1 : 0)
       );
+      setSearchUserList(sortedUserList);
       setUserList(sortedUserList);
     }
   };
@@ -210,8 +230,23 @@ const StaffPage = () => {
         {/* 부스 내 대기자 리스트 */}
         <div id="s-people">
           <div id="s-p-title">부스 접수 인원</div>
+
+          <div id="search-row">
+            <div className="s-row f-row">
+              <input
+                type="text"
+                placeholder="이름 검색"
+                value={searchUserName}
+                onChange={(e) => handleSearchUserName(e.target.value)}
+              ></input>
+              <div className="s-btn v-center h-center" onClick={() => handleUserSearch()}>
+                <img src={SearchIcon} />
+              </div>
+            </div>
+          </div>
+
           <div id="s-p-list">
-            {userList.map((user: User) => {
+            {searchUserList.map((user: User) => {
               return (
                 <div className={`s-p-item f-row f-spb v-center ${user.isIng && "ing"}`}>
                   <div className="s-p-name">

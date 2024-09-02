@@ -95,6 +95,37 @@ export const Wrapper = styled.div`
     }
   }
 
+  #search-row {
+    margin-bottom: 1.4rem;
+    .s-row {
+      margin: 0 2rem;
+    }
+    input {
+      border: 2px solid lightgray;
+      font-size: ${theme.font.SIZE.SM};
+      font-family: ${theme.font.NOTO[6]};
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.6rem;
+    }
+    input::placeholder {
+      font-size: ${theme.font.SIZE.SM};
+      font-family: ${theme.font.NOTO[6]};
+      color: ${theme.color.MID_GRAY};
+    }
+    .s-btn {
+      background-color: ${theme.color.MID_GRAY};
+      width: 5rem;
+      padding: 0.4rem;
+      margin-left: 1rem;
+      border-radius: 0.6rem;
+      box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+      img {
+        width: 60%;
+      }
+    }
+  }
+
   #btn-row {
     position: absolute;
     width: 100%;
