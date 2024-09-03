@@ -3,7 +3,13 @@ import { Dropdown, Modal, Wrapper } from "./style";
 import HeaderMenu from "../../components/HeaderMenu";
 import { alert, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
-import { API_CODE, BOOTH_LIST, GOODS_BOOTH_ID, ROUTE_PATH } from "../../common/const";
+import {
+  API_CODE,
+  BOOTH_LIST,
+  GOODS_BOOTH_ID,
+  ROUTE_PATH,
+  STAFF_EVENT_BOOTH_ID,
+} from "../../common/const";
 import {
   reqBoothCheck,
   reqBoothIdOfStaff,
@@ -60,6 +66,9 @@ const StaffPage = () => {
   useEffect(() => {
     if (boothId === GOODS_BOOTH_ID) {
       navigate(ROUTE_PATH.GOODS_STAFF);
+    }
+    if (boothId === STAFF_EVENT_BOOTH_ID) {
+      navigate(ROUTE_PATH.STAFF_EVENT);
     }
   }, [boothId]);
 

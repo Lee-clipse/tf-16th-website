@@ -28,6 +28,15 @@ export type User = {
   isIng?: boolean;
 };
 
+export type StaffEvent = {
+  id: number;
+  name: string;
+  age: number;
+  phoneNumber: string;
+  group: string;
+  goodsReceived: boolean;
+};
+
 export type ZGUser = {
   userId: number;
   point: number;
@@ -41,4 +50,22 @@ export type GoodsLog = {
   name: string;
   phoneNumber: string;
   clearedAt: string;
+};
+
+export type Recommand = {
+  name: string;
+};
+
+export type StaffGoodsLog = {
+  name: string;
+  phoneNumber: string;
+  receivedAt: string;
+  group: string;
+};
+
+export type Ranking = {
+  name: string;
+  phoneNumber: string;
+  group: string;
+  count: number;
 };

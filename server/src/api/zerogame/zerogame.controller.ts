@@ -207,4 +207,23 @@ export class ZerogameController {
     // recommantList
     return res;
   }
+
+  @Get('/staff/goods/log')
+  @ApiOperation({
+    summary: '굿즈 증정 완료 명단 반환',
+  })
+  async getStaffGoodsLogList() {
+    const res = await this.zerogameService.getStaffGoodsLogList();
+    return res;
+  }
+
+  @Get('/staff/event/ranking')
+  @ApiOperation({
+    summary: '굿즈 증정 완료 명단 반환',
+  })
+  async getStaffEventRanking() {
+    const res = await this.zerogameService.getStaffEventRanking();
+    // ranking
+    return res;
+  }
 }

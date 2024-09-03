@@ -14,6 +14,7 @@ import {
   WAIT_BOOTH_ID,
 } from 'src/common/const';
 import { StaffEventEntity } from 'src/entity/staff-event.entity';
+import { group } from 'console';
 
 @Injectable()
 export class ZerogameService {
@@ -344,13 +345,71 @@ export class ZerogameService {
         where: { id: staffId },
       });
       const name = staff.name;
-      const userList = await this.userRepository.find({
-        where: { recommandPerson: name },
-      });
-      const recommantList = userList.map((user: UserEntity) => {
+      const userList = await this.userRepository
+        .createQueryBuilder('user')
+        .where('user.recommand_person = :recommandPerson', {
+          recommandPerson: name,
+        })
+        .andWhere('user.created_at BETWEEN :startDate AND :endDate', {
+          startDate: `2024-09-07T00:00:00.000Z`,
+          endDate: `2024-09-07T18:15:00.000Z`,
+        })
+        .getMany();
+      const recommandList = userList.map((user: UserEntity) => {
         return { name: user.name };
       });
-      return { code: API_CODE.SUCCESS, recommantList };
+      return { code: API_CODE.SUCCESS, recommandList };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async getStaffGoodsLogList() {
+    try {
+      const res = await this.staffEventRepository.find({
+        where: { goodsReceived: true },
+      });
+      const goodsLogList = res.map((goodsLog: StaffEventEntity) => {
+        return {
+          name: goodsLog.name,
+          phoneNumber: goodsLog.phoneNumber,
+          group: goodsLog.group,
+          receivedAt: goodsLog.receivedAt.toLocaleString('ko-KR'),
+        };
+      });
+      return { code: API_CODE.SUCCESS, goodsLogList };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async getStaffEventRanking() {
+    try {
+      const staffList = await this.staffEventRepository.find();
+      const ranking = await Promise.all(
+        staffList.map(async (staff: StaffEventEntity) => {
+          const count = await this.userRepository
+            .createQueryBuilder('user')
+            .where('user.recommand_person = :recommandPerson', {
+              recommandPerson: staff.name,
+            })
+            .andWhere('user.created_at BETWEEN :startDate AND :endDate', {
+              startDate: `2024-09-07T00:00:00.000Z`,
+              endDate: `2024-09-07T18:15:00.000Z`,
+            })
+            .getCount();
+          return {
+            name: staff.name,
+            phoneNumber: staff.phoneNumber,
+            group: staff.group,
+            count,
+          };
+        }),
+      );
+      ranking.sort((a, b) => b.count - a.count);
+      return { code: API_CODE.SUCCESS, ranking };
     } catch (error) {
       return { code: API_CODE.INVALID };
     }

@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity({ name: 'staff_event', schema: 'tf' })
 export class StaffEventEntity {
@@ -19,4 +19,10 @@ export class StaffEventEntity {
 
   @Column({ type: 'boolean', name: 'goods_received', default: false })
   goodsReceived: boolean;
+
+  @UpdateDateColumn({
+    type: 'timestamp',
+    name: 'received_at',
+  })
+  receivedAt: Date;
 }

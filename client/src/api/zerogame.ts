@@ -129,6 +129,18 @@ export const reqStaffReceiveGoods = async (staffId: number) => {
 
 export const reqRecommandList = async (staffId: number) => {
   const res = await axios.get(`${API_HOST}/game/staff/recommand-list?staff_id=${staffId}`);
-  // { code, recommantList }
+  // { code, recommandList }
+  return res;
+};
+
+export const reqStaffGoodsLogList = async () => {
+  const res = await axios.get(`${API_HOST}/game/staff/goods/log`);
+  // { code, goodsLogList }
+  return res;
+};
+
+export const reqStaffEventRanking = async () => {
+  const res = await axios.get(`${API_HOST}/game/staff/event/ranking`);
+  // { code, ranking }
   return res;
 };

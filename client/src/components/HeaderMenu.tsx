@@ -52,7 +52,8 @@ const HeaderMenu = () => {
       location.pathname === ROUTE_PATH.JOIN ||
       location.pathname === ROUTE_PATH.REGISTER ||
       location.pathname === ROUTE_PATH.STAFF ||
-      location.pathname === ROUTE_PATH.GOODS_STAFF
+      location.pathname === ROUTE_PATH.GOODS_STAFF ||
+      location.pathname === ROUTE_PATH.STAFF_EVENT
     ) {
       setIsPopupHidden(true);
     }

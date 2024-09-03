@@ -17,6 +17,7 @@ export const ROUTE_PATH = {
   ZG_GOODS: "/zg-goods",
   STAFF: "/staff",
   GOODS_STAFF: "/goods-staff",
+  STAFF_EVENT: "/staff-event",
 };
 
 export const HOST = {
@@ -56,6 +57,7 @@ export const MONSTER_FULL_HP = 300000;
 
 export const WAIT_BOOTH_ID = "Z0";
 export const GOODS_BOOTH_ID = "A2";
+export const STAFF_EVENT_BOOTH_ID = "A1";
 
 export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
   B1: {
