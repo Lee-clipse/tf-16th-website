@@ -4,12 +4,15 @@ import { Repository } from 'typeorm';
 import { UserEntity } from '../../entity/user.entity';
 import { UserRegisterDto } from 'src/dto/register.dto';
 import { API_CODE } from 'src/common/const';
+import { UserEventEntity } from 'src/entity/user-event.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
+    @InjectRepository(UserEventEntity)
+    private userEventRepository: Repository<UserEventEntity>,
   ) {}
 
   // API
@@ -48,6 +51,33 @@ export class UserService {
       const user = await this.getUserDataById(id);
       user.zgJoin = true;
       await this.userRepository.save(user);
+      return { code: API_CODE.SUCCESS, user };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async joinEvent(id: number) {
+    try {
+      await this.userEventRepository.save({ id });
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async getLottery() {
+    try {
+      const randomUser = await this.userEventRepository
+        .createQueryBuilder('user_event')
+        .orderBy('RAND()')
+        .limit(1)
+        .getOne();
+      const user = await this.userRepository.findOne({
+        where: { id: randomUser.id },
+      });
       return { code: API_CODE.SUCCESS, user };
     } catch (error) {
       return { code: API_CODE.NOT_FOUND };

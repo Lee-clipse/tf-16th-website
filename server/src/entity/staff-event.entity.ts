@@ -1,8 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'staff_event', schema: 'tf' })
 export class StaffEventEntity {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
+  @PrimaryColumn({ type: 'int', name: 'id' })
   id: number;
 
   @Column({ type: 'varchar', name: 'name' })

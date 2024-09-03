@@ -24,6 +24,17 @@ export const reqJoinZerogame = async (id: string) => {
   return res;
 };
 
+export const reqJoinEvent = async (id: string) => {
+  const res = await axios.get(`${API_HOST}/user/event-join?id=${id}`);
+  return res;
+};
+
+export const reqLottery = async () => {
+  const res = await axios.get(`${API_HOST}/user/get-lottery`);
+  // { code, user }
+  return res;
+};
+
 /*
   const [isLoading, setIsLoading] = useState(false);
 

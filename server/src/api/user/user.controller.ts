@@ -43,4 +43,20 @@ export class UserController {
   async joinGame(@Query('id') id: string) {
     return await this.userService.joinGame(id);
   }
+
+  @Get('/event-join')
+  @ApiOperation({
+    summary: '추첨 이벤트 응모',
+  })
+  async joinEvent(@Query('id') id: number) {
+    return await this.userService.joinEvent(id);
+  }
+
+  @Get('/get-lottery')
+  @ApiOperation({
+    summary: '추첨 이벤트 당첨자 추첨',
+  })
+  async getLottery() {
+    return await this.userService.getLottery();
+  }
 }
