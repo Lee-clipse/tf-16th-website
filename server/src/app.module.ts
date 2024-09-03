@@ -14,6 +14,7 @@ import {
 import * as moment from 'moment-timezone';
 import * as winston from 'winston';
 import { LoggerMiddleware } from './pipe/logger.middleware';
+import { StaffEventEntity } from './entity/staff-event.entity';
 
 const winstonFormat = winston.format.combine(
   winston.format.colorize(),
@@ -43,6 +44,7 @@ const winstonFormat = winston.format.combine(
         MapEntity,
         MonsterEntity,
         StaffEntity,
+        StaffEventEntity,
         ZerogameEntity,
       ],
       synchronize: true,

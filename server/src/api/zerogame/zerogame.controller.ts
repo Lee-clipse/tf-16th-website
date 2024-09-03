@@ -177,4 +177,34 @@ export class ZerogameController {
     const res = await this.zerogameService.getGoodsLogList();
     return res;
   }
+
+  @Get('/staff/list')
+  @ApiOperation({
+    summary: '굿즈 증정 대상 스탭 명단 반환',
+  })
+  async getEventStaffList() {
+    const res = await this.zerogameService.getEventStaffList();
+    // staffList
+    return res;
+  }
+
+  @Get('/staff/receive-goods')
+  @ApiOperation({
+    summary: '스탭에게 굿즈 지급',
+  })
+  async receiveGoodsToStaff(@Query('staff_id') staffId: number) {
+    const res = await this.zerogameService.receiveGoodsToStaff(staffId);
+    //
+    return res;
+  }
+
+  @Get('/staff/recommand-list')
+  @ApiOperation({
+    summary: '스탭을 추천한 사용자 명단 반환',
+  })
+  async getRecommandList(@Query('staff_id') staffId: number) {
+    const res = await this.zerogameService.getRecommandList(staffId);
+    // recommantList
+    return res;
+  }
 }

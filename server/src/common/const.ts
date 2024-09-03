@@ -50,6 +50,8 @@ export const LOG_IGNORE_URL_LIST = [
   '/api/game/booth/wait',
   '/api/game/booth/log',
   '/api/game/goods/log',
+  '/api/game/staff/list',
+  '/api/game/staff/recommand-list',
 ];
 
 export const LOG_IMPORTANT_URL_LIST = [
@@ -62,6 +64,7 @@ export const LOG_IMPORTANT_URL_LIST = [
   '/api/game/monster/attack',
   '/api/game/fullfill-goods',
   '/api/game/receive-goods',
+  '/api/game/staff/receive-goods',
 ];
 
 export const API_WHERE = {

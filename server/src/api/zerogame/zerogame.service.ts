@@ -13,6 +13,7 @@ import {
   GOODS_BOOTH_ID,
   WAIT_BOOTH_ID,
 } from 'src/common/const';
+import { StaffEventEntity } from 'src/entity/staff-event.entity';
 
 @Injectable()
 export class ZerogameService {
@@ -27,6 +28,8 @@ export class ZerogameService {
     private monsterRepository: Repository<MonsterEntity>,
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
+    @InjectRepository(StaffEventEntity)
+    private staffEventRepository: Repository<StaffEventEntity>,
   ) {}
 
   // API
@@ -305,6 +308,49 @@ export class ZerogameService {
         boothWaitList[item.boothId] = parseInt(item.count, 10);
       });
       return { code: API_CODE.SUCCESS, boothWaitList };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async getEventStaffList() {
+    try {
+      const staffList = await this.staffEventRepository.find();
+      return { code: API_CODE.SUCCESS, staffList };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async receiveGoodsToStaff(staffId: number) {
+    try {
+      const staff = await this.staffEventRepository.findOne({
+        where: { id: staffId },
+      });
+      staff.goodsReceived = true;
+      await this.staffEventRepository.save(staff);
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async getRecommandList(staffId: number) {
+    try {
+      const staff = await this.staffEventRepository.findOne({
+        where: { id: staffId },
+      });
+      const name = staff.name;
+      const userList = await this.userRepository.find({
+        where: { recommandPerson: name },
+      });
+      const recommantList = userList.map((user: UserEntity) => {
+        return { name: user.name };
+      });
+      return { code: API_CODE.SUCCESS, recommantList };
     } catch (error) {
       return { code: API_CODE.INVALID };
     }

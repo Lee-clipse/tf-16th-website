@@ -2,6 +2,7 @@ import axios from "axios";
 import { HOST } from "../common/const";
 
 const API_HOST = HOST.LOCAL;
+// const API_HOST = HOST.DEPLOY;
 
 export const reqUserLogin = async (name: string, phoneNumber: string) => {
   const res = await axios.get(`${API_HOST}/user/login?name=${name}&phoneNumber=${phoneNumber}`);

@@ -2,6 +2,7 @@ import axios from "axios";
 import { HOST } from "../common/const";
 
 const API_HOST = HOST.LOCAL;
+// const API_HOST = HOST.DEPLOY;
 
 // body: user_id
 export const reqGameEnter = async (body: object) => {
@@ -111,5 +112,23 @@ export const reqReceiveGoods = async (body: object) => {
 export const reqGoodsLogList = async () => {
   const res = await axios.get(`${API_HOST}/game/goods/log`);
   // { code, goodsLogList }
+  return res;
+};
+
+export const reqEventStaffList = async () => {
+  const res = await axios.get(`${API_HOST}/game/staff/list`);
+  // { code, staffList }
+  return res;
+};
+
+export const reqStaffReceiveGoods = async (staffId: number) => {
+  const res = await axios.get(`${API_HOST}/game/staff/receive-goods?staff_id=${staffId}`);
+  // { code }
+  return res;
+};
+
+export const reqRecommandList = async (staffId: number) => {
+  const res = await axios.get(`${API_HOST}/game/staff/recommand-list?staff_id=${staffId}`);
+  // { code, recommantList }
   return res;
 };

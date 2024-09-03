@@ -7,6 +7,7 @@ import { MapEntity } from 'src/entity/map.entity';
 import { StaffEntity } from 'src/entity/staff.entity';
 import { MonsterEntity } from 'src/entity/monster.entity';
 import { UserEntity } from 'src/entity/user.entity';
+import { StaffEventEntity } from 'src/entity/staff-event.entity';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UserEntity } from 'src/entity/user.entity';
       ZerogameEntity,
       MapEntity,
       StaffEntity,
+      StaffEventEntity,
       MonsterEntity,
       UserEntity,
     ]),
