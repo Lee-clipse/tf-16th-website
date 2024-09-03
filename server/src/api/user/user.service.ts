@@ -60,7 +60,7 @@ export class UserService {
   // API
   async joinEvent(id: number) {
     try {
-      await this.userEventRepository.save({ id });
+      await this.userEventRepository.save({ id: Number(id) });
       return { code: API_CODE.SUCCESS };
     } catch (error) {
       return { code: API_CODE.NOT_FOUND };

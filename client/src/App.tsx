@@ -17,6 +17,9 @@ import ZGGoodsPage from "./pages_zerogame/Goods";
 import StaffPage from "./pages_zerogame/Staff";
 import GoodsStaffPage from "./pages_zerogame/GoodsStaff";
 import StaffEventPage from "./pages_zerogame/StaffEvent";
+import UserEventPage from "./pages_zerogame/UserEvent";
+import UserEventManagePage from "./pages_zerogame/UserEventManage";
+import LotteryPage from "./pages_zerogame/Lottery";
 
 const MainPage = lazy(() => import("./pages/Main/index"));
 
@@ -33,6 +36,9 @@ function App() {
           <Route path={ROUTE_PATH.COMMUNITY} element={<CommunityPage />}></Route>
           <Route path={ROUTE_PATH.HISTORY} element={<HistoryPage />}></Route>
           <Route path={ROUTE_PATH.MY_PAGE} element={<MyPage />}></Route>
+          <Route path={ROUTE_PATH.USER_EVENT} element={<UserEventPage />}></Route>
+          <Route path={ROUTE_PATH.USER_EVENT_MANAGE} element={<UserEventManagePage />}></Route>
+          <Route path={ROUTE_PATH.LOTTERY} element={<LotteryPage />}></Route>
 
           {/* 제로게임 페이지 */}
           <Route path={ROUTE_PATH.ZG_LOGO} element={<ZGLogoPage />}></Route>

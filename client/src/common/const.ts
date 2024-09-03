@@ -18,6 +18,9 @@ export const ROUTE_PATH = {
   STAFF: "/staff",
   GOODS_STAFF: "/goods-staff",
   STAFF_EVENT: "/staff-event",
+  USER_EVENT: "/user-event",
+  USER_EVENT_MANAGE: "/user-event-manage",
+  LOTTERY: "/lottery",
 };
 
 export const HOST = {
