@@ -5,6 +5,7 @@ import { UserEntity } from '../../entity/user.entity';
 import { UserRegisterDto } from 'src/dto/register.dto';
 import { API_CODE } from 'src/common/const';
 import { UserEventEntity } from 'src/entity/user-event.entity';
+import { LotteryEntity } from 'src/entity/lottery.entity';
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,8 @@ export class UserService {
     private userRepository: Repository<UserEntity>,
     @InjectRepository(UserEventEntity)
     private userEventRepository: Repository<UserEventEntity>,
+    @InjectRepository(LotteryEntity)
+    private lotteryRepository: Repository<LotteryEntity>,
   ) {}
 
   // API
@@ -78,6 +81,50 @@ export class UserService {
       const user = await this.userRepository.findOne({
         where: { id: randomUser.id },
       });
+      // 추첨 결과 저장
+      await this.lotteryRepository.save({
+        id: user.id,
+        name: user.name,
+        phoneNumber: user.phoneNumber,
+      });
+      return { code: API_CODE.SUCCESS, user };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async get1stLottery() {
+    try {
+      const lotteryList: number[] = [];
+      const randIndex = Math.floor(Math.random() * lotteryList.length);
+
+      const user = await this.userRepository.findOne({
+        where: { id: lotteryList[randIndex] },
+      });
+      return { code: API_CODE.SUCCESS, user };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async getEventCount() {
+    try {
+      const count = await this.userEventRepository.count();
+      return { code: API_CODE.SUCCESS, count };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async getEventResult() {
+    try {
+      const user = await this.lotteryRepository
+        .createQueryBuilder('lottery')
+        .orderBy('lottery.created_at', 'DESC')
+        .getOne();
       return { code: API_CODE.SUCCESS, user };
     } catch (error) {
       return { code: API_CODE.NOT_FOUND };

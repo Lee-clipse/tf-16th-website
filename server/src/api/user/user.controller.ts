@@ -44,7 +44,7 @@ export class UserController {
     return await this.userService.joinGame(id);
   }
 
-  @Get('/event-join')
+  @Get('/event/join')
   @ApiOperation({
     summary: '추첨 이벤트 응모',
   })
@@ -52,11 +52,35 @@ export class UserController {
     return await this.userService.joinEvent(id);
   }
 
-  @Get('/get-lottery')
+  @Get('/event/lottery')
   @ApiOperation({
     summary: '추첨 이벤트 당첨자 추첨',
   })
   async getLottery() {
     return await this.userService.getLottery();
+  }
+
+  @Get('/event/1st-lottery')
+  @ApiOperation({
+    summary: '추첨 이벤트 당첨자 추첨',
+  })
+  async get1stLottery() {
+    return await this.userService.get1stLottery();
+  }
+
+  @Get('/event/count')
+  @ApiOperation({
+    summary: '추첨 이벤트 응모',
+  })
+  async getEventCount() {
+    return await this.userService.getEventCount();
+  }
+
+  @Get('/event/result')
+  @ApiOperation({
+    summary: '이벤트 결과 보기',
+  })
+  async getEventResult() {
+    return await this.userService.getEventResult();
   }
 }

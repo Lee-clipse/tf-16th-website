@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { reqJoinEvent, reqUserData } from "../../api/user";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import HeaderMenu from "../../components/HeaderMenu";
+import Loading from "../../components/Loading";
 
 const UserEventPage = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState<User>();
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchUserData();
@@ -30,17 +32,21 @@ const UserEventPage = () => {
       alert("이미 응모하셨습니다!", "info");
       return;
     }
+    setIsLoading(true);
     const userId = getUserIdByToken().toString();
     const res = await reqJoinEvent(userId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       alert("응모에 성공했습니다!", "success");
+      setIsLoading(false);
       setIsClicked(true);
     }
   };
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {/* 헤더 메뉴 */}
       <HeaderMenu />
 

@@ -41,6 +41,8 @@ export const BOOTH_DOMAIN = {
 export const LOG_IGNORE_URL_LIST = [
   '/api/user/get',
   '/api/user/login',
+  '/api/user/event/join',
+  '/api/user/event/count',
   '/api/game/enter',
   '/api/game/user/fetch',
   '/api/game/staff/fetch',
@@ -52,11 +54,15 @@ export const LOG_IGNORE_URL_LIST = [
   '/api/game/goods/log',
   '/api/game/staff/list',
   '/api/game/staff/recommand-list',
+  '/api/game/staff/goods/log',
+  '/api/game/staff/event/ranking',
 ];
 
 export const LOG_IMPORTANT_URL_LIST = [
   '/api/user/register',
   '/api/user/zg-join',
+  '/api/user/event/lottery',
+  '/api/user/event/1st-lottery',
   '/api/game/select-booth',
   '/api/game/give-point',
   '/api/game/booth/change',

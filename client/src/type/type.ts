@@ -69,3 +69,9 @@ export type Ranking = {
   group: string;
   count: number;
 };
+
+export type LotteryUser = {
+  id: number;
+  name: string;
+  phoneNumber: string;
+};

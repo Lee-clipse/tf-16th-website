@@ -219,7 +219,7 @@ export class ZerogameController {
 
   @Get('/staff/event/ranking')
   @ApiOperation({
-    summary: '굿즈 증정 완료 명단 반환',
+    summary: '스탭 이벤트 랭킹 반환',
   })
   async getStaffEventRanking() {
     const res = await this.zerogameService.getStaffEventRanking();

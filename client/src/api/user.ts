@@ -25,12 +25,30 @@ export const reqJoinZerogame = async (id: string) => {
 };
 
 export const reqJoinEvent = async (id: string) => {
-  const res = await axios.get(`${API_HOST}/user/event-join?id=${id}`);
+  const res = await axios.get(`${API_HOST}/user/event/join?id=${id}`);
   return res;
 };
 
 export const reqLottery = async () => {
-  const res = await axios.get(`${API_HOST}/user/get-lottery`);
+  const res = await axios.get(`${API_HOST}/user/event/lottery`);
+  // { code, user }
+  return res;
+};
+
+export const req1stLottery = async () => {
+  const res = await axios.get(`${API_HOST}/user/event/1st-lottery`);
+  // { code }
+  return res;
+};
+
+export const reqEventCount = async () => {
+  const res = await axios.get(`${API_HOST}/user/event/count`);
+  // { code, count }
+  return res;
+};
+
+export const reqEventResult = async () => {
+  const res = await axios.get(`${API_HOST}/user/event/result`);
   // { code, user }
   return res;
 };
