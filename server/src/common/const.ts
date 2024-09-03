@@ -43,6 +43,7 @@ export const LOG_IGNORE_URL_LIST = [
   '/api/user/login',
   '/api/user/event/join',
   '/api/user/event/count',
+  '/api/user/event/result',
   '/api/game/enter',
   '/api/game/user/fetch',
   '/api/game/staff/fetch',
