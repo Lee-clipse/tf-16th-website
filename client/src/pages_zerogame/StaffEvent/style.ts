@@ -227,6 +227,7 @@ export const Modal = styled.div`
       font-size: ${theme.font.SIZE.M};
       color: ${theme.color.MID_GRAY};
       margin-top: 1rem;
+      gap: 0.4rem;
     }
 
     .r-title {

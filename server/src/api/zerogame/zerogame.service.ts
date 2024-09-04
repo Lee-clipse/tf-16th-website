@@ -14,7 +14,6 @@ import {
   WAIT_BOOTH_ID,
 } from 'src/common/const';
 import { StaffEventEntity } from 'src/entity/staff-event.entity';
-import { group } from 'console';
 
 @Injectable()
 export class ZerogameService {

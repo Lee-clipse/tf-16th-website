@@ -31,7 +31,6 @@ export type User = {
 export type StaffEvent = {
   id: number;
   name: string;
-  age: number;
   phoneNumber: string;
   group: string;
   goodsReceived: boolean;

@@ -260,3 +260,11 @@ export const FADEIN_ANIMATION = keyframes`
     opacity: 1;
   }
 `;
+
+export const STAFF_GROUP = {
+  청년부: "청년부",
+  장년부: "장년부",
+  동상교회: "동상교회",
+  외부인: "외부인",
+  청소년: "청소년",
+};

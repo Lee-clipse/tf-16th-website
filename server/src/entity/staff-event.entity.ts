@@ -8,9 +8,6 @@ export class StaffEventEntity {
   @Column({ type: 'varchar', name: 'name' })
   name: string;
 
-  @Column({ type: 'int', name: 'age' })
-  age: number;
-
   @Column({ type: 'varchar', name: 'phone_number' })
   phoneNumber: string;
 

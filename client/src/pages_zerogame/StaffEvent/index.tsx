@@ -3,7 +3,7 @@ import { Modal, Wrapper } from "./style";
 import HeaderMenu from "../../components/HeaderMenu";
 import { alert, getUserIdByToken } from "../../common/common";
 import { reqUserData } from "../../api/user";
-import { API_CODE, ROUTE_PATH } from "../../common/const";
+import { API_CODE, ROUTE_PATH, STAFF_GROUP } from "../../common/const";
 import {
   reqEventStaffList,
   reqRecommandList,
@@ -135,6 +135,34 @@ const StaffEventPage = () => {
     }
   };
 
+  const getGoodsSetType = (group: string, count: number) => {
+    if (group === STAFF_GROUP.장년부) {
+      if (count < 10) return "일반";
+      if (count < 20) return "D";
+      if (count < 30) return "C";
+      if (count < 50) return "B";
+      return "A";
+    }
+    if (
+      group === STAFF_GROUP.동상교회 ||
+      group === STAFF_GROUP.외부인 ||
+      group === STAFF_GROUP.청소년
+    ) {
+      if (count >= 5) return "A";
+      if (count >= 3) return "B";
+      if (count >= 2) return "C";
+      if (count >= 1) return "D";
+      return "일반";
+    }
+    if (group === STAFF_GROUP.청년부) {
+      if (count < 128) return "일반";
+      if (count >= 1024) return "A";
+      if (count >= 512) return "B";
+      if (count >= 256) return "C";
+      if (count >= 128) return "D";
+    }
+  };
+
   return (
     <>
       {isLoading && <Loading />}
@@ -149,7 +177,7 @@ const StaffEventPage = () => {
             </div>
             <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
               <div>🥇 추천인 랭킹 </div>
-              <div className="r-row">
+              <div className="r-row f-col">
                 {ranking.map((staff: Ranking, index) => {
                   return (
                     <div key={index}>
@@ -174,10 +202,16 @@ const StaffEventPage = () => {
             </div>
             <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
               <div>
-                {selectStaff?.name} {selectStaff?.phoneNumber.slice(-4)}
+                {selectStaff?.name} {selectStaff?.phoneNumber.slice(-4)} / {selectStaff?.group}
               </div>
               <div className="r-title">
                 🎉 추천해주신 분들: <span className="h">{recommandList.length}</span>명
+              </div>
+              <div className="r-title">
+                <span className="h">
+                  {getGoodsSetType(selectStaff?.group as string, recommandList.length)}
+                </span>{" "}
+                굿즈 세트 대상
               </div>
               <div className="f-col r-list">
                 {recommandList.map((rec, index) => {
@@ -185,7 +219,7 @@ const StaffEventPage = () => {
                 })}
               </div>
               <div className="b-btn" onClick={() => handleGiveGoods()}>
-                굿즈 증정
+                굿즈 지급
               </div>
             </div>
           </div>
@@ -261,7 +295,7 @@ const StaffEventPage = () => {
                   <div className="f-row v-center">
                     {!staff.goodsReceived && (
                       <div className="s-p-point-btn" onClick={() => handleGiveGoodsToStaff(staff)}>
-                        굿즈 증정
+                        지급
                       </div>
                     )}
                   </div>
