@@ -247,7 +247,7 @@ const GoodsStaffPage = () => {
               <img src={CloseIcon} onClick={() => setViewGoodsLogModal(false)} />
             </div>
             <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
-              <div style={{ marginBottom: "1rem" }}>📃 굿즈 증정 내역</div>
+              <div style={{ marginBottom: "1rem" }}>📃 굿즈 지급 내역</div>
 
               <div id="search-row">
                 <div className="s-row f-row">
@@ -274,7 +274,7 @@ const GoodsStaffPage = () => {
                       <div className="s-p-name">
                         {goodsLog.name} {goodsLog.phoneNumber.slice(-4)}
                       </div>
-                      <div className="s-p-date">증정: {goodsLog.clearedAt}</div>
+                      <div className="s-p-date">지급: {goodsLog.clearedAt}</div>
                     </div>
                   );
                 })}

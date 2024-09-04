@@ -35,6 +35,8 @@ const StaffEventPage = () => {
   const [goodsLogList, setGoodsLogList] = useState<StaffGoodsLog[]>([]);
   const [ranking, setRanking] = useState<Ranking[]>([]);
   const [viewRankingModal, setViewRankingModal] = useState<boolean>(false);
+  const [searchGoodsLogUserName, setSearchGoodsLogUserName] = useState<string>("");
+  const [searchGoodsLogUserList, setSearchGoodsLogUserList] = useState<StaffGoodsLog[]>([]);
 
   useEffect(() => {
     fetchUserData();
@@ -46,6 +48,12 @@ const StaffEventPage = () => {
       fetchStaffList();
     }
   }, [searchStaffName]);
+
+  useEffect(() => {
+    if (searchGoodsLogUserName === "") {
+      setSearchGoodsLogUserList(goodsLogList);
+    }
+  }, [searchGoodsLogUserName]);
 
   const fetchUserData = async () => {
     const staffId = getUserIdByToken().toString();
@@ -111,6 +119,10 @@ const StaffEventPage = () => {
     setSearchStaffList(searchStaffList);
   };
 
+  const handleSearchGoodsLogUserName = (value: string) => {
+    setSearchGoodsLogUserName(value);
+  };
+
   const handleViewGoodsLogModal = async () => {
     await fetchGoodsLogList();
     setViewGoodsLogModal(true);
@@ -121,6 +133,7 @@ const StaffEventPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       setGoodsLogList(res.data.goodsLogList);
+      setSearchGoodsLogUserList(res.data.goodsLogList);
     }
   };
 
@@ -161,6 +174,14 @@ const StaffEventPage = () => {
       if (count >= 256) return "C";
       if (count >= 128) return "D";
     }
+  };
+
+  const handleGoodsLogUserSearch = () => {
+    if (searchGoodsLogUserName === "") return;
+    const searchGoodsLogUserList = goodsLogList.filter((row: StaffGoodsLog) =>
+      row.name.includes(searchGoodsLogUserName)
+    );
+    setSearchGoodsLogUserList(searchGoodsLogUserList);
   };
 
   return (
@@ -236,14 +257,33 @@ const StaffEventPage = () => {
             </div>
             <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
               <div style={{ marginBottom: "1rem" }}>📃 굿즈 지급 내역</div>
-              {goodsLogList &&
-                goodsLogList.map((goodsLog) => {
+
+              <div id="search-row">
+                <div className="s-row f-row">
+                  <input
+                    id="s-input"
+                    type="text"
+                    placeholder="이름 검색"
+                    value={searchGoodsLogUserName}
+                    onChange={(e) => handleSearchGoodsLogUserName(e.target.value)}
+                  ></input>
+                  <div
+                    className="s-btn v-center h-center"
+                    onClick={() => handleGoodsLogUserSearch()}
+                  >
+                    <img src={SearchIcon} />
+                  </div>
+                </div>
+              </div>
+
+              {searchGoodsLogUserList &&
+                searchGoodsLogUserList.map((goodsLog) => {
                   return (
                     <div className="s-p-item f-col f-spb log-row">
                       <div className="s-p-name">
                         {goodsLog.name} {goodsLog.phoneNumber.slice(-4)} / {goodsLog.group}
                       </div>
-                      <div className="s-p-date">증정: {goodsLog.receivedAt}</div>
+                      <div className="s-p-date">지급: {goodsLog.receivedAt}</div>
                     </div>
                   );
                 })}

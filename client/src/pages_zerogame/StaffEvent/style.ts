@@ -51,7 +51,7 @@ export const Wrapper = styled.div`
       margin: 0 2rem;
       border: 2px solid lightgray;
       border-radius: 1rem;
-      height: 50vh;
+      height: 46vh;
       overflow: scroll;
       margin-bottom: 1rem;
       background-color: ${theme.color.WHITE};
@@ -196,6 +196,36 @@ export const Modal = styled.div`
     border-radius: 1rem;
   }
 
+  #search-row {
+    margin-bottom: 1.4rem;
+    .s-row {
+    }
+    #s-input {
+      border: 2px solid gray;
+      font-size: ${theme.font.SIZE.SM};
+      font-family: ${theme.font.NOTO[6]};
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 0.6rem;
+    }
+    #s-inpu::placeholder {
+      font-size: ${theme.font.SIZE.SM};
+      font-family: ${theme.font.NOTO[6]};
+      color: ${theme.color.MID_GRAY};
+    }
+    .s-btn {
+      background-color: ${theme.color.MID_GRAY};
+      width: 5rem;
+      padding: 0.4rem;
+      margin-left: 1rem;
+      border-radius: 0.6rem;
+      box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+      img {
+        width: 60%;
+      }
+    }
+  }
+
   #m-header {
     display: flex;
     flex-direction: row;
@@ -227,7 +257,7 @@ export const Modal = styled.div`
       font-size: ${theme.font.SIZE.M};
       color: ${theme.color.MID_GRAY};
       margin-top: 1rem;
-      gap: 0.4rem;
+      gap: 0.8rem;
     }
 
     .r-title {
@@ -269,6 +299,7 @@ export const Modal = styled.div`
       gap: 0.6rem;
       border-bottom: 1px solid lightgray;
       padding-bottom: 1.4rem;
+      color: ${theme.color.MID_GRAY};
     }
   }
 `;
