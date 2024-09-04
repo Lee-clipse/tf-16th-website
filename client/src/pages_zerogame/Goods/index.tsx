@@ -41,7 +41,8 @@ const ZGGoodsPage = () => {
               <img src={CloseIcon} onClick={() => setViewMapModal(false)} />
             </div>
             <div id="m-body">
-              <div id="m-b-title">시민공원 내 굿즈 증정 위치</div>
+              <div id="m-b-title">🔍 시민공원 내 굿즈 증정 위치</div>
+              <div id="msg">광장 중앙문 [A2] 부스</div>
               <img id="location-map" src={GoodsMap} />
             </div>
           </div>
@@ -61,7 +62,9 @@ const ZGGoodsPage = () => {
 
         <div id="g-text" className="f-col" style={{ gap: ".8rem" }}>
           <div>제로게임 클리어를 축하합니다!</div>
-          <div>지도에 적힌 부스에서 굿즈를 받아가세요.</div>
+          <div>
+            지도에 적힌 부스에서 <span>굿즈</span>를 받아가세요.
+          </div>
         </div>
 
         <div id="g-text" className="f-col" style={{ gap: ".8rem", marginTop: "2rem" }}>

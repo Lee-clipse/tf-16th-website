@@ -73,7 +73,7 @@ export const Wrapper = styled.div<{ isHitVisible: boolean }>`
     }
 
     img {
-      width: 100%;
+      width: 90%;
       animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
   }
@@ -81,10 +81,17 @@ export const Wrapper = styled.div<{ isHitVisible: boolean }>`
   #a-box {
     text-align: center;
     position: absolute;
-    top: 70%;
+    top: 66%;
     left: 50%;
     transform: translateX(-50%);
     justify-contnet: center;
+
+    #msg {
+      background-color: ${theme.color.WHITE};
+      width: 100vw;
+      padding: 1rem;
+      line-height: 2rem;
+    }
 
     #a-img-box {
       text-align: center;
@@ -108,11 +115,13 @@ export const Wrapper = styled.div<{ isHitVisible: boolean }>`
     #a-btn {
       background-color: ${theme.color.ORANGE};
       border-radius: 0.6rem;
-      padding: 1rem;
+      padding: 0.8rem;
       color: ${theme.color.WHITE};
       font-family: ${theme.font.NOTO[6]};
       font-size: ${theme.font.SIZE.XL};
       box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+      width: 60% !important;
+      text-align: center;
     }
   }
 `;

@@ -9,6 +9,7 @@ import {
   GOODS_BOOTH_ID,
   ROUTE_PATH,
   STAFF_EVENT_BOOTH_ID,
+  USER_EVENT_MANAGER,
 } from "../../common/const";
 import {
   reqBoothCheck,
@@ -69,6 +70,9 @@ const StaffPage = () => {
     }
     if (boothId === STAFF_EVENT_BOOTH_ID) {
       navigate(ROUTE_PATH.STAFF_EVENT);
+    }
+    if (boothId === USER_EVENT_MANAGER) {
+      navigate(ROUTE_PATH.USER_EVENT_MANAGE);
     }
   }, [boothId]);
 

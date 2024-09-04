@@ -55,7 +55,7 @@ export const Wrapper = styled.div`
     position: relative;
 
     img {
-      width: 70%;
+      width: 60%;
       animation: ${MonsterFloatAnimation} 2s ease-in-out infinite;
     }
 
@@ -116,7 +116,7 @@ export const Wrapper = styled.div`
     }
 
     .stone {
-      width: 80%;
+      width: 74%;
       padding: 0.4rem;
       border-radius: 1rem;
       border: 2px solid lightgray;
@@ -144,10 +144,11 @@ export const Wrapper = styled.div`
       background-color: ${theme.color.WHITE};
       padding: 1.4rem 1rem;
       line-height: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 100%;
+
+      span {
+        color: ${theme.color.ORANGE};
+      }
     }
   }
 

@@ -12,7 +12,6 @@ import { ZGUser } from "../../type/type";
 import { API_CODE, MONSTER_FULL_HP, ROUTE_PATH, WAIT_BOOTH_ID } from "../../common/const";
 import { useNavigate } from "react-router-dom";
 import ZGBackground from "../../assets/images/zg_bg.webp";
-import AttackIcon from "../../assets/images/attack_icon.webp";
 import HitIcon from "../../assets/icons/hit.png";
 
 const ZGMonsterPage = () => {
@@ -96,17 +95,16 @@ const ZGMonsterPage = () => {
           <div id="m-hp-bar" className="f-row">
             <div id="m-hp" style={{ width: calcMonsterHpRatio() }}></div>
           </div>
-          <div id="m-hp-num">HP: {monsterHp.toLocaleString("ko-KR")}</div>
+          <div id="m-hp-num">체력: {monsterHp.toLocaleString("ko-KR")}</div>
           <img src={Monster} />
         </div>
 
-        <div id="a-box" className="f-col" style={{ gap: "1.6rem" }}>
-          <div id="a-img-box" className="h-center v-center">
-            <div id="img-line">
-              <img src={AttackIcon} />
-            </div>
+        <div id="a-box" className="f-col v-center" style={{ gap: "1.6rem" }}>
+          <div id="msg">
+            18:30까지 모두 힘을 모아 <br />
+            기후 괴물을 물리치자!
           </div>
-          <div id="damage">포인트: {userData.point}</div>
+          <div id="damage">포인트: {userData.point.toLocaleString("ko-KR")}</div>
           <div id="a-btn" onClick={() => handleAttackButton()}>
             공격하기
           </div>

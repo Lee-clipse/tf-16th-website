@@ -85,7 +85,7 @@ const ZGHomePage = () => {
 
         <div id="h-header" className="f-row f-spb v-center">
           <div id="point">
-            Point: <span id="number">{userData?.point}</span>
+            포인트: <span id="number">{userData?.point.toLocaleString("ko-KR")}</span>
           </div>
 
           <div id="home-btn" onClick={() => navigate(ROUTE_PATH.MAIN)}>
@@ -151,12 +151,15 @@ const ZGHomePage = () => {
           <div id="booth-waiting">
             {userData.waitingBoothId === WAIT_BOOTH_ID ? (
               <div className="next-alert">
-                [부스 목록]에서 체험할 부스를 <br />
-                선택해주세요!
+                <span>[부스 목록]</span>
+                에서 체험할 부스를 선택해주세요!
               </div>
             ) : (
               <div className="next-alert">
-                [{BOOTH_LIST[userData.waitingBoothId].title}] 부스로 이동해주세요!
+                <span>
+                  [{userData.waitingBoothId}] {BOOTH_LIST[userData.waitingBoothId].title}
+                </span>{" "}
+                부스로 이동해주세요!
               </div>
             )}
           </div>

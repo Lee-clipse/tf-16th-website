@@ -131,7 +131,7 @@ const ZGBoothPage = () => {
               <img src={CloseIcon} onClick={() => setViewMapModal(false)} />
             </div>
             <div id="m-body">
-              <div id="m-b-title">시민공원 내 부스 지도</div>
+              <div id="m-b-title">🔍 시민공원 내 부스 지도</div>
               <img id="location-map" src={BoothMap} />
             </div>
           </div>
@@ -147,10 +147,14 @@ const ZGBoothPage = () => {
               <img src={CloseIcon} onClick={() => setViewClearBoothModal(false)} />
             </div>
             <div id="m-body">
-              <div id="m-b-title">클리어한 부스 목록</div>
+              <div id="m-b-title">🚩 클리어한 부스 목록</div>
               <div id="m-b-booth-log" className="f-col">
                 {boothLog.map((boothIndex: string) => {
-                  return <div>{BOOTH_LIST[boothIndex].title}</div>;
+                  return (
+                    <div className="b-l">
+                      [{boothIndex}] {BOOTH_LIST[boothIndex].title}
+                    </div>
+                  );
                 })}
               </div>
             </div>
@@ -235,6 +239,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>[{key}]</div>
                         <div>{value.title}</div>
                         <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
@@ -281,6 +286,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>[{key}]</div>
                         <div>{value.title}</div>
                         <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
@@ -327,6 +333,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>[{key}]</div>
                         <div>{value.title}</div>
                         <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
@@ -373,6 +380,7 @@ const ZGBoothPage = () => {
                       }}
                     >
                       <div className="f-col" style={{ gap: ".8rem" }}>
+                        <div>[{key}]</div>
                         <div>{value.title}</div>
                         <div className="wait">{boothWaitList[key] || 0}명 대기</div>
                       </div>
@@ -394,7 +402,7 @@ const ZGBoothPage = () => {
             className="v-center h-center"
             onClick={() => setViewClearBoothModal(true)}
           >
-            클리어한 부스 목록
+            클리어 부스 목록
           </div>
           <div id="refresh-btn" className="v-center h-center" onClick={() => handleRefreshButton()}>
             <img src={RefreshIcon} />

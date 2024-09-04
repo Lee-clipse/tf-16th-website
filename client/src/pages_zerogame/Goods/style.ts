@@ -37,10 +37,15 @@ export const Wrapper = styled.div`
   #g-text {
     text-align: center;
     background-color: ${theme.color.WHITE};
-    font-family: ${theme.font.NOTO[7]};
+    font-family: ${theme.font.NOTO[6]};
     font-size: ${theme.font.SIZE.M};
-    color: ${theme.color.ORANGE};
+    color: ${theme.color.MID_GRAY};
     padding: 1.6rem 0;
+
+    span {
+      color: ${theme.color.ORANGE};
+      font-family: ${theme.font.NOTO[8]};
+    }
   }
 
   #btn-row {
@@ -128,9 +133,14 @@ export const Modal = styled.div`
     padding: 1.4rem;
 
     #m-b-title {
-      margin: 0 0 1rem 0;
+      margin: 0 0 1.4rem 0;
       font-family: ${theme.font.NOTO[6]};
       font-size: ${theme.font.SIZE.ML};
+    }
+
+    #msg {
+      font-size: ${theme.font.SIZE.M};
+      margin-bottom: 1rem;
     }
   }
 `;

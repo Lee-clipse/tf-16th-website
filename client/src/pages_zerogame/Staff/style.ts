@@ -48,7 +48,7 @@ export const Wrapper = styled.div`
       margin: 0 2rem;
       border: 2px solid lightgray;
       border-radius: 1rem;
-      height: 50vh;
+      height: 40vh;
       overflow: scroll;
       margin-bottom: 1rem;
       background-color: ${theme.color.WHITE};

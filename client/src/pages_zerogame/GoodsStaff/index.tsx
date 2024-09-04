@@ -37,6 +37,8 @@ const GoodsStaffPage = () => {
   const [viewGoodsLogModal, setViewGoodsLogModal] = useState<boolean>(false);
   const [searchUserName, setSearchUserName] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [searchGoodsLogUserName, setSearchGoodsLogUserName] = useState<string>("");
+  const [searchGoodsLogUserList, setSearchGoodsLogUserList] = useState<GoodsLog[]>([]);
 
   useEffect(() => {
     fetchUserData();
@@ -48,6 +50,12 @@ const GoodsStaffPage = () => {
       fetchStaffData();
     }
   }, [searchUserName]);
+
+  useEffect(() => {
+    if (searchGoodsLogUserName === "") {
+      setSearchGoodsLogUserList(goodsLogList);
+    }
+  }, [searchGoodsLogUserName]);
 
   const fetchUserData = async () => {
     const staffId = getUserIdByToken().toString();
@@ -137,6 +145,10 @@ const GoodsStaffPage = () => {
     setSearchUserName(value);
   };
 
+  const handleSearchGoodsLogUserName = (value: string) => {
+    setSearchGoodsLogUserName(value);
+  };
+
   const handleViewGoodsLogModal = async () => {
     await fetchGoodsLogList();
     setViewGoodsLogModal(true);
@@ -147,6 +159,7 @@ const GoodsStaffPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       setGoodsLogList(res.data.goodsLogList);
+      setSearchGoodsLogUserList(res.data.goodsLogList);
     }
   };
 
@@ -154,6 +167,14 @@ const GoodsStaffPage = () => {
     if (searchUserName === "") return;
     const searchUserList = userList.filter((user: User) => user.name.includes(searchUserName));
     setSearchUserList(searchUserList);
+  };
+
+  const handleGoodsLogUserSearch = () => {
+    if (searchGoodsLogUserName === "") return;
+    const searchGoodsLogUserList = goodsLogList.filter((row: GoodsLog) =>
+      row.name.includes(searchGoodsLogUserName)
+    );
+    setSearchGoodsLogUserList(searchGoodsLogUserList);
   };
 
   return (
@@ -187,6 +208,7 @@ const GoodsStaffPage = () => {
               <div>
                 {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
               </div>
+              <div>현재 포인트: {selectUserGameData?.point.toLocaleString("ko-KR")}</div>
               <div className="b-btn" onClick={() => handleGiveGoods()}>
                 굿즈 증정
               </div>
@@ -207,7 +229,7 @@ const GoodsStaffPage = () => {
               <div>
                 {selectUser?.name} {selectUser?.phoneNumber.slice(-4)}
               </div>
-              <div>현재 포인트: {selectUserGameData?.point}</div>
+              <div>현재 포인트: {selectUserGameData?.point.toLocaleString("ko-KR")}</div>
               <div className="b-btn" onClick={() => handleOutButton()}>
                 이탈 처리
               </div>
@@ -225,8 +247,28 @@ const GoodsStaffPage = () => {
               <img src={CloseIcon} onClick={() => setViewGoodsLogModal(false)} />
             </div>
             <div id="m-body" className="f-col" style={{ gap: "1rem" }}>
-              {goodsLogList &&
-                goodsLogList.map((goodsLog) => {
+              <div style={{ marginBottom: "1rem" }}>📃 굿즈 증정 내역</div>
+
+              <div id="search-row">
+                <div className="s-row f-row">
+                  <input
+                    id="s-input"
+                    type="text"
+                    placeholder="이름 검색"
+                    value={searchGoodsLogUserName}
+                    onChange={(e) => handleSearchGoodsLogUserName(e.target.value)}
+                  ></input>
+                  <div
+                    className="s-btn v-center h-center"
+                    onClick={() => handleGoodsLogUserSearch()}
+                  >
+                    <img src={SearchIcon} />
+                  </div>
+                </div>
+              </div>
+
+              {searchGoodsLogUserList &&
+                searchGoodsLogUserList.map((goodsLog) => {
                   return (
                     <div className="s-p-item f-col f-spb log-row">
                       <div className="s-p-name">
@@ -252,9 +294,9 @@ const GoodsStaffPage = () => {
         {/* 부스 내 대기자 리스트 */}
         <div id="s-people">
           <div id="s-p-header" className="f-row f-spb v-center">
-            <div id="s-p-title">굿즈 증정 가능 명단</div>
+            <div id="s-p-title">굿즈 지급 가능 명단</div>
             <div id="s-p-log-btn" onClick={() => handleViewGoodsLogModal()}>
-              증정 내역
+              지급 내역
             </div>
           </div>
 
@@ -281,7 +323,7 @@ const GoodsStaffPage = () => {
                   </div>
                   <div className="f-row v-center">
                     <div className="s-p-point-btn" onClick={() => handleGiveGoodsUser(user)}>
-                      굿즈 증정
+                      지급
                     </div>
                     <div className="s-p-out-btn" onClick={() => handleSelectOutUser(user)}>
                       이탈

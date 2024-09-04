@@ -197,6 +197,12 @@ export const Modal = styled.div`
     #m-b-booth-log {
       margin-top: 2rem;
       gap: 1.4rem;
+
+      .b-l {
+        color: ${theme.color.MID_GRAY};
+        font-size: ${theme.font.SIZE.M};
+        line-height: 2rem;
+      }
     }
 
     .m-title {

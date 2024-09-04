@@ -61,6 +61,7 @@ export const MONSTER_FULL_HP = 300000;
 export const WAIT_BOOTH_ID = "Z0";
 export const GOODS_BOOTH_ID = "A2";
 export const STAFF_EVENT_BOOTH_ID = "A1";
+export const USER_EVENT_MANAGER = "M1";
 
 export const BOOTH_LIST: { [key: string]: { title: string; desc: string } } = {
   B1: {
