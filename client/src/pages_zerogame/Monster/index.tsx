@@ -26,6 +26,7 @@ const ZGMonsterPage = () => {
     goodsReceived: false,
     isAttack: false,
   });
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isHitVisible, setIsHitVisible] = useState<boolean>(false);
 
   useEffect(() => {
@@ -52,19 +53,24 @@ const ZGMonsterPage = () => {
   };
 
   const handleAttackButton = async () => {
-    attackMonster();
-  };
+    if (isClicked) return; // 중복 클릭 방지
 
-  const calcMonsterHpRatio = () => {
-    return Math.max((monsterHp / MONSTER_FULL_HP) * 100, 1).toFixed(0) + "%";
-  };
+    if (userData.point <= 0) {
+      alert("부스를 체험하고 포인트를 더 모을 수 있습니다.", "error");
+      return;
+    }
 
-  const attackMonster = () => {
+    setIsClicked(true);
     setIsHitVisible(true);
     setTimeout(() => {
       setIsHitVisible(false);
       attackApi();
+      setIsClicked(false);
     }, 600);
+  };
+
+  const calcMonsterHpRatio = () => {
+    return Math.max((monsterHp / MONSTER_FULL_HP) * 100, 1).toFixed(0) + "%";
   };
 
   const attackApi = async () => {
@@ -105,7 +111,7 @@ const ZGMonsterPage = () => {
             기후 괴물을 물리치자!
           </div>
           <div id="damage">포인트: {userData.point.toLocaleString("ko-KR")}</div>
-          <div id="a-btn" onClick={() => handleAttackButton()}>
+          <div id="a-btn" onClick={handleAttackButton}>
             공격하기
           </div>
         </div>
