@@ -48,7 +48,7 @@ const ZGMonsterPage = () => {
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
     if (ok) {
       const hp = res.data.hp;
-      setMonsterHp(Number(hp));
+      setMonsterHp(Math.max(Number(hp), 0));
     }
   };
 
@@ -106,10 +106,17 @@ const ZGMonsterPage = () => {
         </div>
 
         <div id="a-box" className="f-col v-center" style={{ gap: "1.6rem" }}>
-          <div id="msg">
-            18:30까지 모두 힘을 모아 <br />
-            기후 괴물을 물리치자!
-          </div>
+          {monsterHp <= 0 ? (
+            <div id="clear-msg">
+              기후 괴물을 물리쳤다! <br />
+              시민공원에 평화가 찾아왔어요!
+            </div>
+          ) : (
+            <div id="msg">
+              18:30까지 모두 힘을 모아 <br />
+              기후 괴물을 물리치자!
+            </div>
+          )}
           <div id="damage">포인트: {userData.point.toLocaleString("ko-KR")}</div>
           <div id="a-btn" onClick={handleAttackButton}>
             공격하기

@@ -93,6 +93,15 @@ export const Wrapper = styled.div<{ isHitVisible: boolean }>`
       line-height: 2rem;
     }
 
+    #clear-msg {
+      background-color: ${theme.color.BLACK};
+      color: ${theme.color.WHITE};
+      opacity: 0.8;
+      width: 100vw;
+      padding: 1rem;
+      line-height: 2rem;
+    }
+
     #a-img-box {
       text-align: center;
 

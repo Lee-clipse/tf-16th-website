@@ -56,7 +56,7 @@ export const AGREE = {
   NOT_AGREE: 2,
 };
 
-export const MONSTER_FULL_HP = 300000;
+export const MONSTER_FULL_HP = 10000000;
 
 export const WAIT_BOOTH_ID = "Z0";
 export const GOODS_BOOTH_ID = "A2";
