@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { LoadingPage, Modal, Wrapper } from "./style";
 import { useNavigate } from "react-router-dom";
 import { API_CODE, BOOTH_LIST, LOADING_DESC, ROUTE_PATH } from "../../common/const";
-import { alert, getUserIdByToken, isStaffByToken } from "../../common/common";
+import { alert, getUserIdByToken } from "../../common/common";
 import CloseIcon from "../../assets/icons/close.png";
 import {
   reqBoothLogOfUser,
@@ -24,6 +24,7 @@ import MapIcon from "../../assets/icons/location.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import BackIcon from "../../assets/icons/left-arrow.png";
 import Loading from "../../components/Loading";
+import { reqUserData } from "../../api/user";
 
 const ZGBoothPage = () => {
   const navigate = useNavigate();
@@ -36,12 +37,23 @@ const ZGBoothPage = () => {
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
   const [viewClearBoothModal, setViewClearBoothModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isStaff, setIsStaff] = useState<boolean>(false);
 
   useEffect(() => {
+    fetchStaffValue();
     fetchUserGameData();
     fetchBoothLog();
     fetchBoothWaitList();
   }, []);
+
+  const fetchStaffValue = async () => {
+    const userId = getUserIdByToken().toString();
+    const res = await reqUserData(userId);
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok && isStaff) {
+      setIsStaff(res.data.user.staff);
+    }
+  };
 
   const fetchUserGameData = async () => {
     const userId = getUserIdByToken().toString();
@@ -78,7 +90,7 @@ const ZGBoothPage = () => {
   };
 
   const handleEnterBooth = async () => {
-    if (isStaffByToken()) {
+    if (isStaff) {
       alert("스탭은 부스를 선택할 수 없습니다.", "info");
       setViewBoothModal(false);
       return;

@@ -175,16 +175,13 @@ export class UserService {
     // id 값
     const id_node = userData.id.toString();
 
-    // 스탭이라면 tf
-    const staff_node = userData.staff ? 'tf' : 'al';
-
     // 현 시점 + 60일 만료
     const expire_node = (
       new Date().getTime() +
       60 * 24 * 60 * 60 * 1000
     ).toString();
 
-    const token = `${id_node}-${staff_node}-${expire_node}`;
+    const token = `${id_node}-${expire_node}`;
     return token;
   }
 }

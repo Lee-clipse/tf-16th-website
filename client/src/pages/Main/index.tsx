@@ -50,8 +50,8 @@ import PopupModal from "../../components/Popup";
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const [viewPopup1, setViewPopup1] = useState<boolean>(true);
-  const [viewPopup2, setViewPopup2] = useState<boolean>(true);
+  const [viewPopup1, setViewPopup1] = useState<boolean>(false);
+  const [viewPopup2, setViewPopup2] = useState<boolean>(false);
 
   const [countDownEnd, setCountDownEnd] = useState<boolean>(false);
 

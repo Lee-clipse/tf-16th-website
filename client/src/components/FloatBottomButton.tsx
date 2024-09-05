@@ -1,25 +1,45 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { isStaffByToken, verifyByToken } from "../common/common";
+import { getUserIdByToken, verifyByToken } from "../common/common";
 import WideButton from "./WideButton";
-import { ROUTE_PATH } from "../common/const";
+import { API_CODE, ROUTE_PATH } from "../common/const";
 import theme from "../styles/theme";
 import ScrollTopButton from "./ScrollTopButton";
 import styled from "styled-components";
 import EventMiniButton from "./EventMiniButton";
+import { reqUserData } from "../api/user";
 
 const FloatBottomButton = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isStaff, setIsStaff] = useState<boolean>(false);
 
   useEffect(() => {
     const isTokenAlive = verifyByToken();
     setIsLogin(isTokenAlive);
+    if (isTokenAlive) {
+      fetchStaffValue();
+    }
   }, []);
 
-  const setFloatButtonComponent = () => {
-    const isStaff = isStaffByToken();
+  useEffect(() => {
+    const isOldTokenSystem = localStorage.getItem("token");
+    if (isOldTokenSystem !== null) {
+      localStorage.removeItem("token");
+      navigate(ROUTE_PATH.MAIN);
+    }
+  }, []);
 
+  const fetchStaffValue = async () => {
+    const userId = getUserIdByToken().toString();
+    const res = await reqUserData(userId);
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok && isStaff) {
+      setIsStaff(res.data.user.staff);
+    }
+  };
+
+  const setFloatButtonComponent = () => {
     // 미로그인이라면 ->  참가 버튼
     if (!isLogin) {
       return (
