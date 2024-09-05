@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Modal, Wrapper } from "./style";
 import GoodsMap from "../../assets/images/goods_map.png";
-import Goods from "../../assets/images/goods.png";
+import Goods from "../../assets/images/goods.webp";
 import { useNavigate } from "react-router-dom";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import ZGBackground from "../../assets/images/zg_bg.webp";
@@ -51,10 +51,6 @@ const ZGGoodsPage = () => {
 
       <Wrapper>
         <img id="zg-bg" src={ZGBackground} />
-
-        {/* <div id="g-map">
-          <img src={GoodsMap} />
-        </div> */}
 
         <div id="g-list">
           <img src={Goods} />
