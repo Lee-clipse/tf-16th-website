@@ -24,7 +24,6 @@ import { useNavigate } from "react-router-dom";
 import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
-import GuideIcon from "../../assets/icons/questions.png";
 import Loading from "../../components/Loading";
 import SearchIcon from "../../assets/icons/loupe.png";
 
@@ -38,7 +37,6 @@ const StaffPage = () => {
   const [selectUserGameData, setSelectUserGameData] = useState<ZGUser>();
   const [viewPointModal, setViewPointModal] = useState<boolean>(false);
   const [inputPoint, setInputPoint] = useState<string>("");
-  const [viewGuideModal, setViewGuideModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [searchUserList, setSearchUserList] = useState<User[]>([]);
   const [searchUserName, setSearchUserName] = useState<string>("");
@@ -183,21 +181,6 @@ const StaffPage = () => {
     <>
       {isLoading && <Loading />}
 
-      {/* 가이드 모달 */}
-      {viewGuideModal && (
-        <Modal>
-          <div id="back-drop" onClick={() => setViewGuideModal(false)}></div>
-          <div id="m-wrapper">
-            <div id="m-header">
-              <img src={CloseIcon} onClick={() => setViewGuideModal(false)} />
-            </div>
-            <div id="m-body">
-              <div id="m-b-title">제로게임 가이드</div>
-            </div>
-          </div>
-        </Modal>
-      )}
-
       {/* 포인트 모달 */}
       {viewPointModal && (
         <Modal>
@@ -292,9 +275,6 @@ const StaffPage = () => {
         </div>
 
         <div id="btn-row" className="f-row f-spb">
-          <div id="guide-btn" className="v-center h-center" onClick={() => setViewGuideModal(true)}>
-            <img src={GuideIcon} />
-          </div>
           <div
             id="booth-list-btn"
             className="v-center h-center"

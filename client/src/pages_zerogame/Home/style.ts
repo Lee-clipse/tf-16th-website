@@ -203,6 +203,29 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const ImageContainer = styled.div<{ currentIndex: number }>`
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(${(props) => -props.currentIndex * 100}%);
+  margin: 1rem 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+  }
+`;
+
+export const ArrowButton = styled.button<{ direction: string }>`
+  ${(props) => (props.direction === "left" ? "left: 6px;" : "right: 6px;")}
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  img {
+    width: 2rem;
+  }
+`;
+
 export const Modal = styled.div`
   #back-drop {
     position: fixed;
@@ -212,6 +235,15 @@ export const Modal = styled.div`
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+  }
+
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  #p-index {
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.ML};
   }
 
   #location-map {
@@ -230,9 +262,13 @@ export const Modal = styled.div`
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+    background-color: ${theme.color.WHITE};
 
-    background: ${theme.color.LIGHT_GRAY};
     border-radius: 1rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   #m-header {
@@ -259,6 +295,33 @@ export const Modal = styled.div`
       margin: 0 0 1rem 0;
       font-family: ${theme.font.NOTO[6]};
       font-size: ${theme.font.SIZE.ML};
+    }
+
+    #g-img {
+      margin: 1rem 0;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+
+      img::active {
+      }
+    }
+
+    #g-scroll {
+      text-align: center;
+
+      #g-page {
+        font-family: ${theme.font.NOTO[8]};
+        font-size: ${theme.font.SIZE.ML};
+      }
+
+      img {
+        width: 7vw;
+      }
     }
   }
 `;

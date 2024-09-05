@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
-import { Modal, Wrapper } from "./style";
+import { Key, useEffect, useState } from "react";
+import { ArrowButton, ImageContainer, Modal, Wrapper } from "./style";
 import Monster from "../../assets/images/zg_monster.webp";
 import ZGBackground from "../../assets/images/zg_bg.webp";
 import BlueStone from "../../assets/images/blue_stone.webp";
@@ -16,8 +16,16 @@ import RefreshIcon from "../../assets/icons/refresh.png";
 import HomeIcon from "../../assets/icons/home.png";
 import GuideIcon from "../../assets/icons/questions.png";
 import CloseIcon from "../../assets/icons/close.png";
+import LArrowIcon from "../../assets/icons/left-arrow-black.png";
+import RArrowIcon from "../../assets/icons/right-arrow-black.png";
+import Guide01 from "../../assets/images/guide01.webp";
+import Guide02 from "../../assets/images/guide02.webp";
+import Guide03 from "../../assets/images/guide03.webp";
+import { useSwipeable } from "react-swipeable";
 
 const ZGHomePage = () => {
+  const imageList = [Guide01, Guide02, Guide03];
+
   const navigate = useNavigate();
   const [viewAttackButton, setViewAttackButton] = useState<boolean>(false);
   const [viewGoodsButton, setViewGoodsButton] = useState<boolean>(false);
@@ -29,6 +37,22 @@ const ZGHomePage = () => {
     waitingBoothId: WAIT_BOOTH_ID,
     goodsReceived: false,
     isAttack: false,
+  });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const length: number = imageList.length;
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + length) % length);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    trackMouse: true,
   });
 
   useEffect(() => {
@@ -74,7 +98,21 @@ const ZGHomePage = () => {
               <img src={CloseIcon} onClick={() => setViewGuideModal(false)} />
             </div>
             <div id="m-body">
-              <div id="m-b-title">제로게임 가이드</div>
+              <div id="m-b-title">📘 제로게임 가이드</div>
+              <ImageContainer className="popup" {...handlers} currentIndex={currentIndex}>
+                {imageList.map((image: string, index: Key) => (
+                  <img key={index} src={image} alt={`Slide ${index}`} />
+                ))}
+              </ImageContainer>
+              <div className="f-row f-spb">
+                <ArrowButton onClick={handlePrev} direction="left">
+                  <img src={LArrowIcon} />
+                </ArrowButton>
+                <div id="p-index">{currentIndex + 1} / 3</div>
+                <ArrowButton onClick={handleNext} direction="right">
+                  <img src={RArrowIcon} />
+                </ArrowButton>
+              </div>
             </div>
           </div>
         </Modal>

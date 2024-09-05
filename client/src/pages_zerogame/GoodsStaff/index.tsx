@@ -18,7 +18,6 @@ import CloseIcon from "../../assets/icons/close.png";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import SearchIcon from "../../assets/icons/loupe.png";
 import ZGBackground from "../../assets/images/zg_bg.webp";
-import GuideIcon from "../../assets/icons/questions.png";
 import Loading from "../../components/Loading";
 
 const GoodsStaffPage = () => {
@@ -31,7 +30,6 @@ const GoodsStaffPage = () => {
   const [goodsLogList, setGoodsLogList] = useState<GoodsLog[]>([]);
   const [selectUser, setSelectUser] = useState<User>();
   const [selectUserGameData, setSelectUserGameData] = useState<ZGUser>();
-  const [viewGuideModal, setViewGuideModal] = useState<boolean>(false);
   const [viewOutModal, setViewOutModal] = useState<boolean>(false);
   const [viewGoodsModal, setViewGoodsModal] = useState<boolean>(false);
   const [viewGoodsLogModal, setViewGoodsLogModal] = useState<boolean>(false);
@@ -181,21 +179,6 @@ const GoodsStaffPage = () => {
     <>
       {isLoading && <Loading />}
 
-      {/* 가이드 모달 */}
-      {viewGuideModal && (
-        <Modal>
-          <div id="back-drop" onClick={() => setViewGuideModal(false)}></div>
-          <div id="m-wrapper">
-            <div id="m-header">
-              <img src={CloseIcon} onClick={() => setViewGuideModal(false)} />
-            </div>
-            <div id="m-body">
-              <div id="m-b-title">제로게임 가이드</div>
-            </div>
-          </div>
-        </Modal>
-      )}
-
       {/* 굿즈 증정 모달 */}
       {viewGoodsModal && (
         <Modal>
@@ -336,9 +319,6 @@ const GoodsStaffPage = () => {
         </div>
 
         <div id="btn-row" className="f-row f-spb">
-          <div id="guide-btn" className="v-center h-center" onClick={() => setViewGuideModal(true)}>
-            <img src={GuideIcon} />
-          </div>
           <div
             id="booth-list-btn"
             className="v-center h-center"
