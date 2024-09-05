@@ -28,6 +28,9 @@ export class UserEntity {
   @Column({ type: 'int', name: 'agree' })
   agree: number;
 
+  @Column({ type: 'int', name: 'zg_agree' })
+  zgAgree: number;
+
   @Column({ type: 'varchar', name: 'recommand_person' })
   recommandPerson: string;
 

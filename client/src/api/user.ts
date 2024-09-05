@@ -53,6 +53,11 @@ export const reqEventResult = async () => {
   return res;
 };
 
+export const reqZgAgree = async (id: number, agree: number) => {
+  const res = await axios.get(`${API_HOST}/user/zg-agree?id=${id}&agree=${agree}`);
+  return res;
+};
+
 /*
   const [isLoading, setIsLoading] = useState(false);
 

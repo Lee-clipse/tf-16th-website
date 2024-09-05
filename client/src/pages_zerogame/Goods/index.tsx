@@ -10,14 +10,30 @@ import CloseIcon from "../../assets/icons/close.png";
 import MapIcon from "../../assets/icons/location.png";
 import { reqUserGameFetch } from "../../api/zerogame";
 import { getUserIdByToken } from "../../common/common";
+import { reqUserData } from "../../api/user";
 
 const ZGGoodsPage = () => {
   const navigate = useNavigate();
+  const [zgAgree, setZgAgree] = useState<boolean>(true);
   const [viewMapModal, setViewMapModal] = useState<boolean>(false);
 
   useEffect(() => {
+    fetchUserData();
     fetchUserGameData();
   }, []);
+
+  const fetchUserData = async () => {
+    const userId = getUserIdByToken().toString();
+    if (Number(userId) === 0) {
+      navigate(ROUTE_PATH.MAIN);
+    }
+    const res = await reqUserData(userId);
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      const agree = Number(res.data.user.zgAgree) === 1;
+      setZgAgree(agree);
+    }
+  };
 
   const fetchUserGameData = async () => {
     const userId = getUserIdByToken().toString();
@@ -58,9 +74,13 @@ const ZGGoodsPage = () => {
 
         <div id="g-text" className="f-col" style={{ gap: ".8rem" }}>
           <div>제로게임 클리어를 축하합니다!</div>
-          <div>
-            지도에 적힌 부스에서 <span>굿즈</span>를 받아가세요.
-          </div>
+          {zgAgree ? (
+            <div id="txt">
+              지도에 적힌 부스에서 <span>굿즈</span>를 받아가세요.
+            </div>
+          ) : (
+            <div id="txt">개인정보 수집에 비동의하셨으므로 굿즈가 제공되지 않아요 😢</div>
+          )}
         </div>
 
         <div id="g-text" className="f-col" style={{ gap: ".8rem", marginTop: "2rem" }}>

@@ -97,6 +97,24 @@ export const Modal = styled.div`
       margin-top: 1rem;
     }
 
+    #text {
+      line-height: 1.4rem;
+      font-family: ${theme.font.NOTO[4]};
+      color: ${theme.color.MID_GRAY};
+      font-size: ${theme.font.SIZE.SM};
+      margin: 1rem 0;
+    }
+
+    #a-btn {
+      border-radius: 0.6rem;
+      padding: 1rem;
+      font-family: ${theme.font.NOTO[6]};
+      font-size: ${theme.font.SIZE.SM};
+      border: 2px solid ${theme.color.BLACK};
+      text-align: center;
+      margin-top: 1rem;
+    }
+
     #radio-row > label {
       font-size: ${theme.font.SIZE.SM} !important;
     }

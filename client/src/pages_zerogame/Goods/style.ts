@@ -42,6 +42,10 @@ export const Wrapper = styled.div`
     color: ${theme.color.MID_GRAY};
     padding: 1.6rem 0;
 
+    #txt {
+      line-height: 2rem;
+    }
+
     span {
       color: ${theme.color.ORANGE};
       font-family: ${theme.font.NOTO[8]};

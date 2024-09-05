@@ -83,4 +83,12 @@ export class UserController {
   async getEventResult() {
     return await this.userService.getEventResult();
   }
+
+  @Get('/zg-agree')
+  @ApiOperation({
+    summary: '제로게임 이용 동의',
+  })
+  async setZgAgree(@Query('id') id: number, @Query('agree') agree: number) {
+    return await this.userService.setZgAgree(id, agree);
+  }
 }

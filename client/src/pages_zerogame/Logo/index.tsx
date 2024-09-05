@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { reqUserGameFetch } from "../../api/zerogame";
 import { alert, getUserIdByToken } from "../../common/common";
 import { Radio } from "../../components/Input";
-import { reqJoinZerogame, reqUserData } from "../../api/user";
+import { reqJoinZerogame, reqUserData, reqZgAgree } from "../../api/user";
 import { motion, Variants } from "framer-motion";
 import Loading from "../../components/Loading";
 import Agree from "../../assets/images/agree.png";
@@ -27,12 +27,6 @@ const ZGLogoPage = () => {
     fetchUserData();
     fetchUserGameData();
   }, []);
-
-  useEffect(() => {
-    if (agreeSign) {
-      setViewAgreeModal(false);
-    }
-  }, [agreeSign]);
 
   const fetchUserData = async () => {
     const userId = getUserIdByToken().toString();
@@ -76,6 +70,14 @@ const ZGLogoPage = () => {
     }
   };
 
+  const handleClickAgreeButton = async () => {
+    const userId = getUserIdByToken();
+    await reqZgAgree(userId, agreeSign ? 1 : 2);
+
+    setViewAgreeModal(false);
+    navigate(ROUTE_PATH.ZG_CARTOON);
+  };
+
   const StartButton = () => {
     return (
       <div
@@ -85,11 +87,7 @@ const ZGLogoPage = () => {
             navigate(ROUTE_PATH.ZG_HOME);
           } else {
             if (isCodeValid) {
-              if (agreeSign) {
-                navigate(ROUTE_PATH.ZG_CARTOON);
-              } else {
-                setViewAgreeModal(true);
-              }
+              setViewAgreeModal(true);
             } else {
               setViewCodeModal(true);
             }
@@ -131,6 +129,7 @@ const ZGLogoPage = () => {
               <div>개인정보 제공 및 이용 동의서</div>
               <img id="agree" src={Agree} />
               <div>
+                <div id="text">비동의시 제로게임을 클리어해도 굿즈가 제공되지 않습니다.</div>
                 <Radio id="radio-row" className="f-row h-center" style={{ gap: "0.4rem" }}>
                   <input
                     type="radio"
@@ -147,6 +146,9 @@ const ZGLogoPage = () => {
                   />
                   <label htmlFor="agreeNo">비동의</label>
                 </Radio>
+                <div id="a-btn" onClick={() => handleClickAgreeButton()}>
+                  확인
+                </div>
               </div>
             </div>
           </div>

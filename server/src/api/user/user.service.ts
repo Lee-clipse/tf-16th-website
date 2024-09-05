@@ -131,6 +131,18 @@ export class UserService {
     }
   }
 
+  // API
+  async setZgAgree(id: number, agree: number) {
+    try {
+      const user = await this.userRepository.findOne({ where: { id } });
+      user.zgAgree = agree;
+      await this.userRepository.save(user);
+      return { code: API_CODE.SUCCESS, user };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
   async isUserExist(name: string, phoneNumber: string): Promise<boolean> {
     const userExist = await this.userRepository.findOne({
       where: { name, phoneNumber },
