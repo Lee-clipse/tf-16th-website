@@ -85,6 +85,14 @@ const HeaderMenu = () => {
     setIsPopupOpen(!isPopupOpen);
   };
 
+  // [추첨 이벤트] 페이지 클릭할때마다
+  const handleEnterUserEvent = async () => {
+    // flag 값 받아오기
+    // - true라면 라우팅
+    // - false라면 guardAlert
+    closeMenu();
+  };
+
   return (
     <>
       {viewVideoModal && <VideoModal viewModal={(flag: boolean) => setViewVideoModal(flag)} />}
@@ -173,6 +181,17 @@ const HeaderMenu = () => {
             >
               제로게임
             </PlainLink>
+
+            <PlainLink
+              to={ROUTE_PATH.USER_EVENT}
+              onClick={() => handleEnterUserEvent()}
+              className={`tab f-spb v-center h-center ${
+                location.pathname === ROUTE_PATH.USER_EVENT ? "active" : ""
+              }`}
+            >
+              추첨 이벤트
+            </PlainLink>
+
             {isLogin && (
               <PlainLink
                 to={ROUTE_PATH.MY_PAGE}

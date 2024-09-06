@@ -40,6 +40,13 @@ const UserEventManagePage = () => {
     }
   };
 
+  const handleEventOpen = async () => {};
+
+  const handleEventClose = async () => {
+    // APIO
+    // 데이터 삭제
+  };
+
   return (
     <>
       {isLoading && <Loading />}
@@ -56,6 +63,15 @@ const UserEventManagePage = () => {
         </div>
         <div id="r-btn" className="btn" onClick={() => handle1stLottery()}>
           🥇 1등 추첨하기
+        </div>
+
+        <div>
+          <div id="open-btn" className="btn" onClick={() => {}}>
+            추첨 열기
+          </div>
+          <div id="close-btn" className="btn" onClick={() => {}}>
+            추첨 닫기
+          </div>
         </div>
       </Wrapper>
     </>
