@@ -7,7 +7,6 @@ import PopupModal from "./Popup";
 import Popup1_1 from "../assets/images/popup1-1.webp";
 import Popup1_2 from "../assets/images/popup1-2.webp";
 import Popup1_3 from "../assets/images/popup1-3.webp";
-import Popup1_4 from "../assets/images/popup1-4.webp";
 import Popup2_1 from "../assets/images/popup2-1.webp";
 import Popup2_2 from "../assets/images/popup2-2.webp";
 
@@ -22,7 +21,7 @@ const EventMiniButton = () => {
         <PopupModal
           viewPopup={(flag: boolean) => setViewPopup1(flag)}
           isClickable={true}
-          imageList={[Popup1_1, Popup1_2, Popup1_3, Popup1_4]}
+          imageList={[Popup1_1, Popup1_2, Popup1_3]}
           tokenName="popup1"
         />
       )}

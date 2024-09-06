@@ -50,7 +50,7 @@ const ZGBoothPage = () => {
     const userId = getUserIdByToken().toString();
     const res = await reqUserData(userId);
     const ok = Number(res.data.code) === API_CODE.SUCCESS;
-    if (ok && isStaff) {
+    if (ok) {
       setIsStaff(res.data.user.staff);
     }
   };
