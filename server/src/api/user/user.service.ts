@@ -79,14 +79,45 @@ export class UserService {
   // API
   async getLottery() {
     try {
-      const randomUser = await this.userEventRepository
-        .createQueryBuilder('user_event')
-        .orderBy('RAND()')
-        .limit(1)
-        .getOne();
+      const userIdList = await this.userEventRepository.find();
+      const targetUserIdList: number[] = [];
+      for (const user of userIdList) {
+        const userId = user.id;
+        const userRow = await this.userRepository.findOne({
+          where: { id: userId },
+        });
+
+        // 20 ~ 25세
+        const age = userRow.age;
+        if (age < 20 || age > 26) {
+          continue;
+        }
+
+        // 추천인 1명 이상
+        const name = userRow.name;
+        const recommandCount = await this.userRepository.count({
+          where: { recommandPerson: name },
+        });
+        if (recommandCount < 1) {
+          continue;
+        }
+
+        targetUserIdList.push(userId);
+      }
+
+      console.log('추첨 이벤트 대상 명단');
+      console.log(targetUserIdList);
+
+      // 추첨
+      const randomIndex = Math.floor(
+        Math.random() * (targetUserIdList.length + 1),
+      );
+      const randomUserId = targetUserIdList[randomIndex];
+
       const user = await this.userRepository.findOne({
-        where: { id: randomUser.id },
+        where: { id: randomUserId },
       });
+
       // 추첨 결과 저장
       await this.lotteryRepository.save({
         id: user.id,
@@ -103,7 +134,7 @@ export class UserService {
   async get1stLottery() {
     try {
       const lotteryList: number[] = [];
-      const randIndex = Math.floor(Math.random() * lotteryList.length);
+      const randIndex = Math.floor(Math.random() * (lotteryList.length + 1));
 
       const user = await this.userRepository.findOne({
         where: { id: lotteryList[randIndex] },
