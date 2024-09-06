@@ -139,13 +139,13 @@ const Wrapper = styled.div`
     justify-content: right;
     align-items: center;
     border-bottom: 1px solid lightgray;
-    padding: 1rem;
+    padding: 1.4rem;
 
     font-size: 1.6rem;
     font-weight: bold;
 
     img {
-      width: 5vw;
+      width: 8vw;
     }
   }
 
