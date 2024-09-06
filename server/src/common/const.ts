@@ -45,6 +45,10 @@ export const LOG_IGNORE_URL_LIST = [
   '/api/user/event/count',
   '/api/user/event/result',
   '/api/user/zg-agree',
+
+  '/api/user/staff-event/result',
+  '/api/user/lottery/get',
+
   '/api/game/enter',
   '/api/game/user/fetch',
   '/api/game/staff/fetch',
@@ -54,10 +58,6 @@ export const LOG_IGNORE_URL_LIST = [
   '/api/game/booth/wait',
   '/api/game/booth/log',
   '/api/game/goods/log',
-  '/api/game/staff/list',
-  '/api/game/staff/recommand-list',
-  '/api/game/staff/goods/log',
-  '/api/game/staff/event/ranking',
 ];
 
 export const LOG_IMPORTANT_URL_LIST = [
@@ -65,6 +65,10 @@ export const LOG_IMPORTANT_URL_LIST = [
   '/api/user/zg-join',
   '/api/user/event/lottery',
   '/api/user/event/1st-lottery',
+  '/api/user/staff-event/calc',
+  '/api/user/staff-event/receive',
+  '/api/user/lottery/on',
+  '/api/user/lottery/off',
   '/api/game/select-booth',
   '/api/game/give-point',
   '/api/game/booth/change',
@@ -72,12 +76,17 @@ export const LOG_IMPORTANT_URL_LIST = [
   '/api/game/monster/attack',
   '/api/game/fullfill-goods',
   '/api/game/receive-goods',
-  '/api/game/staff/receive-goods',
 ];
 
 export const API_WHERE = {
   '/api/user/register': '회원가입',
   '/api/user/zg-join': '제로게임 접수',
+  '/api/user/event/lottery': '추첨 이벤트 당첨자 발표',
+  '/api/user/event/1st-lottery': '추첨 이벤트 1등 당첨자 발표',
+  '/api/user/staff-event/calc': '스탭 이벤트 결과 연산',
+  '/api/user/staff-event/receive': '스탭 이벤트 굿즈 지급',
+  '/api/user/lottery/on': '추첨 이벤트 응모 시작',
+  '/api/user/lottery/off': '추첨 이벤트 응모 초기화',
   '/api/game/select-booth': '부스 선택',
   '/api/game/give-point': '포인트 획득',
   '/api/game/booth/change': '부스 변경',
