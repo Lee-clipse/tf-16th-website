@@ -94,8 +94,7 @@ export class ZerogameController {
   // booth_id, user_id
   async outBooth(@Body() dto: UserBoothDto) {
     const userId = Number(dto.userId);
-    const boothId = dto.boothId;
-    const res = await this.zerogameService.outBooth(userId, boothId);
+    const res = await this.zerogameService.outBooth(userId);
     return res;
   }
 

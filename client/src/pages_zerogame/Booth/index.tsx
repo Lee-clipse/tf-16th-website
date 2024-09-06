@@ -185,6 +185,9 @@ const ZGBoothPage = () => {
             <div id="m-body" className="f-col">
               <div className="m-title">{BOOTH_LIST[selectBoothId].title}</div>
               <div className="m-desc">{BOOTH_LIST[selectBoothId].desc}</div>
+              <div className="w-txt">
+                {selectBoothId === "B5" && "해당 부스는 포인트를 지급하지 않습니다."}
+              </div>
               <div className="b-btn" onClick={() => handleEnterBooth()}>
                 부스 선택
               </div>

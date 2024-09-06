@@ -8,9 +8,9 @@ import GreenStone from "../../assets/images/green_stone.webp";
 import RedStone from "../../assets/images/red_stone.webp";
 import YellowStone from "../../assets/images/yellow_stone.webp";
 import { useNavigate } from "react-router-dom";
-import { BOOTH_LIST, ROUTE_PATH, WAIT_BOOTH_ID } from "../../common/const";
+import { API_CODE, BOOTH_LIST, ROUTE_PATH, WAIT_BOOTH_ID } from "../../common/const";
 import { getUserIdByToken } from "../../common/common";
-import { reqUserGameFetch } from "../../api/zerogame";
+import { reqBoothOut, reqUserGameFetch } from "../../api/zerogame";
 import { ZGUser } from "../../type/type";
 import RefreshIcon from "../../assets/icons/refresh.png";
 import HomeIcon from "../../assets/icons/home.png";
@@ -85,6 +85,15 @@ const ZGHomePage = () => {
     const c3 = Number(boothIndexList[2]) >= 1;
     const c4 = Number(boothIndexList[3]) >= 1;
     return c1 && c2 && c3 && c4;
+  };
+
+  const handleOutBooth = async () => {
+    const userId = getUserIdByToken().toString();
+    const res = await reqBoothOut({ userId });
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      window.location.reload();
+    }
   };
 
   return (
@@ -188,16 +197,19 @@ const ZGHomePage = () => {
 
           <div id="booth-waiting">
             {userData.waitingBoothId === WAIT_BOOTH_ID ? (
-              <div className="next-alert">
+              <div className="next-alert f-col v-center" style={{ gap: ".4rem" }}>
                 <span>[부스 목록]</span>
                 에서 체험할 부스를 선택해주세요!
               </div>
             ) : (
-              <div className="next-alert">
+              <div className="next-alert f-col v-center" style={{ gap: ".4rem" }}>
                 <span>
                   [{userData.waitingBoothId}] {BOOTH_LIST[userData.waitingBoothId].title}
                 </span>{" "}
                 부스로 이동해주세요!
+                <div id="grit-btn" onClick={() => handleOutBooth()}>
+                  부스 퇴장
+                </div>
               </div>
             )}
           </div>

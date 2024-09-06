@@ -99,6 +99,17 @@ export const Wrapper = styled.div`
     }
   }
 
+  #grit-btn {
+    text-align: center;
+    width: 40%;
+    padding: 0.6rem;
+    font-family: ${theme.font.NOTO[6]};
+    font-size: ${theme.font.SIZE.M};
+    color: ${theme.color.WHITE};
+    background-color: ${theme.color.PURPLE};
+    border-radius: 0.6rem;
+  }
+
   #booth-map-box {
     text-align: center;
     margin: 1rem 0;

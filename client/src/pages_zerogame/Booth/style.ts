@@ -209,6 +209,12 @@ export const Modal = styled.div`
       font-family: ${theme.font.NOTO[6]};
     }
 
+    .w-txt {
+      color: ${theme.color.ORANGE};
+      font-size: ${theme.font.SIZE.M};
+      line-height: 2rem;
+    }
+
     .m-desc {
       font-size: ${theme.font.SIZE.M};
       font-family: ${theme.font.NOTO[6]};

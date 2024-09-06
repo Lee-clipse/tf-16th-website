@@ -160,16 +160,22 @@ export class ZerogameService {
   }
 
   // API
-  async outBooth(userId: number, boothId: string) {
+  async outBooth(userId: number) {
     try {
       // 제로게임 기록 업데이트
       const row = await this.zerogameRepository.findOne({ where: { userId } });
       const prevBoothId = row.waitingBoothId;
       row.waitingBoothId = WAIT_BOOTH_ID;
+      const nowBoothLog = row.boothLog;
+      row.boothLog = this.updateBoothLog(nowBoothLog, prevBoothId);
       await this.zerogameRepository.save(row);
 
-      // 부스 기록 갱신
-      await this.mapRepository.delete({ userId, boothId: prevBoothId });
+      // 부스 기록 업데이트
+      const map = await this.mapRepository.findOne({
+        where: { userId, boothId: prevBoothId },
+      });
+      map.cleared = true;
+      await this.mapRepository.save(map);
       return { code: API_CODE.SUCCESS };
     } catch (error) {
       return { code: API_CODE.INVALID };
