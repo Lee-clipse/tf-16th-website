@@ -31,7 +31,7 @@ export class UserController {
   @ApiOperation({
     summary: '사용자 등록',
   })
-  async verifyProof(@Body() dto: UserRegisterDto) {
+  async register(@Body() dto: UserRegisterDto) {
     const result = await this.userService.register(dto);
     return result;
   }
