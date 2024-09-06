@@ -61,6 +61,10 @@ const ZGHomePage = () => {
 
   const fetchUserData = async () => {
     const userId = getUserIdByToken().toString();
+    if (userId === "0") {
+      navigate(ROUTE_PATH.MAIN);
+      return;
+    }
     const res = await reqUserGameFetch(userId);
     const resUserData = res.data.user;
     if (resUserData) {
@@ -207,9 +211,11 @@ const ZGHomePage = () => {
                   [{userData.waitingBoothId}] {BOOTH_LIST[userData.waitingBoothId].title}
                 </span>{" "}
                 부스로 이동해주세요!
-                <div id="grit-btn" onClick={() => handleOutBooth()}>
-                  부스 퇴장
-                </div>
+                {userData.waitingBoothId === "B5" && (
+                  <div id="grit-btn" onClick={() => handleOutBooth()}>
+                    부스 퇴장
+                  </div>
+                )}
               </div>
             )}
           </div>

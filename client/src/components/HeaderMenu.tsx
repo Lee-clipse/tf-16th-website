@@ -177,17 +177,6 @@ const HeaderMenu = () => {
             >
               연혁
             </PlainLink>
-            <PlainLink
-              to={ROUTE_PATH.ZG_LOGO}
-              onClick={() => {
-                closeMenu();
-              }}
-              className={`tab f-spb v-center h-center ${
-                location.pathname === ROUTE_PATH.ZG_LOGO ? "active" : ""
-              }`}
-            >
-              제로게임
-            </PlainLink>
 
             <PlainLink
               to={"/"}
