@@ -5,10 +5,16 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { UserEventEntity } from 'src/entity/user-event.entity';
 import { LotteryEntity } from 'src/entity/lottery.entity';
+import { StaffEventEntity } from 'src/entity/staff-event.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserEntity, UserEventEntity, LotteryEntity]),
+    TypeOrmModule.forFeature([
+      UserEntity,
+      UserEventEntity,
+      LotteryEntity,
+      StaffEventEntity,
+    ]),
   ],
   controllers: [UserController],
   providers: [UserService],

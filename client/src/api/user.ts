@@ -58,6 +58,22 @@ export const reqZgAgree = async (id: number, agree: number) => {
   return res;
 };
 
+export const reqStaffEventCalc = async () => {
+  const res = await axios.get(`${API_HOST}/user/staff-event/calc`);
+  return res;
+};
+
+export const reqStaffEventResult = async () => {
+  const res = await axios.get(`${API_HOST}/user/staff-event/result`);
+  // { code, staffEventResult }
+  return res;
+};
+
+export const reqStaffGoodsReceive = async (id: number) => {
+  const res = await axios.get(`${API_HOST}/user/staff-event/receive?id=${id}`);
+  return res;
+};
+
 /*
   const [isLoading, setIsLoading] = useState(false);
 

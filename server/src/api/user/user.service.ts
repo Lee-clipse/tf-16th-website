@@ -6,6 +6,7 @@ import { UserRegisterDto } from 'src/dto/register.dto';
 import { API_CODE } from 'src/common/const';
 import { UserEventEntity } from 'src/entity/user-event.entity';
 import { LotteryEntity } from 'src/entity/lottery.entity';
+import { StaffEventEntity } from 'src/entity/staff-event.entity';
 
 @Injectable()
 export class UserService {
@@ -16,6 +17,8 @@ export class UserService {
     private userEventRepository: Repository<UserEventEntity>,
     @InjectRepository(LotteryEntity)
     private lotteryRepository: Repository<LotteryEntity>,
+    @InjectRepository(StaffEventEntity)
+    private staffEventRepository: Repository<StaffEventEntity>,
   ) {}
 
   // API
@@ -138,6 +141,121 @@ export class UserService {
       user.zgAgree = agree;
       await this.userRepository.save(user);
       return { code: API_CODE.SUCCESS, user };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  // 최초 1회만 작동
+  async calcStaffEventResult() {
+    try {
+      console.log('스탭 이벤트 연산');
+      const staffEventList = await this.staffEventRepository.find();
+      for (const staff of staffEventList) {
+        const staffName = staff.name;
+        const staffGroup = staff.group;
+
+        // 추천인 수 추출
+        const recommandCount = await this.userRepository
+          .createQueryBuilder('user')
+          .where('user.recommand_person = :staffName', {
+            staffName,
+          })
+          .andWhere('user.created_at BETWEEN :startDate AND :endDate', {
+            startDate: `2024-09-07T12:00:00.000Z`,
+            endDate: `2024-09-07T18:15:00.000Z`,
+          })
+          .getCount();
+
+        // 그룹별 지급 조건 연산
+        let goodsSet = '-';
+        if (
+          staffGroup === '동상교회' ||
+          staffGroup === '외부인' ||
+          staffGroup === '청소년'
+        ) {
+          if (recommandCount >= 5) {
+            goodsSet = 'A';
+          } else if (recommandCount >= 3) {
+            goodsSet = 'B';
+          } else if (recommandCount >= 2) {
+            goodsSet = 'C';
+          } else if (recommandCount >= 1) {
+            goodsSet = 'D';
+          }
+        } else if (staffGroup === '장년부') {
+          if (recommandCount >= 50) {
+            goodsSet = 'A';
+          } else if (recommandCount >= 30) {
+            goodsSet = 'B';
+          } else if (recommandCount >= 20) {
+            goodsSet = 'C';
+          } else if (recommandCount >= 10) {
+            goodsSet = 'D';
+          }
+        } else if (staffGroup === '청년부') {
+          if (recommandCount >= 1024) {
+            goodsSet = 'A';
+          } else if (recommandCount >= 512) {
+            goodsSet = 'B';
+          } else if (recommandCount >= 256) {
+            goodsSet = 'C';
+          } else if (recommandCount >= 128) {
+            goodsSet = 'D';
+          }
+        }
+
+        // 조회를 위한 저장
+        staff.count = recommandCount;
+        staff.goods = goodsSet;
+        await this.staffEventRepository.update({ id: staff.id }, staff);
+
+        console.log(staffName, staffGroup, recommandCount, goodsSet);
+      }
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.INVALID };
+    }
+  }
+
+  // API
+  async getStaffEventResult() {
+    try {
+      const AGoodsList = [];
+      const BGoodsList = [];
+      const CGoodsList = [];
+      const DGoodsList = [];
+
+      const staffEventList = await this.staffEventRepository.find();
+      for (const staff of staffEventList) {
+        if (staff.goods !== '-') {
+          const goods = staff.goods;
+          if (goods === 'A') {
+            AGoodsList.push(staff);
+          } else if (goods === 'B') {
+            BGoodsList.push(staff);
+          } else if (goods === 'C') {
+            CGoodsList.push(staff);
+          } else if (goods === 'D') {
+            DGoodsList.push(staff);
+          }
+        }
+      }
+
+      const staffEventResult = [AGoodsList, BGoodsList, CGoodsList, DGoodsList];
+      return { code: API_CODE.SUCCESS, staffEventResult };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  async setStaffGoodsReceive(id: number) {
+    try {
+      const staff = await this.staffEventRepository.findOne({ where: { id } });
+      staff.goodsReceived = true;
+      await this.staffEventRepository.update({ id }, staff);
+      return { code: API_CODE.SUCCESS };
     } catch (error) {
       return { code: API_CODE.NOT_FOUND };
     }

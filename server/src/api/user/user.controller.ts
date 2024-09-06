@@ -91,4 +91,28 @@ export class UserController {
   async setZgAgree(@Query('id') id: number, @Query('agree') agree: number) {
     return await this.userService.setZgAgree(id, agree);
   }
+
+  @Get('/staff-event/calc')
+  @ApiOperation({
+    summary: '스탭 이벤트 결과 연산',
+  })
+  async calcStaffEventResult() {
+    return await this.userService.calcStaffEventResult();
+  }
+
+  @Get('/staff-event/result')
+  @ApiOperation({
+    summary: '스탭 이벤트 결과 조회',
+  })
+  async getStaffEventResult() {
+    return await this.userService.getStaffEventResult();
+  }
+
+  @Get('/staff-event/receive')
+  @ApiOperation({
+    summary: '스탭 이벤트 굿즈 증정 체크',
+  })
+  async setStaffGoodsReceive(@Query('id') id: number) {
+    return await this.userService.setStaffGoodsReceive(id);
+  }
 }

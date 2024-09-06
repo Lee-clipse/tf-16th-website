@@ -17,6 +17,12 @@ export class StaffEventEntity {
   @Column({ type: 'boolean', name: 'goods_received', default: false })
   goodsReceived: boolean;
 
+  @PrimaryColumn({ type: 'int', name: 'count', default: 0 })
+  count: number;
+
+  @Column({ type: 'varchar', name: 'goods', default: '-' })
+  goods: string;
+
   @UpdateDateColumn({
     type: 'timestamp',
     name: 'received_at',

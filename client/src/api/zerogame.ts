@@ -114,33 +114,3 @@ export const reqGoodsLogList = async () => {
   // { code, goodsLogList }
   return res;
 };
-
-export const reqEventStaffList = async () => {
-  const res = await axios.get(`${API_HOST}/game/staff/list`);
-  // { code, staffList }
-  return res;
-};
-
-export const reqStaffReceiveGoods = async (staffId: number) => {
-  const res = await axios.get(`${API_HOST}/game/staff/receive-goods?staff_id=${staffId}`);
-  // { code }
-  return res;
-};
-
-export const reqRecommandList = async (staffId: number) => {
-  const res = await axios.get(`${API_HOST}/game/staff/recommand-list?staff_id=${staffId}`);
-  // { code, recommandList }
-  return res;
-};
-
-export const reqStaffGoodsLogList = async () => {
-  const res = await axios.get(`${API_HOST}/game/staff/goods/log`);
-  // { code, goodsLogList }
-  return res;
-};
-
-export const reqStaffEventRanking = async () => {
-  const res = await axios.get(`${API_HOST}/game/staff/event/ranking`);
-  // { code, ranking }
-  return res;
-};

@@ -25,98 +25,65 @@ export const Wrapper = styled.div`
     margin-bottom: 1rem;
   }
 
-  #s-people {
-    #s-p-header {
-      margin: 0 2rem 2rem 2rem;
-      #s-p-title {
-        text-align: center;
-        font-family: ${theme.font.NOTO[8]};
-        font-size: ${theme.font.SIZE.ML};
-        color: ${theme.color.WHITE};
-        color: ${theme.color.ORANGE};
-      }
+  #g-r-row {
+    width: 100%;
+    padding: 0 2rem;
+    margin: 2rem 0;
+    gap: 3rem;
 
-      #s-p-log-btn {
-        background-color: ${theme.color.MID_GRAY};
-        font-family: ${theme.font.NOTO[5]};
-        font-size: ${theme.font.SIZE.SM};
-        color: ${theme.color.WHITE};
-        padding: 1rem;
-        border-radius: 0.4rem;
-        box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
-      }
-    }
-
-    #s-p-list {
-      margin: 0 2rem;
-      border: 2px solid lightgray;
-      border-radius: 1rem;
-      height: 46vh;
-      overflow: scroll;
-      margin-bottom: 1rem;
+    .g-box {
       background-color: ${theme.color.WHITE};
+      border-radius: 0.4rem;
+      padding: 1.4rem 1.4rem;
+      text-align: center;
 
-      .received {
-        background-color: ${theme.color.GRAY};
+      .g {
+        font-family: ${theme.font.NOTO[6]};
+        font-size: ${theme.font.SIZE.L};
       }
 
-      .s-p-item {
-        border-bottom: 2px solid lightgray;
-        padding: 0.8rem 1.4rem;
-
-        .s-p-name {
-          font-family: ${theme.font.NOTO[6]};
-          font-size: ${theme.font.SIZE.M};
-        }
-
-        .s-p-point-btn {
-          background-color: ${theme.color.TEAL_BLUE};
-          font-family: ${theme.font.NOTO[6]};
-          color: ${theme.color.WHITE};
-          padding: 0.6rem;
-          border-radius: 0.6rem;
-          font-size: ${theme.font.SIZE.M};
-          box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .s-p-out-btn {
-          margin-left: 1rem;
-          font-family: ${theme.font.NOTO[7]};
-          font-size: ${theme.font.SIZE.SM};
-          color: ${theme.color.MID_GRAY};
-          text-decoration: underline;
-        }
+      .gn {
+        font-family: ${theme.font.NOTO[6]};
+        font-size: ${theme.font.SIZE.M};
+        margin: 0 1rem 0 1rem;
       }
     }
   }
 
-  #search-row {
-    margin-bottom: 1.4rem;
-    .s-row {
-      margin: 0 2rem;
-    }
-    input {
-      border: 2px solid lightgray;
-      font-size: ${theme.font.SIZE.SM};
-      font-family: ${theme.font.NOTO[6]};
-      width: 100%;
-      padding: 1rem;
-      border-radius: 0.6rem;
-    }
-    input::placeholder {
-      font-size: ${theme.font.SIZE.SM};
-      font-family: ${theme.font.NOTO[6]};
-      color: ${theme.color.MID_GRAY};
-    }
-    .s-btn {
-      background-color: ${theme.color.MID_GRAY};
-      width: 5rem;
-      padding: 0.4rem;
-      margin-left: 1rem;
-      border-radius: 0.6rem;
-      box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
-      img {
-        width: 60%;
+  #s-p-list {
+    margin: 0 2rem;
+    border: 2px solid lightgray;
+    border-radius: 1rem;
+    height: 48vh;
+    overflow: scroll;
+    margin-bottom: 1rem;
+    background-color: ${theme.color.WHITE};
+
+    .s-p-item {
+      border-bottom: 2px solid lightgray;
+      padding: 0.8rem 1.4rem;
+
+      .s-p-name {
+        font-family: ${theme.font.NOTO[6]};
+        font-size: ${theme.font.SIZE.M};
+      }
+
+      .s-p-point-btn {
+        background-color: ${theme.color.TEAL_BLUE};
+        font-family: ${theme.font.NOTO[6]};
+        color: ${theme.color.WHITE};
+        padding: 0.6rem;
+        border-radius: 0.6rem;
+        font-size: ${theme.font.SIZE.M};
+        box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .s-p-out-btn {
+        margin-left: 1rem;
+        font-family: ${theme.font.NOTO[7]};
+        font-size: ${theme.font.SIZE.SM};
+        color: ${theme.color.MID_GRAY};
+        text-decoration: underline;
       }
     }
   }
@@ -127,39 +94,23 @@ export const Wrapper = styled.div`
     bottom: 0%;
     padding: 2rem 2rem 2rem 2rem;
     text-align: center;
-  }
 
-  #guide-btn {
-    background-color: ${theme.color.GREEN};
-    width: 16vw;
-    height: 16vw;
-    border-radius: 1rem;
-    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
-
-    img {
-      width: 2.6rem;
+    span {
+      font-size: ${theme.font.SIZE.M};
+      font-family: ${theme.font.NOTO[5]};
+      line-height: 2rem;
     }
-  }
 
-  #booth-list-btn {
-    font-size: ${theme.font.SIZE.ML};
-    font-family: ${theme.font.NOTO[7]};
-    color: ${theme.color.WHITE};
-    background-color: ${theme.color.ORANGE};
-    padding: 1rem 1.4rem;
-    border-radius: 1rem;
-    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
-  }
-
-  #refresh-btn {
-    background-color: ${theme.color.GREEN};
-    width: 16vw;
-    height: 16vw;
-    border-radius: 50%;
-    box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
-
-    img {
-      width: 2.2rem;
+    #c-btn {
+      margin-top: 1rem;
+      font-size: ${theme.font.SIZE.ML};
+      font-family: ${theme.font.NOTO[7]};
+      color: ${theme.color.WHITE};
+      background-color: ${theme.color.PURPLE};
+      padding: 1rem 1.4rem;
+      border-radius: 1rem;
+      box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
+      width: 100%;
     }
   }
 `;
@@ -255,22 +206,21 @@ export const Modal = styled.div`
     .r-row {
       font-family: ${theme.font.NOTO[5]};
       font-size: ${theme.font.SIZE.M};
-      color: ${theme.color.MID_GRAY};
-      margin-top: 1rem;
-      gap: 0.8rem;
+      color: ${theme.color.BLACK};
+      margin-top: 2rem;
+      gap: 0.6rem;
+
+      .g-btn {
+        color: ${theme.color.BLACK};
+        text-align: center;
+        border: 2px solid ${theme.color.BLACK};
+        border-radius: 0.4rem;
+        padding: 0.6rem 0;
+      }
     }
 
-    .r-title {
-      margin-top: 1rem;
-      font-size: ${theme.font.SIZE.M};
-    }
-
-    .r-list {
-      font-family: ${theme.font.NOTO[5]};
-      font-size: ${theme.font.SIZE.M};
-      color: ${theme.color.MID_GRAY};
-      gap: 1rem;
-      margin-top: 1rem;
+    .r-row-x {
+      color: ${theme.color.GRAY};
     }
 
     #m-b-title {
