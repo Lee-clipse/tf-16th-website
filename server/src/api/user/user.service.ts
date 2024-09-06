@@ -7,6 +7,7 @@ import { API_CODE } from 'src/common/const';
 import { UserEventEntity } from 'src/entity/user-event.entity';
 import { LotteryEntity } from 'src/entity/lottery.entity';
 import { StaffEventEntity } from 'src/entity/staff-event.entity';
+import { LotterySignEntity } from 'src/entity/lottery-sign.entity';
 
 @Injectable()
 export class UserService {
@@ -19,6 +20,8 @@ export class UserService {
     private lotteryRepository: Repository<LotteryEntity>,
     @InjectRepository(StaffEventEntity)
     private staffEventRepository: Repository<StaffEventEntity>,
+    @InjectRepository(LotterySignEntity)
+    private lotterySignRepository: Repository<LotterySignEntity>,
   ) {}
 
   // API
@@ -245,6 +248,51 @@ export class UserService {
 
       const staffEventResult = [AGoodsList, BGoodsList, CGoodsList, DGoodsList];
       return { code: API_CODE.SUCCESS, staffEventResult };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async setLotteryOn() {
+    try {
+      const row = await this.lotterySignRepository.findOne({
+        where: { pk: 0 },
+      });
+      row.flag = true;
+      await this.lotterySignRepository.update({ pk: 0 }, row);
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async setLotteryOff() {
+    try {
+      // flag 초기화
+      const row = await this.lotterySignRepository.findOne({
+        where: { pk: 0 },
+      });
+      row.flag = false;
+      await this.lotterySignRepository.update({ pk: 0 }, row);
+
+      // 기록 초기화
+      await this.userEventRepository.clear();
+      await this.lotteryRepository.clear();
+      return { code: API_CODE.SUCCESS };
+    } catch (error) {
+      return { code: API_CODE.NOT_FOUND };
+    }
+  }
+
+  // API
+  async getLotteryFlag() {
+    try {
+      const row = await this.lotterySignRepository.findOne({
+        where: { pk: 0 },
+      });
+      return { code: API_CODE.SUCCESS, flag: row.flag };
     } catch (error) {
       return { code: API_CODE.NOT_FOUND };
     }

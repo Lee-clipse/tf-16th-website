@@ -24,29 +24,34 @@ export const reqJoinZerogame = async (id: string) => {
   return res;
 };
 
+// 응모하기
 export const reqJoinEvent = async (id: string) => {
   const res = await axios.get(`${API_HOST}/user/event/join?id=${id}`);
   return res;
 };
 
+// 사회자: 추첨하기
 export const reqLottery = async () => {
   const res = await axios.get(`${API_HOST}/user/event/lottery`);
   // { code, user }
   return res;
 };
 
+// 사회자: 1등 추첨하기
 export const req1stLottery = async () => {
   const res = await axios.get(`${API_HOST}/user/event/1st-lottery`);
   // { code }
   return res;
 };
 
+// 사회자: 응모 참여자 수
 export const reqEventCount = async () => {
   const res = await axios.get(`${API_HOST}/user/event/count`);
   // { code, count }
   return res;
 };
 
+// 응모 결과 보기
 export const reqEventResult = async () => {
   const res = await axios.get(`${API_HOST}/user/event/result`);
   // { code, user }
@@ -71,6 +76,22 @@ export const reqStaffEventResult = async () => {
 
 export const reqStaffGoodsReceive = async (id: number) => {
   const res = await axios.get(`${API_HOST}/user/staff-event/receive?id=${id}`);
+  return res;
+};
+
+export const reqSetLotteryOn = async () => {
+  const res = await axios.get(`${API_HOST}/user/lottery/on`);
+  return res;
+};
+
+export const reqSetLotteryOff = async () => {
+  const res = await axios.get(`${API_HOST}/user/lottery/off`);
+  return res;
+};
+
+export const reqGetLotteryFlag = async () => {
+  const res = await axios.get(`${API_HOST}/user/lottery/get`);
+  // { code, flag }
   return res;
 };
 

@@ -6,6 +6,7 @@ import { UserService } from './user.service';
 import { UserEventEntity } from 'src/entity/user-event.entity';
 import { LotteryEntity } from 'src/entity/lottery.entity';
 import { StaffEventEntity } from 'src/entity/staff-event.entity';
+import { LotterySignEntity } from 'src/entity/lottery-sign.entity';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { StaffEventEntity } from 'src/entity/staff-event.entity';
       UserEventEntity,
       LotteryEntity,
       StaffEventEntity,
+      LotterySignEntity,
     ]),
   ],
   controllers: [UserController],

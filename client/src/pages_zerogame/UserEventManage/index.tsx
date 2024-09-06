@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "./styled";
 import { useNavigate } from "react-router-dom";
-import { req1stLottery, reqEventCount, reqLottery } from "../../api/user";
+import {
+  req1stLottery,
+  reqEventCount,
+  reqLottery,
+  reqSetLotteryOff,
+  reqSetLotteryOn,
+} from "../../api/user";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import HeaderMenu from "../../components/HeaderMenu";
 import Loading from "../../components/Loading";
+import { alert } from "../../common/common";
 
 const UserEventManagePage = () => {
   const navigate = useNavigate();
@@ -40,11 +47,22 @@ const UserEventManagePage = () => {
     }
   };
 
-  const handleEventOpen = async () => {};
+  const handleOpenEvent = async () => {
+    const res = await reqSetLotteryOn();
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      alert("지금부터 응모 시작!", "success");
+      window.location.reload();
+    }
+  };
 
-  const handleEventClose = async () => {
-    // APIO
-    // 데이터 삭제
+  const handleCloseEvent = async () => {
+    const res = await reqSetLotteryOff();
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      alert("응모 종료!", "success");
+      window.location.reload();
+    }
   };
 
   return (
@@ -65,13 +83,11 @@ const UserEventManagePage = () => {
           🥇 1등 추첨하기
         </div>
 
-        <div>
-          <div id="open-btn" className="btn" onClick={() => {}}>
-            추첨 열기
-          </div>
-          <div id="close-btn" className="btn" onClick={() => {}}>
-            추첨 닫기
-          </div>
+        <div id="open-btn" className="btn" onClick={() => handleOpenEvent()}>
+          🏁 추첨 열기
+        </div>
+        <div id="cls-btn" className="btn" onClick={() => handleCloseEvent()}>
+          ⛔ 추첨 닫고 초기화
         </div>
       </Wrapper>
     </>

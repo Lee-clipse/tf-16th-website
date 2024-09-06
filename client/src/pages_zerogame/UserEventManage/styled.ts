@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const Wrapper = styled.div`
-  padding: 16rem 2rem 12rem 2rem;
+  padding: 14rem 2rem 12rem 2rem;
   gap: 3rem;
 
   font-size: ${theme.font.SIZE.XL};
@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
     padding: 1rem;
     color: ${theme.color.WHITE};
     font-family: ${theme.font.NOTO[6]};
-    font-size: ${theme.font.SIZE.XL};
+    font-size: ${theme.font.SIZE.L};
     box-shadow: 5px 0 7px rgba(0, 0, 0, 0.6);
   }
 
@@ -36,5 +36,16 @@ export const Wrapper = styled.div`
 
   #r-btn {
     background-color: ${theme.color.PURPLE};
+  }
+
+  #open-btn {
+    border: 2px solid ${theme.color.BLACK};
+    color: ${theme.color.BLACK};
+    margin-top: 2rem;
+  }
+
+  #cls-btn {
+    border: 2px solid ${theme.color.BLACK};
+    color: ${theme.color.BLACK};
   }
 `;

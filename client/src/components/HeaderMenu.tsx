@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ROUTE_PATH, WEB_WIDTH } from "../common/const";
-import { getUserIdByToken, verifyByToken } from "../common/common";
-import { reqUserData } from "../api/user";
+import { API_CODE, ROUTE_PATH, WEB_WIDTH } from "../common/const";
+import { alert, getUserIdByToken, verifyByToken } from "../common/common";
+import { reqGetLotteryFlag, reqUserData } from "../api/user";
 import { User } from "../type/type";
 import isMobile from "is-mobile";
 import MenuBar from "../assets/icons/menu-bar.png";
@@ -87,10 +87,17 @@ const HeaderMenu = () => {
 
   // [추첨 이벤트] 페이지 클릭할때마다
   const handleEnterUserEvent = async () => {
-    // flag 값 받아오기
-    // - true라면 라우팅
-    // - false라면 guardAlert
-    closeMenu();
+    const res = await reqGetLotteryFlag();
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      const flag = res.data.flag;
+      closeMenu();
+      if (flag) {
+        navigate(ROUTE_PATH.USER_EVENT);
+      } else {
+        alert("행사 중의 추첨 이벤트를 기대해주세요!", "info");
+      }
+    }
   };
 
   return (
@@ -183,9 +190,9 @@ const HeaderMenu = () => {
             </PlainLink>
 
             <PlainLink
-              to={ROUTE_PATH.USER_EVENT}
+              to={"/"}
               onClick={() => handleEnterUserEvent()}
-              className={`tab f-spb v-center h-center ${
+              className={`tab f-spb v-center h-center h ${
                 location.pathname === ROUTE_PATH.USER_EVENT ? "active" : ""
               }`}
             >
@@ -291,6 +298,11 @@ const SideBar = styled.div`
 
   .tab {
     padding: 1.2rem 0;
+  }
+
+  .h {
+    color: ${theme.color.ORANGE};
+    font-family: ${theme.font.NOTO[6]};
   }
 
   #welcome-text {

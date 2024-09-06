@@ -115,4 +115,28 @@ export class UserController {
   async setStaffGoodsReceive(@Query('id') id: number) {
     return await this.userService.setStaffGoodsReceive(id);
   }
+
+  @Get('/lottery/on')
+  @ApiOperation({
+    summary: '사용자 이벤트 시작',
+  })
+  async setLotteryOn() {
+    return await this.userService.setLotteryOn();
+  }
+
+  @Get('/lottery/off')
+  @ApiOperation({
+    summary: '사용자 이벤트 종료 및 초기화',
+  })
+  async setLotteryOff() {
+    return await this.userService.setLotteryOff();
+  }
+
+  @Get('/lottery/get')
+  @ApiOperation({
+    summary: '사용자 이벤트 시작 체크',
+  })
+  async getLotteryFlag() {
+    return await this.userService.getLotteryFlag();
+  }
 }

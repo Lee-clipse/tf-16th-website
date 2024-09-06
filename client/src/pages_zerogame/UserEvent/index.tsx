@@ -3,7 +3,7 @@ import { Wrapper } from "./styled";
 import { User } from "../../type/type";
 import { alert, getUserIdByToken } from "../../common/common";
 import { useNavigate } from "react-router-dom";
-import { reqJoinEvent, reqUserData } from "../../api/user";
+import { reqGetLotteryFlag, reqJoinEvent, reqUserData } from "../../api/user";
 import { API_CODE, ROUTE_PATH } from "../../common/const";
 import HeaderMenu from "../../components/HeaderMenu";
 import Loading from "../../components/Loading";
@@ -16,15 +16,30 @@ const UserEventPage = () => {
 
   useEffect(() => {
     fetchUserData();
+    fetchFlag();
   }, []);
 
   const fetchUserData = async () => {
     const userId = getUserIdByToken().toString();
     if (Number(userId) === 0) {
+      alert("로그인 후 이용 가능합니다!", "info");
       navigate(ROUTE_PATH.JOIN);
+      return;
     }
     const res = await reqUserData(userId);
     setUserData(res.data.user);
+  };
+
+  const fetchFlag = async () => {
+    const res = await reqGetLotteryFlag();
+    const ok = Number(res.data.code) === API_CODE.SUCCESS;
+    if (ok) {
+      const flag = res.data.flag;
+      if (!flag) {
+        navigate(ROUTE_PATH.MAIN);
+        return;
+      }
+    }
   };
 
   const handleButtonClick = async () => {

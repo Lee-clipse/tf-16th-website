@@ -17,6 +17,7 @@ import { LoggerMiddleware } from './pipe/logger.middleware';
 import { StaffEventEntity } from './entity/staff-event.entity';
 import { UserEventEntity } from './entity/user-event.entity';
 import { LotteryEntity } from './entity/lottery.entity';
+import { LotterySignEntity } from './entity/lottery-sign.entity';
 
 const winstonFormat = winston.format.combine(
   winston.format.colorize(),
@@ -50,6 +51,7 @@ const winstonFormat = winston.format.combine(
         UserEventEntity,
         ZerogameEntity,
         LotteryEntity,
+        LotterySignEntity,
       ],
       synchronize: true,
       logging: false,
