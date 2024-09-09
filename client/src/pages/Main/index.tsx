@@ -44,8 +44,9 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 import FloatBottomButton from "../../components/FloatBottomButton";
 import Banner from "../../components/Banner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopupModal from "../../components/Popup";
+import { deleteToken } from "../../common/common";
 
 const MainPage = () => {
   const navigate = useNavigate();

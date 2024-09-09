@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserIdByToken, verifyByToken } from "../common/common";
+import { deleteToken, getUserIdByToken, guardAlert, verifyByToken } from "../common/common";
 import WideButton from "./WideButton";
 import { API_CODE, ROUTE_PATH } from "../common/const";
 import theme from "../styles/theme";
@@ -15,6 +15,9 @@ const FloatBottomButton = () => {
   const [isStaff, setIsStaff] = useState<boolean>(false);
 
   useEffect(() => {
+    deleteToken();
+    return;
+
     const isTokenAlive = verifyByToken();
     setIsLogin(isTokenAlive);
     if (isTokenAlive) {
@@ -40,6 +43,16 @@ const FloatBottomButton = () => {
   };
 
   const setFloatButtonComponent = () => {
+    return (
+      <div className="h-center v-center" onClick={() => guardAlert()}>
+        <WideButton
+          text="내년에 또 만나요! 👋"
+          backgroundColor={theme.color.MID_GRAY}
+          textColor={theme.color.WHITE}
+        />
+      </div>
+    );
+
     // 미로그인이라면 ->  참가 버튼
     if (!isLogin) {
       return (

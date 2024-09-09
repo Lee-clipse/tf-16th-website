@@ -24,7 +24,7 @@ export const alert = (title: string, icon: SweetAlertIcon | undefined) => {
 
 export const guardAlert = () => {
   Toast.fire({
-    title: "추후 업데이트를 기다려주세요!",
+    title: "내년의 청건부산을 기대해주세요!",
     icon: "info",
   });
 };
