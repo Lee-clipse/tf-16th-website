@@ -49,7 +49,20 @@ const PopupModal = ({ viewPopup, isClickable, imageList, tokenName }: any) => {
           <div id="m-wrapper">
             <div id="m-body">
               <div>
-                <ImageContainer className="popup" {...handlers} currentIndex={currentIndex}>
+                <ImageContainer
+                  className="popup"
+                  {...handlers}
+                  currentIndex={currentIndex}
+                  onClick={() => {
+                    if (tokenName === "popup2") {
+                      window.open(
+                        "https://www.youtube.com/watch?v=XMHbI7kejuw&t=47s&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
+                        "_blank",
+                        "noopener, noreferrer"
+                      );
+                    }
+                  }}
+                >
                   {imageList.map((image: string, index: Key) => (
                     <img key={index} src={image} alt={`Slide ${index}`} />
                   ))}

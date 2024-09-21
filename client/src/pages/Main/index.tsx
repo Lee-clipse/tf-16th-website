@@ -21,12 +21,10 @@ import YoutubeThumbnail1 from "../../assets/images/youtube_1.png";
 import YoutubeThumbnail2 from "../../assets/images/youtube_2.png";
 import YoutubeThumbnail3 from "../../assets/images/youtube_3.png";
 import YoutubeThumbnail4 from "../../assets/images/youtube_4.png";
-import Popup1_1 from "../../assets/images/popup1-1.webp";
-import Popup1_2 from "../../assets/images/popup1-2.webp";
-import Popup1_3 from "../../assets/images/popup1-3.webp";
-import Popup1_4 from "../../assets/images/popup1-4.webp";
-import Popup2_1 from "../../assets/images/popup2-1.webp";
-import Popup2_2 from "../../assets/images/popup2-2.webp";
+import YoutubeThumbnail5 from "../../assets/images/youtube_5.webp";
+import Popup1_1 from "../../assets/images/b_poster01.webp";
+import Popup1_2 from "../../assets/images/b_poster02.webp";
+import Popup1_3 from "../../assets/images/b_poster03.webp";
 import Section1BG from "../../assets/images/section1_bg.webp";
 import IconTalk from "../../assets/icons/talk.png";
 import IconDebate from "../../assets/icons/debate.png";
@@ -47,6 +45,26 @@ import Banner from "../../components/Banner";
 import { useEffect, useState } from "react";
 import PopupModal from "../../components/Popup";
 import { deleteToken } from "../../common/common";
+import YouTube from "react-youtube";
+
+{
+  /* <YouTube
+videoId="XMHbI7kejuw" //동영상 주소
+opts={{
+  width: "100%",
+  height: "270px",
+  playerVars: {
+    autoplay: 0, //자동 재생 여부
+    modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+    loop: 1, //반복 재생
+    playlist: "auAQ_A--c5I", //반복 재생으로 재생할 플레이 리스트
+  },
+}}
+onReady={(e) => {
+  e.target.mute(); //소리 끔
+}}
+/> */
+}
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -123,15 +141,17 @@ const MainPage = () => {
         <PopupModal
           viewPopup={(flag: boolean) => setViewPopup1(flag)}
           isClickable={false}
-          imageList={[Popup1_1, Popup1_2, Popup1_3, Popup1_4]}
+          imageList={[Popup1_1, Popup1_2, Popup1_3]}
           tokenName="popup1"
         />
       )}
+
+      {/* 팝업 2 */}
       {viewPopup2 && (
         <PopupModal
           viewPopup={(flag: boolean) => setViewPopup2(flag)}
           isClickable={false}
-          imageList={[Popup2_1, Popup2_2]}
+          imageList={[YoutubeThumbnail5]}
           tokenName="popup2"
         />
       )}

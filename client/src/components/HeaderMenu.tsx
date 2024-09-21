@@ -180,7 +180,7 @@ const HeaderMenu = () => {
             >
               연혁
             </PlainLink>
-
+            {/* 
             <PlainLink
               to={"/"}
               onClick={() => handleEnterUserEvent()}
@@ -189,7 +189,7 @@ const HeaderMenu = () => {
               }`}
             >
               추첨 이벤트
-            </PlainLink>
+            </PlainLink> */}
 
             {isLogin && (
               <PlainLink
