@@ -8,6 +8,7 @@ import LeftArrow from "../assets/icons/left-arrow-black.png";
 import RightArrow from "../assets/icons/right-arrow-black.png";
 import { FADEIN_ANIMATION, WEB_WIDTH } from "../common/const";
 import isMobile from "is-mobile";
+import YouTube from "react-youtube";
 
 const PopupModal = ({ viewPopup, isClickable, imageList, tokenName }: any) => {
   const [isPopupValid, setIsPopupValid] = useState<boolean>(false);
@@ -41,6 +42,25 @@ const PopupModal = ({ viewPopup, isClickable, imageList, tokenName }: any) => {
     setPopupToken(tokenName);
   };
 
+  {
+    /* <YouTube
+  videoId="XMHbI7kejuw" //동영상 주소
+  opts={{
+    width: "100%",
+    height: "270px",
+    playerVars: {
+      autoplay: 0, //자동 재생 여부
+      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+      loop: 1, //반복 재생
+      playlist: "auAQ_A--c5I", //반복 재생으로 재생할 플레이 리스트
+    },
+  }}
+  onReady={(e) => {
+    e.target.mute(); //소리 끔
+  }}
+  /> */
+  }
+
   return (
     <>
       {!isPopupValid && (
@@ -49,24 +69,41 @@ const PopupModal = ({ viewPopup, isClickable, imageList, tokenName }: any) => {
           <div id="m-wrapper">
             <div id="m-body">
               <div>
-                <ImageContainer
-                  className="popup"
-                  {...handlers}
-                  currentIndex={currentIndex}
-                  onClick={() => {
-                    if (tokenName === "popup2") {
-                      window.open(
-                        "https://www.youtube.com/watch?v=XMHbI7kejuw&t=47s&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
-                        "_blank",
-                        "noopener, noreferrer"
-                      );
-                    }
-                  }}
-                >
-                  {imageList.map((image: string, index: Key) => (
-                    <img key={index} src={image} alt={`Slide ${index}`} />
-                  ))}
-                </ImageContainer>
+                {tokenName === "popup2" ? (
+                  <YouTube
+                    videoId="XMHbI7kejuw" //동영상 주소
+                    opts={{
+                      width: "100%",
+                      height: "270px",
+                      playerVars: {
+                        autoplay: 1, //자동 재생 여부
+                        modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+                      },
+                    }}
+                    onReady={(e: { target: { mute: () => void } }) => {
+                      e.target.mute(); //소리 끔
+                    }}
+                  />
+                ) : (
+                  <ImageContainer
+                    className="popup"
+                    {...handlers}
+                    currentIndex={currentIndex}
+                    onClick={() => {
+                      if (tokenName === "popup2") {
+                        window.open(
+                          "https://www.youtube.com/watch?v=XMHbI7kejuw&t=47s&ab_channel=%EC%B2%AD%EA%B1%B4%EB%B6%80%EC%82%B0",
+                          "_blank",
+                          "noopener, noreferrer"
+                        );
+                      }
+                    }}
+                  >
+                    {imageList.map((image: string, index: Key) => (
+                      <img key={index} src={image} alt={`Slide ${index}`} />
+                    ))}
+                  </ImageContainer>
+                )}
                 <ArrowButton onClick={handlePrev} direction="left">
                   <img src={LeftArrow} />
                 </ArrowButton>
